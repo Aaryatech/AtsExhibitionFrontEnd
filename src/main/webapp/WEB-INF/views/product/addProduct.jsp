@@ -76,7 +76,7 @@
 					<form name="frm_search" id="frm_search" method="post"
 						action="${pageContext.request.contextPath}/saveProduct" enctype="multipart/form-data">
 						<input type="hidden" name="productId" id="productId"
-							value="">
+							value="${product.prodId}">
 
 
 						<div class="col-md -3">
@@ -93,7 +93,7 @@
 							</div>
 							<div class="col-md-3">
 								<input id="productName" class="form-control"
-									placeholder="Product Name" value="${product.productName}"
+									placeholder="Product Name" value="${product.prodName}"
 									style="text-align: left;" name="productName" type="text" required>
 							
 
@@ -107,7 +107,7 @@
 							<div class="col-md-3">
 								<input id="productDescription" class="form-control"
 									style="text-align: left;" placeholder="Product Description "
-									value="${product.custAddress}" name="productDescription" type="text"
+									value="${product.prodDesc}" name="productDescription" type="text"
 									required>
 
 							</div>
@@ -121,7 +121,7 @@
 							<div class="col-md-3">
 								<input id="productSpecif" class="form-control"
 									placeholder="Product Specification" name="productSpecif"
-									style="text-align: left;" value="${customer.custMobNo}"
+									style="text-align: left;" value="${product.prodSpecification}"
 									type="text" required>
 
 							</div>
@@ -132,7 +132,7 @@
 							<div class="col-md-3">
 								<input id="proExperty" class="form-control"
 									placeholder="Product Experty " name="proExperty" type="text"
-									style="text-align: left;" value="${customer.custEmailId}"
+									style="text-align: left;" value="${product.prodExperty}"
 									required>
 
 							</div>
@@ -146,15 +146,20 @@
 								<div class="col1title" align="left">Product Image 1:</div>
 							</div>
 							<div class="col-md-3">
-								 <input type="file" name="img1" id="img1" class="form-control"/>
-							</div>
+								 <input type="file" name="img1" id="img1" class="form-control" value="${url}${product.prodImage1}"/>
+						<c:if test="${isEdit==1}">		 <a href="${url}${product.prodImage1}"
+											data-lightbox="image-1"tabindex="-1"><c:out value='View Image1' /></a>
+							</c:if></div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 2:</div>
 							</div>
 							<div class="col-md-3">
 								
-	                      <input type="file" name="img2" id="img2" class="form-control"/>
+	                         <input type="file" name="img2" id="img2" class="form-control" value="${url}${product.prodImage2}"/>
+								<c:if test="${isEdit==1}">
+								 <a href="${url}${product.prodImage2}"
+											data-lightbox="image-1"tabindex="-1"><c:out value='View Image2' /></a></c:if>
 							</div>
 
 						</div>
@@ -166,8 +171,10 @@
 								<div class="col1title" align="left">Product Image 3:</div>
 							</div>
 							<div class="col-md-3">
-								 <input type="file" name="img2" id="img2" class="form-control"/>
-
+								 <input type="file" name="image3" id="image3" class="form-control" value="${url}${product.prodImage3}"/>
+	                    <c:if test="${isEdit==1}">
+	                      <a href="${url}${product.prodImage3}"
+											data-lightbox="image-1"tabindex="-1"><c:out value='View Image3' /></a></c:if>
 							</div>	</div>
 
 						<div class="colOuter">
@@ -198,21 +205,23 @@
 									
 									<tbody>
 
-										<c:forEach items="${userList}" var="userList"
+										<c:forEach items="${productList}" var="productList"
 											varStatus="count">
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-2"><c:out
-														value="" /></td>
+														value="${productList.prodName}" /></td>
 												<td class="col-md-1"><c:out
-														value="" /></td>
+														value="${productList.prodDesc}" /></td>
 												<td class="col-md-1"><c:out
-														value="" /></td>
+														value="${productList.prodSpecification}" /></td>
+															<td class="col-md-1"><c:out
+														value="${productList.prodExperty}" /></td>
 												<td class="col-md-1"><div>
 														<a
-															href="${pageContext.request.contextPath}/editUser/${userList.userId}"><abbr
+															href="${pageContext.request.contextPath}/editProduct/${productList.prodId}"><abbr
 															title='Edit'><i class='fa fa-edit'></i> </abbr></a> <a
-															href="${pageContext.request.contextPath}/deleteUser/${userList.userId}"
+															href="${pageContext.request.contextPath}/deleteProduct/${productList.prodId}"
 															onClick="return confirm('Are you sure want to delete this record');">
 															<abbr title='Delete'><i class='fa fa-trash'></i></abbr>
 														</a>

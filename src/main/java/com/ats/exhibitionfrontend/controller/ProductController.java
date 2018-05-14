@@ -9,8 +9,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.common.VpsImageUpload;
+import com.ats.exhibitionfrontend.model.ErrorMessage;
+import com.ats.exhibitionfrontend.model.LoginResponseExh;
 import com.ats.exhibitionfrontend.model.ProductWithExhName;
 import com.ats.exhibitionfrontend.model.Products;
 
@@ -34,7 +40,15 @@ public class ProductController {
 		ModelAndView model = new ModelAndView("product/addProduct");
 		try
 		{ 
+			HttpSession session = request.getSession(); 
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
+			List<ProductWithExhName> productList=rest.postForObject(Constants.url+"getAllProductsByExId",map, List.class);
 			
+			model.addObject("productList", productList);
+			model.addObject("url", Constants.PRODUCT_IMAGE);
+			model.addObject("isEdit", 0);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -45,7 +59,7 @@ public class ProductController {
 
 	@RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
 	public String saveProduct(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam("img1") List<MultipartFile> file1,@RequestParam("img2") List<MultipartFile> file2,@RequestParam("img3") List<MultipartFile> file3) {
+			@RequestParam("img1") List<MultipartFile> file1,@RequestParam("img2") List<MultipartFile> file2,@RequestParam("image3") List<MultipartFile> file3) {
 		
 		try {
 			String productId = request.getParameter("productId");
@@ -59,7 +73,9 @@ public class ProductController {
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 			
 			String curTimeStamp = sdf.format(cal.getTime());
-
+			HttpSession session = request.getSession(); 
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+			System.out.println("exhiId " + login.getExhibitor().getExhId());
 			try {
 				
 				upload.saveUploadedFiles(file1, Constants.ITEM_IMAGE_TYPE, curTimeStamp + "-" + file1.get(0).getOriginalFilename());
@@ -104,11 +120,11 @@ public class ProductController {
 			product.setProdSpecification(prodSpecification);
 			product.setProdDesc(prodDesc);
 			product.setProdExperty(prodExperty);
-			product.setExhId(0);
+			product.setExhId(login.getExhibitor().getExhId());
 			product.setProdImage1(file1.get(0).getOriginalFilename());
 			product.setProdImage2(file2.get(0).getOriginalFilename());
 			product.setProdImage3(file3.get(0).getOriginalFilename());
-			product.setIsUsed(0);
+			product.setIsUsed(1);
 			Products productRes = rest.postForObject("" + Constants.url + "saveProducts", product, Products.class);
 			System.out.println(productRes.toString());
 			
@@ -119,4 +135,55 @@ public class ProductController {
 		return "redirect:/addProduct";
 	}
 	
+	
+	@RequestMapping(value = "/editProduct/{productId}",method=RequestMethod.GET)
+	public ModelAndView editProduct(@PathVariable int productId, HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView model = new ModelAndView("product/addProduct");
+		try {
+		MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+		map.add("prodId", productId);
+		RestTemplate restTemplate = new RestTemplate();
+		
+		ProductWithExhName productRes=restTemplate.postForObject(Constants.url+"getProductByProdId",map,ProductWithExhName.class);
+		System.out.println("Product="+productRes.toString());
+		
+		model.addObject("product",productRes);
+		
+		HttpSession session = request.getSession(); 
+		LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+		System.out.println("exhiId " + login.getExhibitor().getExhId());
+	    map = new LinkedMultiValueMap<String, Object>();
+		map.add("exhId", login.getExhibitor().getExhId());
+		List<ProductWithExhName> productList=rest.postForObject(Constants.url+"getAllProductsByExId",map, List.class);
+		
+		model.addObject("productList", productList);
+		model.addObject("url", Constants.PRODUCT_IMAGE);
+		model.addObject("isEdit", 1);
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	return model;
+		
+	}
+	
+	@RequestMapping(value="/deleteProduct/{productId}",method=RequestMethod.GET)
+	public String deleteProduct(@PathVariable int productId) {
+
+		try {
+	      MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+	      map.add("prodId",productId);
+		
+	      ErrorMessage errorMessage=rest.postForObject(Constants.url+"deleteProduct", map, ErrorMessage.class);
+	      
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	      return "redirect:/addProduct";
+	   
+		   
+	}
 }
