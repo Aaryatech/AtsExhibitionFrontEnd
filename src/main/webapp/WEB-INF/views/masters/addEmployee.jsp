@@ -68,12 +68,9 @@
 		 
 			<div class="sidebarright">
 				 
-				<form name="frm_search" id="frm_search" method="post"
-					action="${pageContext.request.contextPath}/insertEmployee">
-					<input type="hidden" name="mod_ser" id="mod_ser"
-						value="search_result">
-
-					
+				<form name="frm_search" id="frm_search" method="post" action="${pageContext.request.contextPath}/insertEmployee"
+				enctype="multipart/form-data"> 
+					 
 						<div class="col-md -3">
 							
 								<div class="col1title" align="left"><h3>Add Employee</h3></div>
@@ -143,6 +140,13 @@
 						 
 				 
 					</div>
+					 
+					<div class="profile">
+							<div class="col-md-2"><div class="col1title" align="left">Employee Pic</div></div>
+							<div class="col-md-3">
+								<input type="file" name="image" value="image" id="image" required>
+							</div>
+						</div>
 					    
 					<div class="colOuter">
 						<div align="center">
@@ -170,19 +174,19 @@
 							</thead>
 							<tbody>
 
-								<c:forEach items="${userList}" var="userList"
+								<c:forEach items="${empList}" var="empList"
 									varStatus="count">
 									<tr>
 										 <td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 										<td class="col-md-2"><c:out
-												value="${userList.userName}" /></td>
+												value="${empList.empName}" /></td>
 										<td class="col-md-1"><c:out
-												value="${userList.userMobNo}" /></td>
+												value="${empList.empMobile}" /></td>
 										<td class="col-md-1"><c:out
-												value="${userList.userType}" /></td>
+												value="${empList.empEmail}" /></td>
 										<td class="col-md-1"><div >
-						<a href="${pageContext.request.contextPath}/editUser/${userList.userId}"><abbr title='Edit'><i class='fa fa-edit'></i> </abbr></a>
-						<a href="${pageContext.request.contextPath}/deleteUser/${userList.userId}" onClick="return confirm('Are you sure want to delete this record');"  >
+						<a href="${pageContext.request.contextPath}/editUser/${empList.empId}"><abbr title='Edit'><i class='fa fa-edit'></i> </abbr></a>
+						<a href="${pageContext.request.contextPath}/deleteUser/${empList.empId}" onClick="return confirm('Are you sure want to delete this record');"  >
 						<abbr title='Delete'><i  class='fa fa-trash'></i></abbr></a>
 												 
 											</div></td>
