@@ -1,13 +1,27 @@
 package com.ats.exhibitionfrontend.controller;
 
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ats.exhibitionfrontend.common.Constants;
+import com.ats.exhibitionfrontend.common.VpsImageUpload;
+import com.ats.exhibitionfrontend.model.ProductWithExhName;
+import com.ats.exhibitionfrontend.model.Products;
 
 @Controller
 public class ProductController {
@@ -20,7 +34,6 @@ public class ProductController {
 		ModelAndView model = new ModelAndView("product/addProduct");
 		try
 		{ 
-		 
 			
 		}catch(Exception e)
 		{
@@ -30,4 +43,80 @@ public class ProductController {
 		return model;
 	}
 
+	@RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
+	public String saveProduct(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("img1") List<MultipartFile> file1,@RequestParam("img2") List<MultipartFile> file2,@RequestParam("img3") List<MultipartFile> file3) {
+		
+		try {
+			String productId = request.getParameter("productId");
+			String productName = request.getParameter("productName");
+			String prodDesc = request.getParameter("productDescription");
+			String prodSpecification = request.getParameter("productSpecif");
+			String prodExperty = request.getParameter("proExperty");
+			VpsImageUpload upload = new VpsImageUpload();
+
+			Calendar cal = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+			
+			String curTimeStamp = sdf.format(cal.getTime());
+
+			try {
+				
+				upload.saveUploadedFiles(file1, Constants.ITEM_IMAGE_TYPE, curTimeStamp + "-" + file1.get(0).getOriginalFilename());
+				System.out.println("upload method called " + file1.toString());
+				
+				
+			} catch (IOException e) {
+				
+				System.out.println("Exce in File Upload In Product Insert " + e.getMessage());
+				e.printStackTrace();
+			}
+	     try {
+				
+				upload.saveUploadedFiles(file2, Constants.ITEM_IMAGE_TYPE, curTimeStamp + "-" + file2.get(0).getOriginalFilename());
+				System.out.println("upload method called " + file2.toString());
+				
+				
+			} catch (IOException e) {
+				
+				System.out.println("Exce in File Upload In Product Insert " + e.getMessage());
+				e.printStackTrace();
+			}
+	 	try {
+			
+			upload.saveUploadedFiles(file3, Constants.ITEM_IMAGE_TYPE, curTimeStamp + "-" + file3.get(0).getOriginalFilename());
+			System.out.println("upload method called " + file3.toString());
+			
+			
+		} catch (IOException e) {
+			
+			System.out.println("Exce in File Upload In Product Insert " + e.getMessage());
+			e.printStackTrace();
+		}
+		
+			
+			Products product=new Products();
+			if(productId!=null&&productId!="")
+				product.setProdId(Integer.parseInt(productId));
+			else
+				product.setProdId(0);
+			product.setProdName(productName);
+			product.setProdSpecification(prodSpecification);
+			product.setProdDesc(prodDesc);
+			product.setProdExperty(prodExperty);
+			product.setExhId(0);
+			product.setProdImage1(file1.get(0).getOriginalFilename());
+			product.setProdImage2(file2.get(0).getOriginalFilename());
+			product.setProdImage3(file3.get(0).getOriginalFilename());
+			product.setIsUsed(0);
+			Products productRes = rest.postForObject("" + Constants.url + "saveProducts", product, Products.class);
+			System.out.println(productRes.toString());
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/addProduct";
+	}
+	
 }

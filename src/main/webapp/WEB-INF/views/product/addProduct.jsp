@@ -74,9 +74,9 @@
 				<div class="sidebarright">
 
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}/insertEmployee">
-						<input type="hidden" name="mod_ser" id="mod_ser"
-							value="search_result">
+						action="${pageContext.request.contextPath}/saveProduct" enctype="multipart/form-data">
+						<input type="hidden" name="productId" id="productId"
+							value="">
 
 
 						<div class="col-md -3">
@@ -92,11 +92,10 @@
 								<div class="col1title" align="left">Product Name*:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="custName" class="form-control"
-									placeholder="Product Name" value="${customer.custName}"
-									style="text-align: left;" name="empName" type="text" required>
-								<input id="empId" class="form-control" name="proName"
-									value="${customer.custId}" type="hidden">
+								<input id="productName" class="form-control"
+									placeholder="Product Name" value="${product.productName}"
+									style="text-align: left;" name="productName" type="text" required>
+							
 
 							</div>
 							<div class="col-md-1"></div>
@@ -106,9 +105,9 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<input id="empDesg" class="form-control"
+								<input id="productDescription" class="form-control"
 									style="text-align: left;" placeholder="Product Description "
-									value="${customer.custAddress}" name="proDesc" type="text"
+									value="${product.custAddress}" name="productDescription" type="text"
 									required>
 
 							</div>
@@ -120,8 +119,8 @@
 								<div class="col1title" align="left">Product Specification:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="mob" class="form-control"
-									placeholder="Product Specification" name="mob"
+								<input id="productSpecif" class="form-control"
+									placeholder="Product Specification" name="productSpecif"
 									style="text-align: left;" value="${customer.custMobNo}"
 									type="text" required>
 
@@ -132,7 +131,7 @@
 							</div>
 							<div class="col-md-3">
 								<input id="proExperty" class="form-control"
-									placeholder="proExperty" name="proExperty" type="text"
+									placeholder="Product Experty " name="proExperty" type="text"
 									style="text-align: left;" value="${customer.custEmailId}"
 									required>
 
@@ -147,22 +146,15 @@
 								<div class="col1title" align="left">Product Image 1:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="mob" class="form-control"
-									placeholder="Product Image 1" name="proImage1"
-									style="text-align: left;" value="${customer.custMobNo}"
-									type="text" required>
-
+								 <input type="file" name="img1" id="img1" class="form-control"/>
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 2:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="proExperty" class="form-control"
-									placeholder="Product Image 2" name="proImage2" type="text"
-									style="text-align: left;" value="${customer.custEmailId}"
-									required>
-
+								
+	                      <input type="file" name="img2" id="img2" class="form-control"/>
 							</div>
 
 						</div>
@@ -174,10 +166,7 @@
 								<div class="col1title" align="left">Product Image 3:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="root" class="form-control"
-									placeholder="Product Image 3" name="proImage3"
-									style="text-align: left;" value="${customer.custRoot}"
-									type="text" required>
+								 <input type="file" name="img2" id="img2" class="form-control"/>
 
 							</div>	</div>
 
@@ -190,11 +179,22 @@
 
 						</div>
 
-						<%-- <div id="table-scroll" class="table-scroll">
+						 <div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">
 								<table id="table_grid" class="main-table">
-
+                                
+							<thead>
+								<tr class="bgpink">
+								
+									<th class="col-sm-1">Sr No</th>
+									<th class="col-md-1">Product</th> 
+									<th class="col-md-1">Description</th>
+									<th class="col-md-1">Specification</th>
+									<th class="col-md-1">Product Experty</th>
+									<th class="col-md-1">Action</th>
+								</tr>
+							</thead>
 									
 									<tbody>
 
@@ -203,11 +203,11 @@
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-2"><c:out
-														value="${userList.userName}" /></td>
+														value="" /></td>
 												<td class="col-md-1"><c:out
-														value="${userList.userMobNo}" /></td>
+														value="" /></td>
 												<td class="col-md-1"><c:out
-														value="${userList.userType}" /></td>
+														value="" /></td>
 												<td class="col-md-1"><div>
 														<a
 															href="${pageContext.request.contextPath}/editUser/${userList.userId}"><abbr
@@ -226,7 +226,7 @@
 						</div>
 
 
-					</form> --%>
+					</form> 
 
 
 				</div>
