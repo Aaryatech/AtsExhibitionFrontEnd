@@ -73,7 +73,7 @@
 					 
 						<div class="col-md -3">
 							
-								<div class="col1title" align="left"><h3>Add Employee</h3></div>
+								<div class="col1title" align="left"><h3> Employee Detail</h3></div>
 								 
 						</div>
 						
@@ -83,7 +83,7 @@
 						</div>
 						<div class="col-md-3">
 							<input id="custName" class="form-control"
-								placeholder="Employee Name" value="${customer.custName}" style="text-align: left;" name="empName" type="text" required>
+								placeholder="Employee Name" value="${empDetail.empName}" style="text-align: left;" name="empName" type="text" disabled>
 								<input id="empId" class="form-control"
 								  name="empId" value="${customer.custId}" type="hidden" >
 
@@ -97,7 +97,7 @@
 						</div>
 						<div class="col-md-3">
 							<input id="empDesg" class="form-control" style="text-align: left;"
-								placeholder="Customer Address" value="${customer.custAddress}" name="empDesg" type="text" required>
+								placeholder="Customer Address" value="${empDetail.empDesignation}" name="empDesg" type="text" disabled>
 
 						</div>
 					 
@@ -111,7 +111,7 @@
 						</div>
 						<div class="col-md-3">
 							<input id="mob" class="form-control"
-								placeholder="Mobile No" name="mob" style="text-align: left;" value="${customer.custMobNo}" pattern="^\d{10}$" type="text" required>
+								placeholder="Mobile No" name="mob" style="text-align: left;" value="${empDetail.empMobile}" pattern="^\d{10}$" type="text" disabled>
 
 						</div>
 						<div class="col-md-1"> </div>
@@ -120,7 +120,7 @@
 						</div>
 						<div class="col-md-3">
 							<input id="email" class="form-control"
-								placeholder="Email" name="email" type="email" style="text-align: left;" value="${customer.custEmailId}" required>
+								placeholder="Email" name="email" type="email" style="text-align: left;" value="${empDetail.empEmail}" disabled>
 
 						</div>
 				 
@@ -134,7 +134,7 @@
 						</div>
 						<div class="col-md-3">
 							<input id="root" class="form-control"
-								placeholder="Education" name="education" style="text-align: left;" value="${customer.custRoot}" type="text" required>
+								placeholder="Education" name="education" style="text-align: left;" value="${empDetail.empEducation}" type="text" disabled>
 
 						</div>
 						 
@@ -144,7 +144,14 @@
 					<div class="profile">
 							<div class="col-md-2"><div class="col1title" align="left">Employee Pic</div></div>
 							<div class="col-md-3">
-								<input type="file" name="image" value="image" id="image" required>
+								<div class="profileinput">
+								<div class="editimg">
+									 
+									<img
+										src="${url}${empDetail.empPhoto}"
+										alt="img" id="img">
+								</div>
+							</div>
 							</div>
 						</div>
 					    
@@ -157,46 +164,7 @@
 				 
 					</div>
 					
-					<div id="table-scroll" class="table-scroll">
-					<div id="faux-table" class="faux-table" aria="hidden"></div>
-					<div class="table-wrap">
-						<table id="table_grid" class="main-table">
-
-							<thead>
-								<tr class="bgpink">
-								
-									<th class="col-sm-1">Sr No</th>
-									<th class="col-md-1">Employee Name</th> 
-									<th class="col-md-1">Mobile</th>
-									<th class="col-md-1">Email</th>
-									<th class="col-md-1">Action</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								<c:forEach items="${empList}" var="empList"
-									varStatus="count">
-									<tr>
-										 <td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-										<td class="col-md-2"><c:out
-												value="${empList.empName}" /></td>
-										<td class="col-md-1"><c:out
-												value="${empList.empMobile}" /></td>
-										<td class="col-md-1"><c:out
-												value="${empList.empEmail}" /></td>
-										<td class="col-md-1"><div >
-						<a href="${pageContext.request.contextPath}/empDetail/${empList.empId}" class="action_btn" ><abbr title="Details"><i class="fa fa-list"></i></abbr></a>
-						<%-- <a href="${pageContext.request.contextPath}/editEmp/${empList.empId}"><abbr title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%>
-						<a href="${pageContext.request.contextPath}/deleteEmp/${empList.empId}" onClick="return confirm('Are you sure want to delete this record');"  >
-						<abbr title='Delete'><i  class='fa fa-trash'></i></abbr></a>
-												 
-											</div></td>
-									</tr>
-								</c:forEach>
-						</table>
-
-					</div>
-				</div>
+					 
 				 
 
 				</form>
