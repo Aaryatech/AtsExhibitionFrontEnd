@@ -30,6 +30,14 @@
 						<span>Add Product</span>
 					</div></a></li>
 					
+					 
+		 <li><a href="${pageContext.request.contextPath}/addMaterial"  ><div class="img">
+						<i class="fa fa-file-o icon"></i>
+					</div>
+					<div class="title">
+						<span>Add Material</span>
+					</div></a></li>
+					
 					<%-- <c:if test="${info.accessRight==1}"> --%>
 			
 					<%-- <li><a href="#" onClick="openNav4()"><div class="img">
