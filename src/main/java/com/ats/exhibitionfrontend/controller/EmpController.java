@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
  
 import com.ats.exhibitionfrontend.common.Constants;
+import com.ats.exhibitionfrontend.common.VpsImageUpload;
+import com.ats.exhibitionfrontend.model.ErrorMessage;
 import com.ats.exhibitionfrontend.model.ExhEmpWithExhName;
 import com.ats.exhibitionfrontend.model.ExhEmployee;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
@@ -67,7 +70,7 @@ public class EmpController {
 		//ModelAndView model = new ModelAndView("masters/addEmployee");
 		try
 		{ 
-			/*VpsImageUpload upload = new VpsImageUpload();
+			VpsImageUpload upload = new VpsImageUpload();
 
 			Calendar cal = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -76,10 +79,10 @@ public class EmpController {
 			String curTimeStamp = sdf.format(cal.getTime());
 			String img1 = null;
 			try {
-				img1 = curTimeStamp + "-" + image.get(0).getOriginalFilename(); 
+				img1 =   image.get(0).getOriginalFilename(); 
 
-				upload.saveUploadedFiles(image, Constants.GATE_ENTRY_IMAGE_TYPE,
-						curTimeStamp + "-" + image.get(0).getOriginalFilename()); 
+				upload.saveUploadedFiles(image, Constants.ITEM_IMAGE_TYPE,
+						  image.get(0).getOriginalFilename()); 
 
 				System.out.println("upload method called for image Upload " + image.toString());
 
@@ -87,7 +90,7 @@ public class EmpController {
 
 				System.out.println("Exce in File Upload In GATE ENTRY  Insert " + e.getMessage());
 				e.printStackTrace();
-			}*/
+			}
 			
 			HttpSession session = request.getSession(); 
 			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
@@ -108,10 +111,7 @@ public class EmpController {
 			System.out.println("education" + education); 
 			
 			ExhEmployee exhEmployee = new ExhEmployee();
-			if(empId=="" || empId == null)
-				exhEmployee.setEmpId(0);
-			else
-				exhEmployee.setEmpId(Integer.parseInt(empId));
+			 
 			exhEmployee.setEmpName(empName);
 			exhEmployee.setEmpDesignation(empDesg);
 			exhEmployee.setEmpEmail(email);
@@ -119,7 +119,7 @@ public class EmpController {
 			exhEmployee.setEmpEducation(education);
 			exhEmployee.setIsUsed(1);
 			exhEmployee.setExhId(login.getExhibitor().getExhId());
-			//exhEmployee.setEmpPhoto(img1);
+			exhEmployee.setEmpPhoto(img1);
 			
 			System.out.println("exhEmployee" + exhEmployee);
 			
@@ -127,6 +127,53 @@ public class EmpController {
 					ExhEmployee.class); 
 			
 			System.out.println("res " + res);
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return "redirect:/addEmployee";
+	}
+	
+	@RequestMapping(value = "/empDetail/{empId}", method = RequestMethod.GET)
+	public ModelAndView empDetail(@PathVariable int empId, HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView("masters/empDetail");
+		try
+		{ 
+			
+		 
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("empId", empId);
+		 
+			ExhEmpWithExhName res = rest.postForObject(Constants.url + "/getAllEmployeeByEmpIdAndIsUsed", map,
+					ExhEmpWithExhName.class); 
+			model.addObject("empDetail", res);
+			model.addObject("url", Constants.ITEM_IMAGE_URL);
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return model;
+	}
+	
+	@RequestMapping(value = "/deleteEmp/{empId}", method = RequestMethod.GET)
+	public String deleteEmp(@PathVariable int empId, HttpServletRequest request, HttpServletResponse response) {
+
+		//ModelAndView model = new ModelAndView("masters/empDetail");
+		try
+		{ 
+			
+		 
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("empId", empId);
+		 
+			ErrorMessage res = rest.postForObject(Constants.url + "/deleteExhEmployee", map,
+					ErrorMessage.class); 
+		 System.out.println(res);
 			
 		}catch(Exception e)
 		{
