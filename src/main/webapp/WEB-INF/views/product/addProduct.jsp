@@ -9,7 +9,6 @@
 
 </head>
 <body>
-	--%>
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
@@ -55,9 +54,6 @@
 		<c:url var="findAllMenus" value="/getAllTypes" />
 		<jsp:include page="/WEB-INF/views/include/logo.jsp"></jsp:include>
 
-
-		<!--topHeader-->
-
 		<!--rightContainer-->
 		<div class="fullGrid center">
 			<!--fullGrid-->
@@ -69,15 +65,11 @@
 					<jsp:param name="myMenu" value="${menuList}" />
 				</jsp:include>
 
-
-
 				<div class="sidebarright">
-
 					<form name="frm_search" id="frm_search" method="post"
 						action="${pageContext.request.contextPath}/saveProduct" enctype="multipart/form-data">
 						<input type="hidden" name="productId" id="productId"
 							value="${product.prodId}">
-
 
 						<div class="col-md -3">
 
@@ -96,7 +88,6 @@
 									placeholder="Product Name" value="${product.prodName}"
 									style="text-align: left;" name="productName" type="text" required>
 							
-
 							</div>
 							<div class="col-md-1"></div>
 
@@ -111,7 +102,6 @@
 									required>
 
 							</div>
-
 						</div>
 
 						<div class="colOuter">
@@ -138,8 +128,6 @@
 							</div>
 
 						</div>
-
-
 
 						<div class="colOuter">
 							<div class="col-md-2">
