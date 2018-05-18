@@ -67,6 +67,7 @@ public class ProductController {
 			String prodDesc = request.getParameter("productDescription");
 			String prodSpecification = request.getParameter("productSpecif");
 			String prodExperty = request.getParameter("proExperty");
+			int isEdit = Integer.parseInt(request.getParameter("isEdit"));
 			VpsImageUpload upload = new VpsImageUpload();
 
 			Calendar cal = Calendar.getInstance();
@@ -109,21 +110,32 @@ public class ProductController {
 			System.out.println("Exce in File Upload In Product Insert " + e.getMessage());
 			e.printStackTrace();
 		}
-		
+	 	String prodImage1="";String prodImage2="";String prodImage3="";
+		if(isEdit==0)
+		{
+			 prodImage1 =file1.get(0).getOriginalFilename();
+			 prodImage2 =file2.get(0).getOriginalFilename();
+			 prodImage3 =file3.get(0).getOriginalFilename();
+		}else
+		{
+			 prodImage1 = request.getParameter("image11");
+			 prodImage2 = request.getParameter("image22");
+			 prodImage3 = request.getParameter("image33");
+		}
 			
 			Products product=new Products();
 			if(productId!=null&&productId!="")
-				product.setProdId(Integer.parseInt(productId));
-			else
 				product.setProdId(0);
+			else
+				product.setProdId(Integer.parseInt(productId));
 			product.setProdName(productName);
 			product.setProdSpecification(prodSpecification);
 			product.setProdDesc(prodDesc);
 			product.setProdExperty(prodExperty);
 			product.setExhId(login.getExhibitor().getExhId());
-			product.setProdImage1(file1.get(0).getOriginalFilename());
-			product.setProdImage2(file2.get(0).getOriginalFilename());
-			product.setProdImage3(file3.get(0).getOriginalFilename());
+			product.setProdImage1(prodImage1);
+			product.setProdImage2(prodImage2);
+			product.setProdImage3(prodImage3);
 			product.setIsUsed(1);
 			Products productRes = rest.postForObject("" + Constants.url + "saveProducts", product, Products.class);
 			System.out.println(productRes.toString());

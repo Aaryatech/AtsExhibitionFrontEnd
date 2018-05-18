@@ -55,12 +55,14 @@
 <!--selectlistbox-->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery.selectlistbox.js"></script>
-
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/assets/bootstrap-fileupload/bootstrap-fileupload.css" />
 <!--selectlistbox-->
 
 <!--datepicker-->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+	
 <script>
 	$(function() {
 		$("#datepicker").datepicker({

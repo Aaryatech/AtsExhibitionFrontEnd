@@ -70,7 +70,14 @@
 						action="${pageContext.request.contextPath}/saveProduct" enctype="multipart/form-data">
 						<input type="hidden" name="productId" id="productId"
 							value="${product.prodId}">
-
+                       <input type="hidden" name="isEdit" id="isEdit"
+							value="${isEdit}">
+							  <input type="hidden" name="image11" id="image11"
+							value="${product.prodImage1}">
+							  <input type="hidden" name="image22" id="image22"
+							value="${product.prodImage2}">
+							  <input type="hidden" name="image33" id="image33"
+							value="${product.prodImage3}">
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
@@ -163,7 +170,11 @@
 	                    <c:if test="${isEdit==1}">
 	                      <a href="${url}${product.prodImage3}"
 											data-lightbox="image-1"tabindex="-1"><c:out value='View Image3' /></a></c:if>
-							</div>	</div>
+							
+							</div>	
+							
+							
+							</div>
 
 						<div class="colOuter">
 							<div align="center">
