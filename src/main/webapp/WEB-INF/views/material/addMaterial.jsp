@@ -9,8 +9,7 @@
 
 </head>
 <body>
-	--%>
-
+	
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
@@ -74,9 +73,10 @@
 				<div class="sidebarright">
 
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}/insertMaterial">
+						action="${pageContext.request.contextPath}/insertMaterial"
+						 enctype="multipart/form-data" >
 						<input type="hidden" name="mod_ser" id="mod_ser"
-							value="search_result">
+							value="search_result" >
 
 
 						<div class="col-md -3">
@@ -105,10 +105,13 @@
 								<div class="col1title" align="left">Material Link*:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="matLink" class="form-control"
+								
+								<input type="file" name="matLink" placeholder="Select Material File"/>
+								
+								<%-- <input id="matLink" class="form-control"
 									style="text-align: left;" placeholder="Material Link"
 									value="${customer.custAddress}" name="matLink" type="text"
-									required>
+									required> --%>
 
 							</div>
 

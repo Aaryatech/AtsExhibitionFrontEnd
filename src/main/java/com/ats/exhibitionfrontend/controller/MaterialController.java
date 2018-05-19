@@ -1,7 +1,10 @@
 package com.ats.exhibitionfrontend.controller;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +17,13 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ats.exhibitionfrontend.common.Constants;
+import com.ats.exhibitionfrontend.common.VpsImageUpload;
 import com.ats.exhibitionfrontend.model.ErrorMessage;
 import com.ats.exhibitionfrontend.model.ExhEmpWithExhName;
 import com.ats.exhibitionfrontend.model.ExhMatWithExhName;
@@ -54,7 +60,8 @@ public class MaterialController {
 	}
 
 	@RequestMapping(value = "/insertMaterial", method = RequestMethod.POST)
-	public String insertEmployee(HttpServletRequest request, HttpServletResponse response) {
+	public String insertEmployee(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("matLink") List<MultipartFile> file) {
 
 		// ModelAndView model = new ModelAndView("masters/addEmployee");
 		try {
@@ -69,6 +76,29 @@ public class MaterialController {
 			System.out.println("trId" + trId);
 			System.out.println("matName" + matName);
 			System.out.println("matLink" + matLink);
+			
+			VpsImageUpload upload = new VpsImageUpload();
+
+			Calendar cal = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+			System.out.println(sdf.format(cal.getTime()));
+			
+			String curTimeStamp = sdf.format(cal.getTime());
+			String img1 = null;
+			try {
+				img1 =    login.getExhibitor().getExhId()+"_"+curTimeStamp+file.get(0).getOriginalFilename(); 
+
+				upload.saveUploadedFiles(file, Constants.ITEM_IMAGE_TYPE,
+						img1); 
+
+				System.out.println("upload method called for image Upload " + file.toString());
+
+			} catch (IOException e) {
+
+				System.out.println("Exce in File Upload In GATE ENTRY  Insert " + e.getMessage());
+				e.printStackTrace();
+			}
+			
 
 			ExhMaterail exhMaterail = new ExhMaterail();
 			if (trId == "" || trId == null)
@@ -76,7 +106,7 @@ public class MaterialController {
 			else
 				exhMaterail.setTrId(Integer.parseInt(trId));
 			exhMaterail.setMatName(matName);
-			exhMaterail.setMatLink(matLink);
+			exhMaterail.setMatLink(img1);
 			exhMaterail.setIsUsed(1);
 
 			exhMaterail.setExhId(login.getExhibitor().getExhId());
@@ -107,6 +137,7 @@ public class MaterialController {
 			ExhMatWithExhName res = rest.postForObject(Constants.url + "/getAllMatByTrIdAndIsUsed", map,
 					ExhMatWithExhName.class);
 			model.addObject("matDetail", res);
+			model.addObject("fileUrl",Constants.ITEM_IMAGE_URL );
 
 		} catch (Exception e) {
 			e.printStackTrace();

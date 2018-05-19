@@ -92,13 +92,15 @@
 							 
 						</div>
 
-						<div class="col-md-2">
-							<div class="col1title" align="left">Material Link: </div>
+						<div class="col-md-1">
+							<div class="col1title" align="center"> Link: </div>
 						</div>
-						<div class="col-md-3">
-							<input id="matLink" class="form-control" style="text-align: left;"
+						<div class="col-md-1">
+						
+						 <a href="${fileUrl}${matDetail.matLink}" target="_blank" style="align-content: center; color: fuchsia; ;">View File</a> 
+							<%-- <input id="matLink" class="form-control" style="text-align: left;"
 								placeholder="Customer Address" value="${matDetail.matLink}" name="matLink" type="text" disabled>
-
+ --%>
 						</div>
 					 
 					</div>
