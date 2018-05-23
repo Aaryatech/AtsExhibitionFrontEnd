@@ -29,7 +29,6 @@
 					<div class="title">
 						<span>Add Product</span>
 					</div></a></li>
-					
 					 
 		 <li><a href="${pageContext.request.contextPath}/addMaterial"  ><div class="img">
 						<i class="fa fa-file-o icon"></i>
@@ -38,7 +37,6 @@
 						<span>Add Material</span>
 					</div></a></li>
 					
-					
 					<li><a href="${pageContext.request.contextPath}/showEditProfile"  ><div class="img">
 						<i class="fa fa-file-o icon"></i>
 					</div>
@@ -46,6 +44,22 @@
 						<span>Edit Profile</span>
 					</div></a></li>
 					
+					<li><a href="${pageContext.request.contextPath}/showAddFbQuestion"  ><div class="img">
+						<i class="fa fa-file-o icon"></i>
+					</div>
+					<div class="title">
+						<span>Feedback Question</span>
+					</div></a></li>
+					
+					
+					
+					
+					<li><a href="${pageContext.request.contextPath}/showFbQueTxn"  ><div class="img">
+						<i class="fa fa-file-o icon"></i>
+					</div>
+					<div class="title">
+						<span>Feedback Question Txn</span>
+					</div></a></li>
 					
 					<%-- <c:if test="${info.accessRight==1}"> --%>
 			
