@@ -1,11 +1,8 @@
 
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-
 
 </head>
 <body>
@@ -54,9 +51,6 @@
 		<c:url var="findAllMenus" value="/getAllTypes" />
 		<jsp:include page="/WEB-INF/views/include/logo.jsp"></jsp:include>
 
-
-		<!--topHeader-->
-
 		<!--rightContainer-->
 		<div class="fullGrid center">
 			<!--fullGrid-->
@@ -68,71 +62,80 @@
 					<jsp:param name="myMenu" value="${menuList}" />
 				</jsp:include>
 
-
-
 				<div class="sidebarright">
-
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}"
+						action="${pageContext.request.contextPath}/saveFeedbackQue"
 						enctype="multipart/form-data">
-						<input type="hidden" name="mod_ser" id="mod_ser"
-							value="search_result">
-
 
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Event History</h3>
+								<h3>About Event</h3>
 							</div>
 
 						</div>
-						<div id="table-scroll" class="table-scroll">
-							<div id="faux-table" class="faux-table" aria="hidden"></div>
-							<div class="table-wrap">
-								<table id="table_grid" class="main-table">
-									<thead>
-										<tr class="bgpink">
-											<th class="col-sm-1">Sr No</th>
-											<th class="col-md-1">Event Name</th>
-											<th class="col-md-1">Venue</th>
-											<th class="col-md-1">From Date</th>
-											<th class="col-md-1">To Date</th>
-											<th class="col-md-1">Likes</th>
-											<th class="col-md-2" style="text-align: center;">Action</th>
-										</tr>
-									</thead>
-									<tbody>
 
-										<c:forEach items="${eventHistory}" var="evHist"
-											varStatus="count">
-											<tr>
-												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-												<td class="col-md-2"><c:out value="${evHist.eventName}" /></td>
-												<td class="col-md-1"><c:out
-														value="${evHist.eventLocation}" /></td>
-												<td class="col-md-1"><c:out
-														value="${evHist.eventFromDate}" /></td>
-												<td class="col-md-1"><c:out
-														value="${evHist.eventToDate}" /></td>
-												<td class="col-md-1"><c:out value="${evHist.likeCount}" /></td>
-												<td class="col-md-2"><div>
-														<a href="${pageContext.request.contextPath}/abtEvent/${evHist.eventId}">Abt Event</a> &nbsp;&nbsp; 
-														<a href="${pageContext.request.contextPath}/likedVisitors/${evHist.eventId}">Liked
-															Visitor </a>
-													</div></td>
-											</tr>
-										</c:forEach>
-								</table>
-
+						<div class="colOuter">
+							<div class="col-md-1">
+								<div class="col1title" align="left">
+									Event Name :<b> ${event.eventName}</b>
+								</div>
 							</div>
+							<div class="col-md-3"></div>
+						</div>
+
+						<div class="colOuter">
+							<div class="col-md-1">
+								<div class="col1title" align="left">
+									About Event:
+									<p>
+										<b> ${event.aboutEvent}</b>
+									</p>
+								</div>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+
+
+						<div class="colOuter">
+							<div class="col-md-1">
+								<div class="col1title" align="left">
+									Contact Person Name:<b> ${event.contactPersonName1}</b>
+								</div>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+
+						<div class="colOuter">
+							<div class="col-md-1">
+								<div class="col1title" align="left">
+									Contact Person Mobile:
+									<p>
+										<b>${event.person1Mob}</b>
+									</p>
+								</div>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+
+						<div class="colOuter">
+							<div class="col-md-1">
+								<div class="col1title" align="left">
+									Contact Person Email:
+									<p>
+										<b>${event.person1EmailId}</b>
+									</p>
+								</div>
+							</div>
+							<div class="col-md-3"></div>
 						</div>
 
 
 					</form>
-
-
 				</div>
 				<!--tabNavigation-->
+				<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
+
 
 			</div>
 			<!--rightSidebar-->
@@ -148,9 +151,18 @@
 	<!--easyTabs-->
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 	<!--easyTabs-->
-
-
-	
+	<script>
+		(function() {
+			var fauxTable = document.getElementById("faux-table");
+			var mainTable = document.getElementById("table_grid");
+			var clonedElement = table_grid.cloneNode(true);
+			var clonedElement2 = table_grid.cloneNode(true);
+			clonedElement.id = "";
+			clonedElement2.id = "";
+			fauxTable.appendChild(clonedElement);
+			fauxTable.appendChild(clonedElement2);
+		})();
+	</script>
 
 </body>
 </html>
