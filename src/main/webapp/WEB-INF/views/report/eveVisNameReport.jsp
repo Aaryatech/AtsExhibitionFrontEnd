@@ -73,7 +73,7 @@
 				<div class="sidebarright">
 
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}"
+						action="${pageContext.request.contextPath}/getVisNameByEveId"
 						enctype="multipart/form-data">
 						<input type="hidden" name="mod_ser" id="mod_ser"
 							value="search_result">
@@ -82,7 +82,23 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Event History</h3>
+								<h3>Event Visitor Names By Events</h3>
+								<strong>Select Event</strong> <select name="evn_name"
+									style="width: 200px;">
+									<option value="-1">All</option>
+									<c:forEach items="${eventList}" var="events">
+
+										<c:choose>
+											<c:when test="${events.eventId==evnId}">
+												<option selected value="${events.eventId}">${events.eventName}</option>
+											</c:when>
+											<c:otherwise>
+												<option value="${events.eventId}">${events.eventName}</option>
+
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</select> <input type="submit" value="Submit">
 							</div>
 
 						</div>
@@ -93,44 +109,27 @@
 									<thead>
 										<tr class="bgpink">
 											<th class="col-sm-1">Sr No</th>
-											<th class="col-md-1">Event Name</th>
-											<th class="col-md-1">Venue</th>
-											<th class="col-md-1">From Date</th>
-											<th class="col-md-1">To Date</th>
+											<th class="col-md-1">Visitor Name</th>
 											<th class="col-md-1">Likes</th>
-											<th class="col-md-2" style="text-align: center;">Action</th>
+
 										</tr>
 									</thead>
 									<tbody>
 
-										<c:forEach items="${eventHistory}" var="evHist"
+										<c:forEach items="${visitorList}" var="visitor"
 											varStatus="count">
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-												<td class="col-md-2"><c:out value="${evHist.eventName}" /></td>
+												<td class="col-md-2"><c:out
+														value="${visitor.visitorName}" /></td>
 												<td class="col-md-1"><c:out
-														value="${evHist.eventLocation}" /></td>
-												<td class="col-md-1"><c:out
-														value="${evHist.eventFromDate}" /></td>
-												<td class="col-md-1"><c:out
-														value="${evHist.eventToDate}" /></td>
-												<td class="col-md-1"><c:out value="${evHist.likeCount}" /></td>
-												<td class="col-md-2"><div>
-														<a href="${pageContext.request.contextPath}/abtEvent/${evHist.eventId}">Abt Event</a> &nbsp;&nbsp; 
-														<a href="${pageContext.request.contextPath}/getVisitorNames/${evHist.eventId}/${evHist.eventName}">Liked
-															Visitor </a>
-													</div></td>
+														value="${visitor.likeCount}" /></td>
 											</tr>
 										</c:forEach>
 								</table>
-
 							</div>
 						</div>
-
-
 					</form>
-
-
 				</div>
 				<!--tabNavigation-->
 
@@ -150,7 +149,7 @@
 	<!--easyTabs-->
 
 
-	
+
 
 </body>
 </html>

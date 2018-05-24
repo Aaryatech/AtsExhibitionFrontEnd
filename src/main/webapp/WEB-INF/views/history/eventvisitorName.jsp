@@ -82,7 +82,8 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Event History</h3>
+								<h3>Event Visitors</h3>
+								<h4>Event Name: </h4>${eventName}
 							</div>
 
 						</div>
@@ -93,33 +94,21 @@
 									<thead>
 										<tr class="bgpink">
 											<th class="col-sm-1">Sr No</th>
-											<th class="col-md-1">Event Name</th>
-											<th class="col-md-1">Venue</th>
-											<th class="col-md-1">From Date</th>
-											<th class="col-md-1">To Date</th>
+											<th class="col-md-1">Visitor Name</th>
 											<th class="col-md-1">Likes</th>
-											<th class="col-md-2" style="text-align: center;">Action</th>
+											
 										</tr>
 									</thead>
 									<tbody>
 
-										<c:forEach items="${eventHistory}" var="evHist"
+										<c:forEach items="${visitorList}" var="visitor"
 											varStatus="count">
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-												<td class="col-md-2"><c:out value="${evHist.eventName}" /></td>
+												<td class="col-md-2"><c:out value="${visitor.visitorName}" /></td>
 												<td class="col-md-1"><c:out
-														value="${evHist.eventLocation}" /></td>
-												<td class="col-md-1"><c:out
-														value="${evHist.eventFromDate}" /></td>
-												<td class="col-md-1"><c:out
-														value="${evHist.eventToDate}" /></td>
-												<td class="col-md-1"><c:out value="${evHist.likeCount}" /></td>
-												<td class="col-md-2"><div>
-														<a href="${pageContext.request.contextPath}/abtEvent/${evHist.eventId}">Abt Event</a> &nbsp;&nbsp; 
-														<a href="${pageContext.request.contextPath}/getVisitorNames/${evHist.eventId}/${evHist.eventName}">Liked
-															Visitor </a>
-													</div></td>
+														value="${visitor.likeCount}" /></td>
+												
 											</tr>
 										</c:forEach>
 								</table>

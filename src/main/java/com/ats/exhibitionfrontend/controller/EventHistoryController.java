@@ -11,15 +11,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
 import com.ats.exhibitionfrontend.model.eventhistory.Events;
 import com.ats.exhibitionfrontend.model.eventhistory.GetEventHistory;
+import com.ats.exhibitionfrontend.model.eventhistory.GetEventVisitorName;
 
 @Controller
 public class EventHistoryController {
@@ -78,6 +81,42 @@ public class EventHistoryController {
 			
 		}catch(Exception e)
 		{
+			e.printStackTrace();
+		}
+
+		return model;
+	}
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/getVisitorNames/{eventId}/{eventName}", method = RequestMethod.GET)
+	public ModelAndView getVisitorNames(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable int eventId,@PathVariable String eventName) {
+
+		ModelAndView model = new ModelAndView("history/eventvisitorName");
+		try
+		{ 
+		
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("eventId", eventId);
+		 
+			GetEventVisitorName[] visNames = rest.postForObject(Constants.url + "/getEventVisitorName", map,
+					GetEventVisitorName[].class); 
+			
+			
+			List<GetEventVisitorName> visNameList = new ArrayList<GetEventVisitorName>(Arrays.asList(visNames));
+
+			
+			model.addObject("visitorList", visNameList);
+			
+			model.addObject("eventName", eventName);
+
+			
+		}catch(Exception e)
+		{
+			System.err.println("Exception in /getVisitorNames @EvnHisController ");
 			e.printStackTrace();
 		}
 

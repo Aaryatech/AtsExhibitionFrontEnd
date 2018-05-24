@@ -70,6 +70,12 @@
 						<span>Event History</span>
 					</div></a></li>
 					
+					<li><a href="${pageContext.request.contextPath}/showEventVisName"  ><div class="img">
+						<i class="fa fa-file-o icon"></i>
+					</div>
+					<div class="title">
+						<span>Event Visitors</span>
+					</div></a></li>
 					
 					
 					<%-- <c:if test="${info.accessRight==1}"> --%>
