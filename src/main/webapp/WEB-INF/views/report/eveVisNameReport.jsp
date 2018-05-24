@@ -1,11 +1,8 @@
 
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
-
 
 </head>
 <body>
@@ -68,19 +65,14 @@
 					<jsp:param name="myMenu" value="${menuList}" />
 				</jsp:include>
 
-
-
 				<div class="sidebarright">
-
 					<form name="frm_search" id="frm_search" method="post"
 						action="${pageContext.request.contextPath}/getVisNameByEveId"
 						enctype="multipart/form-data">
 						<input type="hidden" name="mod_ser" id="mod_ser"
 							value="search_result">
 
-
 						<div class="col-md -3">
-
 							<div class="col1title" align="left">
 								<h3>Event Visitor Names By Events</h3>
 								<strong>Select Event</strong> <select name="evn_name"
@@ -140,16 +132,12 @@
 		<!--fullGrid-->
 	</div>
 	<!--rightContainer-->
-
 	</div>
 	<!--wrapper-end-->
 	<!--easyTabs-->
 	<!--easyTabs-->
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 	<!--easyTabs-->
-
-
-
 
 </body>
 </html>
