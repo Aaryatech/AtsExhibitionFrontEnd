@@ -81,43 +81,120 @@
 									Event Name :<b> ${event.eventName}</b>
 								</div>
 							</div>
-							<div class="col-md-4">
+						<div class="col-md-4">
 								<div class="col1title" align="left">
-									About Event: <b> ${event.aboutEvent}</b>
-
+									About Event:
+								
+										<b> ${event.aboutEvent}</b>
+									
 								</div>
 							</div>
-							<div class="col-md-3">
+								<div class="col-md-3">
 								<div class="col1title" align="left">
 									Contact Person :<b> ${event.contactPersonName1}</b>
 								</div>
 							</div>
 						</div>
 
-						<div class="colOuter">
-
-
-							<div class="col-md-4">
+						<div class="colOuter"> 
+							<%-- <div class="col-md-1">
 								<div class="col1title" align="left">
-									Contact Person Mobile: <b>${event.person1Mob}</b>
-
+									About Event:
+									<p>
+										<b> ${event.aboutEvent}</b>
+									</p>
 								</div>
-							</div>
+							</div> --%>
+							<!-- <div class="col-md-3"></div> -->
+						<!-- </div>
 
-							<div class="col-md-5">
+
+						<div class="colOuter"> -->
+						<%-- 	<div class="col-md-1">
 								<div class="col1title" align="left">
-									Contact Person Email: <b>${event.person1EmailId}</b>
-
+									Contact Person :<b> ${event.contactPersonName1}</b>
 								</div>
-							</div>
-
+							</div> --%>
+							<!-- <div class="col-md-3"></div>
 						</div>
 
+						<div class="colOuter"> -->
+							<div class="col-md-4">
+								<div class="col1title" align="left">
+									Contact Person Mobile:
+								
+										<b>${event.person1Mob}</b>
+									
+								</div>
+							</div>
+						<!-- 	<div class="col-md-3"></div>
+						</div>
 
+						<div class="colOuter"> -->
+							<div class="col-md-5">
+								<div class="col1title" align="left">
+									Contact Person Email:
+								
+										<b>${event.person1EmailId}</b>
+									
+								</div>
+							</div>
+							<!-- <div class="col-md-3"></div>
+						</div>-->
+						</div>
+<%-- 						<div class="colOuter"> 
+							
+								<div class="col1title" align="left">
+									Committee members<br>
+									<table border="1" style=" width: 50%">
+									<thead>
+									<th>Member Name</th> 
+									<th> Designation</th>
+									</thead>
+									<tbody>
+									<c:forEach items="${memberList}" var="member">
+									
+									<tr>
+									<td>${member.memberName}</td>
+									<td>${member.designation}</td>
+									</tr>
+										Name <b>${member.memberName}</b>
+										
+										Designation <b>${member.designation}</b>
+									
+									</c:forEach>
+									
+									
+									</tbody>
+									</table>
+									
+								</div>
+							
+							<div class="col-md-3"></div>
+						</div>
+ --%>	<div id="table-scroll" class="table-scroll">
+							<div id="faux-table" class="faux-table" aria="hidden"></div>
+							<div class="table-wrap">
+								<table id="table_grid" class="main-table">
+									<thead>
+										<tr class="bgpink">
+											<th class="col-md-4">Member Name</th>
+											<th class="col-md-2">Designation</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach items="${memberList}" var="member">
 
+											<tr>
+												<td>${member.memberName}</td>
+									<td>${member.designation}</td>
+											</tr>
 
-
-
+										</c:forEach>
+								</table>
+							</div>
+						</div>
 					</form>
 				</div>
 				<!--tabNavigation-->

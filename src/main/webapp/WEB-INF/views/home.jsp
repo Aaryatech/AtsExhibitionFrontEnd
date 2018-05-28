@@ -57,6 +57,28 @@
   max-width: 60%;
   max-height: 60%
 }
+
+/* my style  */
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 320px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
 </style>
 		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 
@@ -106,7 +128,7 @@
 					<!--slider thum size : width:850px height:350px-->
 						<div class="latestNews">
 					
-						<h3 class="latestNewsTitle">Latest News</h3>
+						<h3 class="latestNewsTitle">Event List</h3>
 							<div class="microsoft marquee">
 						<c:forEach items="${schedulerLists}" var="schedulerLists"  varStatus="count">
 						
@@ -125,30 +147,33 @@
 						</c:forEach>
 						</div>
 					</div>
-					<div id="owl-example" class="owl-carousel">
+			<!-- 		<div id="owl-example" class="owl-carousel"> -->
 
 
 
 
-						<c:forEach items="${msgList}" var="msgList">
+						<c:forEach items="${eventList}" var="eventList">
 
-							<div class="item">
-								<div class="screen4plan">
-									<div class="homesliderImg">
-									 <img src="${url}${msgList.msgImage}"  />
-									
-
-									</div>
-									<h3 class="homesliderTitle" style="font-size:15px "><center>${msgList.msgHeader}</center></h3>
-	                                <h3 class="homesliderTitle"  ><center>${msgList.msgDetails}</center></h3>
-
-								</div>
-							</div>
-						</c:forEach>
-
-
-
-
+							<div class="gallery">
+  <a target="_blank" href="${pageContext.request.contextPath}/getEventDetail/${eventList.eventId}/${eventList.orgId}">
+    <img src="http://132.148.143.124:8080/uploads/MSPCAKE/13:17:38-aa.png" alt="Trolltunga Norway" width="300" height="200">
+  </a>
+ <p align="left"> Event Name: <b>${eventList.eventName}</b></p>
+  <p align="left">Place: <b>${eventList.eventLocation}</b> </p>
+  <p align="left">Event From : <b>${eventList.eventFromDate}</b>  To : <b>${eventList.eventToDate}</b></p>
+  <div class="desc">
+  <c:choose>
+    <c:when test="${eventList.subStatus==0}">
+    <input type="button" value="Subscribe"/>
+    </c:when>
+  <c:otherwise>
+    <input type="button" disabled value="Subscribe"/>
+  </c:otherwise>
+  </c:choose>
+    </div>
+  </div>
+ 		</c:forEach>
+ 		
 
 						<%-- <div class="item">
 							<div class="screen4plan">
