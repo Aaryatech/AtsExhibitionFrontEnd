@@ -23,8 +23,8 @@ import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.common.DateConvertor;
 import com.ats.exhibitionfrontend.model.ErrorMessage;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
-import com.ats.exhibitionfrontend.model.SpinQueHeaderWithName;
-import com.ats.exhibitionfrontend.model.SpinQuestionHeader;
+import com.ats.exhibitionfrontend.model.SpinQueMasterWithName;
+import com.ats.exhibitionfrontend.model.SpinQuestionMaster;
 
 @Controller
 public class SpinQueController {
@@ -42,10 +42,10 @@ public class SpinQueController {
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
 			map.add("exhId", login.getExhibitor().getExhId());
 
-			SpinQueHeaderWithName[] res = rest.postForObject(Constants.url + "/getAllSpinQueHeaderByExhId", map,
-					SpinQueHeaderWithName[].class);
+			SpinQueMasterWithName[] res = rest.postForObject(Constants.url + "/getAllSpinQueByExhId", map,
+					SpinQueMasterWithName[].class);
 
-			List<SpinQueHeaderWithName> queList = new ArrayList<SpinQueHeaderWithName>(Arrays.asList(res));
+			List<SpinQueMasterWithName> queList = new ArrayList<SpinQueMasterWithName>(Arrays.asList(res));
 			model.addObject("queList", queList);
 
 		} catch (Exception e) {
@@ -74,7 +74,7 @@ public class SpinQueController {
 			SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
 			System.err.println("Questioj  " + que + "Description  " + queDesc);
 
-			SpinQuestionHeader spinQuestionHeader = new SpinQuestionHeader();
+			SpinQuestionMaster spinQuestionHeader = new SpinQuestionMaster();
 			Date ymdFromDate = null;
 
 			ymdFromDate = originalFormat.parse(date);
@@ -97,8 +97,8 @@ public class SpinQueController {
 				}
 			}
 
-			SpinQuestionHeader spinQuestionHeaderres = rest.postForObject(Constants.url + "saveSpinQueHeader",
-					spinQuestionHeader, SpinQuestionHeader.class);
+			SpinQuestionMaster spinQuestionHeaderres = rest.postForObject(Constants.url + "saveSpinQueMaster",
+					spinQuestionHeader, SpinQuestionMaster.class);
 
 			System.err.println(" Response  " + spinQuestionHeaderres.toString());
 
@@ -128,8 +128,8 @@ public class SpinQueController {
 
 			map.add("queId", queId);
 
-			SpinQueHeaderWithName spinQueHeaderWithName = rest
-					.postForObject(Constants.url + "/getAllSpinQueHeaderByQueId", map, SpinQueHeaderWithName.class);
+			SpinQueMasterWithName spinQueHeaderWithName = rest.postForObject(Constants.url + "/getAllSpinQueByQueId",
+					map, SpinQueMasterWithName.class);
 
 			spinQueHeaderWithName.setDate(DateConvertor.convertToDMY(spinQueHeaderWithName.getDate()));
 
@@ -158,7 +158,7 @@ public class SpinQueController {
 
 			map.add("queId", queId);
 
-			ErrorMessage delete = rest.postForObject(Constants.url + "/deleteSpinQueHeader", map, ErrorMessage.class);
+			ErrorMessage delete = rest.postForObject(Constants.url + "/deleteSpinQueMaster", map, ErrorMessage.class);
 
 			System.out.println("delete" + delete);
 		} catch (Exception e) {

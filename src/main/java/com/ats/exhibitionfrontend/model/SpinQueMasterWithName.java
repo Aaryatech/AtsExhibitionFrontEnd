@@ -1,6 +1,7 @@
 package com.ats.exhibitionfrontend.model;
 
-public class SpinQuestionHeader {
+public class SpinQueMasterWithName {
+
 	private int queId;
 	private int exhId;
 	private String question;
@@ -8,6 +9,7 @@ public class SpinQuestionHeader {
 	private String date;
 	private int isActive;
 	private int isUsed;
+	private String exhName;
 
 	public int getQueId() {
 		return queId;
@@ -65,10 +67,19 @@ public class SpinQuestionHeader {
 		this.isUsed = isUsed;
 	}
 
+	public String getExhName() {
+		return exhName;
+	}
+
+	public void setExhName(String exhName) {
+		this.exhName = exhName;
+	}
+
 	@Override
 	public String toString() {
-		return "SpinQuestionHeader [queId=" + queId + ", exhId=" + exhId + ", question=" + question + ", queDesc="
-				+ queDesc + ", date=" + date + ", isActive=" + isActive + ", isUsed=" + isUsed + "]";
+		return "SpinQueHeaderWithName [queId=" + queId + ", exhId=" + exhId + ", question=" + question + ", queDesc="
+				+ queDesc + ", date=" + date + ", isActive=" + isActive + ", isUsed=" + isUsed + ", exhName=" + exhName
+				+ "]";
 	}
 
 }
