@@ -23,8 +23,10 @@ import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.common.DateConvertor;
 import com.ats.exhibitionfrontend.model.ErrorMessage;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
+import com.ats.exhibitionfrontend.model.SpinQueHeaderWithName;
 import com.ats.exhibitionfrontend.model.SpinQueMasterWithName;
 import com.ats.exhibitionfrontend.model.SpinQuestionMaster;
+import com.ats.exhibitionfrontend.model.SpinWithVisitorInfo;
 
 @Controller
 public class SpinQueController {
@@ -170,4 +172,51 @@ public class SpinQueController {
 		return "redirect:/addSpinQuestion";
 	}
 
+	@RequestMapping(value = "/showQuestionsBetweenDates", method = RequestMethod.GET)
+	public ModelAndView showQuestionsBetweenDates(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView("spinQue/questionsBetDates");
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return model;
+	}
+
+	@RequestMapping(value = "/questionsBetweenDates", method = RequestMethod.POST)
+	public ModelAndView questionsBetweenDates(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView("spinQue/questionsBetDates");
+		try {
+
+			String fromDate = request.getParameter("fromDate");
+			String toDate = request.getParameter("toDate");
+
+			Date fromDateDMY = new SimpleDateFormat("dd-MM-yyyy").parse(fromDate);
+			Date toDateDMY = new SimpleDateFormat("dd-MM-yyyy").parse(toDate);
+
+			
+			String fromDateString = new SimpleDateFormat("yyyy-MM-dd").format(fromDateDMY);
+			
+			String toDateString = new SimpleDateFormat("yyyy-MM-dd").format(toDateDMY);
+
+			
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+
+			map.add("fromDate", fromDateString);
+			map.add("toDate", toDateString);
+
+			List<SpinWithVisitorInfo> spinWithVisitorInfo = rest.postForObject(
+					Constants.url + "/getSpinQueWithVisitorInfoBetDates", map, List.class);
+			
+			model.addObject("spinWithVisitorInfo",spinWithVisitorInfo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return model;
+	}
 }
