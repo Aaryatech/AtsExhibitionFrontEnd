@@ -149,6 +149,28 @@
 
 								<c:forEach items="${enquiryHeaderWithName}" var="enqList"
 									varStatus="count">
+									<li class="w3-bar"><c:choose>
+											<c:when test="${enqList.status==1}">
+												<c:set var="modType" value="Pending"></c:set>
+												<c:set var="color" value="Red"></c:set>
+											</c:when>
+											<c:when test="${enqList.status==2}">
+												<c:set var="modType" value="Processing"></c:set>
+												<c:set var="color" value="Yellow"></c:set>
+											</c:when>
+											<c:when test="${enqList.status==3}">
+												<c:set var="modType" value="Working On"></c:set>
+												<c:set var="color" value="Orange"></c:set>
+											</c:when>
+											<c:when test="${enqList.status==4}">
+												<c:set var="modType" value="Closed"></c:set>
+												<c:set var="color" value="Black"></c:set>
+											</c:when>
+											<c:otherwise>
+												<c:set var="modType" value="Completed"></c:set>
+												<c:set var="color" value="Green"></c:set>
+											</c:otherwise>
+										</c:choose>
 									<tr>
 										<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 
@@ -159,7 +181,8 @@
 										<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
 
 										<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
-										<td class="col-md-1"><c:out value="${enqList.status}" /></td>
+										<td class="col-md-1" style="color:${color}"><c:out
+												value="${modType}" /></td>
 
 										<td class="col-md-1"><c:out value="${enqList.remark}" /></td>
 
@@ -167,11 +190,10 @@
 												<a
 													href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><abbr>Details<i
 														class=''></i>
-												</abbr></a> </a>
+												</abbr></a> 
 											</div></td>
 
-										</div>
-										</td>
+										
 									</tr>
 								</c:forEach>
 						</table>

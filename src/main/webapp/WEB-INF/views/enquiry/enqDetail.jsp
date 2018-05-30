@@ -1,11 +1,10 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 </head>
 <body>
@@ -82,7 +81,7 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Visitor Info</h3>
+								<h3>Enquiry Info</h3>
 							</div>
 
 						</div>
@@ -90,7 +89,9 @@
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Visitor Name*:</div>
+								<div class="col1title" align="left">
+									<b>Visitor Name:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="visitorName" class="form-control"
@@ -103,7 +104,9 @@
 							<div class="col-md-1"></div>
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Mobile Number*:</div>
+								<div class="col1title" align="left">
+									<b>Mobile Number:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="visitorMobile" class="form-control"
@@ -116,7 +119,9 @@
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Name</div>
+								<div class="col1title" align="left">
+									<b>Employee Name</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="empName" class="form-control" placeholder="Emp Name"
@@ -128,105 +133,94 @@
 
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Event Name:</div>
+								<div class="col1title" align="left">
+									<b>Event Name:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="eventName" class="form-control"
 									placeholder="Event Name" name="eventName"
 									style="text-align: left;"
 									value="${enquiryHeaderWithName.eventName}" type="text" required
-									readonly />
-
+									readonly /> <br> <br>
 							</div>
 						</div>
 
 
 
-						<br> <br> <br>
-						<div class="col-md -3">
-
-							<div class="col1title" align="left">
-								<h3>Enquiry Details</h3>
-							</div>
-
-						</div>
-						<div class="colOuter">
-							<div class="col-md-2">
-								<div class="col1title" align="left">Date*:</div>
-							</div>
-							<div class="col-md-3">
-								<input id="date" class="form-control" placeholder="Date"
-									value="${enquiryHeaderWithName.visitorName}"
-									style="text-align: left;" name="date" type="text" required
-									readonly />
-
-							</div>
-							<div class="col-md-1"></div>
-
-							<div class="col-md-2">
-								<div class="col1title" align="left">Venue*:</div>
-							</div>
-							<div class="col-md-3">
-								<input id="venue" class="form-control" style="text-align: left;"
-									placeholder="venue"
-									value="${enquiryHeaderWithName.visitorMobile}" name="venue"
-									type="text" required readonly />
-
-							</div>
-						</div>
-
-						<div class="colOuter">
-							<div class="col-md-2">
-								<div class="col1title" align="left">Time</div>
-							</div>
-							<div class="col-md-3">
-								<input id="time" class="form-control" placeholder="Time"
-									name="time" style="text-align: left;"
-									value="${enquiryHeaderWithName.empName}" type="text" required
-									readonly />
-
-							</div>
-
-							<div class="col-md-1"></div>
-							<div class="col-md-2">
-								<div class="col1title" align="left">Status:</div>
-							</div>
-							<div class="col-md-3">
-								<input id="status" class="form-control" placeholder="Status"
-									name="status" style="text-align: left;"
-									value="${enquiryHeaderWithName.eventName}" type="text" required
-									readonly />
-
-							</div>
-							<br> <br>
-							<div class="colOuter">
-								<div class="col-md-2">
-									<div class="col1title" align="left">Remark*:</div>
-								</div>
-								<div class="col-md-3">
-									<textarea style="width: 275px;" name="question"
-									
-										placeholder="Question" required="required">${spinQueHeaderList.question}</textarea>
-								</div>
-							</div>
+						<div class="col1title" align="left">
+							<h3>Enquiry Details</h3>
 						</div>
 
 
-						<%-- <div class="w3-container">
+						<div class="w3-container">
 
-								<ul class="w3-ul w3-card-4">
-									<c:forEach items="${enqList}" var="enqList" varStatus="count">
-										<li class="w3-bar">
+							<ul class="w3-ul w3-card-4">
+								<c:forEach items="${enqList}" var="enqList" varStatus="count">
+									<li class="w3-bar"><c:choose>
+											<c:when test="${enqList.status==1}">
+												<c:set var="modType" value="Pending"></c:set>
+												<c:set var="color" value="Red"></c:set>
+											</c:when>
+											<c:when test="${enqList.status==2}">
+												<c:set var="modType" value="Processing"></c:set>
+												<c:set var="color" value="Yellow"></c:set>
+											</c:when>
+											<c:when test="${enqList.status==3}">
+												<c:set var="modType" value="Working On"></c:set>
+												<c:set var="color" value="Orange"></c:set>
+											</c:when>
+											<c:when test="${enqList.status==4}">
+												<c:set var="modType" value="Closed"></c:set>
+												<c:set var="color" value="Black"></c:set>
+											</c:when>
+											<c:otherwise>
+												<c:set var="modType" value="Completed"></c:set>
+												<c:set var="color" value="Green"></c:set>
+											</c:otherwise>
+										</c:choose>
 
-											<div class="w3-bar-item"
-												style='text-align: left; width: 1000px;'>
-												<span class="w3-large"><b>Question:</b>
-													${enqList.date}</span><br> <span class="w3-large"><b>Ans:</b>${enqList.dateTime}</span>
-											</div>
-										</li>
-									</c:forEach>
-								</ul>
-							</div> --%>
+										<div class="w3-bar-item"
+											style='text-align: left; width: 1000px;'>
+											<fmt:parseDate value="${enqList.date}" var="dateObject1"
+												pattern="yyyy-MM-dd" />
+											<span class="w3-large"><b>Date : </b> <fmt:formatDate
+													value="${dateObject1 }" pattern="dd/MM/yyyy" /></span> &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="w3-large">
+												<b>Venue :</b>&nbsp;${enqList.venue}
+											</span><br>
+											<fmt:parseDate value="${enqList.approximateTime}"
+												var="dateObject" pattern="yyyy-MM-dd HH:mm:ss" />
+											<span class="w3-large"><b>Time : </b> <fmt:formatDate
+													value="${dateObject }" pattern="hh:mm a" /></span> &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+											&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+											
+											<b>Status</b><span
+												class="w3-large" style="color:${color};"><b>
+													:</b>&nbsp;${modType}</span> <br>
+													
+													 <span class="w3-large"><b>Remark
+													:</b>&nbsp;${enqList.remark}</span><br>
+										</div></li>
+								</c:forEach>
+							</ul>
+						</div>
 
 					</form>
 
