@@ -23,6 +23,7 @@ import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.common.DateConvertor;
 import com.ats.exhibitionfrontend.model.ErrorMessage;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
+import com.ats.exhibitionfrontend.model.SpinQueDetailWithQue;
 import com.ats.exhibitionfrontend.model.SpinQueHeaderWithName;
 import com.ats.exhibitionfrontend.model.SpinQueMasterWithName;
 import com.ats.exhibitionfrontend.model.SpinQuestionMaster;
@@ -197,21 +198,46 @@ public class SpinQueController {
 			Date fromDateDMY = new SimpleDateFormat("dd-MM-yyyy").parse(fromDate);
 			Date toDateDMY = new SimpleDateFormat("dd-MM-yyyy").parse(toDate);
 
-			
 			String fromDateString = new SimpleDateFormat("yyyy-MM-dd").format(fromDateDMY);
-			
+
 			String toDateString = new SimpleDateFormat("yyyy-MM-dd").format(toDateDMY);
 
-			
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
 
 			map.add("fromDate", fromDateString);
 			map.add("toDate", toDateString);
 
-			List<SpinWithVisitorInfo> spinWithVisitorInfo = rest.postForObject(
-					Constants.url + "/getSpinQueWithVisitorInfoBetDates", map, List.class);
-			
-			model.addObject("spinWithVisitorInfo",spinWithVisitorInfo);
+			List<SpinWithVisitorInfo> spinWithVisitorInfo = rest
+					.postForObject(Constants.url + "/getSpinQueWithVisitorInfoBetDates", map, List.class);
+
+			model.addObject("spinWithVisitorInfo", spinWithVisitorInfo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return model;
+	}
+
+	@RequestMapping(value = "/questionsDetail/{tQueId}", method = RequestMethod.GET)
+	public ModelAndView questionsDetail(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable int tQueId) {
+
+		ModelAndView model = new ModelAndView("spinQue/queDetail");
+		try {
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+
+			map.add("tQueId", tQueId);
+
+			SpinWithVisitorInfo spinWithVisitorInfo = rest.postForObject(Constants.url + "/getVisitorInfoByTQueId", map,
+					SpinWithVisitorInfo.class);
+
+			model.addObject("spinWithVisitorInfo", spinWithVisitorInfo);
+
+			List<SpinQueDetailWithQue> spinQueDetailWithQue = rest
+					.postForObject(Constants.url + "/getAllQuestionsByTQueId", map, List.class);
+
+			model.addObject("spinQueDetailWithQue", spinQueDetailWithQue);
 
 		} catch (Exception e) {
 			e.printStackTrace();
