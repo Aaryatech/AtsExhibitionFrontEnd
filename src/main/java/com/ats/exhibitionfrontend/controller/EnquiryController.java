@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ats.exhibitionfrontend.common.Constants;
+import com.ats.exhibitionfrontend.model.EnquiryDetail;
 import com.ats.exhibitionfrontend.model.EnquiryHeaderWithName;
 import com.ats.exhibitionfrontend.model.ErrorMessage;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
@@ -89,13 +90,12 @@ public class EnquiryController {
 
 			model.addObject("enquiryHeaderWithName", enquiryHeaderWithName);
 
-			/*
-			 * List<EnquiryHeaderWithName> enquiryHeaderWithNameList = rest
-			 * .postForObject(Constants.url + "/getAllEnquiryDetailByEnqId", map,
-			 * List.class);
-			 * 
-			 * model.addObject("enqList", enquiryHeaderWithNameList);
-			 */
+			List<EnquiryDetail> enquiryDetailList = rest.postForObject(Constants.url + "/getAllEnquiryDetailByEnqId",
+					map, List.class);
+		
+
+			model.addObject("enqList", enquiryDetailList);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
