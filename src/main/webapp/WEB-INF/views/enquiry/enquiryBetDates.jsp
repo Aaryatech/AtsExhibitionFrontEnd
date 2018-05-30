@@ -74,13 +74,13 @@
 				<div class="sidebarright">
 
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}/questionsBetweenDates"
+						action="${pageContext.request.contextPath}/enqBetweenDates"
 						enctype="multipart/form-data">
 
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Question Between Dates</h3>
+								<h3>Enquiry Between Dates</h3>
 							</div>
 
 						</div>
@@ -135,38 +135,43 @@
 								<tr class="bgpink">
 
 									<th class="col-sm-1">Sr No</th>
-									<th class="col-md-1">Employee Name</th>
+
 									<th class="col-md-1">Visitor Name</th>
 									<th class="col-md-1">Mobile No</th>
-									<th class="col-md-1">Email Id</th>
+									<th class="col-md-1">Employee Name</th>
+									<th class="col-md-1">Event Name</th>
 									<th class="col-md-1">Status</th>
+									<th class="col-md-1">Remark</th>
 									<th class="col-md-1">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 
-								<c:forEach items="${spinWithVisitorInfo}"
-									var="spinWithVisitorInfo" varStatus="count">
+								<c:forEach items="${enquiryHeaderWithName}" var="enqList"
+									varStatus="count">
 									<tr>
 										<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+
 										<td class="col-md-1"><c:out
-												value="${spinWithVisitorInfo.empName}" /></td>
+												value="${enqList.visitorName}" /></td>
 										<td class="col-md-1"><c:out
-												value="${spinWithVisitorInfo.visitorName}" /></td>
-										<td class="col-md-1"><c:out
-												value="${spinWithVisitorInfo.visitorMobile}" /></td>
-										<td class="col-md-1"><c:out
-												value="${spinWithVisitorInfo.visitorEmail}" /></td>
-										<td class="col-md-1"><c:out
-												value="${spinWithVisitorInfo.status}" /></td>
+												value="${enqList.visitorMobile}" /></td>
+										<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
+
+										<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
+										<td class="col-md-1"><c:out value="${enqList.status}" /></td>
+
+										<td class="col-md-1"><c:out value="${enqList.remark}" /></td>
+
 										<td class="col-md-1"><div>
 												<a
-													href="${pageContext.request.contextPath}/questionsDetail/${spinWithVisitorInfo.tQueId}"
-													class="action_btn"><i class="fa fa-list"></i></abbr></a>
-												<%-- <a href="${pageContext.request.contextPath}/editEmp/${empList.empId}"><abbr title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%>
-
-
+													href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><abbr>Details<i
+														class=''></i>
+												</abbr></a> </a>
 											</div></td>
+
+										</div>
+										</td>
 									</tr>
 								</c:forEach>
 						</table>
