@@ -1,12 +1,12 @@
 package com.ats.exhibitionfrontend.controller;
 
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
@@ -20,10 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.model.EnquiryDetail;
 import com.ats.exhibitionfrontend.model.EnquiryHeaderWithName;
-import com.ats.exhibitionfrontend.model.ErrorMessage;
-import com.ats.exhibitionfrontend.model.LoginResponseExh;
-import com.ats.exhibitionfrontend.model.SpinQueDetailWithQue;
-import com.ats.exhibitionfrontend.model.SpinWithVisitorInfo;
 
 @Controller
 public class EnquiryController {
@@ -92,7 +88,6 @@ public class EnquiryController {
 
 			List<EnquiryDetail> enquiryDetailList = rest.postForObject(Constants.url + "/getAllEnquiryDetailByEnqId",
 					map, List.class);
-		
 
 			model.addObject("enqList", enquiryDetailList);
 
