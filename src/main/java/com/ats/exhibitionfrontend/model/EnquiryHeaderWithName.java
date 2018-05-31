@@ -3,6 +3,7 @@ package com.ats.exhibitionfrontend.model;
 import java.util.Date;
 
 public class EnquiryHeaderWithName {
+	
 	private int enqId;
 	private int visitorId;
 	private String visitorName;
@@ -13,8 +14,8 @@ public class EnquiryHeaderWithName {
 	private String eventName;
 	private int empId;
 	private String empName;
-	private Date date;
-	private Date nextMeetDate;
+	private String date;
+	private String nextMeetDate;
 	private String approximateTime;
 	private String remark;
 	private int status;
@@ -101,19 +102,19 @@ public class EnquiryHeaderWithName {
 		this.empName = empName;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
-	public Date getNextMeetDate() {
+	public String getNextMeetDate() {
 		return nextMeetDate;
 	}
 
-	public void setNextMeetDate(Date nextMeetDate) {
+	public void setNextMeetDate(String nextMeetDate) {
 		this.nextMeetDate = nextMeetDate;
 	}
 
