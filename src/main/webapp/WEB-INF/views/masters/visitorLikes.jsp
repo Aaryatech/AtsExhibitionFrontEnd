@@ -74,36 +74,20 @@
 								<div class="col1title" align="left"><h3>Visitor Likes</h3></div>
 								 
 						</div>
-						
-						<div class="colOuter">
-						<!-- copy div kalpesh -->
-
-						<div class="col-md-2" align="left">From:</div>
-						<div class="col-md-2">
-							<input id="fromdatepicker" class="texboxitemcode texboxcal"
-								value="${fromDate}" name="from_Date" type="text">
-								
-								 
-						</div>
-						<div class="col-md-1" align="left"></div>
+						 <div class="colOuter"> 
+				<div class="col-md-2" align="left"></div> 
+				
 						 
-						<div class="col-md-1" align="left">TO:</div>
-						<div class="col-md-2">
-							<input id="todatepicker" class="texboxitemcode texboxcal"
-								value="${toDate}" name="to_Date" type="text">
-								 
-						</div>
-						
-						<div class="col-md-1" align="left"></div>
-						<div class="col-md-1">
-							<button type="button" class="btn  buttonsaveorder"
-								onclick="search()">Search</button>
-						</div>
-					 
-
-					</div><br>
-						
-					  
+								<div class="col-md-2" >
+					  From Date : ${fromDate}
+								</div>
+								
+								<div class="col-md-2" >
+						 To Date : ${toDate}
+								</div>
+							 
+						  
+					</div>	
 					
 					<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
@@ -118,6 +102,16 @@
 									</thead>
 									<tbody>
 									
+									<c:forEach items="${visitorList}" var="visitorList"
+											varStatus="count">
+											<tr>
+												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+												<td class="col-md-2"><c:out value="${visitorList.visitorName}" /></td>
+												<td class="col-md-1"><c:out
+														value="${visitorList.eventName}" /></td>
+												  
+											</tr>
+										</c:forEach>
 									 
  
 									</tbody>

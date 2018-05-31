@@ -82,10 +82,52 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Enquiry List</h3>
+							<c:choose>
+								<c:when test="${status==1}">
+									<h3>Pending Enquiry List</h3>
+								</c:when>
+								<c:when test="${status==2}">
+									<h3>Processing Enquiry List</h3>
+								</c:when>
+								<c:when test="${status==4}">
+									<h3>Closed Enquiry List</h3>
+								</c:when>
+								<c:when test="${status==5}">
+									<h3>Completed Enquiry List</h3>
+								</c:when>
+								<c:when test="${status==6}">
+									<h3>Closed Between Date Enquiry List</h3>
+								</c:when>
+								<c:when test="${status==7}">
+									<h3>Completed Between Date Enquiry List</h3>
+								</c:when>
+								<c:when test="${status==8}">
+									<h3>All Pending Enquiry</h3>
+								</c:when>
+								<c:when test="${status==9}">
+									<h3>All Processing Enquiry List</h3>
+								</c:when>
+							
+							</c:choose>
+								
 							</div>
 
 						</div>
+						
+						<div class="colOuter"> 
+				<div class="col-md-2" align="left"></div> 
+				
+						 
+								<div class="col-md-2" >
+					  From Date : ${fromDate}
+								</div>
+								
+								<div class="col-md-2" >
+						 To Date : ${toDate}
+								</div>
+							 
+						  
+					</div>	
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">

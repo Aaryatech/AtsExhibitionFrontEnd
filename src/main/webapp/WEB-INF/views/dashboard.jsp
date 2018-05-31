@@ -23,7 +23,20 @@
 <!--datepicker-->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+	<style>
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 10px;
+} 
+</style>
+	
 <script>
+
 		$(function() {
 			showChart();
 			$("#fromdatepicker").datepicker({
@@ -186,19 +199,64 @@
 								</div>
 								
 								 
-								<div   class="col-md-4"  align="center" id="chart" style="display: none"><br><br><br>
+								  <div   class="col-md-4"  align="center" id="chart" style="display: none"><br><br><br>
 								 <div >
 	  
-			<div  id="Piechart" style="width:40%%; height:300; float: right;" ></div> 
+			<div  id="Piechart" style="width:40%%; height:50%; float: right;" ></div> 
 			</div>
-			 
-			 
-				 
-				</div>
-			</div>
+			  
+				</div> 
+			</div> 
 			
+			 
 			<hr>
+			<div class="col-md -3">
+							
+								<div class="col1title" align="left"><h3>Completed And Closed Enquiry Between Date</h3></div>
+								 
+						</div>
+				<div class="colOuter"> 
+				<div class="col-md-2" align="left"></div> 
+				
+						 
+								<div class="col-md-2" >
+						 <h3> <a   href="${pageContext.request.contextPath}/enquiryList/6">
+   							${enquiryNotBetweenClosedList.size()} <br> Total Closed Between Date
+  								</a></h3> 
+								</div>
+								
+								<div class="col-md-2" >
+						 <h3> <a   href="${pageContext.request.contextPath}/enquiryList/7">
+   							${enquiryNotBetweenCompletedList.size()} <br> Total Completed Between Date
+  								</a></h3> 
+								</div>
 							 
+						  
+					</div>	
+					<hr>
+					<div class="col-md -3">
+							
+								<div class="col1title" align="left"><h3>All Pending And Processing Enquiry</h3></div>
+								 
+						</div>
+					<div class="colOuter"> 
+				<div class="col-md-2" align="left"></div> 
+				
+						 
+								<div class="col-md-2" >
+						 <h3> <a   href="${pageContext.request.contextPath}/enquiryList/8">
+   							${allEnquiryPending.size()} <br> Total Pending Enquiry
+  								</a></h3> 
+								</div>
+								
+								<div class="col-md-2" >
+						 <h3> <a   href="${pageContext.request.contextPath}/enquiryList/9">
+   							${allEnquiryProcessing.size()} <br> Total Processing Enquiry
+  								</a></h3> 
+								</div>
+							 
+						  
+					</div>			 
 					</form>	  
 					</div>	 
 					

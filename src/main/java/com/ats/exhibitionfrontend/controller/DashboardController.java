@@ -39,6 +39,18 @@ public class DashboardController {
 	List<EnquiryHeaderWithName> processing = new ArrayList<EnquiryHeaderWithName>();
 	List<EnquiryHeaderWithName> completed = new ArrayList<EnquiryHeaderWithName>();
 	List<EnquiryHeaderWithName> closed = new ArrayList<EnquiryHeaderWithName>();
+	List<EnquiryHeaderWithName> allEnquiryProcessing = new ArrayList<EnquiryHeaderWithName>();
+	List<EnquiryHeaderWithName> allEnquiryPending = new ArrayList<EnquiryHeaderWithName>();
+	List<EnquiryHeaderWithName> enquiryNotBetweenClosedList = new ArrayList<EnquiryHeaderWithName>();
+	List<EnquiryHeaderWithName> enquiryNotBetweenCompletedList = new ArrayList<EnquiryHeaderWithName>();
+	List<EventExhMappingWithExhName> eventList = new ArrayList<EventExhMappingWithExhName>();
+	List<VisitorByExhiId> visitorList = new ArrayList<VisitorByExhiId>();
+	List<EnquiryHeaderWithName> enquiryList = new ArrayList<EnquiryHeaderWithName>();
+	List<FeedbackTxn> feedbackList = new ArrayList<FeedbackTxn>();
+	 
+	String fromDate = new String();
+	String toDate = new String();
+	
 	RestTemplate rest = new RestTemplate();
 	
 	@RequestMapping(value = "/exhibitorDashboard", method = RequestMethod.GET)
@@ -65,8 +77,8 @@ public class DashboardController {
 		
 		try
 		{ 
-			String fromDate = request.getParameter("fromDate");
-			String toDate = request.getParameter("toDate");
+			 fromDate = request.getParameter("fromDate");
+			 toDate = request.getParameter("toDate");
 			
 			HttpSession session = request.getSession(); 
 			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
@@ -78,20 +90,51 @@ public class DashboardController {
 			
 			EventExhMappingWithExhName[] res = rest.postForObject(Constants.url + "/eventListByExhIdBetweenDate", map,
 					EventExhMappingWithExhName[].class); 
-			List<EventExhMappingWithExhName> eventList = new ArrayList<EventExhMappingWithExhName>(Arrays.asList(res));
-			
+			 eventList = new ArrayList<EventExhMappingWithExhName>(Arrays.asList(res));
+			 
 			VisitorByExhiId[] visitorByExhiId = rest.postForObject(Constants.url + "/visitorListByExhibitorId", map,
 					VisitorByExhiId[].class); 
-			List<VisitorByExhiId> visitorList = new ArrayList<VisitorByExhiId>(Arrays.asList(visitorByExhiId));
+			 visitorList = new ArrayList<VisitorByExhiId>(Arrays.asList(visitorByExhiId));
 			
 			EnquiryHeaderWithName[] enquiryHeaderWithName = rest.postForObject(Constants.url + "/enquiryBetweenDateByExhibitorId", map,
 					EnquiryHeaderWithName[].class); 
-			List<EnquiryHeaderWithName> enquiryList = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(enquiryHeaderWithName));
+			 enquiryList = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(enquiryHeaderWithName));
 			
 			FeedbackTxn[] feedbackTxn = rest.postForObject(Constants.url + "/feedbackbetweenDate", map,
 					FeedbackTxn[].class); 
-			List<FeedbackTxn> feedbackList = new ArrayList<FeedbackTxn>(Arrays.asList(feedbackTxn));
+			 feedbackList = new ArrayList<FeedbackTxn>(Arrays.asList(feedbackTxn));
 			
+			map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
+			map.add("fromDate", DateConvertor.convertToYMD(fromDate));
+			map.add("toDate", DateConvertor.convertToYMD(toDate));
+			map.add("status", 4);
+			EnquiryHeaderWithName[] notBetweenClosed = rest.postForObject(Constants.url + "/enquiryNotBetweenDateWithStatus", map,
+					EnquiryHeaderWithName[].class); 
+			enquiryNotBetweenClosedList = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(notBetweenClosed));
+			
+			map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
+			map.add("fromDate", DateConvertor.convertToYMD(fromDate));
+			map.add("toDate", DateConvertor.convertToYMD(toDate));
+			map.add("status", 5);
+			EnquiryHeaderWithName[] notBetweenCompleted = rest.postForObject(Constants.url + "/enquiryNotBetweenDateWithStatus", map,
+					EnquiryHeaderWithName[].class); 
+			enquiryNotBetweenCompletedList = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(notBetweenCompleted));
+			
+			map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId()); 
+			map.add("status", 1);
+			EnquiryHeaderWithName[] allPending = rest.postForObject(Constants.url + "/equiryListWithStatus", map,
+					EnquiryHeaderWithName[].class); 
+			 allEnquiryPending = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(allPending));
+			
+			map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId()); 
+			map.add("status", 2);
+			EnquiryHeaderWithName[] allProcessing = rest.postForObject(Constants.url + "/equiryListWithStatus", map,
+					EnquiryHeaderWithName[].class); 
+			allEnquiryProcessing = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(allProcessing));
 			
 			pending = new ArrayList<EnquiryHeaderWithName>();
 			processing = new ArrayList<EnquiryHeaderWithName>();
@@ -127,12 +170,18 @@ public class DashboardController {
 			model.addObject("processing", processing);
 			model.addObject("completed", completed);
 			model.addObject("closed", closed);
-			
+			model.addObject("enquiryNotBetweenClosedList", enquiryNotBetweenClosedList);
+			model.addObject("enquiryNotBetweenCompletedList", enquiryNotBetweenCompletedList);
+			model.addObject("allEnquiryProcessing", allEnquiryProcessing);
+			model.addObject("allEnquiryPending", allEnquiryPending);
 			   
 			model.addObject("eventList", eventList);
 			model.addObject("visitorList", visitorList);
 			model.addObject("enquiryList", enquiryList);
 			model.addObject("feedbackList", feedbackList);
+			
+			
+			
 			
 		}catch(Exception e)
 		{
@@ -179,15 +228,26 @@ public class DashboardController {
 				model.addObject("list", closed);
 			else if (status==5)
 				model.addObject("list", completed);
+			else if (status==6)
+				model.addObject("list", enquiryNotBetweenClosedList);
+			else if (status==7)
+				model.addObject("list", enquiryNotBetweenCompletedList);
+			else if (status==8)
+				model.addObject("list", allEnquiryPending);
+			else if (status==9)
+				model.addObject("list", allEnquiryProcessing);
 			
-		 
+			
+			
 			VisitorWithOrgEventName[] visNames = rest.getForObject(Constants.url + "/getAllVisitorsByIsUsed",  
 					VisitorWithOrgEventName[].class);
 
 			List<VisitorWithOrgEventName> visNameList = new ArrayList<VisitorWithOrgEventName>(Arrays.asList(visNames)); 
 			model.addObject("visNameList", visNameList);
-			
-			System.out.println("visNameList" + visNameList);
+			model.addObject("status", status);
+			model.addObject("fromDate", fromDate);
+			model.addObject("toDate", toDate);
+			 
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -203,7 +263,10 @@ public class DashboardController {
 		try
 		{ 
 			
-			 
+			model.addObject("fromDate", fromDate);
+			model.addObject("toDate", toDate);
+			
+			model.addObject("visitorList", visitorList);
 			
 		}catch(Exception e)
 		{
@@ -212,8 +275,7 @@ public class DashboardController {
 
 		return model;
 	}
-	
-	
+	 
 	@RequestMapping(value = "/visitorLikesList", method = RequestMethod.GET)
 	@ResponseBody
 	public List<VisitorByExhiId> visitorLikesList(HttpServletRequest request, HttpServletResponse response) {
