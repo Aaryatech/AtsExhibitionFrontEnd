@@ -190,10 +190,10 @@
 												<a
 													href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><abbr>Details<i
 														class=''></i>
-												</abbr></a> 
+												</abbr></a>
 											</div></td>
 
-										
+
 									</tr>
 								</c:forEach>
 						</table>
