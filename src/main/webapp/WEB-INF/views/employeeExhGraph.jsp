@@ -28,9 +28,21 @@
 	<!--datepicker-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+	<style>
+hr {
+	display: block;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: inset;
+	border-width: 10px;
+}
+</style>
+
 	<script>
 		$(function() {
-			showChart();
+
 			$("#fromdatepicker").datepicker({
 				dateFormat : 'dd-mm-yy'
 			});
@@ -75,13 +87,13 @@
 				<div class="sidebarright">
 
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}/getExhEmpTotalList"
+						action="${pageContext.request.contextPath}/infoExhEmpEnqCount"
 						enctype="multipart/form-data">
 
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Employee Exhibitor Dashboard</h3>
+								<h3>Dashboard</h3>
 							</div>
 
 						</div>
@@ -96,6 +108,7 @@
 
 
 							</div>
+							<div class="col-md-1" align="left"></div>
 
 							<div class="col-md-1" align="left">To Date:</div>
 							<div class="col-md-2">
@@ -104,107 +117,60 @@
 
 							</div>
 
-							<div class="col-md-1" align="left">Employee Name:</div>
-							<div class="col-md-2">
-								<%-- <input id="empName" class="form-control"
-									style="text-align: left;" placeholder="Employee Name"
-									value="${empList.empName}" name="empName" type="text" required> --%>
-
-
-
-								<select name="empId" style="width: 275px;">
-									<c:forEach items="${empList}" var="empList">
-										<option selected value="${empList.empId}">${empList.empName}</option>
-									</c:forEach>
-								</select>
+							<div class="col-md-1" align="left"></div>
+							<div class="col-md-1">
+								<input type="submit" class="btn  buttonsaveorder" />
+								<!-- <input type="button" class="btn  buttonsaveorder" value="Graph" onclick="showChart()"/>  -->
 							</div>
+						</div>
+						<br> <br>
+						<div id="table-scroll" class="table-scroll">
+							<div id="faux-table" class="faux-table" aria="hidden"></div>
+							<div class="table-wrap">
+								<table id="table_grid" class="main-table">
+									<thead>
+										<tr class="bgpink">
+											<th class="col-sm-1">Sr No</th>
+											<th class="col-md-1">Employee Name</th>
+											<th class="col-md-1">No Of Enquiries</th>
+											<th class="col-md-1">Completed</th>
+											<th class="col-md-1">Pending</th>
+											<th class="col-md-1">Processing</th>
+											<th class="col-md-1">Closed</th>
+										</tr>
+									</thead>
+									<tbody>
 
+										<c:forEach items="${enqInfo}" var="enqInfo" varStatus="count">
+											<tr>
+												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+												<td class="col-md-1"><c:out value="${enqInfo.empName}" /></td>
+
+												<td class="col-md-1"><c:out value="${enqInfo.noOfEnq}" /></td>
+												<td class="col-md-1"><c:out
+														value="${enqInfo.completed}" /></td>
+												<td class="col-md-1"><c:out value="${enqInfo.pending}" /></td>
+												<td class="col-md-1"><c:out
+														value="${enqInfo.processing}" /></td>
+												<td class="col-md-1"><c:out value="${enqInfo.closed}" /></td>
+										</c:forEach>
+								</table>
+
+							</div>
 						</div>
 
-						<div class="col-md-1" align="left"></div>
-						<div class="col-md-1">
-							<input type="submit" class="btn  buttonsaveorder" align="center" />
-							<!-- <input type="button" class="btn  buttonsaveorder" value="Graph" onclick="showChart()"/>  -->
-
-						</div>
-				</div>
-				<br> <br>
-
-
-				<div class="colOuter">
-					<!-- copy div kalpesh -->
-
-					<div class="col-md-2" align="left"></div>
-
-					<div class="col-md-2">
-						<h3>
-							<a href="${pageContext.request.contextPath}/enquiryExhList/1">
-								${pending.size()} <br> Total Pending Enquiry
-							</a>
-						</h3>
-					</div>
-
-					<div class="col-md-2">
-						<h3>
-							<a href="${pageContext.request.contextPath}/enquiryExhList/2">
-								${processing.size()} <br> Total Processing Enquiry
-							</a>
-						</h3>
-					</div>
-
-
+					</form>
 				</div>
 
-				<div class="colOuter">
-
-
-					<div class="col-md-2" align="left"></div>
-
-
-					<div class="col-md-2">
-						<h3>
-							<a href="${pageContext.request.contextPath}/enquiryExhList/4">
-								${closed.size()} <br> Total Closed Enquiry
-							</a>
-						</h3>
-					</div>
-
-					<div class="col-md-2">
-						<h3>
-							<a href="${pageContext.request.contextPath}/enquiryExhList/5">
-								${completed.size()} <br> Total Completed Enquiry
-							</a>
-						</h3>
-					</div>
-
-
-					<div class="col-md-4" align="center" id="chart"
-						style="display: none">
-						<br> <br> <br>
-						<div>
-
-							<div id="Piechart"
-								style="width: 40%%; height: 300; float: right;"></div>
-						</div>
 
 
 
-					</div>
-				</div>
 
-				<hr>
-				</form>
+
 			</div>
-
-
-
-
-
-
-		</div>
-		<!--tabNavigation-->
-		<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
-		<%-- <div class="order-btn textcenter">
+			<!--tabNavigation-->
+			<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
+			<%-- <div class="order-btn textcenter">
 						<a
 							href="${pageContext.request.contextPath}/showBillDetailProcess/${billNo}"
 							class="buttonsaveorder">VIEW DETAILS</a>
@@ -212,8 +178,8 @@
 					</div> --%>
 
 
-	</div>
-	<!--rightSidebar-->
+		</div>
+		<!--rightSidebar-->
 
 	</div>
 	<!--fullGrid-->
@@ -320,7 +286,7 @@
 					]);
 
 					var options = {
-						'title' : '',
+						'title' : 'Enquiry',
 						'width' : 400,
 						'height' : 250
 					};
