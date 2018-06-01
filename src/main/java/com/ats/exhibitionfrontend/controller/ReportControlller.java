@@ -11,12 +11,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
+import com.ats.exhibitionfrontend.model.eventhistory.GetAllEventForExhb;
+import com.ats.exhibitionfrontend.model.eventhistory.GetEventHistory;
 import com.ats.exhibitionfrontend.model.eventhistory.GetEventVisitorName;
 import com.ats.exhibitionfrontend.model.feedback.EventExhMapping;
 
@@ -24,7 +28,7 @@ import com.ats.exhibitionfrontend.model.feedback.EventExhMapping;
 public class ReportControlller {
 
 	RestTemplate rest = new RestTemplate();
-	List<EventExhMapping> eventList;
+	List<GetAllEventForExhb> eventList;
 
 	@RequestMapping(value = "/showEventVisName", method = RequestMethod.GET)
 	public ModelAndView showFbQueTxn(HttpServletRequest request, HttpServletResponse response) {
@@ -42,10 +46,10 @@ public class ReportControlller {
 
 			map.add("exhbId", exhbId);
 
-			EventExhMapping[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map,
-					EventExhMapping[].class);
+			GetAllEventForExhb[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map,
+					GetAllEventForExhb[].class);
 
-			eventList = new ArrayList<EventExhMapping>(Arrays.asList(eventListResp));
+			eventList = new ArrayList<GetAllEventForExhb>(Arrays.asList(eventListResp));
 
 			model.addObject("eventList", eventList);
 
@@ -80,9 +84,11 @@ public class ReportControlller {
 			
 			if (eventId != -1) {
 				map.add("eventId", eventId);
+				map.add("exhbId", 0);
 			} else {
 
 				map.add("eventId", 0);
+				map.add("exhbId", exhbId);
 
 			}
 
@@ -106,4 +112,51 @@ public class ReportControlller {
 
 		return model;
 	}
+	
+	
+	
+	@RequestMapping(value = "/showgetEventLikeCounts", method = RequestMethod.GET)
+	public ModelAndView showgetEventLikeCounts(HttpServletRequest request, HttpServletResponse response) {
+
+		 System.err.println("In showgetEventLikeCounts");
+		ModelAndView model = new ModelAndView("report/eventslikereport");
+		try {
+			model = new ModelAndView("report/eventslikereport");
+		}catch (Exception e) {
+			System.err.println("Exce in showing eventslikereport " +e.getMessage());
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	
+	@RequestMapping(value = "/getEventLikeCounts", method = RequestMethod.GET)
+	public @ResponseBody List<GetEventHistory>  getEventLikeCounts(HttpServletRequest request, HttpServletResponse response) {
+		List<GetEventHistory> eventHisList = null;
+		try {
+
+			System.err.println("Inside AJax Call /getEventLikeCounts");
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			int exhbId = login.getExhibitor().getExhId();
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+		
+				map.add("exhbId", exhbId);
+
+				GetEventHistory[] res = rest.postForObject(Constants.url + "/getEventHistory", map,
+						GetEventHistory[].class);
+				 eventHisList = new ArrayList<GetEventHistory>(Arrays.asList(res));
+System.err.println("Ev List  " +eventHisList.toString());
+		} catch (Exception e) {
+
+			System.err.println("Exception in show /getEventLikeCounts  @ RepportController" + e.getMessage());
+			e.printStackTrace();
+		}
+
+		return eventHisList;
+	}
+	
+	
 }

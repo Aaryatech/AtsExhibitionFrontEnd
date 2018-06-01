@@ -22,7 +22,7 @@ public class ComMemWithOrgName {
 
 	private int isUsed;
 
-	private String image;
+	private String image;	
 
 	public int getIsUsed() {
 		return isUsed;

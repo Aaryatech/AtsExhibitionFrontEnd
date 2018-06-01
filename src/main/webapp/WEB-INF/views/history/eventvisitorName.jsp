@@ -83,7 +83,9 @@
 
 							<div class="col1title" align="left">
 								<h3>Event Visitors</h3>
-								<h4>Event Name: </h4>${eventName}
+								<h4>
+									<b>Event Name:</b> ${eventName}
+								</h4>
 							</div>
 
 						</div>
@@ -94,9 +96,9 @@
 									<thead>
 										<tr class="bgpink">
 											<th class="col-sm-1">Sr No</th>
-											<th class="col-md-1">Visitor Name</th>
-											<th class="col-md-1">Likes</th>
-											
+											<th class="col-md-2">Visitor Name</th>
+											<th class="col-md-1" align="left">Mobile No</th>
+											<th class="col-md-1" align="left">E mail</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -104,11 +106,15 @@
 										<c:forEach items="${visitorList}" var="visitor"
 											varStatus="count">
 											<tr>
-												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-												<td class="col-md-2"><c:out value="${visitor.visitorName}" /></td>
-												<td class="col-md-1"><c:out
-														value="${visitor.likeCount}" /></td>
-												
+												<td class="col-sm-1" style="text-align: left;"><c:out
+														value="${count.index+1}" /></td>
+												<td class="col-md-2" style="text-align: left;"><c:out
+														value="${visitor.visitorName}" /></td>
+												<td class="col-md-1" style="text-align: left;"><c:out
+														value="${visitor.visitorMobile}" /></td>
+												<td class="col-md-1" style="text-align: left;"><c:out
+														value="${visitor.visitorEmail}" /></td>
+
 											</tr>
 										</c:forEach>
 								</table>
@@ -139,7 +145,7 @@
 	<!--easyTabs-->
 
 
-	
+
 
 </body>
 </html>

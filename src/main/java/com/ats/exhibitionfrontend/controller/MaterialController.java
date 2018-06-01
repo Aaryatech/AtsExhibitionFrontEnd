@@ -51,6 +51,9 @@ public class MaterialController {
 					ExhMatWithExhName[].class);
 			List<ExhMatWithExhName> matList = new ArrayList<ExhMatWithExhName>(Arrays.asList(res));
 			model.addObject("matList", matList);
+			
+			model.addObject("fileUrl",Constants.ITEM_IMAGE_URL );
+
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -149,9 +149,6 @@ div.desc {
 					</div>
 			<!-- 		<div id="owl-example" class="owl-carousel"> -->
 
-
-
-
 						<c:forEach items="${eventList}" var="eventList">
 
 							<div class="gallery">
@@ -160,14 +157,14 @@ div.desc {
   </a>
  <p align="left"> Event Name: <b>${eventList.eventName}</b></p>
   <p align="left">Place: <b>${eventList.eventLocation}</b> </p>
-  <p align="left">Event From : <b>${eventList.eventFromDate}</b>  To : <b>${eventList.eventToDate}</b></p>
+  <p align="left">Event From : <b>${eventList.eventFromDate}</b> &nbsp;&nbsp;&nbsp;&nbsp;  To : <b>${eventList.eventToDate}</b></p>
   <div class="desc">
   <c:choose>
     <c:when test="${eventList.subStatus==0}">
-    <input type="button" value="Subscribe"/>
+    <input type="button" value="Subscribe" class="btn btn-info"/>
     </c:when>
   <c:otherwise>
-    <input type="button" disabled value="Subscribe"/>
+    <input type="button" disabled value="Subscribe" class="btn btn-success"/>
   </c:otherwise>
   </c:choose>
     </div>
@@ -273,7 +270,6 @@ div.desc {
 			<!--fullGrid-->
 		</div>
 		<!--rightContainer-->
-
 	</div>
 	<!--wrapper-end-->
 
@@ -326,12 +322,6 @@ function drawMultSeries() {
    
       chart.draw(data, options);
     }
-
-
 </script> 
-
-
-
-
 </body>
 </html>

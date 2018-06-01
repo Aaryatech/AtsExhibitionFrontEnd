@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	
+
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
@@ -74,9 +74,9 @@
 
 					<form name="frm_search" id="frm_search" method="post"
 						action="${pageContext.request.contextPath}/insertMaterial"
-						 enctype="multipart/form-data" >
+						enctype="multipart/form-data">
 						<input type="hidden" name="mod_ser" id="mod_ser"
-							value="search_result" >
+							value="search_result">
 
 
 						<div class="col-md -3">
@@ -105,9 +105,10 @@
 								<div class="col1title" align="left">Material Link*:</div>
 							</div>
 							<div class="col-md-3">
-								
-								<input type="file" name="matLink" placeholder="Select Material File"/>
-								
+
+								<input type="file" name="matLink"
+									placeholder="Select Material File" onchange="checkFile(this)" />
+
 								<%-- <input id="matLink" class="form-control"
 									style="text-align: left;" placeholder="Material Link"
 									value="${customer.custAddress}" name="matLink" type="text"
@@ -148,8 +149,11 @@
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-2"><c:out value="${matList.matName}" /></td>
-												<td class="col-md-1"><c:out value="${matList.matLink}" /></td>
 
+												<td class="col-md-1"> <a
+													href="${fileUrl}${matList.matLink}" target="_blank"
+													style="align-content: center; color: fuchsia;">View
+														File</a>
 												<td class="col-md-1"><div>
 														<a
 															href="${pageContext.request.contextPath}/matDetail/${matList.trId}"><abbr
@@ -258,6 +262,13 @@
 			fauxTable.appendChild(clonedElement);
 			fauxTable.appendChild(clonedElement2);
 		})();
+		
+		
+		function checkFile(targets){
+			alert("File Changed");
+			var height=targets.files[0].width.val();
+			alert("Height " +height);
+		}
 	</script>
 
 </body>

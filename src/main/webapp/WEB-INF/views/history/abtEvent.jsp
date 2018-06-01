@@ -70,7 +70,7 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>About Event</h3>
+								<h3>About Event</h3><hr></hr>
 							</div>
 
 						</div>
@@ -78,35 +78,39 @@
 						<div class="colOuter">
 							<div class="col-md-4">
 								<div class="col1title" align="left">
-									Event Name :<b> ${event.eventName}</b>
+									<b>Event :</b> ${event.eventName}
 								</div>
 							</div>
-							<div class="col-md-4">
+							</div>
+							<div class="colOuter">
+							<div class="col-md-12">
 								<div class="col1title" align="left">
-									About Event: <b> ${event.aboutEvent}</b>
+									<b>About Event: </b> ${event.aboutEvent}
 
 								</div>
 							</div>
-							<div class="col-md-3">
+							</div>
+							<div class="colOuter">
+							<div class="col-md-4">
 								<div class="col1title" align="left">
-									Contact Person :<b> ${event.contactPersonName1}</b>
+									<b>Contact Person :</b> ${event.contactPersonName1}
 								</div>
 							</div>
-						</div>
+					<!-- 	</div>
 
 						<div class="colOuter">
-
+ -->
 
 							<div class="col-md-4">
 								<div class="col1title" align="left">
-									Contact Person Mobile: <b>${event.person1Mob}</b>
+									<b>Contact Person Mobile: </b>${event.person1Mob}
 
 								</div>
 							</div>
 
-							<div class="col-md-5">
+							<div class="col-md-4">
 								<div class="col1title" align="left">
-									Contact Person Email: <b>${event.person1EmailId}</b>
+									<b>Contact Person Email: </b>${event.person1EmailId}
 
 								</div>
 							</div>

@@ -141,7 +141,7 @@
 								<div class="col1title" align="left">Product Image 1:</div>
 							</div>
 							<div class="col-md-3">
-								 <input type="file" name="img1" id="img1" class="form-control" value="${url}${product.prodImage1}"/>
+								 <input type="file" name="img1" id="img1" value="${url}${product.prodImage1}"/>
 						<c:if test="${isEdit==1}">		 <a href="${url}${product.prodImage1}"
 											data-lightbox="image-1"tabindex="-1"><c:out value='View Image1' /></a>
 							</c:if></div>
@@ -151,22 +151,19 @@
 							</div>
 							<div class="col-md-3">
 								
-	                         <input type="file" name="img2" id="img2" class="form-control" value="${url}${product.prodImage2}"/>
+	                         <input type="file" name="img2" id="img2" value="${url}${product.prodImage2}"/>
 								<c:if test="${isEdit==1}">
 								 <a href="${url}${product.prodImage2}"
 											data-lightbox="image-1"tabindex="-1"><c:out value='View Image2' /></a></c:if>
 							</div>
-
 						</div>
-
-
 
 						<div class="colOuter">
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 3:</div>
 							</div>
 							<div class="col-md-3">
-								 <input type="file" name="image3" id="image3" class="form-control" value="${url}${product.prodImage3}"/>
+								 <input type="file" name="image3" id="image3"  value="${url}${product.prodImage3}"/>
 	                    <c:if test="${isEdit==1}">
 	                      <a href="${url}${product.prodImage3}"
 											data-lightbox="image-1"tabindex="-1"><c:out value='View Image3' /></a></c:if>
@@ -197,7 +194,7 @@
 									<th class="col-md-1">Product</th> 
 									<th class="col-md-1">Description</th>
 									<th class="col-md-1">Specification</th>
-									<th class="col-md-1">Product Experty</th>
+									<th class="col-md-1">Image1</th>
 									<th class="col-md-1">Action</th>
 								</tr>
 							</thead>
@@ -214,8 +211,7 @@
 														value="${productList.prodDesc}" /></td>
 												<td class="col-md-1"><c:out
 														value="${productList.prodSpecification}" /></td>
-															<td class="col-md-1"><c:out
-														value="${productList.prodExperty}" /></td>
+															<td class="col-md-1"><img src="${url}${productList.prodImage1}" alt="No Image Available" /></td>
 												<td class="col-md-1"><div>
 														<a
 															href="${pageContext.request.contextPath}/editProduct/${productList.prodId}"><abbr

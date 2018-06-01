@@ -116,6 +116,16 @@
 					</div></a></li>
 
 
+
+			<li><a
+				href="${pageContext.request.contextPath}/showgetEventLikeCounts"><div
+						class="img">
+						<i class="fa fa-file-o icon"></i>
+					</div>
+					<div class="title">
+						<span>Event Like Comp</span>
+					</div></a></li>
+
 			<%-- <c:if test="${info.accessRight==1}"> --%>
 
 			<%-- <li><a href="#" onClick="openNav4()"><div class="img">

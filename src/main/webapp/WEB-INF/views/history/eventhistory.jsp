@@ -98,8 +98,9 @@
 											<th class="col-md-1">From Date</th>
 											<th class="col-md-1">To Date</th>
 											<th class="col-md-1">Likes</th>
-											<th class="col-md-2" style="text-align: center;">Action</th>
+											<th class="col-md-1" >Action</th>
 										</tr>
+										
 									</thead>
 									<tbody>
 
@@ -115,10 +116,9 @@
 												<td class="col-md-1"><c:out
 														value="${evHist.eventToDate}" /></td>
 												<td class="col-md-1"><c:out value="${evHist.likeCount}" /></td>
-												<td class="col-md-2"><div>
-														<a href="${pageContext.request.contextPath}/abtEvent/${evHist.eventId}">Abt Event</a> &nbsp;&nbsp; 
-														<a href="${pageContext.request.contextPath}/getVisitorNames/${evHist.eventId}/${evHist.eventName}">Liked
-															Visitor </a>
+												<td class="col-md-1" align="right"><div><!-abtEvent/evendId first then gED/1/0-  -->
+														<a href="${pageContext.request.contextPath}/getEventDetail/${evHist.eventId}/0"><abbr title="About Event"><i class="fa fa-info"></i></abbr></a> &nbsp;&nbsp; 
+														<a href="${pageContext.request.contextPath}/getVisitorNames/${evHist.eventId}/${evHist.eventName}"><abbr title="Liked Visitors"><i class="fa fa-thumbs-o-up"></i></abbr> </a>
 													</div></td>
 											</tr>
 										</c:forEach>

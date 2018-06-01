@@ -76,7 +76,7 @@
 							<div class="col1title" align="left">
 								<h3>Event Visitor Names By Events</h3>
 								<strong>Select Event</strong> <select name="evn_name"
-									style="width: 200px;">
+									style="width: 200px;" class="form-control-chossen">
 									<option value="-1">All</option>
 									<c:forEach items="${eventList}" var="events">
 
@@ -90,7 +90,7 @@
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
-								</select> <input type="submit" value="Submit">
+								</select> <input type="submit" value="Submit" class="btn btn-primary">
 							</div>
 
 						</div>
@@ -102,7 +102,9 @@
 										<tr class="bgpink">
 											<th class="col-sm-1">Sr No</th>
 											<th class="col-md-1">Visitor Name</th>
-											<th class="col-md-1">Likes</th>
+											<th class="col-md-1" align="left">Mobile No</th>
+											<th class="col-md-1" align="left">Email Id</th>
+
 
 										</tr>
 									</thead>
@@ -114,8 +116,10 @@
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-2"><c:out
 														value="${visitor.visitorName}" /></td>
-												<td class="col-md-1"><c:out
-														value="${visitor.likeCount}" /></td>
+												<td class="col-md-1" align="left"><c:out
+														value="${visitor.visitorMobile}" /></td>
+														<td class="col-md-1" align="left"><c:out
+														value="${visitor.visitorEmail}" /></td>
 											</tr>
 										</c:forEach>
 								</table>

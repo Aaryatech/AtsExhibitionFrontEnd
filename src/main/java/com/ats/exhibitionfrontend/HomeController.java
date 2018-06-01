@@ -2,9 +2,11 @@ package com.ats.exhibitionfrontend;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.EventListener;
 import java.util.List;
 import java.util.Locale;
 
@@ -84,6 +86,18 @@ public class HomeController {
 					mav = new ModelAndView("home");
 					HttpSession session = request.getSession();
 					session.setAttribute("UserDetail", loginResponse);
+					
+					if(loginResponse.isSubscribed()) {
+						
+						System.err.println("Exhibitor is Subscribed USer");
+					}
+					
+					else {
+						
+						System.err.println("Exhibitor is Not  Subscribed");
+					}
+					
+					
 					// HttpSession session = request.getSession();
 					LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
 					System.out.println("exhiId " + login.getExhibitor().getExhId());
@@ -99,10 +113,24 @@ public class HomeController {
 						List<EventsWithSubStatus> eventList;
 
 						eventList = new ArrayList<EventsWithSubStatus>(Arrays.asList(eventListResp));
+					DateFormat df=new SimpleDateFormat("dd-mm-yyyy");
+						
+				/*	for(EventsWithSubStatus events:eventList) {
+						
+						events.setEventFromDate(df.format(events.getEventFromDate()));
+						
+						events.setEventToDate(df.format(events.getEventToDate()));
+
+						
+						
+					}*/
+				
 
 						mav.addObject("eventList", eventList);
+						
 					} catch (Exception e) {
-						System.err.println("My Exception " + e.getStackTrace());
+						
+						System.err.println("getAllEventsWithExhId/ HomeController Exception " + e.getMessage());
 						e.printStackTrace();
 
 					}
@@ -114,20 +142,7 @@ public class HomeController {
 
 				}
 
-				/*
-				 * if (name.equals("tester") && password.equals("1234")) { mav = new
-				 * ModelAndView("home");
-				 * 
-				 * 
-				 * } else {
-				 * 
-				 * 
-				 * mav = new ModelAndView("login");
-				 * System.out.println("Invalid login credentials");
-				 * 
-				 * }
-				 */
-
+				
 			}
 		} catch (Exception e) {
 			System.out.println("HomeController Login API Excep:  " + e.getMessage());
