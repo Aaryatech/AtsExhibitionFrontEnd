@@ -136,6 +136,7 @@ table, th, td {
 											<th class="col-md-1">Employee Name</th>
 											<th class="col-md-1">Date</th>   
 											<th class="col-md-1">Total KM</th>  
+											<th class="col-md-1">Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -253,10 +254,12 @@ function serchOtherBill()
 
 								var tr = $('<tr></tr>');
 								 
-								tr.append($('<td ></td>').html(key+1));
-								tr.append($('<td ></td>').html(itemList.empName));
-							  	tr.append($('<td ></td>').html(itemList.date));
-							  	tr.append($('<td  ></td>').html(itemList.totalKm)); 
+								tr.append($('<td></td>').html(key+1));
+								tr.append($('<td></td>').html(itemList.empName));
+							  	tr.append($('<td></td>').html(itemList.date));
+							  	tr.append($('<td></td>').html(itemList.totalKm));
+							  	tr.append($('<td></td>').html('<a href="${pageContext.request.contextPath}/trackingHeaderWithDetail/'+itemList.trackId+'" class="action_btn" ><abbr title="Details"><i class="fa fa-list"></i></abbr></a> '));
+						  		
 							    $('#table_grid tbody').append(tr);
 
 								 

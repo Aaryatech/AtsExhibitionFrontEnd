@@ -1,7 +1,6 @@
 package com.ats.exhibitionfrontend.controller;
 
 import java.io.BufferedInputStream;
-
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -565,6 +564,28 @@ public class DashboardController {
 
 			}
 			 
+		}
+	 
+	 
+	 @RequestMapping(value = "/trackingHeaderWithDetail/{trackId}", method = RequestMethod.GET)
+		public ModelAndView trackingHeaderWithDetail(@PathVariable int trackId, HttpServletRequest request, HttpServletResponse response) {
+
+			ModelAndView model = new ModelAndView("masters/trackingDetail");
+			try {
+
+				MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+				map.add("trackId",trackId); 
+				GetTrackHeader getTrackHeader = rest.postForObject(Constants.url + "/getTrackHeaderAndDetailById", map,
+						GetTrackHeader.class);
+				 
+				model.addObject("getTrackHeader", getTrackHeader);
+				
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return model;
 		}
 
 }
