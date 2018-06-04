@@ -26,6 +26,9 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
 
 	<!--datepicker-->
+
+
+	<c:url var="getInfoForFraph" value="/getInfoForFraph" />
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
 	<style>
@@ -93,7 +96,7 @@ hr {
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Dashboard</h3>
+								<h3>Employee Exhibitor Dashboard</h3>
 							</div>
 
 						</div>
@@ -101,7 +104,7 @@ hr {
 						<div class="colOuter">
 							<!-- copy div kalpesh -->
 
-							<div class="col-md-2" align="left">From Date:</div>
+							<div class="col-md-1" align="left">From Date:</div>
 							<div class="col-md-2">
 								<input id="fromdatepicker" class="texboxitemcode texboxcal"
 									value="${fromDate}" name="fromDate" type="text">
@@ -118,11 +121,12 @@ hr {
 							</div>
 
 							<div class="col-md-1" align="left"></div>
-							<div class="col-md-1">
-								<input type="submit" class="btn  buttonsaveorder" />
-								<!-- <input type="button" class="btn  buttonsaveorder" value="Graph" onclick="showChart()"/>  -->
-							</div>
+
+							<input type="submit" class="btn  buttonsaveorder" value="Search"/> <input
+								type="button" class="btn  buttonsaveorder" value="Graph"
+								onclick="showChart()" />
 						</div>
+
 						<br> <br>
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
@@ -158,26 +162,14 @@ hr {
 
 							</div>
 						</div>
+						<div id="chart">
+							<br> <br> <br>
+							<div id="chart_div" style="width: 100%; height: 500px;"></div>
+						</div>
 
 					</form>
 				</div>
-
-
-
-
-
-
 			</div>
-			<!--tabNavigation-->
-			<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
-			<%-- <div class="order-btn textcenter">
-						<a
-							href="${pageContext.request.contextPath}/showBillDetailProcess/${billNo}"
-							class="buttonsaveorder">VIEW DETAILS</a>
-						<!--<input name="" class="buttonsaveorder" value="EXPORT TO EXCEL" type="button">-->
-					</div> --%>
-
-
 		</div>
 		<!--rightSidebar-->
 
@@ -187,6 +179,14 @@ hr {
 	<!--rightContainer-->
 
 	</div>
+	<!--wrapper-end-->
+
+	<!--easyTabs-->
+	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script type="text/javascript"
+		src="https://www.gstatic.com/charts/loader.js"></script>
+	<!--easyTabs-->
+
 	<!--wrapper-end-->
 	<!--easyTabs-->
 	<!--easyTabs-->
@@ -227,93 +227,293 @@ hr {
 	</script>
 
 	<script type="text/javascript">
+		function searchSellBill() {
+			document.getElementById('table').style.display = "block";
+			document.getElementById('chart').style = "display:none";
+			// document.getElementById('showchart').style.display = "block";
+			$('#table_grid td').remove();
+
+			var isValid = validate();
+
+			if (isValid) {
+				//	document.getElementById('btn_pdf').style.display = "block";
+				var fromDate = document.getElementById("fromdatepicker").value;
+				var toDate = document.getElementById("todatepicker").value;
+
+				$
+						.getJSON(
+								'${getInfoForFraph}',
+								{
+
+									fromDate : fromDate,
+									toDate : toDate,
+									ajax : 'true',
+
+								},
+								function(data) {
+
+									if (data == "") {
+										alert("No records found !!");
+										document.getElementById("expExcel").disabled = true;
+									}
+
+									var taxTotal = 0;
+									var igstTotal = 0;
+									var cgstTotal = 0;
+									var sgstTotal = 0;
+									var cessTotal = 0;
+
+									$
+											.each(
+													data,
+													function(key, exhEmpGraph) {
+
+														document
+																.getElementById("expExcel").disabled = false;
+														document
+																.getElementById('range').style.display = 'block';
+
+														var tr = $('<tr></tr>');
+
+														tr
+																.append($(
+																		'<td></td>')
+																		.html(
+																				key + 1));
+
+														tr
+																.append($(
+																		'<td class="col-md-1"></td>')
+																		.html(
+																				sellTaxData.billDate));
+
+														tr
+																.append($(
+																		'<td class="col-md-1"></td>')
+																		.html(
+																				exhEmpGraph.tax_per));
+
+														tr
+																.append($(
+																		'<td class="col-md-1"></td>')
+																		.html(
+																				exhEmpGraph.tax_amount));
+														taxTotal = taxTotal
+																+ sellTaxData.tax_amount;
+
+														tr
+																.append($(
+																		'<td class="col-md-1"></td>')
+																		.html(
+																				exhEmpGraph.igst));
+
+														tr
+																.append($(
+																		'<td class="col-md-1"></td>')
+																		.html(
+																				exhEmpGraph.cgst));
+
+														tr
+																.append($(
+																		'<td class="col-md-1"></td>')
+																		.html(
+																				exhEmpGraph.sgst));
+
+														tr
+																.append($(
+																		'<td class="col-md-1"></td>')
+																		.html(
+																				exhEmpGraph.sess));
+
+														$('#table_grid tbody')
+																.append(tr);
+
+													})
+
+									var tr = "<tr>";
+									var total = "<td colspan='3'>&nbsp;&nbsp;&nbsp;<b> Total</b></td>";
+
+									var totalTax = "<td>&nbsp;&nbsp;&nbsp;<b>"
+											+ taxTotal.toFixed(2);
+									+"</b></td>";
+
+									var igst = "<td><b>&nbsp;&nbsp;&nbsp;"
+											+ igstTotal.toFixed(2);
+									+"</b></td>";
+									var cgst = "<td><b>&nbsp;&nbsp;&nbsp;"
+											+ cgstTotal.toFixed(2);
+									+"</b></td>";
+									var sgst = "<td><b>&nbsp;&nbsp;&nbsp;"
+											+ sgstTotal.toFixed(2);
+									+"</b></td>";
+									var cess = "<td><b>&nbsp;&nbsp;&nbsp;"
+											+ cessTotal.toFixed(2);
+
+									var trclosed = "</tr>";
+
+									$('#table_grid tbody').append(tr);
+									$('#table_grid tbody').append(total);
+
+									$('#table_grid tbody').append(totalTax)
+
+									$('#table_grid tbody').append(igst);
+									$('#table_grid tbody').append(cgst);
+									$('#table_grid tbody').append(sgst);
+									$('#table_grid tbody').append(cess);
+									$('#table_grid tbody').append(trclosed);
+
+								});
+
+			}
+		}
+	</script>
+	<script type="text/javascript">
+		function validate() {
+
+			var fromDate = $("#fromdatepicker").val();
+			var toDate = $("#todatepicker").val();
+
+			var isValid = true;
+
+			if (fromDate == "" || fromDate == null) {
+
+				isValid = false;
+				alert("Please select From Date");
+			} else if (toDate == "" || toDate == null) {
+
+				isValid = false;
+				alert("Please select To Date");
+			}
+			return isValid;
+
+		}
+	</script>
+	<script type="text/javascript">
 		function showChart() {
-			$("#PieChart_div").empty();
+			alert("hi")
 			$("#chart_div").empty();
-			$("#Piechart").empty();
 
 			document.getElementById('chart').style.display = "block";
-			//document.getElementById("table").style="display:none";
+			document.getElementById("table_grid").style = "display:none";
 
 			var fromDate = document.getElementById("fromdatepicker").value;
 			var toDate = document.getElementById("todatepicker").value;
 
-			$.getJSON('${getChart}', {
+			//document.getElementById('btn_pdf').style.display = "block";
+			$
+					.getJSON(
+							'${getInfoForFraph}',
+							{
 
-				fromDate : fromDate,
-				toDate : toDate,
-				ajax : 'true',
+								fromDate : fromDate,
+								toDate : toDate,
+								ajax : 'true',
 
-			}, function(data) {
+							},
+							function(data) {
+								alert(data);
+								if (data == "") {
+									alert("No records found !!");
 
-				if (data == "") {
-					alert("No records found !!");
+								}
+								var i = 0;
 
-				}
-				var i = 0;
+								google.charts.load('current', {
+									'packages' : [ 'corechart', 'bar' ]
+								});
+								google.charts.setOnLoadCallback(drawStuff);
 
-				google.charts.load('current', {
-					'packages' : [ 'corechart' ]
-				});
-				//google.charts.load('current', {'packages':['corechart', 'bar']});
-				//google.charts.setOnLoadCallback(drawStuff);
-				google.charts.setOnLoadCallback(drawPie1Chart);
+								function drawStuff() {
 
-				function drawPie1Chart() {
-					var dataTable = new google.visualization.DataTable();
-					dataTable.addColumn('string', 'Topping');
-					dataTable.addColumn('number', 'Slices');
+									var chartDiv = document
+											.getElementById('chart_div');
+									document.getElementById("chart_div").style.border = "thin dotted red";
+									var dataTable = new google.visualization.DataTable();
 
-					dataTable.addRows([
+									dataTable.addColumn('string',
+											'Employee Name'); // Implicit domain column.
+									dataTable.addColumn('number',
+											'No. Of Enquiries'); // Implicit data column.
 
-					[ 'Pending', data.totalPending ]
+									dataTable.addColumn('number', 'Completed');
 
-					]);
-					dataTable.addRows([
+									dataTable.addColumn('number', 'Processing');
 
-					[ 'Processing', data.TotalProcessing ]
+									dataTable.addColumn('number', 'Pending');
 
-					]);
-					dataTable.addRows([
+									dataTable.addColumn('number', 'Closed');
+									$.each(data, function(key, item) {
 
-					[ 'Closed', data.totalClosed ]
+										dataTable.addRows([
 
-					]);
-					dataTable.addRows([
+										[ item.empName, item.noOfEnq,
+												item.completed,
+												item.processing, item.pending,
+												item.closed ]
 
-					[ 'Completed', data.totalCompleted ]
+										]);
+									})
 
-					]);
+									var materialOptions = {
+										width : 700,
+										chart : {
+											title : 'Employee Exhibitor Graph',
+											subtitle : 'Employee '
+										},
+										axes : {
+											y : {
+												distance : {
+													label : ''
+												}, // Left y-axis.
+												brightness : {
+													side : 'right',
+													label : 'Employee Data'
+												}
+											// Right y-axis.
+											}
+										}
+									};
 
-					var options = {
-						'title' : 'Enquiry',
-						'width' : 400,
-						'height' : 250
-					};
-					var chart = new google.visualization.PieChart(document
-							.getElementById('Piechart'));
-					//document.getElementById("Piechart").style.border = "thin dotted red";
-					function selectHandler() {
-						var selectedItem = chart.getSelection()[0];
-						if (selectedItem) {
-							var topping = dataTable.getValue(selectedItem.row,
-									0);
-							//alert('The user selected ' + selectedItem.row,0);
-							i = selectedItem.row, 0;
-							google.charts.setOnLoadCallback(drawBarChart);
-						}
-					}
+									function drawMaterialChart() {
+										var materialChart = new google.charts.Bar(
+												chartDiv);
+										materialChart
+												.draw(
+														dataTable,
+														google.charts.Bar
+																.convertOptions(materialOptions));
+										// button.innerText = 'Change to Classic';
+										// button.onclick = drawClassicChart;
+									}
 
-					google.visualization.events.addListener(chart, 'select',
-							selectHandler);
-					chart.draw(dataTable, options);
+									drawMaterialChart();
+								}
+								;
 
-				}
-
-			});
+							});
 
 		}
 	</script>
 
-</body>
-</html>
+	<script>
+		(function() {
+			var fauxTable = document.getElementById("faux-table");
+			var mainTable = document.getElementById("table_grid");
+			var clonedElement = table_grid.cloneNode(true);
+			var clonedElement2 = table_grid.cloneNode(true);
+			clonedElement.id = "";
+			clonedElement2.id = "";
+			fauxTable.appendChild(clonedElement);
+			fauxTable.appendChild(clonedElement2);
+		})();
+
+		function exportToExcel() {
+
+			window.open("${pageContext.request.contextPath}/exportToExcel");
+			document.getElementById("expExcel").disabled = true;
+		}
+	</script>
+	<script type="text/javascript">
+		</body>
+		</html>
+	
