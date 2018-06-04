@@ -14,7 +14,7 @@
 <div class="sidebarhome">
 	<div class="content mCustomScrollbar">
 		<c:choose>
-			<c:when test="${sessionScope.UserDetail.isSubscribed==0}">
+			<c:when test="${sessionScope.UserDetail.isSubscribed==1}">
 				<ul>
 
 					<li><a href="${pageContext.request.contextPath}/addEmployee"><div
@@ -47,7 +47,7 @@
 								<i class="fa fa-file-o icon"></i>
 							</div>
 							<div class="title">
-								<span>${sessionScope.UserDetail.isSubscribed}</span>
+								<span>Edit Profile</span>
 								<%-- <c:choose>
 						<c:when test="${sessionScope.UserDetail.isSubscribed == true}">
 						
@@ -404,8 +404,8 @@
 							<a href="${pageContext.request.contextPath}/showFbQueTxn"><i
 								class="fa fa-plus-circle icon"></i>Feedback Question Transaction</a>
 							<div class="clearfix"></div>
-							<a href="${pageContext.request.contextPath}/addSpinQuestion"><i
-								class="fa fa-search-plus icon"></i>Spin Question </a>
+							<a href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><i
+								class="fa fa-search-plus icon"></i>Spin Question Analysis </a>
 							<%-- <div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
@@ -447,13 +447,15 @@
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
 								class="fa fa-plus-circle icon"></i>Employee </a>
 							<div class="clearfix"></div>
-							<%-- 	<a href="${pageContext.request.contextPath}/addSpinQuestion"><i
-								class="fa fa-search-plus icon"></i>Spin Question </a> --%>
-							<%-- <div class="clearfix"></div>
+							
+							
+						 	<a href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
+								class="fa fa-search-plus icon"></i>Exhibitor Employee Dashboard </a> 
+							 <div class="clearfix"></div>
 
-							<a href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
-								class="fa fa-search-plus icon"></i> Event Likes </a>
- --%>
+							<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
+								class="fa fa-search-plus icon"></i> Employee Exhibitor Graph</a>
+ 
 
 
 						</div>
