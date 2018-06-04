@@ -14,7 +14,7 @@
 <div class="sidebarhome">
 	<div class="content mCustomScrollbar">
 		<c:choose>
-			<c:when test="${sessionScope.UserDetail.isSubscribed==1}">
+			<c:when test="${sessionScope.UserDetail.isSubscribed==0}">
 				<ul>
 
 					<li><a href="${pageContext.request.contextPath}/addEmployee"><div
