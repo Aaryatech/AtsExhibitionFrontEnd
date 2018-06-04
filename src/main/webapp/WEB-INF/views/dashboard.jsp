@@ -367,7 +367,10 @@ function showChart(){
 								 dataTable.addColumn('number', 'Slices');
 							        
 						
-						 
+						/*  alert("Pending"+ data.totalPending);
+						 alert("Processing"+ data.totalPending);
+						 alert("Pending"+ data.totalPending);
+						 alert("Pending"+ data.totalPending); */
 								    
 									   dataTable.addRows([
 
@@ -376,7 +379,7 @@ function showChart(){
 									           ]);
 									   dataTable.addRows([
 
-								             ['Processing', data.TotalProcessing]
+								             ['Processing', data.totalProcessing]
 
 								           ]);
 									   dataTable.addRows([
