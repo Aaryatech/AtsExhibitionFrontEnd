@@ -3,7 +3,7 @@ package com.ats.exhibitionfrontend.model;
 public class ExhibitorDashboard {
 	
 	private int totalPending;
-	private int TotalProcessing;
+	private int totalProcessing;
 	private int totalClosed;
 	private int totalCompleted;
 	public int getTotalPending() {
@@ -12,11 +12,12 @@ public class ExhibitorDashboard {
 	public void setTotalPending(int totalPending) {
 		this.totalPending = totalPending;
 	}
+	 
 	public int getTotalProcessing() {
-		return TotalProcessing;
+		return totalProcessing;
 	}
 	public void setTotalProcessing(int totalProcessing) {
-		TotalProcessing = totalProcessing;
+		this.totalProcessing = totalProcessing;
 	}
 	public int getTotalClosed() {
 		return totalClosed;
@@ -32,7 +33,7 @@ public class ExhibitorDashboard {
 	}
 	@Override
 	public String toString() {
-		return "ExhibitorDashboard [totalPending=" + totalPending + ", TotalProcessing=" + TotalProcessing
+		return "ExhibitorDashboard [totalPending=" + totalPending + ", totalProcessing=" + totalProcessing
 				+ ", totalClosed=" + totalClosed + ", totalCompleted=" + totalCompleted + "]";
 	}
 
