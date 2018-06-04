@@ -470,8 +470,9 @@ public class DashboardController {
 
 				table.addCell(hcell);
 
-				  
+				float totalKm = 0;
 				int index = 0;
+				
 				for (GetTrackHeader trackHeader : trackingHistoryBetweenDate) {
 					index++;
 					PdfPCell cell;
@@ -503,9 +504,26 @@ public class DashboardController {
 					cell.setPadding(3);
 					table.addCell(cell);
  
-	 
+					totalKm = totalKm + trackHeader.getTotalKm();
 
 				}
+				
+				PdfPCell cell;
+
+				cell = new PdfPCell(new Phrase("Total", headFont));
+				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+				cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+				cell.setColspan(3);
+				cell.setPadding(3);
+				table.addCell(cell);
+
+				cell = new PdfPCell(new Phrase(""+totalKm, headFont));
+				cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+				cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				cell.setPaddingRight(2);
+				cell.setPadding(3);
+				table.addCell(cell);
+				
 				document.open();
 				Paragraph name = new Paragraph("Trancking History\n", f);
 				name.setAlignment(Element.ALIGN_CENTER);
