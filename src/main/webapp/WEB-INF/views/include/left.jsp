@@ -13,203 +13,219 @@
 </style>
 <div class="sidebarhome">
 	<div class="content mCustomScrollbar">
-	<c:choose>
-	<c:when test="${sessionScope.UserDetail.isSubscribed==0}">
-		<ul>
+		<c:choose>
+			<c:when test="${sessionScope.UserDetail.isSubscribed==0}">
+				<ul>
 
-			<li><a href="${pageContext.request.contextPath}/addEmployee"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Add Employee</span>
-					</div></a></li>
+					<li><a href="${pageContext.request.contextPath}/addEmployee"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Add Employee</span>
+							</div></a></li>
 
-			<li><a href="${pageContext.request.contextPath}/addProduct"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Add Product</span>
-					</div></a></li>
+					<li><a href="${pageContext.request.contextPath}/addProduct"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Add Product</span>
+							</div></a></li>
 
-			<li><a href="${pageContext.request.contextPath}/addMaterial"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Add Material</span>
-					</div></a></li>
+					<li><a href="${pageContext.request.contextPath}/addMaterial"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Add Material</span>
+							</div></a></li>
 
-			<li><a href="${pageContext.request.contextPath}/showEditProfile"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>${sessionScope.UserDetail.isSubscribed}</span>
-						<%-- <c:choose>
+					<li><a
+						href="${pageContext.request.contextPath}/showEditProfile"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>${sessionScope.UserDetail.isSubscribed}</span>
+								<%-- <c:choose>
 						<c:when test="${sessionScope.UserDetail.isSubscribed == true}">
 						
 						
 
 						</c:when>
 						</c:choose> --%>
-					</div></a></li>
+							</div></a></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/showAddFbQuestion"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Feedback Question</span>
-					</div></a></li>
-
-
-
-
-			<li><a href="${pageContext.request.contextPath}/showFbQueTxn"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Feedback Question Txn</span>
-					</div></a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/showAddFbQuestion"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Feedback Question</span>
+							</div></a></li>
 
 
 
-			<li><a
-				href="${pageContext.request.contextPath}/showEventHistory"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Event History</span>
-					</div></a></li>
 
-			<li><a href="${pageContext.request.contextPath}/addSpinQuestion"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Add SpinQuestion</span>
-					</div></a></li>
-
-			<li><a
-				href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Enquiry Bet Dates</span>
-					</div></a></li>
+					<li><a href="${pageContext.request.contextPath}/showFbQueTxn"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Feedback Question Txn</span>
+							</div></a></li>
 
 
 
-			<li><a
-				href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Spin Question Analysis</span>
-					</div></a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/showEventHistory"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Event History</span>
+							</div></a></li>
 
-			<li><a
-				href="${pageContext.request.contextPath}/showEventVisName"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Event Visitors</span>
-					</div></a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/addSpinQuestion"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Add SpinQuestion</span>
+							</div></a></li>
 
-
-
-			<li><a
-				href="${pageContext.request.contextPath}/showgetEventLikeCounts"><div
-						class="img">
-						<i class="fa fa-file-o icon"></i>
-					</div>
-					<div class="title">
-						<span>Event Like Comparison</span>
-					</div></a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Enquiry Bet Dates</span>
+							</div></a></li>
 
 
-		</ul>
-		</c:when>
-		
-		<c:otherwise>
-		
-		<li><a href="#" onClick="openNav()"><div class="img">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
-							alt="img">
-					</div>
-					<div class="title">
-						Manage <span>Masters</span>
-						
-					</div></a>
-			</li>
-			
-			
-			
-		<li><a href="#" onClick="openNav1()"><div class="img">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
-							alt="img">
-					</div>
-					<div class="title">
-						Event  <span>Info</span>
-					</div></a>
-			</li>
-		
-		<li><a href="#" onClick="openNav2()"><div class="img">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
-							alt="img">
-					</div>
-					<div class="title">
-						Inquiry <span>Info</span>
-					</div></a>
-			</li>
-			<li><a href="#" onClick="openNav3()"><div class="img">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
-							alt="img">
-					</div>
-					<div class="title">
-						Feedback Question <span>Info</span>
-					</div></a>
-			</li>
-			
-			<li><a href="#" onClick="openNav4()"><div class="img">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
-							alt="img">
-					</div>
-					<div class="title">
-						Employee  <span>Info</span>
-					</div></a>
-			</li>
-			
-			<li><a href="#" onClick="openNav5()"><div class="img">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
-							alt="img">
-					</div>
-					<div class="title">
-						Edit  <span>Profile</span>
-					</div></a>
-			</li>
-		
-		
-		
-		
-		
-		</c:otherwise>
+
+					<li><a
+						href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Spin Question Analysis</span>
+							</div></a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/showEventVisName"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Event Visitors</span>
+							</div></a></li>
+
+
+
+					<li><a
+						href="${pageContext.request.contextPath}/showgetEventLikeCounts"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Event Like Comparison</span>
+							</div></a></li>
+
+					<li><a
+						href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Employee Dashboard</span>
+							</div></a></li>
+
+
+
+					<li><a
+						href="${pageContext.request.contextPath}/showEmployeeExhGraph"><div
+								class="img">
+								<i class="fa fa-file-o icon"></i>
+							</div>
+							<div class="title">
+								<span>Employee Exhibitor Graph</span>
+							</div></a></li>
+
+
+				</ul>
+			</c:when>
+
+			<c:otherwise>
+
+				<li><a href="#" onClick="openNav()"><div class="img">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								alt="img">
+						</div>
+						<div class="title">
+							Manage <span>Masters</span>
+
+						</div></a></li>
+
+
+
+				<li><a href="#" onClick="openNav1()"><div class="img">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								alt="img">
+						</div>
+						<div class="title">
+							Event <span>Info</span>
+						</div></a></li>
+
+				<li><a href="#" onClick="openNav2()"><div class="img">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								alt="img">
+						</div>
+						<div class="title">
+							Inquiry <span>Info</span>
+						</div></a></li>
+				<li><a href="#" onClick="openNav3()"><div class="img">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								alt="img">
+						</div>
+						<div class="title">
+							Feedback Question <span>Info</span>
+						</div></a></li>
+
+				<li><a href="#" onClick="openNav4()"><div class="img">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								alt="img">
+						</div>
+						<div class="title">
+							Employee <span>Info</span>
+						</div></a></li>
+
+				<li><a href="#" onClick="openNav5()"><div class="img">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								alt="img">
+						</div>
+						<div class="title">
+							Edit <span>Profile</span>
+						</div></a></li>
+
+
+
+
+
+			</c:otherwise>
 		</c:choose>
-		
+
 	</div>
 </div>
 <!--leftNav-->
@@ -237,7 +253,7 @@
 
 						<div class="ibox">
 							<div class="ibox-head">
-								<div class="ibox-title"> Master</div>
+								<div class="ibox-title">Master</div>
 							</div>
 
 							<a href="${pageContext.request.contextPath}/addProduct"><i
@@ -270,24 +286,24 @@
 
 					</li>
 
-					
+
 
 				</ul>
 			</div>
 
 		</div>
-		</div>
-		</div>
-		
-		
-		
+	</div>
+</div>
+
+
+
 
 <!--2nav-->
 
 <!--4nav-->
 
 <!--4nav-->
-	<div id="mySidenav1" class="sidenav">
+<div id="mySidenav1" class="sidenav">
 	<div class="topSlide">
 		<div class="topSlide2">
 			<a href="javascript:void(0)" class="closebtn" onClick="closeNav1()"><img
@@ -310,14 +326,15 @@
 								class="fa fa-search-plus icon"></i>Visitor List </a>
 							<div class="clearfix"></div>
 
-							<a href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
+							<a
+								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
 
 						</div>
 					</li>
 
-					
-					
+
+
 				</ul>
 			</div>
 
@@ -340,10 +357,11 @@
 
 						<div class="ibox">
 							<div class="ibox-head">
-								<div class="ibox-title">Inquiry  Info</div>
+								<div class="ibox-title">Inquiry Info</div>
 							</div>
 
-							<a href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
+							<a
+								href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
 								class="fa fa-plus-circle icon"></i> Inquiry Between Date</a>
 							<%-- <div class="clearfix"></div>
 							<a href="${pageContext.request.contextPath}/showEventVisName"><i
@@ -356,8 +374,8 @@
 						</div>
 					</li>
 
-					
-					
+
+
 				</ul>
 			</div>
 
@@ -380,7 +398,7 @@
 
 						<div class="ibox">
 							<div class="ibox-head">
-								<div class="ibox-title"> Question</div>
+								<div class="ibox-title">Question</div>
 							</div>
 
 							<a href="${pageContext.request.contextPath}/showFbQueTxn"><i
@@ -393,13 +411,13 @@
 							<a href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
  --%>
- 
- 
+
+
 						</div>
 					</li>
 
-					
-					
+
+
 				</ul>
 			</div>
 
@@ -423,26 +441,26 @@
 
 						<div class="ibox">
 							<div class="ibox-head">
-								<div class="ibox-title"> Employee Info</div>
+								<div class="ibox-title">Employee Info</div>
 							</div>
 
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
 								class="fa fa-plus-circle icon"></i>Employee </a>
 							<div class="clearfix"></div>
-						<%-- 	<a href="${pageContext.request.contextPath}/addSpinQuestion"><i
+							<%-- 	<a href="${pageContext.request.contextPath}/addSpinQuestion"><i
 								class="fa fa-search-plus icon"></i>Spin Question </a> --%>
 							<%-- <div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
  --%>
- 
- 
+
+
 						</div>
 					</li>
 
-					
-					
+
+
 				</ul>
 			</div>
 
@@ -465,26 +483,26 @@
 
 						<div class="ibox">
 							<div class="ibox-head">
-								<div class="ibox-title"> Edit Profile</div>
+								<div class="ibox-title">Edit Profile</div>
 							</div>
 
 							<a href="${pageContext.request.contextPath}/showEditProfile"><i
 								class="fa fa-plus-circle icon"></i>Profile </a>
 							<div class="clearfix"></div>
-						<%-- 	<a href="${pageContext.request.contextPath}/addSpinQuestion"><i
+							<%-- 	<a href="${pageContext.request.contextPath}/addSpinQuestion"><i
 								class="fa fa-search-plus icon"></i>Spin Question </a> --%>
 							<%-- <div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
  --%>
- 
- 
+
+
 						</div>
 					</li>
 
-					
-					
+
+
 				</ul>
 			</div>
 
@@ -507,7 +525,7 @@
 	function openNav1() {
 		document.getElementById("mySidenav1").style.width = "100%";
 	}
-	
+
 	function openNav2() {
 		document.getElementById("mySidenav2").style.width = "100%";
 	}
@@ -515,7 +533,7 @@
 	function closeNav1() {
 		document.getElementById("mySidenav1").style.width = "0";
 	}
-	
+
 	function closeNav2() {
 		document.getElementById("mySidenav2").style.width = "0";
 	}
@@ -533,7 +551,7 @@
 	function closeNav4() {
 		document.getElementById("mySidenav4").style.width = "0";
 	}
-	
+
 	function openNav5() {
 		document.getElementById("mySidenav5").style.width = "100%";
 	}
