@@ -211,12 +211,19 @@ y: {
 			       
 			       Piechart.draw(piedataTable,
 					          {title: 'Event Likes Report',is3D:true	});
-
+			       
+			       
+					var subStatus= ${subStatus};
+					
+			    // alert("Status " +subStatus);
+			     if(subStatus==1){
 			       google.visualization.events.addListener(Piechart, 'select', selectHandler);
-
+			     }
+			     
 			       function selectHandler(e) {
 			         //alert('A table row was selected');
 			         var row = Piechart.getSelection()[0].row;
+			        
 			         var eventId=piedataTable.getValue(row,2);
 			         var eventName=piedataTable.getValue(row,0);
     	
@@ -232,8 +239,6 @@ y: {
 
 
 					}
- 
-					
 		  
 </script>
 </body>

@@ -87,9 +87,9 @@ public class HomeController {
 					HttpSession session = request.getSession();
 					session.setAttribute("UserDetail", loginResponse);
 					
-					if(loginResponse.isSubscribed()) {
+					if(loginResponse.getIsSubscribed()==1) {
 						
-						System.err.println("Exhibitor is Subscribed USer");
+						System.err.println("Exhibitor is Subscribed USer"+loginResponse.getIsSubscribed());
 					}
 					
 					else {
@@ -154,6 +154,15 @@ public class HomeController {
 
 	}
 	
+	
+	@RequestMapping("/home")
+	public ModelAndView home(HttpServletRequest request, HttpServletResponse res) throws IOException {
+
+	
+		ModelAndView mav = new ModelAndView("home");
+	
+		return mav;
+	}
 //	getEventDetail
 	
 	

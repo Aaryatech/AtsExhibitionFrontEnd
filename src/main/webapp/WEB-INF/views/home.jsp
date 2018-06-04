@@ -113,7 +113,8 @@ div.desc {
        <input type="hidden" id="target" value="${sessionScope.fraTarget}"> --%>
        <c:choose>
        <c:when test="${loginInfo.accessRight==1}">
-                  	<a href="${pageContext.request.contextPath}/viewMonthwiseSellBill">  <div id="chart_div" style="width: 220px;height: 70px;  float:right;margin-right: 60px;margin-top: 10px;"></div></a>
+                  	<a href="${pageContext.request.contextPath}/viewMonthwiseSellBill"> 
+                  	 <div id="chart_div" style="width: 220px;height: 70px;  float:right;margin-right: 60px;margin-top: 10px;"></div></a>
        
        </c:when>
        
@@ -121,8 +122,8 @@ div.desc {
 
 				<!--rightSidebar-->
 				<div class="sidebarright">
-										<h2 class="pageTitle">Hi <span>${login.exhName},</span> Welcome Back</h2>
-            
+										<h2 class="pageTitle">Hi <span>${login.exhName},</span> Welcome Back</h2> 
+										<div style="text-align: center;"><b><a href="${pageContext.request.contextPath}/exhiDashboard">Dashboard</a></b></div>
             
 					<!--slider-->
 					<!--slider thum size : width:850px height:350px-->

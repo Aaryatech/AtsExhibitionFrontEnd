@@ -121,7 +121,15 @@ public class ReportControlller {
 		 System.err.println("In showgetEventLikeCounts");
 		ModelAndView model = new ModelAndView("report/eventslikereport");
 		try {
+			
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			int isSubscribed = login.getIsSubscribed();
+			
 			model = new ModelAndView("report/eventslikereport");
+			
+			model.addObject("subStatus",isSubscribed);
 		}catch (Exception e) {
 			System.err.println("Exce in showing eventslikereport " +e.getMessage());
 			e.printStackTrace();
