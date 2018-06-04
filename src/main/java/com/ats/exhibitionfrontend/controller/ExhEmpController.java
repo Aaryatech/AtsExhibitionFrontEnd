@@ -15,6 +15,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -221,11 +222,46 @@ public class ExhEmpController {
 
 			List<ExhEmpGraph> enqInfo = new ArrayList<ExhEmpGraph>(Arrays.asList(res));
 			model.addObject("enqInfo", enqInfo);
+			model.addObject("fromDate", fromDate);
+			model.addObject("toDate", toDate);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return model;
+	}
+
+	@RequestMapping(value = "/getInfoForFraph", method = RequestMethod.GET)
+	public @ResponseBody List<ExhEmpGraph> getInfoForFraph(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView("employeeExhGraph");
+		List<ExhEmpGraph> enqInfo = null;
+		try {
+			fromDate = request.getParameter("fromDate");
+			toDate = request.getParameter("toDate");
+
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
+			map.add("fromDate", DateConvertor.convertToYMD(fromDate));
+			map.add("toDate", DateConvertor.convertToYMD(toDate));
+
+			ExhEmpGraph[] res = rest.postForObject(Constants.url + "/getInfo", map, ExhEmpGraph[].class);
+
+			enqInfo = new ArrayList<ExhEmpGraph>(Arrays.asList(res));
+			model.addObject("enqInfo", enqInfo);
+			model.addObject("fromDate", fromDate);
+			model.addObject("toDate", toDate);
+
+			System.out.println("res" + res);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return enqInfo;
 	}
 }
