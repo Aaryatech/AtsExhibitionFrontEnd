@@ -150,13 +150,26 @@ public class EnquiryHeaderWithName {
 		this.isUsed = isUsed;
 	}
 
+	
+	private long noOfEnqDays;
+
+	public long getNoOfEnqDays() {
+		return noOfEnqDays;
+	}
+
+	public void setNoOfEnqDays(long noOfEnqDays) {
+		this.noOfEnqDays = noOfEnqDays;
+	}
+
 	@Override
 	public String toString() {
 		return "EnquiryHeaderWithName [enqId=" + enqId + ", visitorId=" + visitorId + ", visitorName=" + visitorName
 				+ ", exhId=" + exhId + ", exhName=" + exhName + ", eventId=" + eventId + ", eventName=" + eventName
 				+ ", empId=" + empId + ", empName=" + empName + ", date=" + date + ", nextMeetDate=" + nextMeetDate
 				+ ", approximateTime=" + approximateTime + ", remark=" + remark + ", status=" + status + ", isUsed="
-				+ isUsed + ", visitorMobile=" + visitorMobile + "]";
+				+ isUsed + ", visitorMobile=" + visitorMobile + ", noOfEnqDays=" + noOfEnqDays + "]";
 	}
+	
+	
 
 }
