@@ -459,7 +459,8 @@
 							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
-								class="fa fa-search-plus icon"></i> Employee Exhibitor Graph</a> <a
+								class="fa fa-search-plus icon"></i> Employee Exhibitor Graph</a> 
+								<a
 								href="${pageContext.request.contextPath}/assignTaskToEmp"><i
 								class="fa fa-plus-circle icon"></i>Assign Task </a>
 							<div class="clearfix"></div>
@@ -468,9 +469,7 @@
 
 
 
-				</ul>
 				
-				<ul>
 					<li class="small-box">
 
 						<div class="ibox">
@@ -479,7 +478,7 @@
 							</div>
 
 							<a href="${pageContext.request.contextPath}/showTaskList"><i
-								class="fa fa-plus-circle icon"></i>Pending Task List</a>
+								class="fa fa-search-plus icon"></i>Pending Task List</a>
 							<div class="clearfix"></div>
 
 

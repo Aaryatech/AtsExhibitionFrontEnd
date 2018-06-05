@@ -457,7 +457,7 @@ hr {
 									var materialOptions = {
 										width : 700,
 										chart : {
-											title : 'Employee Exhibitor Graph',
+											title : 'Employee Exhibitor Report',
 											subtitle : 'Employee '
 										},
 										axes : {

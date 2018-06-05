@@ -68,11 +68,7 @@ table, th, td {
 
 					<div class="colOuter">
 						<!-- copy div kalpesh -->
-
-
-
-
-						<div class="col-md-2" align="left">Select Employee</div>
+							<div class="col-md-2" align="left">Select Employee</div>
 						<div class="col-md-1">
 							<select class="selectpicker" data-live-search="true"
 								title="Please Select" name="empId" id="empId">
@@ -114,13 +110,10 @@ table, th, td {
 											<th class="col-md-1">Employee Name</th>
 											<th class="col-md-1">Task Description</th>
 											<th class="col-md-1">Remark</th>
-
 										</tr>
 									</thead>
 									<tbody>
-
 									</tbody>
-
 								</table>
 							</div>
 						</div>

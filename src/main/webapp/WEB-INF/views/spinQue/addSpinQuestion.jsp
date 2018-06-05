@@ -128,10 +128,10 @@
 										<thead>
 											<tr class="bgpink">
 												<th class="col-sm-1">Sr No</th>
-												<th class="col-md-3">Exh Name</th>
-												<th class="col-md-3">Question</th>
+												<th class="col-md-1">Exh Name</th>
+												<th class="col-md-1">Question</th>
 
-												<th class="col-md-3">Description</th>
+												<th class="col-md-1">Description</th>
 												<th class="col-md-1">Date</th>
 												<th class="col-md-1">Action</th>
 											</tr>
@@ -142,11 +142,11 @@
 												<tr>
 													<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 
-													<td class="col-md-3"><c:out value="${queList.exhName}" /></td>
-													<td class="col-md-3"><c:out
+													<td class="col-md-1"><c:out value="${queList.exhName}" /></td>
+													<td class="col-md-1"><c:out
 															value="${queList.question}" /></td>
 
-													<td class="col-md-3"><c:out value="${queList.queDesc}" /></td>
+													<td class="col-md-1"><c:out value="${queList.queDesc}" /></td>
 													<td class="col-md-1" align="right"><c:out
 															value="${queList.date}" /></td>
 													<td class="col-md-1"><div>
