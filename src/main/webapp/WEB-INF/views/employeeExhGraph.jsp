@@ -96,7 +96,7 @@ hr {
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Employee Exhibitor Dashboard</h3>
+								<h3>Employee Comparision Report</h3>
 							</div>
 
 						</div>

@@ -154,7 +154,7 @@
 								<i class="fa fa-file-o icon"></i>
 							</div>
 							<div class="title">
-								<span>Employee Exhibitor Graph</span>
+								<span>Employee Comparision Report</span>
 							</div></a></li>
 
 
@@ -210,7 +210,9 @@
 							Employee <span>Info</span>
 						</div></a></li>
 
-				<li><a href="${pageContext.request.contextPath}/showEditProfile"><div class="img">
+				<li><a
+					href="${pageContext.request.contextPath}/showEditProfile"><div
+							class="img">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
 								alt="img">
@@ -404,7 +406,8 @@
 							<a href="${pageContext.request.contextPath}/showFbQueTxn"><i
 								class="fa fa-plus-circle icon"></i>Feedback Question Transaction</a>
 							<div class="clearfix"></div>
-							<a href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><i
+							<a
+								href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><i
 								class="fa fa-search-plus icon"></i>Spin Question Analysis </a>
 							<%-- <div class="clearfix"></div>
 
@@ -447,17 +450,41 @@
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
 								class="fa fa-plus-circle icon"></i>Employee </a>
 							<div class="clearfix"></div>
-							
-							
-						 	<a href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
-								class="fa fa-search-plus icon"></i>Exhibitor Employee Dashboard </a> 
-							 <div class="clearfix"></div>
+
+
+							<a
+								href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
+								class="fa fa-search-plus icon"></i>Exhibitor Employee Dashboard
+							</a>
+							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
-								class="fa fa-search-plus icon"></i> Employee Exhibitor Graph</a>
- 
+								class="fa fa-search-plus icon"></i> Employee Exhibitor Graph</a> <a
+								href="${pageContext.request.contextPath}/assignTaskToEmp"><i
+								class="fa fa-plus-circle icon"></i>Assign Task </a>
+							<div class="clearfix"></div>
+						</div>
+					</li>
 
 
+
+				</ul>
+				
+				<ul>
+					<li class="small-box">
+
+						<div class="ibox">
+							<div class="ibox-head">
+								<div class="ibox-title">Employee Info</div>
+							</div>
+
+							<a href="${pageContext.request.contextPath}/showTaskList"><i
+								class="fa fa-plus-circle icon"></i>Pending Task List</a>
+							<div class="clearfix"></div>
+
+
+							
+							<div class="clearfix"></div>
 						</div>
 					</li>
 
