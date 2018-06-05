@@ -47,10 +47,16 @@ public class SpinQueController {
 
 			SpinQueMasterWithName[] res = rest.postForObject(Constants.url + "/getAllSpinQueByExhId", map,
 					SpinQueMasterWithName[].class);
+		
 
 			List<SpinQueMasterWithName> queList = new ArrayList<SpinQueMasterWithName>(Arrays.asList(res));
 			model.addObject("queList", queList);
 
+			
+			for(int i=0;i<queList.size();i++)
+			{
+				queList.get(i).setDate(DateConvertor.convertToDMY(queList.get(i).getDate()));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
