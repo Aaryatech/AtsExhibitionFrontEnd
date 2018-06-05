@@ -1,8 +1,11 @@
 package com.ats.exhibitionfrontend.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -153,7 +156,139 @@ public class ExhEmpController {
 					ExhEmpWithExhName[].class);
 			List<ExhEmpWithExhName> empList = new ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
 			model.addObject("empList", empList);
+			Date curDate = new Date();
+			SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
 
+			for (int i = 0; i < pending.size(); i++) {
+
+				EnquiryHeaderWithName header = pending.get(i);
+				System.err.println("Header no  " + i + "is  " + header.toString());
+				String stringDate = header.getDate();
+				String nextMeetDate = header.getDate();
+
+				if (header.getStatus() == 1 || header.getStatus() == 2 || header.getStatus() == 3) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = curDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit " + timeUnit);
+
+					header.setNoOfEnqDays(timeUnit);
+					// cur Date -header.getDate()
+				} else if (header.getStatus() == 4 || header.getStatus() == 5) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = nextMDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit else " + timeUnit);
+					header.setNoOfEnqDays(timeUnit);
+
+					// header.getNextMeetDate()-header.getDate()
+
+				}
+				pending.set(i, header);
+			}
+			//2
+			for (int i = 0; i < processing.size(); i++) {
+
+				EnquiryHeaderWithName header = processing.get(i);
+				System.err.println("Header no  " + i + "is  " + header.toString());
+				String stringDate = header.getDate();
+				String nextMeetDate = header.getDate();
+
+				if (header.getStatus() == 1 || header.getStatus() == 2 || header.getStatus() == 3) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = curDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit " + timeUnit);
+
+					header.setNoOfEnqDays(timeUnit);
+					// cur Date -header.getDate()
+				} else if (header.getStatus() == 4 || header.getStatus() == 5) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = nextMDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit else " + timeUnit);
+					header.setNoOfEnqDays(timeUnit);
+
+					// header.getNextMeetDate()-header.getDate()
+
+				}
+				processing.set(i, header);
+			}
+			
+			//3
+			for (int i = 0; i < completed.size(); i++) {
+
+				EnquiryHeaderWithName header = completed.get(i);
+				System.err.println("Header no  " + i + "is  " + header.toString());
+				String stringDate = header.getDate();
+				String nextMeetDate = header.getDate();
+
+				if (header.getStatus() == 1 || header.getStatus() == 2 || header.getStatus() == 3) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = curDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit " + timeUnit);
+
+					header.setNoOfEnqDays(timeUnit);
+					// cur Date -header.getDate()
+				} else if (header.getStatus() == 4 || header.getStatus() == 5) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = nextMDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit else " + timeUnit);
+					header.setNoOfEnqDays(timeUnit);
+
+					// header.getNextMeetDate()-header.getDate()
+
+				}
+				completed.set(i, header);
+			}
+			
+			//4
+			for (int i = 0; i < closed.size(); i++) {
+
+				EnquiryHeaderWithName header = closed.get(i);
+				System.err.println("Header no  " + i + "is  " + header.toString());
+				String stringDate = header.getDate();
+				String nextMeetDate = header.getDate();
+
+				if (header.getStatus() == 1 || header.getStatus() == 2 || header.getStatus() == 3) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = curDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit " + timeUnit);
+
+					header.setNoOfEnqDays(timeUnit);
+					// cur Date -header.getDate()
+				} else if (header.getStatus() == 4 || header.getStatus() == 5) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = nextMDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit else " + timeUnit);
+					header.setNoOfEnqDays(timeUnit);
+
+					// header.getNextMeetDate()-header.getDate()
+
+				}
+				closed.set(i, header);
+			}
+			
 			if (status == 1)
 				model.addObject("list", pending);
 			else if (status == 2)

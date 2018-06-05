@@ -1,9 +1,11 @@
 package com.ats.exhibitionfrontend.controller;
 
 import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,10 +61,46 @@ public class EnquiryController {
 			map.add("fromDate", fromDateString);
 			map.add("toDate", toDateString);
 
-			List<EnquiryHeaderWithName> enquiryHeaderWithName = rest
-					.postForObject(Constants.url + "/getAllEnquiryBetweenDates", map, List.class);
+			EnquiryHeaderWithName[] enquiryHeaderWithName = rest
+					.postForObject(Constants.url + "/getAllEnquiryBetweenDates", map, EnquiryHeaderWithName[].class);
 
-			model.addObject("enquiryHeaderWithName", enquiryHeaderWithName);
+			List<EnquiryHeaderWithName> eHWNList = new ArrayList<EnquiryHeaderWithName>(
+					Arrays.asList(enquiryHeaderWithName));
+			Date curDate = new Date();
+			SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
+			for (int i = 0; i < eHWNList.size(); i++) {
+				EnquiryHeaderWithName header = eHWNList.get(i);
+System.err.println("Header no  " + i +"is  " +header.toString() );
+				String stringDate = header.getDate();
+				String nextMeetDate = header.getDate();
+
+				if (header.getStatus() == 1 || header.getStatus() == 2 || header.getStatus() == 3) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = curDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit " + timeUnit);
+
+					
+					header.setNoOfEnqDays(timeUnit);
+					// cur Date -header.getDate()
+				} else if (header.getStatus() == 4 || header.getStatus() == 5) {
+
+					Date date = myFormat.parse(stringDate);
+					Date nextMDate = myFormat.parse(nextMeetDate);
+					long diff = nextMDate.getTime() - date.getTime();
+					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					System.err.println("time unit else " + timeUnit);
+					header.setNoOfEnqDays(timeUnit);
+
+					// header.getNextMeetDate()-header.getDate()
+
+				}
+				eHWNList.set(i, header);
+			}
+
+			model.addObject("enquiryHeaderWithName", eHWNList);
 
 		} catch (Exception e) {
 			e.printStackTrace();

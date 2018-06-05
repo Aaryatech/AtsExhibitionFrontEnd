@@ -140,6 +140,7 @@
 									<th class="col-md-1">Mobile No</th>
 									<th class="col-md-1">Employee Name</th>
 									<th class="col-md-1">Event Name</th>
+									<th class="col-md-1">No of Days</th>
 									<th class="col-md-1">Status</th>
 									<th class="col-md-1">Remark</th>
 									<th class="col-md-1">Action</th>
@@ -181,6 +182,8 @@
 										<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
 
 										<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
+										<td class="col-md-1"><c:out value="${enqList.noOfEnqDays}" /></td>
+
 										<td class="col-md-1" style="color:${color}"><c:out
 												value="${modType}" /></td>
 

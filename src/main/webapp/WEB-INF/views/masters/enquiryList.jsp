@@ -82,52 +82,48 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-							<c:choose>
-								<c:when test="${status==1}">
-									<h3>Pending Enquiry List</h3>
-								</c:when>
-								<c:when test="${status==2}">
-									<h3>Processing Enquiry List</h3>
-								</c:when>
-								<c:when test="${status==4}">
-									<h3>Closed Enquiry List</h3>
-								</c:when>
-								<c:when test="${status==5}">
-									<h3>Completed Enquiry List</h3>
-								</c:when>
-								<c:when test="${status==6}">
-									<h3>Closed Between Date Enquiry List</h3>
-								</c:when>
-								<c:when test="${status==7}">
-									<h3>Completed Between Date Enquiry List</h3>
-								</c:when>
-								<c:when test="${status==8}">
-									<h3>All Pending Enquiry</h3>
-								</c:when>
-								<c:when test="${status==9}">
-									<h3>All Processing Enquiry List</h3>
-								</c:when>
-							
-							</c:choose>
-								
+								<c:choose>
+									<c:when test="${status==1}">
+										<h3>Pending Enquiry List</h3>
+									</c:when>
+									<c:when test="${status==2}">
+										<h3>Processing Enquiry List</h3>
+									</c:when>
+									<c:when test="${status==4}">
+										<h3>Closed Enquiry List</h3>
+									</c:when>
+									<c:when test="${status==5}">
+										<h3>Completed Enquiry List</h3>
+									</c:when>
+									<c:when test="${status==6}">
+										<h3>Closed Between Date Enquiry List</h3>
+									</c:when>
+									<c:when test="${status==7}">
+										<h3>Completed Between Date Enquiry List</h3>
+									</c:when>
+									<c:when test="${status==8}">
+										<h3>All Pending Enquiry</h3>
+									</c:when>
+									<c:when test="${status==9}">
+										<h3>All Processing Enquiry List</h3>
+									</c:when>
+
+								</c:choose>
+
 							</div>
 
 						</div>
-						
-						<div class="colOuter"> 
-				<div class="col-md-2" align="left"></div> 
-				
-						 
-								<div class="col-md-2" >
-					  From Date : ${fromDate}
-								</div>
-								
-								<div class="col-md-2" >
-						 To Date : ${toDate}
-								</div>
-							 
-						  
-					</div>	
+
+						<div class="colOuter">
+							<div class="col-md-2" align="left"></div>
+
+
+							<div class="col-md-2">From Date : ${fromDate}</div>
+
+							<div class="col-md-2">To Date : ${toDate}</div>
+
+
+						</div>
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">
@@ -136,30 +132,34 @@
 										<tr class="bgpink">
 											<th class="col-sm-1">Sr No</th>
 											<th class="col-md-1">Visitor Name</th>
-											<th class="col-md-1">Event Name</th> 
+											<th class="col-md-1">Event Name</th>
+											<th class="col-md-1">No of Days</th>
+
 											<th class="col-md-1">Mobile No</th>
 											<th class="col-md-1">Email</th>
 										</tr>
 									</thead>
 									<tbody>
 
-										<c:forEach items="${list}" var="list"
-											varStatus="count">
+										<c:forEach items="${list}" var="list" varStatus="count">
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-2"><c:out value="${list.visitorName}" /></td>
-												<td class="col-md-1"><c:out
-														value="${list.eventName}" /></td>
+												<td class="col-md-1"><c:out value="${list.eventName}" /></td>
+												<td class="col-md-1"><c:out value="${list.noOfEnqDays}" /></td>
+
 												<c:forEach items="${visNameList}" var="visNameList">
-												
+
 													<c:choose>
 														<c:when test="${visNameList.visitorId==list.visitorId}">
-														<td class="col-md-2"><c:out value="${visNameList.visitorMobile}" /></td>
-														<td class="col-md-2"><c:out value="${visNameList.visitorEmail}" /></td>
+															<td class="col-md-2"><c:out
+																	value="${visNameList.visitorMobile}" /></td>
+															<td class="col-md-2"><c:out
+																	value="${visNameList.visitorEmail}" /></td>
 														</c:when>
 													</c:choose>
 												</c:forEach>
-												 
+
 											</tr>
 										</c:forEach>
 								</table>
@@ -190,7 +190,7 @@
 	<!--easyTabs-->
 
 
-	
+
 
 </body>
 </html>

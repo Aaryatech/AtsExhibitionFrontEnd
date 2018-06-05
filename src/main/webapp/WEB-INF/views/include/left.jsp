@@ -210,7 +210,7 @@
 							Employee <span>Info</span>
 						</div></a></li>
 
-				<li><a href="#" onClick="openNav5()"><div class="img">
+				<li><a href="${pageContext.request.contextPath}/showEditProfile"><div class="img">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
 								alt="img">

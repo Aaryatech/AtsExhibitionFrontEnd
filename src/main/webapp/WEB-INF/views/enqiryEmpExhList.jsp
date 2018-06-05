@@ -138,6 +138,8 @@
 											<th class="col-sm-1">Sr No</th>
 											<th class="col-md-1">Visitor Name</th>
 											<th class="col-md-1">Event Name</th>
+											<th class="col-md-1">No of Days</th>
+
 											<th class="col-md-1">Mobile No</th>
 											<th class="col-md-1">Email</th>
 										</tr>
@@ -149,6 +151,8 @@
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-2"><c:out value="${list.visitorName}" /></td>
 												<td class="col-md-1"><c:out value="${list.eventName}" /></td>
+												<td class="col-md-1"><c:out value="${list.noOfEnqDays}" /></td>
+
 												<c:forEach items="${visNameList}" var="visNameList">
 
 													<c:choose>

@@ -123,7 +123,7 @@ div.desc {
 				<!--rightSidebar-->
 				<div class="sidebarright">
 										<h2 class="pageTitle">Hi <span>${login.exhName},</span> Welcome Back</h2> 
-										<div style="text-align: center;"><b><a href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></b></div>
+										<div style="text-align: right; "><b><a href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></b></div>
             
 					<!--slider-->
 					<!--slider thum size : width:850px height:350px-->

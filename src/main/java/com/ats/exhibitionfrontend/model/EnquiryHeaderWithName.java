@@ -21,7 +21,8 @@ public class EnquiryHeaderWithName {
 	private int status;
 	private int isUsed;
 	private String visitorMobile;
-
+	private long noOfEnqDays;
+	
 	public String getVisitorMobile() {
 		return visitorMobile;
 	}
@@ -151,7 +152,7 @@ public class EnquiryHeaderWithName {
 	}
 
 	
-	private long noOfEnqDays;
+	
 
 	public long getNoOfEnqDays() {
 		return noOfEnqDays;
