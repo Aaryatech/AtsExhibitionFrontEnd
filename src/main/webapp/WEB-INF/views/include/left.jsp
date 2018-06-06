@@ -365,6 +365,14 @@
 							<a
 								href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
 								class="fa fa-plus-circle icon"></i> Inquiry Between Date</a>
+								
+								<a
+								href="${pageContext.request.contextPath}/addEnquiryByExhibitor"><i
+								class="fa fa-plus-circle icon"></i> Add Enquiry</a>
+								
+							<a
+								href="${pageContext.request.contextPath}/addVisitorByExhibitor"><i
+								class="fa fa-plus-circle icon"></i> Add Visitor</a>
 							<%-- <div class="clearfix"></div>
 							<a href="${pageContext.request.contextPath}/showEventVisName"><i
 								class="fa fa-search-plus icon"></i>Visitor List </a>
@@ -463,6 +471,9 @@
 								<a
 								href="${pageContext.request.contextPath}/assignTaskToEmp"><i
 								class="fa fa-plus-circle icon"></i>Assign Task </a>
+								
+								<a href="${pageContext.request.contextPath}/trackingHistory"><i
+								class="fa fa-search-plus icon"></i> Total KM By Employee</a>
 							<div class="clearfix"></div>
 						</div>
 					</li>
