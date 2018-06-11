@@ -492,9 +492,16 @@
 								class="fa fa-search-plus icon"></i>Pending Task List</a>
 							<div class="clearfix"></div>
 
-
+<a href="${pageContext.request.contextPath}/showEmpEnqTask"><i
+								class="fa fa-search-plus icon"></i>Enquiry And Task</a>
 							
 							<div class="clearfix"></div>
+							
+							<a href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
+								class="fa fa-search-plus icon"></i>Edit Enquiry</a>
+							
+							<div class="clearfix"></div>
+							
 						</div>
 					</li>
 
