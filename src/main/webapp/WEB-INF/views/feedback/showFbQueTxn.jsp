@@ -77,8 +77,9 @@
 						<div>
 						<b>Select EVENT</b>
 							<select name="sel_event" style="width: 220px;">
+																<option value="-1">ALL</option>
+							
 								<c:forEach items="${eventList}" var="events">
-									<option value="-1">ALL</option>
 									<c:choose>
 										<c:when test="${eventId==events.eventId}">
 											<option selected value="${events.eventId}">${events.eventName}</option>

@@ -214,11 +214,11 @@
 								</c:when>
 
 								<c:otherwise>
-
 									<c:set var="status" value="Completed"></c:set>
 								</c:otherwise>
 
 							</c:choose>
+						
 							<div class="row">
 							
 								<div class="col-md-4" align="right">
