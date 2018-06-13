@@ -73,10 +73,9 @@
 					<form name="frm_search" id="frm_search" method="post"
 						action="${pageContext.request.contextPath}/getFbTxnByEvent">
 
-
-						<div>
-						<b>Select EVENT</b>
-							<select name="sel_event" style="width: 220px;">
+						<div align="left">
+						<b>Select Event</b>
+							<select name="sel_event" style="width: 220px; ">
 																<option value="-1">ALL</option>
 							
 								<c:forEach items="${eventList}" var="events">
@@ -91,7 +90,7 @@
 
 									</c:choose>
 								</c:forEach>
-							</select> <input type="submit" value="submit" class="btn-btn-primary">
+							</select> <input type="submit" value="Search" class="btn btn-info btn-md">
 						</div>
 
 						<div class="col-md -3">
@@ -222,7 +221,7 @@
 												<td class="col-md-2"><c:out value="${fbTxnList.rating}" /></td>
 												<td class="col-md-2" align="right"><a
 													href="${pageContext.request.contextPath}/showFbTxnDetail/${fbTxnList.fbId}"
-													class="btn-btn-primary">VIEW DETAILS</a></td>
+													class="btn-btn-primary" title="detail">VIEW DETAILS</a></td>
 											</tr>
 
 										</c:forEach>

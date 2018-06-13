@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.model.ComMemWithOrgName;
+import com.ats.exhibitionfrontend.model.ExhEventSubscription;
 import com.ats.exhibitionfrontend.model.GetSchedule;
 import com.ats.exhibitionfrontend.model.GetSponsor;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
@@ -124,7 +125,9 @@ public class EventHistoryController {
 			System.err.println("scheduleList"+scheduleList.toString());
 
 			model.addObject("scheduleList", scheduleList);
-
+			model.addObject("MemberImgUrl", Constants.MEMBER_IMG);
+			model.addObject("SponsorImgUrl", Constants.SPONSOR_IMG);
+			
 			
 		} catch (Exception e) {
 			System.err.println("Exception in getEventDetail//@ Event History Controller " + e.getMessage());
@@ -138,7 +141,7 @@ public class EventHistoryController {
 	public ModelAndView getVisitorNames(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable int eventId, @PathVariable String eventName) {
 
-		ModelAndView model = new ModelAndView("history/eventvisitorName");
+		ModelAndView model = new ModelAndView("home");
 		try {
 
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
@@ -162,4 +165,44 @@ public class EventHistoryController {
 		return model;
 	}
 
+	
+	
+	
+	@RequestMapping(value = "/addEventSubsctiption/{orgId}/{eventId}", method = RequestMethod.GET)
+	public String addEventSubsctiption(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable int orgId , @PathVariable int eventId) {
+
+		try {
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+			
+			int exhbId= login.getExhibitor().getExhId();
+
+			
+			ExhEventSubscription exEvnSub=new ExhEventSubscription();
+			
+			exEvnSub.setEventId(eventId);
+			exEvnSub.setExhId(exhbId);
+			exEvnSub.setOrgId(orgId);
+			exEvnSub.setExhEsubId(0);
+			exEvnSub.setStallNo("0");
+			
+			ExhEventSubscription eveResp = rest.postForObject(Constants.url + "/saveExhEventSubscription", exEvnSub,
+					ExhEventSubscription.class);
+
+			System.err.println("/saveExhEventSubscription response " +eveResp.toString());
+		
+
+		} catch (Exception e) {
+			System.err.println("Exception in /getVisitorNames @EvnHisController ");
+			e.printStackTrace();
+		}
+
+		return "redirect:/home";
+	}
+
+	
+	
 }

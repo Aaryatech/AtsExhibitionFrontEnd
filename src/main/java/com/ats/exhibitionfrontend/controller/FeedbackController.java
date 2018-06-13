@@ -245,7 +245,6 @@ public class FeedbackController {
 			//map.add("eventId", eventId);
 			List<GetFbQueTxn> fbTxnList;
 			if(eventId==-1) {
-				System.err.println("inside if event Id =-1");
 				map.add("exhbId", exhbId);
 GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByExhbId", map, GetFbQueTxn[].class);
 			

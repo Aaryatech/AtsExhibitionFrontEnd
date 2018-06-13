@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <title>Monginis</title>
 <link href="${pageContext.request.contextPath}/resources/css/monginis.css" rel="stylesheet" type="text/css"/>
-<link rel="icon" href="${pageContext.request.contextPath}/resources/images/feviconicon.png" type="image/x-icon"/> 
+<link rel="icon" href="${pageContext.request.contextPath}/resources/images/exh.png" type="image/x-icon"/> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.10.2.min.js"></script>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/common.js"></script>
@@ -34,12 +34,10 @@ jQuery(document).ready(function(){
 <!--wrapper-start-->
 <div class="wrapper">
 
-
-
 <!--topHeader-->
 <div class="fullGrid center logoBarbg slideposi">
 	<div class="wrapperIn positionR">
-    	<div class="logoBarLeft"><a href=""><img src="${pageContext.request.contextPath}/resources/images/monginislogo.jpg" alt="monginis"></a></div>  
+    	<div class="logoBarLeft"><a href=""><img src="${pageContext.request.contextPath}/resources/images/login.jpeg" alt="monginis"></a></div>  
         <div class="logoBarRight"><div id="menuzord" class="menuzord red menuzord-responsive">
             <ul class="menuzord-menu menuzord-right menuzord-indented scrollable">
                <%--  <li><a href="#"><div class="usericon">John doe</div> <div class="userimg"><img src="${pageContext.request.contextPath}/resources/images/userimg.jpg"></div> </a>
@@ -77,7 +75,6 @@ jQuery(document).ready(function(){
     <div class="messages messagesErr"> ${message} </div>
         	
 </c:if>
-
 
 	<form id="form-login" action="loginProcess" method="post">
 <div class="loginInner">

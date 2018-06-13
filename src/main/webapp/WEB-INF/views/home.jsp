@@ -149,12 +149,12 @@ div.desc {
 						</div>
 					</div>
 			<!-- 		<div id="owl-example" class="owl-carousel"> -->
-
+<form name="homepage" id="homepage" method="get">
 						<c:forEach items="${eventList}" var="eventList">
 
 							<div class="gallery">
   <a target="_blank" href="${pageContext.request.contextPath}/getEventDetail/${eventList.eventId}/${eventList.orgId}">
-    <img src="http://132.148.143.124:8080/uploads/MSPCAKE/13:17:38-aa.png" alt="Trolltunga Norway" width="300" height="200">
+    <img src="${eventImgUrl}${eventList.eventLogo}" width="100" height="100" alt="No Image Available" >
   </a>
  <p align="left"> Event Name: <b>${eventList.eventName}</b></p>
   <p align="left">Place: <b>${eventList.eventLocation}</b> </p>
@@ -162,7 +162,7 @@ div.desc {
   <div class="desc">
   <c:choose>
     <c:when test="${eventList.subStatus==0}">
-    <input type="button" value="Subscribe" class="btn btn-info"/>
+    <input type="button" value="Subscribe" class="btn btn-info" onclick="callSubscribe(${eventList.orgId},${eventList.eventId})"/>
     </c:when>
   <c:otherwise>
     <input type="button" disabled value="Subscribe" class="btn btn-success"/>
@@ -171,6 +171,7 @@ div.desc {
     </div>
   </div>
  		</c:forEach>
+ 		</form>
  		
 
 						<%-- <div class="item">
@@ -323,6 +324,22 @@ function drawMultSeries() {
    
       chart.draw(data, options);
     }
+</script>
+
+<script type="text/javascript">
+
+function callSubscribe(orgId,eventId) {
+	
+	 var form = document.getElementById("homepage");
+	/*  alert(form);
+	 alert(orgId)
+	 alert(eventId);
+	  */
+	    form.action ='${pageContext.request.contextPath}/addEventSubsctiption/'+orgId+'/'+eventId;
+	    form.submit();
+}
+
+
 </script> 
 </body>
 </html>

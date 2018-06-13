@@ -120,13 +120,14 @@ public class HomeController {
 						events.setEventFromDate(df.format(events.getEventFromDate()));
 						
 						events.setEventToDate(df.format(events.getEventToDate()));
-
-						
 						
 					}*/
-				
 
+					
+					System.err.println("Event List at home " +eventList.toString());
 						mav.addObject("eventList", eventList);
+						
+						mav.addObject("eventImgUrl", Constants.EVENT_IMG_URL);
 						
 					} catch (Exception e) {
 						
@@ -157,10 +158,32 @@ public class HomeController {
 	
 	@RequestMapping("/home")
 	public ModelAndView home(HttpServletRequest request, HttpServletResponse res) throws IOException {
+		MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
 
 	
 		ModelAndView mav = new ModelAndView("home");
-	
+
+		map = new LinkedMultiValueMap<String, Object>();
+		HttpSession session = request.getSession();
+
+		LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+		map.add("exhId", login.getExhibitor().getExhId());
+		try {
+			
+			RestTemplate rest = new RestTemplate();
+
+			EventsWithSubStatus[] eventListResp = rest.postForObject(
+					Constants.url + "getAllEventsWithExhId", map, EventsWithSubStatus[].class);
+
+			List<EventsWithSubStatus> eventList;
+
+			eventList = new ArrayList<EventsWithSubStatus>(Arrays.asList(eventListResp));
+			
+			mav.addObject("eventList",eventList);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		return mav;
 	}
 //	getEventDetail
