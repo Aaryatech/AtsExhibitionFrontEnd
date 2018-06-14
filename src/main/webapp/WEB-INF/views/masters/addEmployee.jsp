@@ -13,13 +13,13 @@
 
 <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 <c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
-
+<!-- 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
-
+ -->
 <!--datepicker-->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
@@ -76,7 +76,6 @@
 								<div class="col1title" align="left"><h3>Add Employee</h3></div>
 								 
 						</div>
-						
 					<div class="colOuter">
 						<div class="col-md-2">
 							<div class="col1title" align="left">Employee Name*: </div>
@@ -156,7 +155,7 @@
 						</div>
 				 
 					</div>
-					
+				
 					<div id="table-scroll" class="table-scroll">
 					<div id="faux-table" class="faux-table" aria="hidden"></div>
 					<div class="table-wrap">

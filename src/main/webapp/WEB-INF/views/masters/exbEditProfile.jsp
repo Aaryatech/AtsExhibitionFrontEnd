@@ -8,7 +8,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 
-	<link rel="stylesheet"
+<!-- 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
@@ -18,7 +18,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
-
+ -->
 	<!--datepicker-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
@@ -107,7 +107,7 @@
 									style="text-align: left;" value="${exhib.aboutCompany} "
 									type="text" required>
 									 --%>
-								<textarea style="text-align: left; width: 800px;"
+								<textarea style="text-align: left; width: 785px;"
 									id="abt_company" name="abt_company" placeholder="About Company">${exhib.aboutCompany}</textarea>
 
 							</div>
@@ -228,7 +228,7 @@
 									name="address" type="text" style="text-align: left;"
 									value="${exhib.address}" required> --%>
 
-								<textarea style="text-align: left; width: 800px;"
+								<textarea style="text-align: left; width: 785px;"
 									id="address" name="address" placeholder="Address">${exhib.address}</textarea>
 
 							</div>
@@ -238,7 +238,7 @@
 								<div class="col1title" align="left">Company Type Name</div>
 							</div>
 							<div class="col-md-3">
-								<select name="company_type_id" style="width: 255px;">
+								<select name="company_type_id" style="width: 255px;" class="form-control">
 									<c:forEach items="${companyList}" var="company">
 										<c:choose>
 											<c:when
@@ -272,7 +272,7 @@
 							</div>
 							<div class="col-md-1">
 
-								<select name="loc_id" style="width: 275px;">
+								<select name="loc_id" style="width: 275px;" class="form-control">
 									<c:forEach items="${locationList}" var="loc">
 										<c:choose>
 											<c:when test="${exhib.locationName eq loc.locationName}">

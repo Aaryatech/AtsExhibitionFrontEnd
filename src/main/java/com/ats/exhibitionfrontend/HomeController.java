@@ -86,7 +86,7 @@ public class HomeController {
 					mav = new ModelAndView("home");
 					HttpSession session = request.getSession();
 					session.setAttribute("UserDetail", loginResponse);
-					
+					session.setAttribute("LOGOURL", Constants.LOGO_URL);
 					if(loginResponse.getIsSubscribed()==1) {
 						
 						System.err.println("Exhibitor is Subscribed USer"+loginResponse.getIsSubscribed());

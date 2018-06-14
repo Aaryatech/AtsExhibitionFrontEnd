@@ -12,7 +12,9 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/monginis.css"
 	rel="stylesheet" type="text/css" />
-
+<link
+	href="${pageContext.request.contextPath}/resources/css/challenges_2.css"
+	rel="stylesheet" type="text/css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/assets/bootstrap/css/lightbox.css">
 <link rel="icon"

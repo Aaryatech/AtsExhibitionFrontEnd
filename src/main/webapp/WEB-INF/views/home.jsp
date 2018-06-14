@@ -6,6 +6,7 @@
    margin-top:0px;
 }
 	</style>
+	
 <%-- <!DOCTYPE html>
 <html>
 <head>
@@ -63,22 +64,65 @@ div.gallery {
     margin: 5px;
     border: 1px solid #ccc;
     float: left;
-    width: 320px;
+    width: 250px;
+    margin: 15px 0 15px 10px;
+/*         padding: 15px 15px;
+ */    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+        text-align: center;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+        background: white;
 }
 
 div.gallery:hover {
     border: 1px solid #777;
 }
-
-div.gallery img {
-    width: 100%;
-    height: auto;
+a {
+    color: #4c9cdf;
+    text-decoration: none;
 }
+
+a {
+    cursor: pointer;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 
 div.desc {
     padding: 15px;
     text-align: center;
 }
+
+
+</style>
+<style>
+.btn1 {
+  border: 2px solid black;
+  background-color: white;
+  color: pink;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* Blue */
+.info1 {
+  border-color: green;
+  color: dodgerblue
+}
+
+.info1:hover {
+  background: #2196F3;
+  color: white;
+}
+
 </style>
 		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 
@@ -122,12 +166,12 @@ div.desc {
 
 				<!--rightSidebar-->
 				<div class="sidebarright">
-										<h2 class="pageTitle">Hi <span>${login.exhName},</span> Welcome Back</h2> 
-										<div style="text-align: right; "><b><a href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></b></div>
+							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${login.exhName},</span> Welcome Back
+</h2></div> <div class="col-md-2">	<p style="text-align: right;" class="pageTitle"><b><a href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></b></p></div>
             
 					<!--slider-->
 					<!--slider thum size : width:850px height:350px-->
-						<div class="latestNews">
+					<%-- 	<div class="latestNews">
 					
 						<h3 class="latestNewsTitle">Event List</h3>
 							<div class="microsoft marquee">
@@ -147,30 +191,33 @@ div.desc {
 						
 						</c:forEach>
 						</div>
-					</div>
+					</div> --%>
 			<!-- 		<div id="owl-example" class="owl-carousel"> -->
 <form name="homepage" id="homepage" method="get">
-						<c:forEach items="${eventList}" var="eventList">
+<c:forEach items="${eventList}" var="eventList">
 
-							<div class="gallery">
+<div class="gallery">
   <a target="_blank" href="${pageContext.request.contextPath}/getEventDetail/${eventList.eventId}/${eventList.orgId}">
-    <img src="${eventImgUrl}${eventList.eventLogo}" width="100" height="100" alt="No Image Available" >
+    <img src="${eventImgUrl}${eventList.eventLogo}" width="250" height="170" alt="No Image Available" >
   </a>
- <p align="left"> Event Name: <b>${eventList.eventName}</b></p>
-  <p align="left">Place: <b>${eventList.eventLocation}</b> </p>
-  <p align="left">Event From : <b>${eventList.eventFromDate}</b> &nbsp;&nbsp;&nbsp;&nbsp;  To : <b>${eventList.eventToDate}</b></p>
+  <br></br> <div style="padding-left: 5px;">
+  <p align="left"> &nbsp;&nbsp; Event Name: <b>${eventList.eventName}</b></p>
+  <p align="left"> &nbsp;&nbsp; Place: <b>${eventList.eventLocation}</b> </p>
+  <p align="left"> &nbsp;&nbsp; From: <b>${eventList.eventFromDate}</b> &nbsp;To: <b>${eventList.eventToDate}</b></p>
+ </div><hr></hr>
   <div class="desc">
   <c:choose>
     <c:when test="${eventList.subStatus==0}">
-    <input type="button" value="Subscribe" class="btn btn-info" onclick="callSubscribe(${eventList.orgId},${eventList.eventId})"/>
+    <button class="btn1 info1" onclick="callSubscribe(${eventList.orgId},${eventList.eventId})"     style="padding:6px 34px;   border:1px solid #28adb7;">SUBSCRIBE</button>
     </c:when>
   <c:otherwise>
-    <input type="button" disabled value="Subscribe" class="btn btn-success"/>
+    <button class="btn1 info2"   style="padding:6px 34px; background-color:lightblue; color:white;  border:1px solid #28adb7;" disabled>SUBSCRIBED</button>
   </c:otherwise>
   </c:choose>
     </div>
   </div>
  		</c:forEach>
+ 		
  		</form>
  		
 

@@ -13,7 +13,7 @@
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
-	<link rel="stylesheet"
+	<!-- <link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
@@ -23,7 +23,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
-
+ -->
 	<!--datepicker-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
