@@ -5,7 +5,7 @@
 <!--topHeader-->
 <div class="fullGrid center logoBarbg slideposi">
 	<div class="wrapperIn positionR">
-    	<div class="logoBarLeft"><a href="${pageContext.request.contextPath}/home"><img src="${LOGOURL}${sessionScope.UserDetail.exhibitor.logo}" alt="monginis"></a></div>  
+    	<div class="logoBarLeft"><a href="${pageContext.request.contextPath}/home"><img src="${sessionScope.LOGOURL}${sessionScope.UserDetail.exhibitor.logo}" alt="monginis"></a></div>  
        
          <c:choose>
                <c:when test = "${isSpDayShow ==true}">
