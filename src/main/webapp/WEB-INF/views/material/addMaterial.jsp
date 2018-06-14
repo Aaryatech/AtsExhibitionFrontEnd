@@ -155,9 +155,9 @@
 													style="align-content: center; color: fuchsia;">View
 														File</a>
 												<td class="col-md-1"><div>
-														<a
+														<%-- <a
 															href="${pageContext.request.contextPath}/matDetail/${matList.trId}"><abbr
-															title='Edit'><i class='fa fa-edit'></i> </abbr></a> <a
+															title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%> <a
 															href="${pageContext.request.contextPath}/deleteMaterial/${matList.trId}"
 															onClick="return confirm('Are you sure want to delete this record');">
 															<abbr title='Delete'><i class='fa fa-trash'></i></abbr>

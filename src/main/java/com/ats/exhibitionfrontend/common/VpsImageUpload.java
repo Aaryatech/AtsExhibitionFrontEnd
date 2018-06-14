@@ -29,12 +29,15 @@ public class VpsImageUpload {
 	private static String curTimeStamp = null;
 	
 	
-	public static final String PRODUCT_IMAGE = "http://exhibition.aaryatechindia.in:12756/uploads/PRODUCT/";
+	public static final String EMP_IMAGE = "/home/aaryate1/exhibition.aaryatechindia.in/tomcat-8.0.18/webapps/uploads/EMPLOYEE/";
+
+
+	public static final String PRODUCT_IMAGE = "/home/aaryate1/exhibition.aaryatechindia.in/tomcat-8.0.18/webapps/uploads/PRODUCT/";
 	
-	public static final String EMP_IMAGE = "http://exhibition.aaryatechindia.in:12756/uploads/EMPLOYEE/";
-	public static final String MATERIAL_IMAGE = "http://exhibition.aaryatechindia.in:12756/uploads/MATERIAL/";
+	
+	public static final String MATERIAL_IMAGE = "/home/aaryate1/exhibition.aaryatechindia.in/tomcat-8.0.18/webapps/uploads/MATERIAL/";
 
-
+	
 
 	public void saveUploadedFiles(List<MultipartFile> files, int imageType, String imageName) throws IOException {
 
