@@ -79,7 +79,7 @@ public class ProductController {
 			System.out.println("exhiId " + login.getExhibitor().getExhId());
 			try {
 				
-				upload.saveUploadedFiles(file1, Constants.ITEM_IMAGE_TYPE, curTimeStamp + "-" + file1.get(0).getOriginalFilename());
+				upload.saveUploadedFiles(file1, Constants.PRODUCT_IMAGE_TYPE, curTimeStamp + "-" + file1.get(0).getOriginalFilename());
 				System.out.println("upload method called " + file1.toString());
 				
 				
@@ -90,7 +90,7 @@ public class ProductController {
 			}
 	     try {
 				
-				upload.saveUploadedFiles(file2, Constants.ITEM_IMAGE_TYPE, curTimeStamp + "-" + file2.get(0).getOriginalFilename());
+				upload.saveUploadedFiles(file2, Constants.PRODUCT_IMAGE_TYPE, curTimeStamp + "-" + file2.get(0).getOriginalFilename());
 				System.out.println("upload method called " + file2.toString());
 				
 				
@@ -101,7 +101,7 @@ public class ProductController {
 			}
 	 	try {
 			
-			upload.saveUploadedFiles(file3, Constants.ITEM_IMAGE_TYPE, curTimeStamp + "-" + file3.get(0).getOriginalFilename());
+			upload.saveUploadedFiles(file3, Constants.PRODUCT_IMAGE_TYPE, curTimeStamp + "-" + file3.get(0).getOriginalFilename());
 			System.out.println("upload method called " + file3.toString());
 			
 			

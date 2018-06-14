@@ -54,6 +54,7 @@ public class EmpController {
 					ExhEmpWithExhName[].class); 
 			List<ExhEmpWithExhName> empList = new ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
 			model.addObject("empList", empList);
+			model.addObject("empImgUrl", Constants.EMP_IMAGE);
 			
 		}catch(Exception e)
 		{
@@ -81,7 +82,7 @@ public class EmpController {
 			try {
 				img1 =   image.get(0).getOriginalFilename(); 
 
-				upload.saveUploadedFiles(image, Constants.ITEM_IMAGE_TYPE,
+				upload.saveUploadedFiles(image, Constants.EMP_IMAGE_TYPE,
 						  image.get(0).getOriginalFilename()); 
 
 				System.out.println("upload method called for image Upload " + image.toString());
@@ -150,7 +151,7 @@ public class EmpController {
 			ExhEmpWithExhName res = rest.postForObject(Constants.url + "/getAllEmployeeByEmpIdAndIsUsed", map,
 					ExhEmpWithExhName.class); 
 			model.addObject("empDetail", res);
-			model.addObject("url", Constants.ITEM_IMAGE_URL);
+			model.addObject("empImgUrl", Constants.EMP_IMAGE);
 			
 		}catch(Exception e)
 		{

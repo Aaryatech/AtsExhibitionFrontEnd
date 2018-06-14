@@ -27,6 +27,14 @@ public class VpsImageUpload {
 	private static final String KYC_FOLDER = null;
 
 	private static String curTimeStamp = null;
+	
+	
+	public static final String PRODUCT_IMAGE = "http://exhibition.aaryatechindia.in:12756/uploads/PRODUCT/";
+	
+	public static final String EMP_IMAGE = "http://exhibition.aaryatechindia.in:12756/uploads/EMPLOYEE/";
+	public static final String MATERIAL_IMAGE = "http://exhibition.aaryatechindia.in:12756/uploads/MATERIAL/";
+
+
 
 	public void saveUploadedFiles(List<MultipartFile> files, int imageType, String imageName) throws IOException {
 
@@ -51,15 +59,15 @@ public class VpsImageUpload {
 
 			} else if (imageType == 2) {
 
-				path = Paths.get(ITEM_FOLDER + imageName);
+				path = Paths.get(PRODUCT_IMAGE + imageName);
 
 			} else if (imageType == 3) {
 
-				path = Paths.get(MSG_FOLDER + imageName);
+				path = Paths.get(EMP_IMAGE + imageName);
 
 			}else if (imageType == 4) {
 
-				path = Paths.get(M_SP_CAKE_FOLDER + imageName);
+				path = Paths.get(MATERIAL_IMAGE + imageName);
 
 			}
 			else if (imageType == 6) {

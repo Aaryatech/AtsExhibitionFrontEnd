@@ -170,12 +170,12 @@
 							
 							</div>	
 							
-							
+						<!-- 	
 							</div>
 
-						<div class="colOuter">
-							<div align="center">
-								<input name="submit" class="buttonsaveorder" value="Submit"
+						<div class="colOuter"> -->
+							<div>
+								<input name="submit" class="buttonsaveorder btn btn-sm" value="Submit"
 									type="submit" align="center">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>

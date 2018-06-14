@@ -52,7 +52,7 @@ public class MaterialController {
 			List<ExhMatWithExhName> matList = new ArrayList<ExhMatWithExhName>(Arrays.asList(res));
 			model.addObject("matList", matList);
 			
-			model.addObject("fileUrl",Constants.ITEM_IMAGE_URL );
+			model.addObject("fileUrl",Constants.MATERIAL_IMAGE );
 
 
 		} catch (Exception e) {
@@ -91,7 +91,7 @@ public class MaterialController {
 			try {
 				img1 =    login.getExhibitor().getExhId()+"_"+curTimeStamp+file.get(0).getOriginalFilename(); 
 
-				upload.saveUploadedFiles(file, Constants.ITEM_IMAGE_TYPE,
+				upload.saveUploadedFiles(file, Constants.MATERIAL_IMAGE_TYPE,
 						img1); 
 
 				System.out.println("upload method called for image Upload " + file.toString());
@@ -140,7 +140,7 @@ public class MaterialController {
 			ExhMatWithExhName res = rest.postForObject(Constants.url + "/getAllMatByTrIdAndIsUsed", map,
 					ExhMatWithExhName.class);
 			model.addObject("matDetail", res);
-			model.addObject("fileUrl",Constants.ITEM_IMAGE_URL );
+			model.addObject("fileUrl",Constants.MATERIAL_IMAGE );
 
 		} catch (Exception e) {
 			e.printStackTrace();

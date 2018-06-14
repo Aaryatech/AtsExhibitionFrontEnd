@@ -229,33 +229,74 @@ article {
 									varStatus="count">
 									<tr style="background-color: lightgrey;">
 										<td colspan="11" width="100%"
-											style="border-bottom: 1px solid #313131; padding: 10px; color: black; font-size: 15px;">Schedule
-											${count.index+1}</td>
+											style="border-bottom: 1px solid #313131; padding: 10px; color: black; font-size: 15px;"> 
+											<div class="row">
+											
+											<div class="col-md-3">
+											Schedule:${count.index+1}
+											</div>
+											
+											<div class="col-md-3">
+											Date:${schedule.date}
+											</div>
+												<div class="col-md-3">
+											Activity:${schedule.eventName}
+											</div>
+												<div class="col-md-3">
+											Day:${schedule.dayName}
+											</div>
+											
+											</div>
+											</td>
 									</tr>
-									<tr style="background-color: #ec5b9d;">
-										<td colspan="2" width="30%"
+									<tr style="background-color: ff33f3;">
+										<%-- <td colspan="2" width="30%"
 											style="padding: 10px; color: black; border-bottom: 1px solid #313131; font-size: 15px;"><p>Date:${schedule.date}</p>
 
 											<p>Activity:${schedule.eventName}</p>
-											<p>Day:${schedule.dayName}</p></td>
+											<p>Day:${schedule.dayName}</p></td> --%>
 										<td colspan="9" width="60%"
 											style="border-left: 1px solid #313131; border-bottom: 1px solid #313131; padding: 10px; color: #FFF; font-size: 15px;">
 
 											<c:forEach items="${schedule.scheduleDetailList}"
 												var="detail">
-												<p>Details</p>
-												<hr>
-												<p
-													style="color: #000; font-size: 15px; text-align: left; margin: 0px;">
-													Topic:${detail.topic}</br>
+											
+											<!-- 	<p><b><i>Details</i></b></p> -->
+												
+											<div class="row">
+											
+											<div class="col-md-3">
+											<b>Topic:</b>&nbsp;${detail.topic}
+											</div>
+											
+											<div class="col-md-3">
+											<b>Timing:</b>&nbsp;${detail.fromTime}-${detail.toTime}
+											</div>
+												<div class="col-md-3">
+											<b>Venue:</b>${detail.venue}
+											</div>
+												<div class="col-md-3">
+											<b>Speaker:</b>${detail.speaker}
+											</div>
+											
+											</div>
+											
+											<div class="row">
+											<div class="col-md-3" align="center">
+											${detail.remark}
+											</div>
+											</div>
+												<hr/>
+										
+													
+													
 
-													Timing:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.fromTime}-${detail.toTime}</br>
-													Venue:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.venue}</br>
+													<%-- Timing:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.fromTime}-${detail.toTime}</br>
+													:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.venue}</br>
 
-													Speaker:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.speaker}</br>
-
-													${detail.remark}</br>
-												</p>
+													:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.speaker}</br>
+ --%>
+												
 											</c:forEach>
 										</td>
 									</tr>
