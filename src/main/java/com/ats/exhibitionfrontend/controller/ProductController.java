@@ -113,13 +113,22 @@ public class ProductController {
 	 	String prodImage1="";String prodImage2="";String prodImage3="";
 		if(isEdit==0)
 		{
-			 prodImage1 =file1.get(0).getOriginalFilename();
-			 prodImage2 =file2.get(0).getOriginalFilename();
-			 prodImage3 =file3.get(0).getOriginalFilename();
+			 prodImage1 =curTimeStamp + "-" +file1.get(0).getOriginalFilename();
+			 prodImage2 =curTimeStamp + "-" +file2.get(0).getOriginalFilename();
+			 prodImage3 =curTimeStamp + "-" +file3.get(0).getOriginalFilename();
 		}else
 		{
+			if(file1.get(0).getOriginalFilename()!=null)
+			 prodImage1 =curTimeStamp + "-" +file1.get(0).getOriginalFilename();
+			else
 			 prodImage1 = request.getParameter("image11");
+			if(file2.get(0).getOriginalFilename()!=null)
+				 prodImage2 =curTimeStamp + "-" +file2.get(0).getOriginalFilename();
+			else
 			 prodImage2 = request.getParameter("image22");
+			if(file3.get(0).getOriginalFilename()!=null)
+				 prodImage3 =curTimeStamp + "-" +file3.get(0).getOriginalFilename();
+			else
 			 prodImage3 = request.getParameter("image33");
 		}
 			

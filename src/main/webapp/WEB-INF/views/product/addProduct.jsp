@@ -13,7 +13,7 @@
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
-<!-- 	<link rel="stylesheet"
+	<!-- 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
@@ -67,16 +67,15 @@
 
 				<div class="sidebarright">
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}/saveProduct" enctype="multipart/form-data">
+						action="${pageContext.request.contextPath}/saveProduct"
+						enctype="multipart/form-data">
 						<input type="hidden" name="productId" id="productId"
-							value="${product.prodId}">
-                       <input type="hidden" name="isEdit" id="isEdit"
-							value="${isEdit}">
-							  <input type="hidden" name="image11" id="image11"
-							value="${product.prodImage1}">
-							  <input type="hidden" name="image22" id="image22"
-							value="${product.prodImage2}">
-							  <input type="hidden" name="image33" id="image33"
+							value="${product.prodId}"> <input type="hidden"
+							name="isEdit" id="isEdit" value="${isEdit}"> <input
+							type="hidden" name="image11" id="image11"
+							value="${product.prodImage1}"> <input type="hidden"
+							name="image22" id="image22" value="${product.prodImage2}">
+						<input type="hidden" name="image33" id="image33"
 							value="${product.prodImage3}">
 						<div class="col-md -3">
 
@@ -93,8 +92,9 @@
 							<div class="col-md-3">
 								<input id="productName" class="form-control"
 									placeholder="Product Name" value="${product.prodName}"
-									style="text-align: left;" name="productName" type="text" required>
-							
+									style="text-align: left;" name="productName" type="text"
+									required  title="Enter Proper Product Name">
+
 							</div>
 							<div class="col-md-1"></div>
 
@@ -103,10 +103,14 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<input id="productDescription" class="form-control"
+
+								<textarea id="productDescription" class="form-control"
+									style="text-align: left;" placeholder="Product Description "
+									required="required" name="productDescription">${product.prodDesc}</textarea>
+								<%-- <input id="productDescription" class="form-control"
 									style="text-align: left;" placeholder="Product Description "
 									value="${product.prodDesc}" name="productDescription" type="text"
-									required>
+									required> --%>
 
 							</div>
 						</div>
@@ -116,11 +120,16 @@
 								<div class="col1title" align="left">Product Specification:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="productSpecif" class="form-control"
+
+
+								<textarea id="productSpecif" class="form-control"
+									style="text-align: left;" placeholder="Product Specification "
+									name="productSpecif" required="required">${product.prodSpecification}</textarea>
+								<%-- <input id="productSpecif" class="form-control"
 									placeholder="Product Specification" name="productSpecif"
 									style="text-align: left;" value="${product.prodSpecification}"
 									type="text" required>
-
+ --%>
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
@@ -141,20 +150,25 @@
 								<div class="col1title" align="left">Product Image 1:</div>
 							</div>
 							<div class="col-md-3">
-								 <input type="file" name="img1" id="img1" value="${url}${product.prodImage1}"/>
-						<c:if test="${isEdit==1}">		 <a href="${url}${product.prodImage1}"
-											data-lightbox="image-1"tabindex="-1"><c:out value='View Image1' /></a>
-							</c:if></div>
+								<input type="file" name="img1" id="img1"
+									value="${url}${product.prodImage1}" />
+								<c:if test="${isEdit==1}">
+									<a href="${url}${product.prodImage1}" data-lightbox="image-1"
+										tabindex="-1"><c:out value='View Image1' /></a>
+								</c:if>
+							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 2:</div>
 							</div>
 							<div class="col-md-3">
-								
-	                         <input type="file" name="img2" id="img2" value="${url}${product.prodImage2}"/>
+
+								<input type="file" name="img2" id="img2"
+									value="${url}${product.prodImage2}" />
 								<c:if test="${isEdit==1}">
-								 <a href="${url}${product.prodImage2}"
-											data-lightbox="image-1"tabindex="-1"><c:out value='View Image2' /></a></c:if>
+									<a href="${url}${product.prodImage2}" data-lightbox="image-1"
+										tabindex="-1"><c:out value='View Image2' /></a>
+								</c:if>
 							</div>
 						</div>
 
@@ -163,55 +177,62 @@
 								<div class="col1title" align="left">Product Image 3:</div>
 							</div>
 							<div class="col-md-3">
-								 <input type="file" name="image3" id="image3"  value="${url}${product.prodImage3}"/>
-	                    <c:if test="${isEdit==1}">
-	                      <a href="${url}${product.prodImage3}"
-											data-lightbox="image-1"tabindex="-1"><c:out value='View Image3' /></a></c:if>
-							
-							</div>	
-							
-						<!-- 	
+								<input type="file" name="image3" id="image3"
+									value="${url}${product.prodImage3}" />
+								<c:if test="${isEdit==1}">
+									<a href="${url}${product.prodImage3}" data-lightbox="image-1"
+										tabindex="-1"><c:out value='View Image3' /></a>
+								</c:if>
+
+							</div>
+
+							<!-- 	
 							</div>
 
 						<div class="colOuter"> -->
 							<div>
-								<input name="submit" class="buttonsaveorder btn btn-sm" value="Submit"
-									type="submit" align="center">
+								<input name="submit" class="buttonsaveorder btn btn-sm"
+									value="Submit" type="submit" align="center">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
 						</div>
 
-						 <div id="table-scroll" class="table-scroll">
+						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">
 								<table id="table_grid" class="main-table">
-                                
-							<thead>
-								<tr class="bgpink">
-								
-									<th class="col-sm-1">Sr No</th>
-									<th class="col-md-1">Product</th> 
-									<th class="col-md-1">Description</th>
-									<th class="col-md-1">Specification</th>
-									<th class="col-md-1">Image1</th>
-									<th class="col-md-1">Action</th>
-								</tr>
-							</thead>
-									
+
+									<thead>
+										<tr class="bgpink">
+
+											<th class="col-sm-1">Sr No</th>
+											<th class="col-md-1">Image1</th>
+
+											<th class="col-md-1">Product</th>
+											<th class="col-md-1">Description</th>
+											<th class="col-md-1">Specification</th>
+											<th class="col-md-1">Action</th>
+										</tr>
+									</thead>
+
 									<tbody>
 
 										<c:forEach items="${productList}" var="productList"
 											varStatus="count">
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+												
+												<td class="col-md-2"><img
+													src="${url}${productList.prodImage1}"
+													alt="No Image Available" /></td>
 												<td class="col-md-2"><c:out
 														value="${productList.prodName}" /></td>
 												<td class="col-md-1"><c:out
 														value="${productList.prodDesc}" /></td>
 												<td class="col-md-1"><c:out
 														value="${productList.prodSpecification}" /></td>
-															<td class="col-md-1"><img src="${url}${productList.prodImage1}" alt="No Image Available" /></td>
+												
 												<td class="col-md-1"><div>
 														<a
 															href="${pageContext.request.contextPath}/editProduct/${productList.prodId}"><abbr
@@ -230,7 +251,7 @@
 						</div>
 
 
-					</form> 
+					</form>
 
 
 				</div>
