@@ -87,8 +87,8 @@
 								<input id="custName" class="form-control"
 									placeholder="Employee Name" value="${customer.custName}"
 									style="text-align: left;" name="empName" type="text" required>
-								<input id="empId" class="form-control" name="empId"
-									value="${customer.custId}" type="hidden">
+								<input id="empId" class="form-control" name="empId" value=""
+									type="hidden">
 
 							</div>
 							<div class="col-md-1"></div>
@@ -100,8 +100,7 @@
 							<div class="col-md-3">
 								<input id="empDesg" class="form-control"
 									style="text-align: left;" placeholder="Employee Designation"
-									value="${customer.custAddress}" name="empDesg" type="text"
-									required>
+									value="" name="empDesg" type="text" required>
 
 							</div>
 
@@ -114,10 +113,10 @@
 								<div class="col1title" align="left">Employee Mobile No*:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="mob" class="form-control" placeholder="Mobile No"
-									name="mob" style="text-align: left;"
-									value="${customer.custMobNo}" pattern="^\d{10}$" type="text"
-									required>
+								<input id="mob" class="form-control"
+									placeholder="Employee Mobile No" name="mob"
+									style="text-align: left;" value="${customer.custMobNo}"
+									pattern="^\d{10}$" type="text" required>
 
 							</div>
 							<div class="col-md-1"></div>
@@ -126,8 +125,7 @@
 							</div>
 							<div class="col-md-3">
 								<input id="email" class="form-control" placeholder="Email"
-									name="email" type="email" style="text-align: left;"
-							required>
+									name="email" type="email" style="text-align: left;" required>
 
 							</div>
 
@@ -150,9 +148,9 @@
 								<div class="col1title" align="left">Employee Token*:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="token" class="form-control" placeholder="Employee Token"
-									name="token" type="text" style="text-align: left;"
-									value="${customer.custEmailId}" required>
+								<input id="token" class="form-control"
+									placeholder="Employee Token" name="token" type="text"
+									style="text-align: left;" value="" required>
 
 							</div>
 
@@ -165,9 +163,9 @@
 								<div class="col1title" align="left">Employee Education*:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="root" class="form-control" placeholder="Education"
-									name="education" style="text-align: left;"
-									value="${customer.custRoot}" type="text" required>
+								<input id="root" class="form-control"
+									placeholder="Employee Education" name="education"
+									style="text-align: left;" value="" type="text" required>
 
 							</div>
 
@@ -215,7 +213,9 @@
 										<c:forEach items="${empList}" var="empList" varStatus="count">
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-												<td class="col-md-1"><img src="${empImgUrl}${empList.empPhoto}"  alt="No Image Available"/></td>
+												<td class="col-md-1"><img
+													src="${empImgUrl}${empList.empPhoto}"
+													alt="No Image Available" /></td>
 												<td class="col-md-1"><c:out value="${empList.empName}" /></td>
 												<td class="col-md-1"><c:out
 														value="${empList.empMobile}" /></td>

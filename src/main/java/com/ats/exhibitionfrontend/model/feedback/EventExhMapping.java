@@ -13,6 +13,8 @@ public class EventExhMapping {
 
 	private int isUsed;
 
+	private String stallNo;
+
 	public int getMapId() {
 		return mapId;
 	}
@@ -53,10 +55,19 @@ public class EventExhMapping {
 		this.isUsed = isUsed;
 	}
 
+	public String getStallNo() {
+		return stallNo;
+	}
+
+	public void setStallNo(String stallNo) {
+		this.stallNo = stallNo;
+	}
+
 	@Override
 	public String toString() {
 		return "EventExhMapping [mapId=" + mapId + ", exhId=" + exhId + ", eventId=" + eventId + ", eventName="
-				+ eventName + ", isUsed=" + isUsed + "]";
+				+ eventName + ", isUsed=" + isUsed + ", stallNo=" + stallNo + "]";
 	}
 
+	
 }

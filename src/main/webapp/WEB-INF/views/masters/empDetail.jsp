@@ -137,6 +137,32 @@
 
 						</div>
 
+						<div class="colOuter">
+
+
+							<div class="col-md-2">
+								<div class="col1title" align="left">Employee Password*:</div>
+							</div>
+							<div class="col-md-3">
+								<input id="empPwd" class="form-control"
+									placeholder="Employee Password" name="empPwd"
+									value="${empDetail.password}" style="text-align: left;"
+									type="password" required>
+
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-2">
+								<div class="col1title" align="left">Employee Token*:</div>
+							</div>
+							<div class="col-md-3">
+								<input id="token" class="form-control"
+									placeholder="Employee Token" name="token" type="text"
+									style="text-align: left;" value="${empDetail.token}" required>
+
+							</div>
+
+						</div>
+
 
 
 						<div class="colOuter">
@@ -144,9 +170,10 @@
 								<div class="col1title" align="left">Employee Education*:</div>
 							</div>
 							<div class="col-md-3">
-								<input id="root" class="form-control" placeholder="Education"
-									name="education" style="text-align: left;"
-									value="${empDetail.empEducation}" type="text">
+								<input id="root" class="form-control"
+									placeholder="Employee Education" name="education"
+									style="text-align: left;" value="${empDetail.empEducation}"
+									type="text">
 
 							</div>
 
