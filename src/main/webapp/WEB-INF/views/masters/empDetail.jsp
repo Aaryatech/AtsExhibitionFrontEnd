@@ -105,7 +105,7 @@
 							</div>
 							<div class="col-md-3">
 								<input id="empDesg" class="form-control"
-									style="text-align: left;" placeholder="Customer Address"
+									style="text-align: left;" placeholder="Employee Designation"
 									value="${empDetail.empDesignation}" name="empDesg" type="text">
 
 							</div>
@@ -116,7 +116,7 @@
 
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Mobile No*:</div>
+								<div class="col1title" align="left">Employee Mobile No*:</div>
 							</div>
 							<div class="col-md-3">
 								<input id="mob" class="form-control" placeholder="Mobile No"
@@ -126,7 +126,7 @@
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">E-Mail*:</div>
+								<div class="col1title" align="left">Employee E-Mail*:</div>
 							</div>
 							<div class="col-md-3">
 								<input id="email" class="form-control" placeholder="Email"
@@ -141,7 +141,7 @@
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Education*:</div>
+								<div class="col1title" align="left">Employee Education*:</div>
 							</div>
 							<div class="col-md-3">
 								<input id="root" class="form-control" placeholder="Education"
@@ -155,13 +155,14 @@
 
 						<div class="profile">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Pic</div>
+								<div class="col1title" align="left">Employee Photo</div>
 							</div>
 							<div class="col-md-3">
 								<div class="profileinput">
 									<div class="editimg">
 
-										<img src="${url}${empDetail.empPhoto}" alt="img" id="img">
+										<img src="${empImgUrl}${empDetail.empPhoto}" alt="img"
+											id="img">
 									</div>
 								</div>
 							</div>

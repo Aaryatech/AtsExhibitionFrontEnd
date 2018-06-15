@@ -96,12 +96,17 @@ public class EmpController {
 			String email = request.getParameter("email");
 			String mob = request.getParameter("mob");
 			String education = request.getParameter("education");
+			String empPwd = request.getParameter("empPwd");
+			String token = request.getParameter("token");
 
 			System.out.println("empName" + empName);
 			System.out.println("empDesg" + empDesg);
 			System.out.println("email" + email);
 			System.out.println("mob" + mob);
 			System.out.println("education" + education);
+			System.out.println("empPwd" + empPwd);
+
+			System.out.println("token" + token);
 
 			ExhEmployee exhEmployee = new ExhEmployee();
 
@@ -113,6 +118,8 @@ public class EmpController {
 			exhEmployee.setIsUsed(1);
 			exhEmployee.setExhId(login.getExhibitor().getExhId());
 			exhEmployee.setEmpPhoto(img1);
+			exhEmployee.setPassword(empPwd);
+			exhEmployee.setToken(token);
 
 			System.out.println("exhEmployee" + exhEmployee);
 

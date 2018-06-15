@@ -127,6 +127,31 @@
 							<div class="col-md-3">
 								<input id="email" class="form-control" placeholder="Email"
 									name="email" type="email" style="text-align: left;"
+							required>
+
+							</div>
+
+						</div>
+
+						<div class="colOuter">
+
+
+							<div class="col-md-2">
+								<div class="col1title" align="left">Employee Password*:</div>
+							</div>
+							<div class="col-md-3">
+								<input id="empPwd" class="form-control"
+									placeholder="Employee Password" name="empPwd"
+									style="text-align: left;" type="password" required>
+
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-2">
+								<div class="col1title" align="left">Employee Token*:</div>
+							</div>
+							<div class="col-md-3">
+								<input id="token" class="form-control" placeholder="Employee Token"
+									name="token" type="text" style="text-align: left;"
 									value="${customer.custEmailId}" required>
 
 							</div>
@@ -190,7 +215,7 @@
 										<c:forEach items="${empList}" var="empList" varStatus="count">
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-												<td class="col-md-1"><c:out value="${empList.empPhoto}" /></td>
+												<td class="col-md-1"><img src="${empImgUrl}${empList.empPhoto}"  alt="No Image Available"/></td>
 												<td class="col-md-1"><c:out value="${empList.empName}" /></td>
 												<td class="col-md-1"><c:out
 														value="${empList.empMobile}" /></td>
