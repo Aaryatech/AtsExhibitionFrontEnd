@@ -180,7 +180,8 @@ public class HomeController {
 			eventList = new ArrayList<EventsWithSubStatus>(Arrays.asList(eventListResp));
 			
 			mav.addObject("eventList",eventList);
-			
+			mav.addObject("eventImgUrl", Constants.EVENT_IMG_URL);
+
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -188,6 +189,7 @@ public class HomeController {
 	}
 //	getEventDetail
 	
+		
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		System.out.println("User Logout");

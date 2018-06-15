@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<style>
+<!-- <style>
 #carousel {
 	width: 100%;
 	height: 150px;
@@ -29,16 +29,46 @@ article {
 	margin-left: 300px;
 	padding: 1em;
 }
+</style> -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+/* .search-table-outter {border:2px solid lightblue;}
+ */.search-table{table-layout: fixed; margin:40px auto 0px auto; }
+.search-table, td, th{border-collapse:collapse; border:1px solid lightblue;}
+th{padding:10px 7px; font-size:15px; color:lightblue; background:#66C2E0;}
+td{padding:5px 8px; height:35px;}
+
+.search-table-outter { overflow-x: scroll; }
+th, td { min-width: 200px; }
+/* table {
+    border-collapse: collapse;
+    border-spacing: 20px;
+    width: 100%;
+    border: 1px solid #ddd;
+    height: 150px;
+    overflow: visible;
+    white-space:nowrap;
+
+}
+th, td {
+    text-align: center;
+    padding: 13px;
+    padding-left:12px;
+    }
+  tr{ overflow-x: scroll;}
+    
+
+
+tr:nth-child(even){background-color: #f2f2f2} */
 </style>
-
-
 </head>
 <body>
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
-	<link rel="stylesheet"
+	<!-- <link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
@@ -48,7 +78,7 @@ article {
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
-
+ -->
 
 	<!--datepicker-->
 	<script type="text/javascript"
@@ -145,33 +175,40 @@ article {
 							</div>
 						</div>
 					</div>
-					<div class="carousel">
+					<div class="search-table-outter wrapper">
+	<table class="search-table inner">
+					<tr>
 						<c:forEach items="${memberList}" var="member">
-							<div class="slide">
-								<img src="${MemberImgUrl}${member.image}"
-									style="border-radius: 50%; width: 125px; height: 125px;">
-								<p>${member.memberName}-${member.designation}</p>
-							</div>
+						<td>
+						
+								<img src="${MemberImgUrl}${member.image}" class="w3-circle"
+									style="padding-left:15px; width: 170px; height: 125px;">
+								<p style="text-align: center; background-color: skyblue; color: white;">${member.memberName}-${member.designation}</p>
+						
+							</td>
 						</c:forEach>
-					</div>
-
+						
+					</tr>
+                   </table></div>
 					<div class="colOuter">
 						<div class="col-md-12">
 							<div class="col1title" align="left">
 								<b>Event Sponsors : </b>
 							</div>
 						</div>
-						<div class="background"
+					<!-- 	<div class="background"
 							style="width: auto; height: 170; white-space: nowrap; overflow-y: scroll; border: 0; padding: 10px;">
-							<c:forEach items="${sponserList}" var="sponsor">
-								<img src="src=" ${sponsorImgUrl}
-									${sponsor.photo}"
-									style="border-radius: 50%; width: 150px; height: 100px;">
-								<p>${sponsor.name}${sponsor.designation}</p>
-
+						 -->
+						 	<div class="search-table-outter wrapper">
+	<table class="search-table inner">
+					<tr>	<c:forEach items="${sponserList}" var="sponsor">
+								<td><img src="${SponsorImgUrl}${sponsor.photo}" class="w3-circle"
+									style="padding-left:15px; width: 170px; height: 125px;">
+								<p style="text-align: center; background-color: skyblue; color: white;">${sponsor.name}&nbsp;${sponsor.designation}</p>
+                              </td>
 							</c:forEach>
-						</div>
-					</div>
+					</tr>
+                   </table></div>
 					<!-- 
 <table width="100%" border="0"  cellpadding="0" cellspacing="0" style="border-left:1px solid #313131;border-right:1px solid #313131;border-top:1px solid #313131;">
   <tr>
@@ -192,7 +229,7 @@ article {
 								<b>Schedule : </b>
 							</div>
 							<table width="100%" border="0" cellpadding="0" cellspacing="0"
-								style="border-left: 1px solid #313131; border-right: 1px solid #313131; border-top: 1px solid #313131;">
+								style="border-left: 1px solid #87ceeb; border-right:1px solid #87ceeb; border-top: 1px solid #87ceeb">
 
 
 								<%-- <div class="w3-panel w3-pale-red  w3-border-green w3-border">
@@ -227,76 +264,35 @@ article {
 
 								<c:forEach items="${scheduleList}" var="schedule"
 									varStatus="count">
-									<tr style="background-color: lightgrey;">
+									<tr style="background-color: #badcea;">
 										<td colspan="11" width="100%"
-											style="border-bottom: 1px solid #313131; padding: 10px; color: black; font-size: 15px;"> 
-											<div class="row">
-											
-											<div class="col-md-3">
-											Schedule:${count.index+1}
-											</div>
-											
-											<div class="col-md-3">
-											Date:${schedule.date}
-											</div>
-												<div class="col-md-3">
-											Activity:${schedule.eventName}
-											</div>
-												<div class="col-md-3">
-											Day:${schedule.dayName}
-											</div>
-											
-											</div>
-											</td>
+											style="border-bottom: 1px solid #badceb; padding: 10px; color: black; font-size: 15px;">Schedule
+											${count.index+1}</td>
 									</tr>
-									<tr style="background-color: ff33f3;">
-										<%-- <td colspan="2" width="30%"
-											style="padding: 10px; color: black; border-bottom: 1px solid #313131; font-size: 15px;"><p>Date:${schedule.date}</p>
+									<tr style="background-color: #f3f3dd;">
+										<td colspan="2" width="30%"
+											style="padding: 10px; color: black; border-bottom: 1px solid #9fd5ec; font-size: 15px;"><p>Date:${schedule.date}</p>
 
 											<p>Activity:${schedule.eventName}</p>
-											<p>Day:${schedule.dayName}</p></td> --%>
+											<p>Day:${schedule.dayName}</p></td>
 										<td colspan="9" width="60%"
-											style="border-left: 1px solid #313131; border-bottom: 1px solid #313131; padding: 10px; color: #FFF; font-size: 15px;">
+											style="border-left: 1px solid #badceb; border-bottom: 1px solid #badceb; padding: 10px; color: #903a21; font-size: 15px;">
 
 											<c:forEach items="${schedule.scheduleDetailList}"
 												var="detail">
-											
-											<!-- 	<p><b><i>Details</i></b></p> -->
-												
-											<div class="row">
-											
-											<div class="col-md-3">
-											<b>Topic:</b>&nbsp;${detail.topic}
-											</div>
-											
-											<div class="col-md-3">
-											<b>Timing:</b>&nbsp;${detail.fromTime}-${detail.toTime}
-											</div>
-												<div class="col-md-3">
-											<b>Venue:</b>${detail.venue}
-											</div>
-												<div class="col-md-3">
-											<b>Speaker:</b>${detail.speaker}
-											</div>
-											
-											</div>
-											
-											<div class="row">
-											<div class="col-md-3" align="center">
-											${detail.remark}
-											</div>
-											</div>
-												<hr/>
-										
-													
-													
+												<p>Details</p>
+												<hr>
+												<p
+													style="color: #000; font-size: 15px; text-align: left; margin: 0px;">
+													Topic:${detail.topic}</br>
 
-													<%-- Timing:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.fromTime}-${detail.toTime}</br>
-													:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.venue}</br>
+													Timing:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.fromTime}-${detail.toTime}</br>
+													Venue:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.venue}</br>
 
-													:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.speaker}</br>
- --%>
-												
+													Speaker:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${detail.speaker}</br>
+
+													${detail.remark}</br>
+												</p>
 											</c:forEach>
 										</td>
 									</tr>
