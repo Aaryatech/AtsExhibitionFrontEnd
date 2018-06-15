@@ -91,8 +91,8 @@
 							</div>
 							<div class="col-md-3">
 								<input id="fromdatepicker" class="form-control"
-									placeholder="From Date" value="" style="text-align: left;"
-									name="fromDate" type="text" required>
+									placeholder="From Date" value="${strDate}"
+									style="text-align: left;" name="fromDate" type="text" required>
 
 
 							</div>
@@ -106,8 +106,8 @@
 							</div>
 							<div class="col-md-3">
 								<input id="todatepicker" class="form-control"
-									style="text-align: left;" placeholder="To Date" value=""
-									name="toDate" type="text" required>
+									style="text-align: left;" placeholder="To Date"
+									value="${strDate}" name="toDate" type="text" required>
 
 							</div>
 
@@ -182,7 +182,8 @@
 										<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
 
 										<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
-										<td class="col-md-1"><c:out value="${enqList.noOfEnqDays}" /></td>
+										<td class="col-md-1"><c:out
+												value="${enqList.noOfEnqDays}" /></td>
 
 										<td class="col-md-1" style="color:${color}"><c:out
 												value="${modType}" /></td>

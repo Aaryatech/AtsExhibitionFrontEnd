@@ -88,8 +88,8 @@
 								<textarea style="width: 800px;" name="question"
 									placeholder="Question" required="required">${fbQue.question}</textarea>
 							</div>
-							</div>
-	<div class="colOuter">
+						</div>
+						<div class="colOuter">
 							<div class="col-md-1">
 								<div class="col1title" align="left">Question Description*:
 								</div>
@@ -99,14 +99,14 @@
 									placeholder="Description" required="required">${fbQue.queDesc}</textarea>
 
 							</div>
+<br>
 
+							<div class="colOuter">
+								<div class="col-md-1">
+									<div class="col1title">Out of Rating*:</div>
+								</div>
+								<div class="col-md-1">
 
-<div class="colOuter">
-							<div class="col-md-1">
-								<div class="col1title" >Out of Rating*:</div>
-							</div>
-							<div class="col-md-1">
-								
 									<select name="outOfRating" style="width: 150px;">
 										<c:choose>
 											<c:when test="${fbQue.outOfRating==1}">
@@ -114,7 +114,6 @@
 												<option value="2">2</option>
 												<option value="3">3</option>
 												<option value="4">4</option>
-												<option value="5">5</option>
 											</c:when>
 
 											<c:when test="${fbQue.outOfRating==2}">
@@ -122,7 +121,7 @@
 												<option selected value="2">2</option>
 												<option value="3">3</option>
 												<option value="4">4</option>
-												<option value="5">5</option>
+
 											</c:when>
 
 											<c:when test="${fbQue.outOfRating==3}">
@@ -130,7 +129,7 @@
 												<option value="2">2</option>
 												<option selected value="3">3</option>
 												<option value="4">4</option>
-												<option value="5">5</option>
+
 											</c:when>
 
 											<c:when test="${fbQue.outOfRating==4}">
@@ -142,40 +141,36 @@
 											</c:when>
 
 
-											<c:when test="${fbQue.outOfRating==5}">
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option selected value="5">5</option>
-											</c:when>
+
 
 											<c:otherwise>
 												<option value="1">1</option>
 												<option value="2">2</option>
 												<option value="3">3</option>
 												<option value="4">4</option>
-												<option value="5">5</option>
+
 											</c:otherwise>
 										</c:choose>
 									</select>
-							</div>
-							
-								<input name="submit" class="buttonsaveorder" value="Submit"
-									type="submit" align="center"></div>
-						<!-- </div> -->
-						
-						<input type="hidden" name="fbId" value="${fbQue.fbId}" />
-
-					<!-- 	<div class="colOuter">
-							<div align="center"> -->
-								<input name="submit" class="buttonsaveorder" value="Submit"
+								</div>
+<br>
+<br>
+								<!-- <input name="submit" class="buttonsaveorder" value="Submit"
 									type="submit" align="center">
-								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
-						<!-- 	</div>
+							</div> -->
+							<!-- </div> -->
+
+							<input type="hidden" name="fbId" value="${fbQue.fbId}" />
+
+							<!-- 	<div class="colOuter">
+							<div align="center"> -->
+							<input name="submit" class="buttonsaveorder" value="Submit"
+								type="submit" align="center">
+							<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
+							<!-- 	</div>
 						</div>
  -->
-</div>
+						</div>
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">
@@ -244,7 +239,6 @@
 
 
 	<script>
-		
 		(function() {
 			var fauxTable = document.getElementById("faux-table");
 			var mainTable = document.getElementById("table_grid");

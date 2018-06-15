@@ -33,6 +33,27 @@ public class EnquiryController {
 		ModelAndView model = new ModelAndView("enquiry/enquiryBetDates");
 		try {
 
+			SimpleDateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+			Date curDate = new Date();
+			String strDate = originalFormat.format(curDate);
+			System.out.println("date " + curDate);
+			System.out.println("date " + strDate);
+
+			model.addObject("strDate", strDate);
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+
+			map.add("fromDate", strDate);
+			map.add("toDate", strDate);
+
+			EnquiryHeaderWithName[] enquiryHeaderWithName = rest
+					.postForObject(Constants.url + "/getAllEnquiryBetweenDates", map, EnquiryHeaderWithName[].class);
+
+			List<EnquiryHeaderWithName> eHWNList = new ArrayList<EnquiryHeaderWithName>(
+					Arrays.asList(enquiryHeaderWithName));
+			model.addObject("enquiryHeaderWithName", eHWNList);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,7 +91,7 @@ public class EnquiryController {
 			SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
 			for (int i = 0; i < eHWNList.size(); i++) {
 				EnquiryHeaderWithName header = eHWNList.get(i);
-System.err.println("Header no  " + i +"is  " +header.toString() );
+				System.err.println("Header no  " + i + "is  " + header.toString());
 				String stringDate = header.getDate();
 				String nextMeetDate = header.getDate();
 
@@ -82,7 +103,6 @@ System.err.println("Header no  " + i +"is  " +header.toString() );
 					long timeUnit = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 					System.err.println("time unit " + timeUnit);
 
-					
 					header.setNoOfEnqDays(timeUnit);
 					// cur Date -header.getDate()
 				} else if (header.getStatus() == 4 || header.getStatus() == 5) {

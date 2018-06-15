@@ -47,14 +47,13 @@ public class SpinQueController {
 
 			SpinQueMasterWithName[] res = rest.postForObject(Constants.url + "/getAllSpinQueByExhId", map,
 					SpinQueMasterWithName[].class);
-		
 
 			List<SpinQueMasterWithName> queList = new ArrayList<SpinQueMasterWithName>(Arrays.asList(res));
 			model.addObject("queList", queList);
-
 			
-			for(int i=0;i<queList.size();i++)
-			{
+			System.out.println("queList"+queList);
+
+			for (int i = 0; i < queList.size(); i++) {
 				queList.get(i).setDate(DateConvertor.convertToDMY(queList.get(i).getDate()));
 			}
 		} catch (Exception e) {
@@ -137,12 +136,25 @@ public class SpinQueController {
 
 			map.add("queId", queId);
 
-			SpinQueMasterWithName spinQueHeaderWithName = rest.postForObject(Constants.url + "/getAllSpinQueByQueId",
+			SpinQueMasterWithName spinQueHeader = rest.postForObject(Constants.url + "/getAllSpinQueByQueId",
 					map, SpinQueMasterWithName.class);
 
-			spinQueHeaderWithName.setDate(DateConvertor.convertToDMY(spinQueHeaderWithName.getDate()));
+			spinQueHeader.setDate(DateConvertor.convertToDMY(spinQueHeader.getDate()));
 
-			model.addObject("spinQueHeaderList", spinQueHeaderWithName);
+			model.addObject("spinQueHeaderList", spinQueHeader);
+
+			MultiValueMap<String, Object> map1 = new LinkedMultiValueMap<String, Object>();
+			map1.add("exhId", exhbId);
+
+			SpinQueMasterWithName[] res = rest.postForObject(Constants.url + "/getAllSpinQueByExhId", map1,
+					SpinQueMasterWithName[].class);
+
+			List<SpinQueMasterWithName> queList = new ArrayList<SpinQueMasterWithName>(Arrays.asList(res));
+			model.addObject("queList", queList);
+
+			for (int i = 0; i < queList.size(); i++) {
+				queList.get(i).setDate(DateConvertor.convertToDMY(queList.get(i).getDate()));
+			}
 
 		} catch (Exception e) {
 

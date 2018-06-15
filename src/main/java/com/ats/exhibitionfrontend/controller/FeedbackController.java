@@ -135,10 +135,18 @@ public class FeedbackController {
 
 			map.add("fbId", fbId);
 
+			MultiValueMap<String, Object> map1 = new LinkedMultiValueMap<String, Object>();
+
+			map1.add("exhbId", exhbId);
+
 			fbQueResponse = rest.postForObject(Constants.url + "/getFbQueByFbId", map, FeedbackQue.class);
 
 			model.addObject("fbQue", fbQueResponse);
 
+			FeedbackQue[] fbQueRes = rest.postForObject(Constants.url + "/getFeedbackQueByExbId", map1,
+					FeedbackQue[].class);
+			List<FeedbackQue> fbQueList = new ArrayList<FeedbackQue>(Arrays.asList(fbQueRes));
+			model.addObject("fbQueList", fbQueList);
 		} catch (Exception e) {
 
 			System.err.println("Exception in show Add Feddback Questions " + e.getMessage());
@@ -151,7 +159,6 @@ public class FeedbackController {
 	@RequestMapping(value = "/deleteFbQue/{fbId}", method = RequestMethod.GET)
 	public String deleteFbQue(HttpServletRequest request, HttpServletResponse response, @PathVariable int fbId) {
 
-		
 		try {
 
 			HttpSession session = request.getSession();
@@ -164,13 +171,12 @@ public class FeedbackController {
 			map.add("fbId", fbId);
 
 			fbQueResponse = rest.postForObject(Constants.url + "/getFbQueByFbId", map, FeedbackQue.class);
-			
+
 			fbQueResponse.setIsUsed(0);
-			FeedbackQue deleteFbQueResponse = rest.postForObject(Constants.url + "saveFeedbackQue", fbQueResponse, FeedbackQue.class);
+			FeedbackQue deleteFbQueResponse = rest.postForObject(Constants.url + "saveFeedbackQue", fbQueResponse,
+					FeedbackQue.class);
 
 			System.err.println("Delete feedback Question Response  " + deleteFbQueResponse.toString());
-
-
 
 		} catch (Exception e) {
 
@@ -181,10 +187,8 @@ public class FeedbackController {
 		return "redirect:/showAddFbQuestion";
 	}
 
-	
-	//getFbQueTxnByExhbId
-	
-	
+	// getFbQueTxnByExhbId
+
 	@RequestMapping(value = "/showFbQueTxn", method = RequestMethod.GET)
 	public ModelAndView showFbQueTxn(HttpServletRequest request, HttpServletResponse response) {
 
@@ -201,15 +205,14 @@ public class FeedbackController {
 
 			map.add("exhbId", exhbId);
 
-			//EventExhMapping
-			
-			EventExhMapping[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map, EventExhMapping[].class);
-			
-			List<EventExhMapping> eventList=new ArrayList<EventExhMapping>(Arrays.asList(eventListResp));
-			
+			// EventExhMapping
+
+			EventExhMapping[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map,
+					EventExhMapping[].class);
+
+			List<EventExhMapping> eventList = new ArrayList<EventExhMapping>(Arrays.asList(eventListResp));
+
 			model.addObject("eventList", eventList);
-			
-			
 
 		} catch (Exception e) {
 
@@ -219,10 +222,9 @@ public class FeedbackController {
 
 		return model;
 	}
-	
-	//getFbTxnByEvent
-	
-	
+
+	// getFbTxnByEvent
+
 	@RequestMapping(value = "/getFbTxnByEvent", method = RequestMethod.POST)
 	public ModelAndView getFbTxnByEvent(HttpServletRequest request, HttpServletResponse response) {
 
@@ -234,54 +236,49 @@ public class FeedbackController {
 			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
 
 			int exhbId = login.getExhibitor().getExhId();
-			
-			int eventId=Integer.parseInt(request.getParameter("sel_event"));
-			
-			
-			
+
+			int eventId = Integer.parseInt(request.getParameter("sel_event"));
 
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
 
-			//map.add("eventId", eventId);
+			// map.add("eventId", eventId);
 			List<GetFbQueTxn> fbTxnList;
-			if(eventId==-1) {
+			if (eventId == -1) {
 				map.add("exhbId", exhbId);
-GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByExhbId", map, GetFbQueTxn[].class);
-			
-			fbTxnList=new ArrayList<GetFbQueTxn>(Arrays.asList(fbQueTxn));
-			
-		
-			
+				GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByExhbId", map,
+						GetFbQueTxn[].class);
+
+				fbTxnList = new ArrayList<GetFbQueTxn>(Arrays.asList(fbQueTxn));
+
 			}
-			
+
 			else {
 				System.err.println("inside else if event Id not eq -1");
 
 				map.add("eventId", eventId);
-			GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByEventId", map, GetFbQueTxn[].class);
-			
-		fbTxnList=new ArrayList<GetFbQueTxn>(Arrays.asList(fbQueTxn));
-			
-			
-			
+				GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByEventId", map,
+						GetFbQueTxn[].class);
+
+				fbTxnList = new ArrayList<GetFbQueTxn>(Arrays.asList(fbQueTxn));
+
 			}
-			System.err.println("output  " +fbTxnList.toString());
+			System.err.println("output  " + fbTxnList.toString());
 			model.addObject("fbTxnList", fbTxnList);
-			
-			
-			 map = new LinkedMultiValueMap<String, Object>();
+
+			map = new LinkedMultiValueMap<String, Object>();
 
 			map.add("exhbId", exhbId);
 
-			//EventExhMapping
-			
-			EventExhMapping[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map, EventExhMapping[].class);
-			
-			List<EventExhMapping> eventList=new ArrayList<EventExhMapping>(Arrays.asList(eventListResp));
-			
+			// EventExhMapping
+
+			EventExhMapping[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map,
+					EventExhMapping[].class);
+
+			List<EventExhMapping> eventList = new ArrayList<EventExhMapping>(Arrays.asList(eventListResp));
+
 			model.addObject("eventList", eventList);
 
-			model.addObject("eventId",eventId);
+			model.addObject("eventId", eventId);
 
 		} catch (Exception e) {
 
@@ -291,11 +288,7 @@ GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByExhbId
 
 		return model;
 	}
-	
-	
-	
-	
-	
+
 	@RequestMapping(value = "/showFbTxnDetail/{fbId}", method = RequestMethod.GET)
 	public ModelAndView showFbTxnDetail(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable int fbId) {
@@ -305,38 +298,39 @@ GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByExhbId
 			model = new ModelAndView("feedback/fbTxnDetail");
 
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
-			
+
 			map.add("fbId", fbId);
 
 			GetFeedbackTxnDetails[] fbTxnList = rest.postForObject(Constants.url + "/getFeedbackTxnDetails", map,
 					GetFeedbackTxnDetails[].class);
 			List<GetFeedbackTxnDetails> fbTxnQueDetail = new ArrayList<GetFeedbackTxnDetails>(Arrays.asList(fbTxnList));
-			
-			System.err.println("Output fbTxn Details " +fbTxnQueDetail.toString());
-			
+
+			System.err.println("Output fbTxn Details " + fbTxnQueDetail.toString());
+
 			model.addObject("fbTxnDetail", fbTxnQueDetail);
 
 			// model.addObject("fbQue", fbQueResponse);
-			
+
 			HttpSession session = request.getSession();
 			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
 
 			int exhbId = login.getExhibitor().getExhId();
 
-		 map = new LinkedMultiValueMap<String, Object>();
+			map = new LinkedMultiValueMap<String, Object>();
 
 			map.add("exhbId", exhbId);
 
-			//EventExhMapping
-			
-			EventExhMapping[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map, EventExhMapping[].class);
-			
-			List<EventExhMapping> eventList=new ArrayList<EventExhMapping>(Arrays.asList(eventListResp));
-			
+			// EventExhMapping
+
+			EventExhMapping[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map,
+					EventExhMapping[].class);
+
+			List<EventExhMapping> eventList = new ArrayList<EventExhMapping>(Arrays.asList(eventListResp));
+
 			model.addObject("eventList", eventList);
-			
-			model.addObject("question",fbTxnQueDetail.get(0).getQuestion());
-			model.addObject("queDesc",fbTxnQueDetail.get(0).getQueDesc());
+
+			model.addObject("question", fbTxnQueDetail.get(0).getQuestion());
+			model.addObject("queDesc", fbTxnQueDetail.get(0).getQueDesc());
 
 		} catch (Exception e) {
 
@@ -348,7 +342,4 @@ GetFbQueTxn[] fbQueTxn = rest.postForObject(Constants.url + "getFbQueTxnByExhbId
 		return model;
 	}
 
-	
-	
-	
 }

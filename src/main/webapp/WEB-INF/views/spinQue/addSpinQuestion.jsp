@@ -99,7 +99,7 @@
 
 							<div class="colOuter">
 
-								<div class="col-md-2">Date</div>
+								<div class="col-md-1">Date*:</div>
 								<div class="col-md-3">
 									<input type="text" name="date"
 										value="${spinQueHeaderList.date}" placeholder="Date"
@@ -110,7 +110,9 @@
 
 								<!-- </div> -->
 
-									<input type="hidden" name="queId" value="${spinQueHeaderList.queId}" />
+								<input type="hidden" name="queId"
+									value="${spinQueHeaderList.queId}" />
+
 
 								<!-- 	<div class="colOuter">
 							<div align="center"> -->
@@ -129,9 +131,9 @@
 											<tr class="bgpink">
 												<th class="col-sm-1">Sr No</th>
 												<th class="col-md-1">Exh Name</th>
-												<th class="col-md-1">Question</th>
+												<th class="col-md-2">Question</th>
 
-												<th class="col-md-1">Description</th>
+												<th class="col-md-2">Description</th>
 												<th class="col-md-1">Date</th>
 												<th class="col-md-1">Action</th>
 											</tr>
@@ -143,13 +145,13 @@
 													<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 
 													<td class="col-md-1"><c:out value="${queList.exhName}" /></td>
-													<td class="col-md-1"><c:out
+													<td class="col-md-2"><c:out
 															value="${queList.question}" /></td>
 
-													<td class="col-md-1"><c:out value="${queList.queDesc}" /></td>
+													<td class="col-md-2"><c:out value="${queList.queDesc}" /></td>
 													<td class="col-md-1" align="right"><c:out
 															value="${queList.date}" /></td>
-													<td class="col-md-1"><div>
+													<td class="col-md-0.5"><div>
 															<a
 																href="${pageContext.request.contextPath}/editSpinQue/${queList.queId}"><abbr
 																title='Edit'><i class='fa fa-edit'></i> </abbr></a> <a
