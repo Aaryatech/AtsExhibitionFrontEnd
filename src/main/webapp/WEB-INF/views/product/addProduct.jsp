@@ -80,33 +80,39 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
+							<c:if test="${isEdit==1}">
+								<h3>Edit Product</h3>
+								</c:if>
+								<c:if test="${isEdit!=1}">
 								<h3>Add Product</h3>
+								</c:if>
+								
 							</div>
 
 						</div>
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Product Name*:</div>
+								<div class="col1title" align="left">Product Name<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="productName" class="form-control"
 									placeholder="Product Name" value="${product.prodName}"
 									style="text-align: left;" name="productName" type="text"
-									required  title="Enter Proper Product Name">
+									required  title="Enter Proper Product Name" maxlength="30">
 
 							</div>
 							<div class="col-md-1"></div>
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Product Description*:
+								<div class="col1title" align="left">Product Description<b style="color: red">*:</b>
 								</div>
 							</div>
 							<div class="col-md-3">
 
 								<textarea id="productDescription" class="form-control"
 									style="text-align: left;" placeholder="Product Description "
-									required="required" name="productDescription">${product.prodDesc}</textarea>
+									required="required" name="productDescription" maxlength="99">${product.prodDesc}</textarea>
 								<%-- <input id="productDescription" class="form-control"
 									style="text-align: left;" placeholder="Product Description "
 									value="${product.prodDesc}" name="productDescription" type="text"
@@ -123,8 +129,8 @@
 
 
 								<textarea id="productSpecif" class="form-control"
-									style="text-align: left;" placeholder="Product Specification "
-									name="productSpecif" required="required">${product.prodSpecification}</textarea>
+									style="text-align: left;" placeholder="Product Specification "  maxlength="99"
+									name="productSpecif" >${product.prodSpecification}</textarea>
 								<%-- <input id="productSpecif" class="form-control"
 									placeholder="Product Specification" name="productSpecif"
 									style="text-align: left;" value="${product.prodSpecification}"
@@ -133,7 +139,7 @@
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Product Experty*:</div>
+								<div class="col1title" align="left">Product Experty<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="proExperty" class="form-control"
@@ -147,29 +153,43 @@
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Product Image 1:</div>
+								<div class="col1title" align="left">Product Image 1<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
-								<input type="file" name="img1" id="img1"
+								<input type="file" name="img1" id="img1" onchange="readURL(this);"
 									value="${url}${product.prodImage1}" />
 								<c:if test="${isEdit==1}">
 									<a href="${url}${product.prodImage1}" data-lightbox="image-1"
 										tabindex="-1"><c:out value='View Image1' /></a>
 								</c:if>
 							</div>
+							<div class="col-md-4">
+							
+							    <img  id="blah" src="#" alt="Image 1" />
+							
+							</div>
+							</div>
 							<div class="col-md-1"></div>
+							<div class="colOuter">
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 2:</div>
 							</div>
 							<div class="col-md-3">
 
-								<input type="file" name="img2" id="img2"
+								<input type="file" name="img2" id="img2" onchange="readURL2(this);"
 									value="${url}${product.prodImage2}" />
 								<c:if test="${isEdit==1}">
 									<a href="${url}${product.prodImage2}" data-lightbox="image-1"
 										tabindex="-1"><c:out value='View Image2' /></a>
 								</c:if>
 							</div>
+							<div class="col-md-4">
+							
+							    <img  id="blah2" src="#" alt="Image 2" />
+							
+							</div>
+							
+							
 						</div>
 
 						<div class="colOuter">
@@ -177,7 +197,7 @@
 								<div class="col1title" align="left">Product Image 3:</div>
 							</div>
 							<div class="col-md-3">
-								<input type="file" name="image3" id="image3"
+								<input type="file" name="image3" id="image3" onchange="readURL3(this);"
 									value="${url}${product.prodImage3}" />
 								<c:if test="${isEdit==1}">
 									<a href="${url}${product.prodImage3}" data-lightbox="image-1"
@@ -185,11 +205,21 @@
 								</c:if>
 
 							</div>
+							
+							<div class="col-md-4">
+							
+							    <img  id="blah3" src="#" alt="Image 2" />
+							
+							</div>
+							
+							</div>
+							
 
 							<!-- 	
 							</div>
 
 						<div class="colOuter"> -->
+							<div class="colOuter">
 							<div>
 								<input name="submit" class="buttonsaveorder btn btn-sm"
 									value="Submit" type="submit" align="center">
@@ -235,11 +265,10 @@
 												
 												<td class="col-md-1"><div>
 														<a
-															href="${pageContext.request.contextPath}/editProduct/${productList.prodId}"><abbr
-															title='Edit'><i class='fa fa-edit'></i> </abbr></a> <a
-															href="${pageContext.request.contextPath}/deleteProduct/${productList.prodId}"
+															href="${pageContext.request.contextPath}/editProduct/${productList.prodId}"  title="Edit Product" class="btn btn-primary"><i class='fa fa-edit'></i> </a> <a
+															href="${pageContext.request.contextPath}/deleteProduct/${productList.prodId}" title="Delete Product"  class="btn btn-danger"
 															onClick="return confirm('Are you sure want to delete this record');">
-															<abbr title='Delete'><i class='fa fa-trash'></i></abbr>
+															<i class='fa fa-trash'></i>
 														</a>
 
 													</div></td>
@@ -280,6 +309,88 @@
 	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 	<!--easyTabs-->
 
+<script type="text/javascript">
+		function validate() {
+
+			// alert("Hi");
+			var pname = document.getElementById("productName").value;
+			//alert(pname);
+			var pDesc = document.getElementById("productDescription").value;
+			var pExperty = document.getElementById("proExperty").value;
+			var pImage = document.getElementById("img1").value;
+			var x = 1;
+			if (pname == null || pname == "") {
+				x = 0;
+				alert("Please Enter Name of Product");
+
+			} else if (pDesc == null || pDesc == "") {
+				x = 0;
+				alert("Please Enter Prodcuct Description");
+			} else if (pExperty == null || pExperty == "") {
+				x = 0;
+				alert("Please Enter Prodcuct Experty");
+			} else if (pImage == null || pImage == "") {
+				x = 0;
+				alert("Please Enter Prodcuct Image");
+			}
+			/* if(x==1){
+				//alert("final Else");
+				var form = document.getElementById("frm_search");
+				//alert("form  "+form);
+			  //  form.action ='${pageContext.request.contextPath}/saveProduct';
+				window.open('${pageContext.request.contextPath}/saveProduct');
+
+			 //   window.open('${pageContext.request.contextPath}/saveProduct');
+			   // form.submit();
+			}
+			 */
+
+		}
+		function readURL(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+
+	            reader.onload = function (e) {
+	                $('#blah')
+	                    .attr('src', e.target.result)
+	                    .width(100)
+	                    .height(100);
+	            };
+
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+		
+		function readURL2(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+
+	            reader.onload = function (e) {
+	                $('#blah2')
+	                    .attr('src', e.target.result)
+	                    .width(100)
+	                    .height(100);
+	            };
+
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+		
+		function readURL3(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+
+	            reader.onload = function (e) {
+	                $('#blah3')
+	                    .attr('src', e.target.result)
+	                    .width(100)
+	                    .height(100);
+	            };
+
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	</script>
 
 	<script>
 		function edit(suppId) {
