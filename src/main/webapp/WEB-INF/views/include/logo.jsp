@@ -5,8 +5,7 @@
 <!--topHeader-->
 <div class="fullGrid center logoBarbg slideposi">
 	<div class="wrapperIn positionR">
-    	<div class="logoBarLeft"><a href="${pageContext.request.contextPath}/home"><img src="${sessionScope.LOGOURL}${sessionScope.UserDetail.exhibitor.logo}" alt="monginis"></a></div>  
-       
+    	<div class="logoBarLeft"><a href="${pageContext.request.contextPath}/home"><img src="${sessionScope.LOGOURL}${sessionScope.UserDetail.exhibitor.logo}" alt="ATS"></a></div>  
          <c:choose>
                <c:when test = "${isSpDayShow ==true}">
                     <a class="special-day" href="${pageContext.request.contextPath}/showSpDayCake">Special Day Cake</a>
@@ -41,9 +40,9 @@
               </c:choose>
               
                
-                <li><a href="#"><div class="usericon">${frDetails.frName} </div>
+                <li><a href="${pageContext.request.contextPath}/logout"><div class="usericon">Log Out </div>
                  <div class="userimg">
-                <img src="${frDetails.frImage}"  height="70" width="70" this.src='${pageContext.request.contextPath}/resources/images/user.png';">
+                <img src="${pageContext.request.contextPath}/resources/images/logout.png"  height="70" width="70" this.src='${pageContext.request.contextPath}/resources/images/user.png'">
                 	</div> </a>
                 	<ul class="dropdown">
                        

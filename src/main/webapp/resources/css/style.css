@@ -88,7 +88,7 @@ margin: 0px auto;
 }
 
 .logoBarbg {
-   height: 93px;
+   height: 85px;
 }
 
 .logoBarRight {
@@ -147,7 +147,7 @@ min-height: 90px;
 .table-scroll th{
 	padding: 22px 0px;
 	vertical-align: top;
-	background: #ec268f !important;
+	background: #3ebdba !important;
 color: #fff !important;
 font-size: 16px;
 }
@@ -270,7 +270,7 @@ font-size: 16px;
  align-items:center;
  height:45px;
  margin-bottom:10px;
-background-color: #343690 !important;
+background-color: #42a0bd !important;
 }
 .ibox .ibox-head .ibox-title {
  font-size:20px;
@@ -285,7 +285,7 @@ background-color: #343690 !important;
 
 .ibox a{
 	margin-left: 0px;
-color: #343690 !important;
+color: #234758 !important;
 font-size: 16px;
 border-bottom: 1px solid #ccc;
 width: 100%;

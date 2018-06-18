@@ -9,14 +9,13 @@
 
 </head>
 <body>
-	--%>
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
-
+<!-- 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet"
+	 --><link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -133,7 +132,7 @@
 								<div class="col1title" align="left">Select Employee*</div>
 							</div>
 							<div class="col-md-3">
-								<select name="empId" style="width: 255px;">
+								<select name="empId"  class="form-control">
 									<c:forEach items="${empList}" var="empList">
 										<c:choose>
 											<c:when test="${empList.empId==taskDetail.empId}">
