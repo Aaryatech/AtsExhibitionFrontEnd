@@ -84,7 +84,7 @@ public class ReportControlller {
 			
 			if (eventId != -1) {
 				map.add("eventId", eventId);
-				map.add("exhbId", 0);
+				map.add("exhbId", exhbId);
 			} else {
 
 				map.add("eventId", 0);

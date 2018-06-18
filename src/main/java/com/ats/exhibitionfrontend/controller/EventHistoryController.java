@@ -145,7 +145,10 @@ public class EventHistoryController {
 		try {
 
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
-			map.add("exhbId", 0);
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			map.add("exhbId", login.getExhibitor().getExhId());
 			map.add("eventId", eventId);
 
 			GetEventVisitorName[] visNames = rest.postForObject(Constants.url + "/getEventVisitorName", map,
