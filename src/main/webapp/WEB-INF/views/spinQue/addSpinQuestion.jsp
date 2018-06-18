@@ -10,9 +10,9 @@
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
-
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+<!-- <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 	<script
@@ -68,7 +68,7 @@
 						action="${pageContext.request.contextPath}/saveSpinQuestion"
 						enctype="multipart/form-data">
 
-						<div class="col-md -3">
+						<div class="col-md-3">
 
 							<div class="col1title" align="left">
 								<h3>Add Spin Question</h3>
@@ -78,93 +78,103 @@
 
 						<div class="colOuter">
 							<div class="col-md-1">
-								<div class="col1title" align="left">Question*:</div>
+								<div class="col1title" align="left">
+									Question<b style="color: red;">*</b>:
+								</div>
 							</div>
 							<div class="col-md-3">
-								<textarea style="width: 800px;" name="question"
-									placeholder="Question" required="required">${spinQueHeaderList.question}</textarea>
+								<textarea cols="40" rows="5" name="question"
+									placeholder="Question" required oninvalid="this.setCustomValidity('Enter Spin Question Here')"
+    oninput="this.setCustomValidity('')">${spinQueHeaderList.question}</textarea>
+							</div>
+								<div class="col-md-1"></div>
+							<!-- </div>
+						<div class="colOuter"> -->
+							<div class="col-md-1">
+								<div class="col1title" align="left">
+									Description<b style="color: red;">*</b>:
+								</div>
+							</div>
+							<div class="col-md-1">
+								<textarea cols="40" rows="5" name="queDesc"
+									style="width: 520px;" placeholder="Description"
+									required oninvalid="this.setCustomValidity('Enter Spin Question Description Here')"
+    oninput="this.setCustomValidity('')">${spinQueHeaderList.queDesc}</textarea>
+
 							</div>
 						</div>
+
+
 						<div class="colOuter">
 							<div class="col-md-1">
-								<div class="col1title" align="left">Question Description*:
+								<div class="col1title" align="left">
+									Date<b style="color: red;">*</b>:
 								</div>
 							</div>
 							<div class="col-md-3">
-								<textarea style="width: 800px;" name="queDesc"
-									placeholder="Description" required="required">${spinQueHeaderList.queDesc}</textarea>
-
+								<input type="text" name="date" value="${spinQueHeaderList.date}"
+									placeholder="Date" id="fromdatepicker" class="form-control"
+									required oninvalid="this.setCustomValidity('Select Feedback Question Date Here')"
+    oninput="this.setCustomValidity('')" />
 							</div>
 
-
-							<div class="colOuter">
-
-								<div class="col-md-1">Date*:</div>
-								<div class="col-md-3">
-									<input type="text" name="date"
-										value="${spinQueHeaderList.date}" placeholder="Date"
-										id="fromdatepicker" class="form-control" required />
+							<!-- </div> -->
+<div class="col-md-2"></div>
+							<input type="hidden" name="queId"
+								value="${spinQueHeaderList.queId}" /> 
+								<div class="col-md-1">
+								<div class="col1title" align="right">
+								<input name="submit"
+								class="buttonsaveorder" value="Submit" type="submit">
 								</div>
-
-								<br> <br>
-
-								<!-- </div> -->
-
-								<input type="hidden" name="queId"
-									value="${spinQueHeaderList.queId}" />
-
-
-								<!-- 	<div class="colOuter">
-							<div align="center"> -->
-								<input name="submit" class="buttonsaveorder" value="Submit"
-									type="submit" align="center">
-								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
-								<!-- 	</div>
+								</div>
+								
+							<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
+							<!-- 	</div>
 						</div>
  -->
-							</div>
-							<div id="table-scroll" class="table-scroll">
-								<div id="faux-table" class="faux-table" aria="hidden"></div>
-								<div class="table-wrap">
-									<table id="table_grid" class="main-table">
-										<thead>
-											<tr class="bgpink">
-												<th class="col-sm-1">Sr No</th>
-												<th class="col-md-1">Exh Name</th>
-												<th class="col-md-2">Question</th>
+						</div>
+						<div id="table-scroll" class="table-scroll">
+							<div id="faux-table" class="faux-table" aria="hidden"></div>
+							<div class="table-wrap">
+								<table id="table_grid" class="main-table" border="1">
+									<thead>
+										<tr class="bgpink">
+											<th class="col-sm-1">Sr No</th>
+											<th class="col-md-1">Exh Name</th>
+											<th class="col-md-2">Question</th>
 
-												<th class="col-md-2">Description</th>
-												<th class="col-md-1">Date</th>
-												<th class="col-md-1">Action</th>
+											<th class="col-md-2">Description</th>
+											<th class="col-md-1">Date</th>
+											<th class="col-md-1">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<c:forEach items="${queList}" var="queList" varStatus="count">
+											<tr>
+												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+
+												<td class="col-md-1"><c:out value="${queList.exhName}" /></td>
+												<td class="col-md-2"><c:out value="${queList.question}" /></td>
+
+												<td class="col-md-2"><c:out value="${queList.queDesc}" /></td>
+												<td class="col-md-1" align="right"><c:out
+														value="${queList.date}" /></td>
+												<td class="col-md-0.5"><div>
+														<a
+															href="${pageContext.request.contextPath}/editSpinQue/${queList.queId}" title="Edit Spin Question" class="btn btn-light">
+															<i class='fa fa-edit' style="color:maroon"></i> </a> <a
+															href="${pageContext.request.contextPath}/deleteSpinQue/${queList.queId}" title="Delete Spin Question" class="btn btn-dark"
+															onClick="return confirm('Are you sure want to delete this record');">
+															<i class='fa fa-trash' style=" color: red; "></i>
+														</a>
+													</div></td>
 											</tr>
-										</thead>
-										<tbody>
-
-											<c:forEach items="${queList}" var="queList" varStatus="count">
-												<tr>
-													<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-
-													<td class="col-md-1"><c:out value="${queList.exhName}" /></td>
-													<td class="col-md-2"><c:out
-															value="${queList.question}" /></td>
-
-													<td class="col-md-2"><c:out value="${queList.queDesc}" /></td>
-													<td class="col-md-1" align="right"><c:out
-															value="${queList.date}" /></td>
-													<td class="col-md-0.5"><div>
-															<a
-																href="${pageContext.request.contextPath}/editSpinQue/${queList.queId}"><abbr
-																title='Edit'><i class='fa fa-edit'></i> </abbr></a> <a
-																href="${pageContext.request.contextPath}/deleteSpinQue/${queList.queId}"
-																onClick="return confirm('Are you sure want to delete this record');">
-																<abbr title='Delete'><i class='fa fa-trash'></i></abbr>
-															</a>
-														</div></td>
-												</tr>
-											</c:forEach>
-									</table>
-								</div>
+										</c:forEach>
+								</table>
 							</div>
+						</div>
 					</form>
 				</div>
 				<!--tabNavigation-->
