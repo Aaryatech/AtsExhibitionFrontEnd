@@ -82,9 +82,24 @@
 
 
 
+	<div class="colOuter">
 
+							<div class="col-md-2">
+								<div class="col1title" align="left">Select Event*:</div>
+							</div>
 
-						<div class="colOuter">
+							<div class="col-md-2">
+								<select class="selectpicker" data-live-search="true"
+									title="Please Select" name="eventId" id="eventId" required>
+
+									<c:forEach items="${eventHistory}" var="eventHistory">
+										<option value="${eventHistory.eventId}">${eventHistory.eventName}</option>
+
+									</c:forEach>
+								</select>
+							</div>
+
+						<%-- <div class="colOuter">
 
 							<div class="col-md-2">
 								<div class="col1title" align="left">Select Event*:</div>
@@ -100,7 +115,7 @@
 
 									</c:forEach>
 								</select>
-							</div>
+							</div> --%>
 							<div class="col-md-2"></div>
 
 							<div class="col-md-2">
