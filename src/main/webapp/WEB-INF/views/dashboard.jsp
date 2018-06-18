@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 					 
 
 					</div><br><br>
-					<div class="colOuter">
+					<div class="colOuter"><hr></hr>
 					</div>
 						
 				<div class="colOuter">
@@ -225,17 +225,15 @@ h1, h2, h3, h4, h5, h6 {
 							<a href="${pageContext.request.contextPath}/showFbQueTxn">	<div class="layers bd bgc-white3 p-20"style="background: url(${pageContext.request.contextPath}/resources/images/a7.png); background-position: center; "><div class="layer w-100 mB-10"><h6 class="lh-1">Total Feedback</h6></div><div class="layer w-100"><div class="peers ai-sb fxw-nw"><div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div><div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">0${feedbackList.size()} </span></div></div></div></div>
 							</a>	</div>	
 							
-							
+								<div class="col-md-3">
+							<a href="${pageContext.request.contextPath}/showEnquiryBetweenDates">	<div class="layers bd bgc-white p-20"style="background: url(${pageContext.request.contextPath}/resources/images/a4.jpeg); background-position: center; "><div class="layer w-100 mB-10"><h6 class="lh-1">Total Enquiry</h6></div><div class="layer w-100"><div class="peers ai-sb fxw-nw"><div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div><div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">0${enquiryList.size()} </span></div></div></div></div>
+							</a>	</div>		
 						  
 					</div>	     
 					
 					  <div class="colOuter">
 						<!-- copy div kalpesh -->
 
-				
-					<div class="col-md-3">
-							<a href="${pageContext.request.contextPath}/showEnquiryBetweenDates">	<div class="layers bd bgc-white p-20"style="background: url(${pageContext.request.contextPath}/resources/images/a4.jpeg); background-position: center; "><div class="layer w-100 mB-10"><h6 class="lh-1">Total Enquiry</h6></div><div class="layer w-100"><div class="peers ai-sb fxw-nw"><div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div><div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">0${enquiryList.size()} </span></div></div></div></div>
-							</a>	</div>		
 					
 						<div class="col-md-3">
 							<a href="${pageContext.request.contextPath}/enquiryList/1">	<div class="layers bd bgc-white2 p-20"style="background: url(${pageContext.request.contextPath}/resources/images/a5.jpeg); background-position: center; "><div class="layer w-100 mB-10" ><h6 class="lh-1">Total Pending Enquiry</h6></div><div class="layer w-100"><div class="peers ai-sb fxw-nw"><div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div><div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">0${pending.size()} </span></div></div></div></div>
@@ -246,13 +244,6 @@ h1, h2, h3, h4, h5, h6 {
 							</a>	</div>		
 							
 							 
-						  
-					</div>	 
-					
-					<div class="colOuter">
-					 
-
-				
 					<div class="col-md-3">
 							<a href="${pageContext.request.contextPath}/enquiryList/4">	<div class="layers bd bgc-white3 p-20" style="background: url(${pageContext.request.contextPath}/resources/images/a8.jpeg); background-position: center; "><div class="layer w-100 mB-10"><h6 class="lh-1"> Total Closed Enquiry</h6></div><div class="layer w-100"><div class="peers ai-sb fxw-nw"><div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div><div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">0${closed.size()}</span></div></div></div></div>
 							</a>	</div>
@@ -260,9 +251,10 @@ h1, h2, h3, h4, h5, h6 {
 						<div class="col-md-3">
 							<a href="${pageContext.request.contextPath}/enquiryList/5">	<div class="layers bd bgc-white p-20"><div class="layer w-100 mB-10"><h6 class="lh-1">  Total Completed Enquiry</h6></div><div class="layer w-100"><div class="peers ai-sb fxw-nw"><div class="peer peer-greed"><span id="sparklinedash"><canvas width="45" height="20" style="display: inline-block; width: 45px; height: 20px; vertical-align: top;"></canvas></span></div><div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500">0${completed.size()}</span></div></div></div></div>
 							</a>	</div>
-										 
-							
-							<br><br><br><br><br><br> <hr color="red" width="100%" />
+						  
+					</div>	 
+						 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					 
 							<div class="colOuter" style=" background:white; border-box;   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);">
 						<div class="col-md-4">
 							<div class="col1title" align="left" style="color:#502c2c;">
