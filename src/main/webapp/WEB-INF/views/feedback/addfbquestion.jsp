@@ -99,7 +99,7 @@
 									placeholder="Description" required="required">${fbQue.queDesc}</textarea>
 
 							</div>
-<br>
+							<br>
 
 							<div class="colOuter">
 								<div class="col-md-1">
@@ -139,77 +139,82 @@
 												<option selected value="4">4</option>
 												<option value="5">5</option>
 											</c:when>
-
-
-
+											
+											<c:when test="${fbQue.outOfRating==5}">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option  value="4">4</option>
+												<option selected value="5">5</option>
+											</c:when>
 
 											<c:otherwise>
 												<option value="1">1</option>
 												<option value="2">2</option>
 												<option value="3">3</option>
 												<option value="4">4</option>
-
+												<option  value="5">5</option>
 											</c:otherwise>
+											
 										</c:choose>
 									</select>
 								</div>
-<br>
-<br>
+								<br> <br>
 								<!-- <input name="submit" class="buttonsaveorder" value="Submit"
 									type="submit" align="center">
 							</div> -->
-							<!-- </div> -->
+								<!-- </div> -->
 
-							<input type="hidden" name="fbId" value="${fbQue.fbId}" />
+								<input type="hidden" name="fbId" value="${fbQue.fbId}" />
 
-							<!-- 	<div class="colOuter">
+								<!-- 	<div class="colOuter">
 							<div align="center"> -->
-							<input name="submit" class="buttonsaveorder" value="Submit"
-								type="submit" align="center">
-							<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
-							<!-- 	</div>
+								<input name="submit" class="buttonsaveorder" value="Submit"
+									type="submit" align="center">
+								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
+								<!-- 	</div>
 						</div>
  -->
-						</div>
-						<div id="table-scroll" class="table-scroll">
-							<div id="faux-table" class="faux-table" aria="hidden"></div>
-							<div class="table-wrap">
-								<table id="table_grid" class="main-table">
-									<thead>
-										<tr class="bgpink">
-											<th class="col-sm-1">Sr No</th>
-											<th class="col-md-3">Question</th>
-											<th class="col-md-3">Description</th>
-											<th class="col-md-1">Rating Out Of</th>
-											<th class="col-md-1">Action</th>
-										</tr>
-									</thead>
-									<tbody>
-
-										<c:forEach items="${fbQueList}" var="fbQueList"
-											varStatus="count">
-											<tr>
-												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-												<td class="col-md-3"><c:out
-														value="${fbQueList.question}" /></td>
-												<td class="col-md-3"><c:out
-														value="${fbQueList.queDesc}" /></td>
-												<td class="col-md-1" align="right"><c:out
-														value="${fbQueList.outOfRating}" /></td>
-												<td class="col-md-1"><div>
-														<a
-															href="${pageContext.request.contextPath}/editFbQue/${fbQueList.fbId}"><abbr
-															title='Edit'><i class='fa fa-edit'></i> </abbr></a> <a
-															href="${pageContext.request.contextPath}/deleteFbQue/${fbQueList.fbId}"
-															onClick="return confirm('Are you sure want to delete this record');">
-															<abbr title='Delete'><i class='fa fa-trash'></i></abbr>
-														</a>
-													</div></td>
-											</tr>
-										</c:forEach>
-								</table>
 							</div>
-						</div>
+							<div id="table-scroll" class="table-scroll">
+								<div id="faux-table" class="faux-table" aria="hidden"></div>
+								<div class="table-wrap">
+									<table id="table_grid" class="main-table">
+										<thead>
+											<tr class="bgpink">
+												<th class="col-sm-1">Sr No</th>
+												<th class="col-md-3">Question</th>
+												<th class="col-md-3">Description</th>
+												<th class="col-md-1">Rating Out Of</th>
+												<th class="col-md-1">Action</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<c:forEach items="${fbQueList}" var="fbQueList"
+												varStatus="count">
+												<tr>
+													<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+													<td class="col-md-3"><c:out
+															value="${fbQueList.question}" /></td>
+													<td class="col-md-3"><c:out
+															value="${fbQueList.queDesc}" /></td>
+													<td class="col-md-1" align="right"><c:out
+															value="${fbQueList.outOfRating}" /></td>
+													<td class="col-md-1"><div>
+															<a
+																href="${pageContext.request.contextPath}/editFbQue/${fbQueList.fbId}"><abbr
+																title='Edit'><i class='fa fa-edit'></i> </abbr></a> <a
+																href="${pageContext.request.contextPath}/deleteFbQue/${fbQueList.fbId}"
+																onClick="return confirm('Are you sure want to delete this record');">
+																<abbr title='Delete'><i class='fa fa-trash'></i></abbr>
+															</a>
+														</div></td>
+												</tr>
+											</c:forEach>
+									</table>
+								</div>
+							</div>
 					</form>
 				</div>
 				<!--tabNavigation-->

@@ -50,9 +50,7 @@
 	<div class="wrapper">
 
 		<!--topHeader-->
-		<c:url var="findAddOnRate" value="/getAddOnRate" />
-		<c:url var="findItemsByCatId" value="/getFlavourBySpfId" />
-		<c:url var="findAllMenus" value="/getAllTypes" />
+	
 		<jsp:include page="/WEB-INF/views/include/logo.jsp"></jsp:include>
 
 
@@ -74,33 +72,33 @@
 				<div class="sidebarright">
 
 					<form name="frm_search" id="frm_search" method="post"
-						action="${pageContext.request.contextPath}/insertEmployee"
+						action="${pageContext.request.contextPath}/editEmployee"
 						enctype="multipart/form-data">
 
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Employee Detail</h3>
+								<h3>Edit Employee Detail</h3>
 							</div>
 
 						</div>
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Name*:</div>
+								<div class="col1title" align="left">Employee Name<b style="color: red">:*</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="custName" class="form-control"
 									placeholder="Employee Name" value="${empDetail.empName}"
 									style="text-align: left;" name="empName" type="text"> <input
 									id="empId" class="form-control" name="empId"
-									value="${customer.custId}" type="hidden">
+									value="${empDetail.empId}" type="hidden">
 
 							</div>
 							<div class="col-md-1"></div>
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Designation*:
+								<div class="col1title" align="left">Employee Designation<b style="color: red">:*</b>
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -116,7 +114,7 @@
 
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Mobile No*:</div>
+								<div class="col1title" align="left">Employee Mobile No<b style="color: red">:*</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="mob" class="form-control" placeholder="Mobile No"
@@ -126,7 +124,7 @@
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee E-Mail*:</div>
+								<div class="col1title" align="left">Employee E-Mail<b style="color: red">:*</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="email" class="form-control" placeholder="Email"
@@ -141,7 +139,7 @@
 
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Password*:</div>
+								<div class="col1title" align="left">Employee Password<b style="color: red">:*</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="empPwd" class="form-control"
@@ -152,7 +150,7 @@
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Token*:</div>
+								<div class="col1title" align="left">Employee Token<b style="color: red">:*</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="token" class="form-control"
@@ -167,7 +165,7 @@
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Education*:</div>
+								<div class="col1title" align="left">Employee Education<b style="color: red">:*</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="root" class="form-control"
@@ -182,22 +180,30 @@
 
 						<div class="profile">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Photo</div>
+								<div class="col1title" align="left">Employee Photo<b style="color: red">:*</b></div>
 							</div>
 							<div class="col-md-3">
-								<div class="profileinput">
+							<!-- 	<div class="profileinput">
 									<div class="editimg">
-
-										<img src="${empImgUrl}${empDetail.empPhoto}" alt="img"
-											id="img">
-									</div>
-								</div>
+ -->
+										<input type="file" name="image" value="image" id="image"  onchange="readURL3(this);"
+									required oninvalid="this.setCustomValidity('Attach Employee Photo Here')"
+    oninput="this.setCustomValidity('')">
+							</div>
+							
+								<div class="col-md-4"> Emp Photo
+							
+							    <img  id="blah3" src="${empImgUrl}${empDetail.empPhoto}" alt="No Image Availbable" width="100" height="100" />
+							
+							</div>
+								<!-- 	</div>
+								</div> -->
 							</div>
 						</div>
 
 						<div class="colOuter">
 							<div align="center">
-								<input name="submit" class="buttonsaveorder" value="Submit"
+								<input name="submit" class="buttonsaveorder" value= "Edit Employee"
 									type="submit" align="center">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
@@ -298,6 +304,21 @@
 			fauxTable.appendChild(clonedElement2);
 		})();
 	</script>
+<script >
+		function readURL3(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
 
+	            reader.onload = function (e) {
+	                $('#blah3')
+	                    .attr('src', e.target.result)
+	                    .width(100)
+	                    .height(100);
+	            };
+
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	    </script>
 </body>
 </html>

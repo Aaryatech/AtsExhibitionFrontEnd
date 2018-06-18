@@ -81,12 +81,14 @@
 						</div>
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Name*:</div>
+								<div class="col1title" align="left">Employee Name<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="custName" class="form-control"
 									placeholder="Employee Name" value="${customer.custName}"
-									style="text-align: left;" name="empName" type="text" required>
+									style="text-align: left;" name="empName" type="text" required
+									 oninvalid="this.setCustomValidity('Enter Employee Name Here')"
+    oninput="this.setCustomValidity('')"  >
 								<input id="empId" class="form-control" name="empId" value=""
 									type="hidden">
 
@@ -94,13 +96,14 @@
 							<div class="col-md-1"></div>
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Designation*:
+								<div class="col1title" align="left">Employee Designation<b style="color: red">*:</b>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="empDesg" class="form-control"
 									style="text-align: left;" placeholder="Employee Designation"
-									value="" name="empDesg" type="text" required>
+									value="" name="empDesg" type="text" required  oninvalid="this.setCustomValidity('Enter Employee Designation Here')"
+    oninput="this.setCustomValidity('')" >
 
 							</div>
 
@@ -110,22 +113,24 @@
 
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Mobile No*:</div>
+								<div class="col1title" align="left">Employee Mobile No<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="mob" class="form-control"
 									placeholder="Employee Mobile No" name="mob"
 									style="text-align: left;" value="${customer.custMobNo}"
-									pattern="^\d{10}$" type="text" required>
+									pattern="^\d{10}$" type="text" required oninvalid="this.setCustomValidity('Enter Employee Mobile No. Here')"
+    oninput="this.setCustomValidity('')" >
 
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee E-Mail*:</div>
+								<div class="col1title" align="left">Employee E-Mail<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
-								<input id="email" class="form-control" placeholder="Email"
-									name="email" type="email" style="text-align: left;" required>
+								<input id="email" class="form-control" placeholder="Employee Email"
+									name="email" type="email" style="text-align: left;" oninvalid="this.setCustomValidity('Enter Employee Email Id Here')"
+    oninput="this.setCustomValidity('')" required>
 
 							</div>
 
@@ -135,22 +140,24 @@
 
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Password*:</div>
+								<div class="col1title" align="left">Employee Password<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="empPwd" class="form-control"
 									placeholder="Employee Password" name="empPwd"
-									style="text-align: left;" type="password" required>
+									style="text-align: left;" type="password"  required oninvalid="this.setCustomValidity('Enter Employee Password Here')"
+    oninput="this.setCustomValidity('')">
 
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Token*:</div>
+								<div class="col1title" align="left">Employee Token<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="token" class="form-control"
 									placeholder="Employee Token" name="token" type="text"
-									style="text-align: left;" value="" required>
+									style="text-align: left;" value="" required oninvalid="this.setCustomValidity('Enter Employee Token Here')"
+    oninput="this.setCustomValidity('')">
 
 							</div>
 
@@ -160,12 +167,13 @@
 
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Education*:</div>
+								<div class="col1title" align="left">Employee Education <b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
 								<input id="root" class="form-control"
 									placeholder="Employee Education" name="education"
-									style="text-align: left;" value="" type="text" required>
+									style="text-align: left;" value="" type="text" oninvalid="this.setCustomValidity('Enter Employee Education Here')"
+    oninput="this.setCustomValidity('')" required>
 
 							</div>
 
@@ -174,12 +182,20 @@
 
 						<div class="profile">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Pic</div>
+								<div class="col1title" align="left">Employee Pic<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
-								<input type="file" name="image" value="image" id="image"
-									required>
+								<input type="file" name="image" value="image" id="image"  onchange="readURL3(this);"
+									required oninvalid="this.setCustomValidity('Attach Employee Photo Here')"
+    oninput="this.setCustomValidity('')">
 							</div>
+							
+								<div class="col-md-4"> Emp Photo
+							
+							    <img  id="blah3" src="#" alt="No Image Availbable" width="100" height="100" />
+							
+							</div>
+							
 						</div>
 
 						<div class="colOuter">
@@ -214,7 +230,7 @@
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-1"><img
-													src="${empImgUrl}${empList.empPhoto}"
+													src="${empImgUrl}${empList.empPhoto}" width="100" height="50"
 													alt="No Image Available" /></td>
 												<td class="col-md-1"><c:out value="${empList.empName}" /></td>
 												<td class="col-md-1"><c:out
@@ -224,14 +240,14 @@
 														value="${empList.empEducation}" /></td>
 												<td class="col-md-1"><div>
 														<a
-															href="${pageContext.request.contextPath}/empDetail/${empList.empId}"
-															class="action_btn"><abbr title="Details"><i
-																class="fa fa-list"></i></abbr></a>
+															href="${pageContext.request.contextPath}/empDetail/${empList.empId}" title="Edit Employee"
+															class="btn btn-primary"><i
+																class="fa fa-edit"></i></a>
 														<%-- <a href="${pageContext.request.contextPath}/editEmp/${empList.empId}"><abbr title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%>
 														<a
-															href="${pageContext.request.contextPath}/deleteEmp/${empList.empId}"
+															href="${pageContext.request.contextPath}/deleteEmp/${empList.empId}" title="Delete Employee" class="btn btn-danger"
 															onClick="return confirm('Are you sure want to delete this record');">
-															<abbr title='Delete'><i class='fa fa-trash'></i></abbr>
+															<i class='fa fa-trash'></i>
 														</a>
 
 													</div></td>
@@ -334,6 +350,22 @@
 			fauxTable.appendChild(clonedElement2);
 		})();
 	</script>
+	<script >
+		function readURL3(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+
+	            reader.onload = function (e) {
+	                $('#blah3')
+	                    .attr('src', e.target.result)
+	                    .width(100)
+	                    .height(100);
+	            };
+
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+	    </script>
 
 </body>
 </html>

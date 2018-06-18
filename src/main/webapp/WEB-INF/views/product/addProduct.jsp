@@ -99,7 +99,8 @@
 								<input id="productName" class="form-control"
 									placeholder="Product Name" value="${product.prodName}"
 									style="text-align: left;" name="productName" type="text"
-									required  title="Enter Proper Product Name" maxlength="30">
+									required   oninvalid="this.setCustomValidity('Enter Product Name Here')"
+    oninput="this.setCustomValidity('')"  maxlength="30">
 
 							</div>
 							<div class="col-md-1"></div>
@@ -112,7 +113,8 @@
 
 								<textarea id="productDescription" class="form-control"
 									style="text-align: left;" placeholder="Product Description "
-									required="required" name="productDescription" maxlength="99">${product.prodDesc}</textarea>
+									required  oninvalid="this.setCustomValidity('Enter Product Description Here')"
+    oninput="this.setCustomValidity('')"  name="productDescription" maxlength="99">${product.prodDesc}</textarea>
 								<%-- <input id="productDescription" class="form-control"
 									style="text-align: left;" placeholder="Product Description "
 									value="${product.prodDesc}" name="productDescription" type="text"
@@ -142,7 +144,8 @@
 								<div class="col1title" align="left">Product Experty<b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
-								<input id="proExperty" class="form-control"
+								<input id="proExperty" class="form-control"  oninvalid="this.setCustomValidity('Enter Product Experty Here')"
+    oninput="this.setCustomValidity('')" 
 									placeholder="Product Experty " name="proExperty" type="text"
 									style="text-align: left;" value="${product.prodExperty}"
 									required>
@@ -157,15 +160,16 @@
 							</div>
 							<div class="col-md-3">
 								<input type="file" name="img1" id="img1" onchange="readURL(this);"
-									value="${url}${product.prodImage1}" />
+									value="${url}${product.prodImage1}"  required oninvalid="this.setCustomValidity('Attach Product Image 1 Here')"
+    oninput="this.setCustomValidity('')"  />
 								<c:if test="${isEdit==1}">
 									<a href="${url}${product.prodImage1}" data-lightbox="image-1"
 										tabindex="-1"><c:out value='View Image1' /></a>
 								</c:if>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4"> Image 1
 							
-							    <img  id="blah" src="#" alt="Image 1" />
+							    <img  id="blah" src="${url}${product.prodImage1}" alt="Image 1" width="100" height="100" />
 							
 							</div>
 							</div>
@@ -183,9 +187,9 @@
 										tabindex="-1"><c:out value='View Image2' /></a>
 								</c:if>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4"> Image 2
 							
-							    <img  id="blah2" src="#" alt="Image 2" />
+							    <img  id="blah2" src="${url}${product.prodImage2}" alt="Image 2"  width="100" height="100"/>
 							
 							</div>
 							
@@ -206,9 +210,9 @@
 
 							</div>
 							
-							<div class="col-md-4">
+							<div class="col-md-4"> Image 3
 							
-							    <img  id="blah3" src="#" alt="Image 2" />
+							    <img  id="blah3" src="${url}${product.prodImage3}" alt="Image 3" width="100" height="100" />
 							
 							</div>
 							
@@ -255,7 +259,7 @@
 												
 												<td class="col-md-2"><img
 													src="${url}${productList.prodImage1}"
-													alt="No Image Available" /></td>
+													alt="No Image Available" height="100" width="100"/></td>
 												<td class="col-md-2"><c:out
 														value="${productList.prodName}" /></td>
 												<td class="col-md-1"><c:out
