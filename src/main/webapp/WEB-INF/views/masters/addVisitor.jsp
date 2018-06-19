@@ -9,7 +9,7 @@
 
 </head>
 <body>
- --%>
+
 
 <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 <c:url var="editFrSupplier" value="/editFrSupplier"></c:url>

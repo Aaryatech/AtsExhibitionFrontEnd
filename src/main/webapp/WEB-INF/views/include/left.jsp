@@ -10,6 +10,8 @@
 .topSlide2 {
 	padding: 20px 60px 20px 20px;
 }
+.sidebarOuter{ z-index:0; left:0px; top:0px; bottom:0px; width:130px;  background: lightblue url(${pageContext.request.contextPath}/resources/images/left.jpeg) }
+
 </style>
 <div class="sidebarhome">
 	<div class="content mCustomScrollbar">
@@ -400,7 +402,7 @@
 		<div class="topSlide2">
 			<a href="javascript:void(0)" class="closebtn" onClick="closeNav3()"><img
 				src="${pageContext.request.contextPath}/resources//images/closebtn.png"
-				alt="monginis"></a>
+				alt="ATS"></a>
 			<div class="listarea">
 
 				<ul>

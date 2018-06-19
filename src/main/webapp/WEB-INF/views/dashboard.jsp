@@ -254,7 +254,7 @@ h1, h2, h3, h4, h5, h6 {
 							</a>	</div>
 						  
 					</div>	 
-						 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+						 <br><br><br><br><br><br><br><br><br><br><br><br>
 					 
 							<div class="colOuter" style=" background:white; border-box;   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);">
 						<div class="col-md-4">
@@ -264,10 +264,10 @@ h1, h2, h3, h4, h5, h6 {
 						</div>
 					
 		 
-								  <div   class="col-md-4"  align="center" id="chart" style="display: none"><br><br><br>
+								  <div   class="col-md-6"  align="center" id="chart" style="display: none">
 								 <div >
 	  
-			<div  id="Piechart" style="width:40%; height:50%; float: center;" ></div> 
+			<div  id="Piechart" style="width:60%; height:60%; float: center;" ></div> 
 			</div>
 			  
 				</div> 
@@ -455,7 +455,7 @@ function showChart(){
 									   
 							 var options = {'title':'Enquiry',
 				                       'width':400,
-				                       'height':250,is3D:true};
+				                       'height':350,is3D:true};
 							 var chart = new google.visualization.PieChart(document.getElementById('Piechart'));
 							 //document.getElementById("Piechart").style.border = "thin dotted red";
 							      function selectHandler() {

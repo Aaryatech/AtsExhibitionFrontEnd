@@ -15,8 +15,8 @@
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 	<script
@@ -66,16 +66,22 @@
 				<jsp:include page="/WEB-INF/views/include/left.jsp">
 					<jsp:param name="myMenu" value="${menuList}" />
 				</jsp:include>
-				<br>
 
 
 				<div class="sidebarright">
 					<form name="frm_search" id="frm_search" method="post"
 						action="${pageContext.request.contextPath}/getFbTxnByEvent">
 
-						<div align="left">
-						<b>Select Event</b>
-							<select name="sel_event" style="width: 220px; ">
+						<div class="colOuter">
+							<div class="col1title" align="left">
+								<h3>Feedback Question Transaction</h3>
+							</div>
+
+						</div>
+
+						<div class="colOuter">
+						<div class="col-md-2">Select Event</div>
+						<div class="col-md-3">	<select name="sel_event" class="form-control">
 																<option value="-1">ALL</option>
 							
 								<c:forEach items="${eventList}" var="events">
@@ -90,16 +96,10 @@
 
 									</c:choose>
 								</c:forEach>
-							</select> <input type="submit" value="Search" class="btn btn-info btn-md">
-						</div>
-
-						<div class="col-md -3">
-
-							<div class="col1title" align="left">
-								<h3>Feedback Question Transaction</h3>
+							</select> 
 							</div>
-
-						</div>
+						<div class="col-md-2">	<input type="submit" value="Search" class="btn btn-info btn-md">
+					</div>	</div>
 
 						<%-- 						<div class="colOuter">
 							<div class="col-md-2">
@@ -198,7 +198,7 @@
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">
-								<table id="table_grid" class="main-table">
+								<table id="table_grid" class="main-table" border="1px">
 									<thead>
 										<tr class="bgpink">
 											<th class="col-sm-1">Sr No</th>
