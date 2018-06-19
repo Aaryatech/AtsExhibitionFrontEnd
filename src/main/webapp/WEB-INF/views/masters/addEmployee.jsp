@@ -9,10 +9,10 @@
 
 </head>
 <body>
-	--%>
+	
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
+	<c:url var="isMobileNoExist" value="/isMobileNoExist"></c:url>
 	<!-- 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
@@ -117,8 +117,8 @@
 							</div>
 							<div class="col-md-3">
 								<input id="mob" class="form-control"
-									placeholder="Employee Mobile No" name="mob"
-									style="text-align: left;" value="${customer.custMobNo}"
+									placeholder="Employee Mobile No" name="mob" min="10" maxlength="10"
+									style="text-align: left;" value="${customer.custMobNo}" onchange="checkMobNo(this)"
 									pattern="^\d{10}$" type="text" required oninvalid="this.setCustomValidity('Enter Employee Mobile No. Here')"
     oninput="this.setCustomValidity('')" >
 
@@ -151,22 +151,6 @@
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Token<b style="color: red">*:</b></div>
-							</div>
-							<div class="col-md-3">
-								<input id="token" class="form-control"
-									placeholder="Employee Token" name="token" type="text"
-									style="text-align: left;" value="" required oninvalid="this.setCustomValidity('Enter Employee Token Here')"
-    oninput="this.setCustomValidity('')">
-
-							</div>
-
-						</div>
-
-
-
-						<div class="colOuter">
-							<div class="col-md-2">
 								<div class="col1title" align="left">Employee Education <b style="color: red">*:</b></div>
 							</div>
 							<div class="col-md-3">
@@ -178,6 +162,24 @@
 							</div>
 
 
+
+						</div>
+
+
+
+						<div class="colOuter">
+							<!-- <div class="col-md-2">
+								<div class="col1title" align="left">Employee Education <b style="color: red">*:</b></div>
+							</div>
+							<div class="col-md-3">
+								<input id="root" class="form-control"
+									placeholder="Employee Education" name="education"
+									style="text-align: left;" value="" type="text" oninvalid="this.setCustomValidity('Enter Employee Education Here')"
+    oninput="this.setCustomValidity('')" required>
+
+							</div>
+
+ -->
 						</div>
 
 						<div class="profile">
@@ -201,7 +203,7 @@
 						<div class="colOuter">
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value="Submit"
-									type="submit" align="center">
+									type="submit" align="center" id="submitButton">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
@@ -364,6 +366,46 @@
 
 	            reader.readAsDataURL(input.files[0]);
 	        }
+	    }
+	    </script>
+	    
+	    <script >
+		function checkMobNo(input) {
+			document.getElementById("mob").style="color:black"
+
+			//alert("in mob check");
+			
+			document.getElementById("submitButton").disabled=true;
+			var mobNo=document.getElementById("mob").value;
+			//alert(mobNo);
+			$
+			.getJSON(
+					'${isMobileNoExist}',
+					{
+						mobileNo : mobNo,
+						callService : 1,
+						ajax : 'true'
+
+					},
+					function(data) {
+
+						//alert("Data  " +data);
+						
+						if(data==0){
+							alert("Employee with this Mobile Number Already Registered. Please Enter Any Other Mobile No.");
+							
+							document.getElementById("mob").style="color:red"
+							document.getElementById("mob").focus();
+						}else{
+							document.getElementById("submitButton").disabled=false;
+							document.getElementById("mob").style="color:black"
+
+							//alert("In Else")
+
+						}
+					});
+			document.getElementById("mob").style="color:black"
+
 	    }
 	    </script>
 

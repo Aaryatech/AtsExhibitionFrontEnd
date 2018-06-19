@@ -9,10 +9,10 @@
 
 </head>
 <body>
-	--%>
+	
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
+	<c:url var="isMobileNoExist" value="/isMobileNoExist"></c:url>
 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -118,7 +118,7 @@
 							</div>
 							<div class="col-md-3">
 								<input id="mob" class="form-control" placeholder="Mobile No"
-									name="mob" style="text-align: left;"
+									name="mob" style="text-align: left;" onchange="checkMobNo()"
 									value="${empDetail.empMobile}" pattern="^\d{10}$" type="text">
 
 							</div>
@@ -172,10 +172,7 @@
 									placeholder="Employee Education" name="education"
 									style="text-align: left;" value="${empDetail.empEducation}"
 									type="text">
-
 							</div>
-
-
 						</div>
 
 						<div class="profile">
@@ -186,9 +183,8 @@
 							<!-- 	<div class="profileinput">
 									<div class="editimg">
  -->
-										<input type="file" name="image" value="image" id="image"  onchange="readURL3(this);"
-									required oninvalid="this.setCustomValidity('Attach Employee Photo Here')"
-    oninput="this.setCustomValidity('')">
+										<input type="file" name="image" value="image" id="image"  onchange="readURL3(this);" value="${empDetail.empPhoto}"
+									>
 							</div>
 							
 								<div class="col-md-4"> Emp Photo
@@ -204,7 +200,7 @@
 						<div class="colOuter">
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value= "Edit Employee"
-									type="submit" align="center">
+									type="submit" align="center" id="submitButton">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
@@ -318,6 +314,58 @@
 
 	            reader.readAsDataURL(input.files[0]);
 	        }
+	    }
+	    </script>
+	    
+	     <script >
+		function checkMobNo() {
+			document.getElementById("mob").style="color:black"
+
+			var prevMobNo=${empDetail.empMobile};
+			
+			document.getElementById("submitButton").disabled=true;
+			var mobNo=document.getElementById("mob").value;
+			$
+			.getJSON(
+					'${isMobileNoExist}',
+					{
+						mobileNo : mobNo,
+						callService : 1,
+						ajax : 'true'
+
+					},
+					function(data) {
+
+						var isSame=false;
+						if(prevMobNo==mobNo){
+						isSame=true;
+						
+						document.getElementById("submitButton").disabled=false;
+						document.getElementById("mob").style="color:black"
+						}
+						if(isSame==false){
+							
+						document.getElementById("submitButton").disabled=false;
+						document.getElementById("mob").style="color:black"
+						
+						 if(data==0){
+							alert("Employee with this Mobile Number Already Registered. Please Enter Any Other Mobile No.");
+							
+							document.getElementById("mob").style="color:red"
+							document.getElementById("mob").focus();
+							document.getElementById("submitButton").disabled=true;
+
+						}/* else{
+							//document.getElementById("submitButton").disabled=false;
+							//document.getElementById("mob").style="color:black"
+							//alert("In else ");
+
+							//alert("In Else")
+						} */
+						}
+					});
+			document.getElementById("mob").style="color:black"
+
 	    }
 	    </script>
 </body>

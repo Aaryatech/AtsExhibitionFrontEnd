@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +35,36 @@ public class EmpController {
 
 	RestTemplate rest = new RestTemplate();
 
+	
+	@RequestMapping(value = "/isMobileNoExist", method = RequestMethod.GET)
+	public @ResponseBody Integer isMobileNoExist(HttpServletRequest request, HttpServletResponse response) {
+		Integer res = null;
+		// ModelAndView model = new ModelAndView("masters/empDetail");
+		try {
+
+			String mobileNo=request.getParameter("mobileNo");
+			String callService=request.getParameter("callService");
+			
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			
+			map.add("mobileNo", mobileNo);
+			map.add("callService", callService);
+			
+			res = rest.postForObject(Constants.url + "isMobileNoExist", map, Integer.class);
+			System.out.println(res);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return res;
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
 	public ModelAndView addEmployee(HttpServletRequest request, HttpServletResponse response) {
 

@@ -9,10 +9,10 @@
 
 </head>
 <body>
-
+ --%>
 
 <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
+	<c:url var="isMobileNoExist" value="/isMobileNoExist"></c:url>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
@@ -111,7 +111,7 @@
 						</div>
 						<div class="col-md-3">
 							<input id="mob" class="form-control"
-								placeholder="Mobile No" name="mob" style="text-align: left;" value="${customer.custMobNo}" pattern="^\d{10}$" type="text" required>
+								placeholder="Mobile No" name="mob" style="text-align: left;" onchange="checkMobNo();" value="${customer.custMobNo}" pattern="^\d{10}$" type="text" required>
 
 						</div>
 						<div class="col-md-1"> </div>
@@ -187,7 +187,7 @@
 					<div class="colOuter">
 						<div align="center">
 							<input name="submit" class="buttonsaveorder" value="Submit"
-								type="submit" align="center">
+								type="submit" align="center" id="submitButton">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 						</div>
 				 
@@ -292,6 +292,46 @@ function cancel1() {
 
 
 	</script>
+	
+	 <script >
+		function checkMobNo() {
+			document.getElementById("mob").style="color:black"
+
+			//alert("in mob check");
+			
+			document.getElementById("submitButton").disabled=true;
+			var mobNo=document.getElementById("mob").value;
+			//alert(mobNo);
+			$
+			.getJSON(
+					'${isMobileNoExist}',
+					{
+						mobileNo : mobNo,
+						callService : 2,
+						ajax : 'true'
+
+					},
+					function(data) {
+
+						//alert("Data  " +data);
+						
+						if(data==0){
+							alert("Employee with this Mobile Number Already Registered. Please Enter Any Other Mobile No.");
+							
+							document.getElementById("mob").style="color:red"
+							document.getElementById("mob").focus();
+						}else{
+							document.getElementById("submitButton").disabled=false;
+							document.getElementById("mob").style="color:black"
+
+							//alert("In Else")
+
+						}
+					});
+			document.getElementById("mob").style="color:black"
+
+	    }
+	    </script>
 
 </body>
 </html>
