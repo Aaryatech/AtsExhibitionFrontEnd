@@ -89,7 +89,7 @@
 							</div>
 
 							<div class="col-md-2">
-								<select class="selectpicker" data-live-search="true"
+								<select class="selectpicker" data-live-search="true" onchange="getEmpByEventId();"
 									title="Please Select" name="eventId" id="eventId" required>
 
 									<c:forEach items="${eventHistory}" var="eventHistory">

@@ -141,7 +141,7 @@ public class EventHistoryController {
 	public ModelAndView getVisitorNames(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable int eventId, @PathVariable String eventName) {
 
-		ModelAndView model = new ModelAndView("home");
+		ModelAndView model = new ModelAndView("history/eventvisitorName");
 		try {
 
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
