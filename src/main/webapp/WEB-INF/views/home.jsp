@@ -5,7 +5,16 @@
 	.pageTitle {
    margin-top:0px;
 }
-	</style>
+.overflow {
+   width: 16em;
+   outline: 0px solid #000;
+   margin: 0 0 1em 0;
+   white-space: nowrap;
+   text-overflow: ellipsis; 
+   overflow: hidden;
+}
+.text { text-overflow: "---"; }
+</style>
 	
 <%-- <!DOCTYPE html>
 <html>
@@ -201,7 +210,7 @@ div.desc {
     <img src="${eventImgUrl}${eventList.eventLogo}" width="250" height="170" alt="No Image Available" >
   </a>
   <br></br> <div style="padding-left: 5px;">
-  <p align="left"> &nbsp;&nbsp; Event Name: <b>${eventList.eventName}</b></p>
+  <p align="left" class="overflow"> &nbsp;&nbsp; Event Name: <b >${eventList.eventName}</b></p>
   <p align="left"> &nbsp;&nbsp; Place: <b>${eventList.eventLocation}</b> </p>
   <p align="left"> &nbsp;&nbsp; From: <b>${eventList.eventFromDate}</b> &nbsp;To: <b>${eventList.eventToDate}</b></p>
  </div><hr></hr>

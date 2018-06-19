@@ -309,7 +309,7 @@
 	<div class="topSlide">
 		<div class="topSlide2">
 			<a href="javascript:void(0)" class="closebtn" onClick="closeNav1()"><img
-				src="${pageContext.request.contextPath}/resources//images/closebtn.png"
+				src="${pageContext.request.contextPath}/resources/images/closebtn.png"
 				alt="monginis"></a>
 			<div class="listarea">
 
@@ -351,7 +351,7 @@
 		<div class="topSlide2">
 			<a href="javascript:void(0)" class="closebtn" onClick="closeNav2()"><img
 				src="${pageContext.request.contextPath}/resources//images/closebtn.png"
-				alt="monginis"></a>
+				alt="ATS"></a>
 			<div class="listarea">
 
 				<ul>
@@ -359,12 +359,12 @@
 
 						<div class="ibox">
 							<div class="ibox-head">
-								<div class="ibox-title">Inquiry Info</div>
+								<div class="ibox-title">Enquiry Info</div>
 							</div>
 
 							<a
 								href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
-								class="fa fa-plus-circle icon"></i> Inquiry Between Date</a>
+								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a>
 								
 								<a
 								href="${pageContext.request.contextPath}/addEnquiryByExhibitor"><i

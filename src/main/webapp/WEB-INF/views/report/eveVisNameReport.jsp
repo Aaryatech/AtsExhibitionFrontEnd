@@ -10,8 +10,8 @@
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 	<script
@@ -72,11 +72,15 @@
 						<input type="hidden" name="mod_ser" id="mod_ser"
 							value="search_result">
 
-						<div class="col-md -3">
+						<div class="col-md-12">
 							<div class="col1title" align="left">
 								<h3>Event Visitor Names By Events</h3>
-								<strong>Select Event</strong> <select name="evn_name"
-									style="width: 200px;" class="form-control-chossen">
+								</div>
+								</div>
+						<div class="colOuter">	
+							<div class="col-md-2">
+								<div class="col1title" align="left">	Select Event </div></div>
+							<div class="col-md-3">	<select name="evn_name"	 class="form-control">
 									<option value="-1">All</option>
 									<c:forEach items="${eventList}" var="events">
 
@@ -90,14 +94,14 @@
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
-								</select> <input type="submit" value="Submit" class="btn btn-primary">
+								</select> 
 							</div>
-
+                           <div class="col-md-3"><input type="submit" value="Submit" class="btn btn-primary"></div>
 						</div>
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">
-								<table id="table_grid" class="main-table">
+								<table id="table_grid" class="main-table" border="1px">
 									<thead>
 										<tr class="bgpink">
 											<th class="col-sm-1">Sr No</th>

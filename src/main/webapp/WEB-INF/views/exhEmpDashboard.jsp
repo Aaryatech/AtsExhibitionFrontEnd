@@ -9,15 +9,15 @@
 
 	.bgc-white, .bgcH-white:hover {
     background-color: skyblue!important;
-    color: white;
+    color: black;
 }
 .bgc-white2{
   background-color: #ffc107!important;
-    color: white;
+    color: black;
 }
 .bgc-white3{
   background-color: #e2d360!important;
-    color: white;
+    color: black;
 }
 .bd {
     border: 1px solid rgba(0,0,0,.0625)!important;
@@ -63,6 +63,8 @@ mB-10 {
 }
 .lh-1 {
     line-height: 1!important;
+    font-size: 16px;
+    
 }
 
 h1, h2, h3, h4, h5, h6 {

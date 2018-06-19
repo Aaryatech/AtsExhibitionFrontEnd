@@ -294,15 +294,15 @@ padding: 10px 22px;
 }
 
 .ibox a:hover{
-color: #ec268f !important;
+color: #29c19a !important;
 text-decoration: none;
 }
 
 .ibox a:hover .icon{
-color: #ec268f !important;
+color: #24ceb1  !important;
 }
 .ibox a .icon{
-	color: #343690 !important;
+	color: #4aaae6 !important;
 font-size: 18px !important;
 margin-right: 5px;
 }

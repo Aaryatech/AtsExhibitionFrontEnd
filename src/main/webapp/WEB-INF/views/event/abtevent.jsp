@@ -268,16 +268,13 @@ tr:nth-child(even){background-color: #f2f2f2} */
 											style="border-bottom: 1px solid #badceb; padding: 10px; color: black; font-size: 15px;">Schedule
 											${count.index+1}</td>
 									</tr>
+									<tr style="background-color: #a4eac7; border-box;   box-shadow: 0 3px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);"><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">Date:</td><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">${schedule.date}</td>
+									<td style="padding-left: 10px; height:20px;border:0px solid lightblue;">Day:</td><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">${schedule.dayName}</td>
+									</tr>
+									
 									<tr style="background-color: #f3f3dd;">
-										<td colspan="2" width="10%" 
-											style="padding: 10px; color: black; border-bottom: 1px solid #9fd5ec; font-size: 15px; height:20px;">
-                                          <table>
-												<tr><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">Date:</td><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">${schedule.date}</td></tr>
-
-											<tr><td style="padding-left: 10px;height:20px;border:0px solid lightblue; ">Activity:</td><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">${schedule.eventName}</td></tr>
-											<tr><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">Day:</td><td style="padding-left: 10px; height:20px;border:0px solid lightblue;">${schedule.dayName}</td></tr>
-											</table>
-										<td colspan="9" width="60%"
+										 
+										<td colspan="11" width="100%"
 											style="border-left: 1px solid #badceb; height:20px; border-bottom: 1px solid #badceb; padding: 10px; color: #903a21; font-size: 15px;">
 
 											<c:forEach items="${schedule.scheduleDetailList}"
