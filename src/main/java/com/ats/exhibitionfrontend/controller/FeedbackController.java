@@ -77,7 +77,7 @@ public class FeedbackController {
 
 			String que = request.getParameter("question");
 			String queDesc = request.getParameter("que_desc");
-			String outOfRating = request.getParameter("outOfRating");
+		//	String outOfRating = request.getParameter("outOfRating");
 
 			System.err.println("Questioj  " + que + "Description  " + queDesc);
 
@@ -86,7 +86,7 @@ public class FeedbackController {
 			fbQue.setExhbId(exhbId);
 			fbQue.setQuestion(que);
 			fbQue.setQueDesc(queDesc);
-			fbQue.setOutOfRating(Integer.parseInt(outOfRating));
+			fbQue.setOutOfRating(5);
 			fbQue.setIsActive(1);
 			fbQue.setIsUsed(1);
 

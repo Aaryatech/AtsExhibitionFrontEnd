@@ -25,6 +25,7 @@ import com.ats.exhibitionfrontend.model.GetSchedule;
 import com.ats.exhibitionfrontend.model.GetSponsor;
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
 import com.ats.exhibitionfrontend.model.eventhistory.Events;
+import com.ats.exhibitionfrontend.model.eventhistory.EventsWithSubStatus;
 import com.ats.exhibitionfrontend.model.eventhistory.GetEventHistory;
 import com.ats.exhibitionfrontend.model.eventhistory.GetEventVisitorName;
 
@@ -172,11 +173,13 @@ public class EventHistoryController {
 	
 	
 	@RequestMapping(value = "/addEventSubsctiption/{orgId}/{eventId}", method = RequestMethod.GET)
-	public String addEventSubsctiption(HttpServletRequest request, HttpServletResponse response,
+	public ModelAndView addEventSubsctiption(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable int orgId , @PathVariable int eventId) {
+		ModelAndView model = new ModelAndView("home");
 
 		try {
-
+			int subStatus=0;
+			
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
 			HttpSession session = request.getSession();
 			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
@@ -195,15 +198,41 @@ public class EventHistoryController {
 			ExhEventSubscription eveResp = rest.postForObject(Constants.url + "/saveExhEventSubscription", exEvnSub,
 					ExhEventSubscription.class);
 
-			System.err.println("/saveExhEventSubscription response " +eveResp.toString());
-		
+			//System.err.println("/saveExhEventSubscription response " +eveResp.toString());
+			
+			if(eveResp==null) {
+				
+				subStatus=1;
+				System.err.println("Sub Status set to 1 even hist contro");
+				model.addObject("eventId",eventId);
+			}
+			else {
+				model.addObject("eventId",0);
+
+				System.err.println("Sub Status remain to 0 even hist contro");
+
+			}
+			
+			map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
+			EventsWithSubStatus[] eventListResp = rest.postForObject(
+					Constants.url + "getAllEventsWithExhId", map, EventsWithSubStatus[].class);
+
+			List<EventsWithSubStatus> eventList;
+
+			eventList = new ArrayList<EventsWithSubStatus>(Arrays.asList(eventListResp));
+			
+			model.addObject("eventList",eventList);
+			model.addObject("eventImgUrl", Constants.EVENT_IMG_URL);
+			model.addObject("subStatus",subStatus);
+
 
 		} catch (Exception e) {
 			System.err.println("Exception in /getVisitorNames @EvnHisController ");
 			e.printStackTrace();
 		}
 
-		return "redirect:/home";
+		return model;
 	}
 
 	

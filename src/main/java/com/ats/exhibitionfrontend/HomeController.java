@@ -179,6 +179,8 @@ public class HomeController {
 
 			eventList = new ArrayList<EventsWithSubStatus>(Arrays.asList(eventListResp));
 			
+			System.err.println("Dashboard Data event Info " +eventList.toString());
+			
 			mav.addObject("eventList",eventList);
 			mav.addObject("eventImgUrl", Constants.EVENT_IMG_URL);
 

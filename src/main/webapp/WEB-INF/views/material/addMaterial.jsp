@@ -123,6 +123,9 @@
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value="Submit"
 									type="submit" align="center">
+									<input name="submit"
+								class="buttonsaveorder" value="Cancel" type="button" onclick="clearText()">
+								
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
@@ -158,9 +161,9 @@
 														<%-- <a
 															href="${pageContext.request.contextPath}/matDetail/${matList.trId}"><abbr
 															title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%> <a
-															href="${pageContext.request.contextPath}/deleteMaterial/${matList.trId}"
+															href="${pageContext.request.contextPath}/deleteMaterial/${matList.trId}" title="Delete Material" class="btn btn-primary"
 															onClick="return confirm('Are you sure want to delete this record');">
-															<abbr title='Delete'><i class='fa fa-trash'></i></abbr>
+															<i class='fa fa-trash' style="color: red"></i>
 														</a>
 
 													</div></td>
@@ -269,6 +272,12 @@
 			var height=targets.files[0].width.val();
 			alert("Height " +height);
 		}
+	</script>
+	<script>
+	function clearText() {
+		window.open('${pageContext.request.contextPath}/addMaterial','_self');
+		//window.close();
+	}
 	</script>
 
 </body>

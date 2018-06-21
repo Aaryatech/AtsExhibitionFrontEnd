@@ -201,6 +201,9 @@
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value= "Edit Employee"
 									type="submit" align="center" id="submitButton">
+										<input name="submit"
+								class="buttonsaveorder" value="Cancel" type="button" onclick="clearText()">
+								
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
@@ -368,5 +371,12 @@
 
 	    }
 	    </script>
+	    <script>
+	function clearText() {
+		window.open('${pageContext.request.contextPath}/addEmployee','_self');
+		//window.close();
+	}
+	</script>
+	    
 </body>
 </html>

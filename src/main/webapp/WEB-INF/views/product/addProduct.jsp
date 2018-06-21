@@ -227,6 +227,9 @@
 							<div>
 								<input name="submit" class="buttonsaveorder btn btn-sm"
 									value="Submit" type="submit" align="center">
+									<input name="submit"
+								class="buttonsaveorder btn btn-sm" value="Cancel" type="button" onclick="clearText()">
+								
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
@@ -456,6 +459,12 @@
 			fauxTable.appendChild(clonedElement);
 			fauxTable.appendChild(clonedElement2);
 		})();
+	</script>
+	<script>
+	function clearText() {
+		window.open('${pageContext.request.contextPath}/addProduct','_self');
+		//window.close();
+	}
 	</script>
 
 </body>

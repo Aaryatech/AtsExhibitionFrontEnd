@@ -173,6 +173,8 @@ div.desc {
        
        </c:choose>
 
+
+
 				<!--rightSidebar-->
 				<div class="sidebarright">
 							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${sessionScope.UserDetail.exhibitor.exhName}</span>, Welcome Back
@@ -216,12 +218,19 @@ div.desc {
  </div><hr></hr>
   <div class="desc">
   <c:choose>
+    <c:when test="${eventList.appliedStatus==1}">
+    <button class="btn1 info2"   style="padding:6px 34px; background-color:lightblue; color:white;  border:1px solid #28adb7;" disabled>Applied</button>
+    </c:when>
+   
     <c:when test="${eventList.subStatus==0}">
     <button class="btn1 info1" onclick="callSubscribe(${eventList.orgId},${eventList.eventId})"     style="padding:6px 34px;   border:1px solid #28adb7;">SUBSCRIBE</button>
     </c:when>
+    
+    
   <c:otherwise>
     <button class="btn1 info2"   style="padding:6px 34px; background-color:lightblue; color:white;  border:1px solid #28adb7;" disabled>SUBSCRIBED</button>
   </c:otherwise>
+  
   </c:choose>
     </div>
   </div>
@@ -397,5 +406,6 @@ function callSubscribe(orgId,eventId) {
 
 
 </script> 
+
 </body>
 </html>

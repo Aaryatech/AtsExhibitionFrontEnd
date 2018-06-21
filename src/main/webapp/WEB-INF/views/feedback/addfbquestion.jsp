@@ -85,7 +85,7 @@
 								<div class="col1title" align="left">Question:<b style="color: red">*</b></div>
 							</div>
 							<div class="col-md-3">
-								<textarea rows="5" cols="40" name="question"
+								<textarea rows="5" cols="40" name="question" maxlength="200" id="question"
 									placeholder="Question" required oninvalid="this.setCustomValidity('Enter Feedback Question Here')"
     oninput="this.setCustomValidity('')">${fbQue.question}</textarea>
 							</div>
@@ -98,7 +98,7 @@
 								</div>
 							</div>
 							<div class="col-md-1">
-								<textarea style="width: 520px;" cols="40" rows="5" name="que_desc"
+								<textarea style="width: 520px;" cols="40" rows="5" name="que_desc" maxlength="500" id="que_desc"
 									placeholder=" Question Description" required oninvalid="this.setCustomValidity('Enter Feedback Question Description Here')"
     oninput="this.setCustomValidity('')">${fbQue.queDesc}</textarea>
 
@@ -107,7 +107,7 @@
 							<br>
 
 							<div class="colOuter">
-								<div class="col-md-1">
+								<%-- <div class="col-md-1">
 									<div class="col1title">Out of Rating:<b style="color: red">*</b>
 									</div>
 								</div>
@@ -165,16 +165,23 @@
 											
 										</c:choose>
 									</select>
-								</div>
+								</div> --%>
+							
 								
 <div class="col-md-2"></div>
 
 								<input type="hidden" name="fbId" value="${fbQue.fbId}" />
-								<div class="col-md-1">
+								<div class="col-md-4">
 								<div class="col1title" align="right">
 								<input name="submit" class="buttonsaveorder btn btn-md" value="Submit"
 									type="submit" >
+									<div class="col-md-2"></div>
+									
+									
+								<input name="submit" class="buttonsaveorder btn btn-primary"   value="Cancel"
+									type="button" onclick="clearText()" >
 									</div>
+										</div>
 							
 							</div>
 							<div id="table-scroll" class="table-scroll">
@@ -204,8 +211,8 @@
 															value="${fbQueList.outOfRating}" /></td>
 													<td class="col-md-1"><div>
 															<a
-																href="${pageContext.request.contextPath}/editFbQue/${fbQueList.fbId}" title="Edit Question" class="btn btn-basic"><i style="color: green;" class='fa fa-edit'></i></a> <a
-																href="${pageContext.request.contextPath}/deleteFbQue/${fbQueList.fbId}" title="Delete Question" class="btn btn-basic"
+																href="${pageContext.request.contextPath}/editFbQue/${fbQueList.fbId}" title="Edit Question" class="btn btn-primary"><i style="color: green;" class='fa fa-edit'></i></a> <a
+																href="${pageContext.request.contextPath}/deleteFbQue/${fbQueList.fbId}" title="Delete Question" class="btn btn-primary"
 																onClick="return confirm('Are you sure want to delete this record');">
 																<i class='fa fa-trash' style="color: red; "></i>
 															</a>
@@ -254,6 +261,15 @@
 			fauxTable.appendChild(clonedElement);
 			fauxTable.appendChild(clonedElement2);
 		})();
+	</script>
+	<script>
+	function clearText() {
+		 document.getElementById("question").value="";
+		 document.getElementById("que_desc").value="";
+		window.open('${pageContext.request.contextPath}/showAddFbQuestion','_self');
+		//window.close();
+
+	}
 	</script>
 
 </body>

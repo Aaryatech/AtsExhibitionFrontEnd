@@ -83,7 +83,7 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<textarea cols="40" rows="5" name="question"
+								<textarea cols="40" rows="5" name="question" maxlength="100"
 									placeholder="Question" required oninvalid="this.setCustomValidity('Enter Spin Question Here')"
     oninput="this.setCustomValidity('')">${spinQueHeaderList.question}</textarea>
 							</div>
@@ -96,7 +96,7 @@
 								</div>
 							</div>
 							<div class="col-md-1">
-								<textarea cols="40" rows="5" name="queDesc"
+								<textarea cols="40" rows="5" name="queDesc" maxlength="100"
 									style="width: 520px;" placeholder="Description"
 									required oninvalid="this.setCustomValidity('Enter Spin Question Description Here')"
     oninput="this.setCustomValidity('')">${spinQueHeaderList.queDesc}</textarea>
@@ -122,11 +122,14 @@
 <div class="col-md-2"></div>
 							<input type="hidden" name="queId"
 								value="${spinQueHeaderList.queId}" /> 
-								<div class="col-md-1">
-								<div class="col1title" align="right">
+								<div class="col-md-4">
+								
 								<input name="submit"
-								class="buttonsaveorder" value="Submit" type="submit">
-								</div>
+								class="buttonsaveorder btn btn-success" value="Submit" type="submit">
+								
+								<input name="submit"
+								class="buttonsaveorder btn btn-primary" value="Cancel" type="button" onclick="clearText()">
+								
 								</div>
 								
 							<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
@@ -215,6 +218,16 @@
 			fauxTable.appendChild(clonedElement2);
 		})();
 	</script>
+	
+	<script>
+	function clearText() {
+	
+		window.open('${pageContext.request.contextPath}/addSpinQuestion','_self');
+		//window.close();
+
+	}
+	</script>
+	
 
 </body>
 </html>

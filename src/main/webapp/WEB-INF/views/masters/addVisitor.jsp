@@ -188,16 +188,13 @@
 						<div align="center">
 							<input name="submit" class="buttonsaveorder" value="Submit"
 								type="submit" align="center" id="submitButton">
+								<input name="submit"
+								class="buttonsaveorder" value="Cancel" type="button" onclick="clearText()">
+								
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 						</div>
-				 
 					</div>
-					
-					  
-
 				</form>
-
-				 
 			</div>
 			<!--tabNavigation-->
 			<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
@@ -332,6 +329,13 @@ function cancel1() {
 
 	    }
 	    </script>
+	    
+	    <script>
+	function clearText() {
+		window.open('${pageContext.request.contextPath}/addVisitorByExhibitor','_self');
+		//window.close();
+	}
+	</script>
 
 </body>
 </html>

@@ -65,7 +65,6 @@
 				</jsp:include>
 
 
-
 				<div class="sidebarright">
 
 					<form name="frm_search" id="frm_search" method="post"
@@ -75,12 +74,12 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Add Enquiry</h3>
+							 <strong><a style="color: green;" href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong>
+							
+								<h4>Add Enquiry</h4>  
 							</div>
 
 						</div>
-
-
 
 	<div class="colOuter">
 
