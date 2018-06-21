@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ats.exhibitionfrontend.common.Constants;
 import com.ats.exhibitionfrontend.model.EnquiryDetail;
 import com.ats.exhibitionfrontend.model.EnquiryHeaderWithName;
+import com.ats.exhibitionfrontend.model.LoginResponseExh;
 
 @Controller
 public class EnquiryController {
@@ -40,9 +42,14 @@ public class EnquiryController {
 			System.out.println("date " + curDate);
 			System.out.println("date " + strDate);
 
-			model.addObject("strDate", strDate);
+			model.addObject("fromDate", strDate);
+			model.addObject("toDate", strDate);
+
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
 
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
 
 			map.add("fromDate", strDate);
 			map.add("toDate", strDate);
@@ -77,7 +84,11 @@ public class EnquiryController {
 
 			String toDateString = new SimpleDateFormat("yyyy-MM-dd").format(toDateDMY);
 
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
 
 			map.add("fromDate", fromDateString);
 			map.add("toDate", toDateString);
@@ -121,7 +132,8 @@ public class EnquiryController {
 			}
 
 			model.addObject("enquiryHeaderWithName", eHWNList);
-
+			model.addObject("fromDate", fromDate);
+			model.addObject("toDate", toDate);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

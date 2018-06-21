@@ -91,7 +91,7 @@
 							</div>
 							<div class="col-md-3">
 								<input id="fromdatepicker" class="form-control"
-									placeholder="From Date" value="${strDate}"
+									placeholder="From Date" value="${fromDate}"
 									style="text-align: left;" name="fromDate" type="text" required>
 
 
@@ -107,7 +107,7 @@
 							<div class="col-md-3">
 								<input id="todatepicker" class="form-control"
 									style="text-align: left;" placeholder="To Date"
-									value="${strDate}" name="toDate" type="text" required>
+									value="${toDate}" name="toDate" type="text" required>
 
 							</div>
 
@@ -167,10 +167,10 @@
 												<c:set var="modType" value="Closed"></c:set>
 												<c:set var="color" value="Black"></c:set>
 											</c:when>
-											<c:otherwise>
+										<c:when test="${enqList.status==5}">
 												<c:set var="modType" value="Completed"></c:set>
 												<c:set var="color" value="Green"></c:set>
-											</c:otherwise>
+											</c:when>
 										</c:choose>
 									<tr>
 										<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
@@ -182,7 +182,7 @@
 										<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
 
 										<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
-										<td class="col-md-1"><c:out
+										<td class="col-md-1" style="text-align: right;"><c:out
 												value="${enqList.noOfEnqDays}" /></td>
 
 										<td class="col-md-1" style="color:${color}"><c:out
@@ -190,11 +190,11 @@
 
 										<td class="col-md-1"><c:out value="${enqList.remark}" /></td>
 
-										<td class="col-md-1"><div>
+										<td class="col-md-1"><div style="text-align: center;">
 												<a
-													href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><abbr>Details<i
-														class=''></i>
-												</abbr></a>
+													href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><i
+														class='fa fa-list'></i>
+												</a>
 											</div></td>
 
 

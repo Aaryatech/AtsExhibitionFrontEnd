@@ -53,7 +53,7 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 
-		return "login";
+		return "index";
 	}
 
 	@RequestMapping("/loginProcess")
@@ -62,7 +62,7 @@ public class HomeController {
 		String name = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		ModelAndView mav = new ModelAndView("login");
+		ModelAndView mav = new ModelAndView("index");
 
 		res.setContentType("text/html");
 		try {
@@ -71,7 +71,7 @@ public class HomeController {
 
 			if (name.equalsIgnoreCase("") || password.equalsIgnoreCase("") || name == null || password == null) {
 
-				mav = new ModelAndView("login");
+				mav = new ModelAndView("index");
 			} else {
 
 				RestTemplate rest = new RestTemplate();
@@ -101,7 +101,7 @@ public class HomeController {
 					// HttpSession session = request.getSession();
 					LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
 					System.out.println("exhiId " + login.getExhibitor().getExhId());
-					mav.addObject("login", login.getExhibitor());
+					mav.addObject("index", login.getExhibitor());
 
 					map = new LinkedMultiValueMap<String, Object>();
 
@@ -138,7 +138,7 @@ public class HomeController {
 
 				} else {
 
-					mav = new ModelAndView("login");
+					mav = new ModelAndView("index");
 					System.out.println("Invalid login credentials");
 
 				}
@@ -201,7 +201,7 @@ public class HomeController {
 	@RequestMapping(value = "/sessionTimeOut" , method = RequestMethod.GET)
 	public ModelAndView displayLoginAgain(HttpServletRequest request, HttpServletResponse response) {
 
-		ModelAndView model = new ModelAndView("login");
+		ModelAndView model = new ModelAndView("index");
 
 		logger.info("/sessionTimeOut request mapping.");
 

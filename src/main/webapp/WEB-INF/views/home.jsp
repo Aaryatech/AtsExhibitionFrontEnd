@@ -210,7 +210,7 @@ div.desc {
     <img src="${eventImgUrl}${eventList.eventLogo}" width="250" height="170" alt="No Image Available" >
   </a>
   <br></br> <div style="padding-left: 5px;">
-  <p align="left" class="overflow"> &nbsp;&nbsp; Event Name: <b >${eventList.eventName}</b></p>
+  <p align="left" class="overflow"> &nbsp;&nbsp; Event Name: <b ><abbr title="${eventList.eventName}" style="border: none;text-decoration: none;  cursor: inherit !important; ">${eventList.eventName}</abbr></b></p>
   <p align="left"> &nbsp;&nbsp; Place: <b>${eventList.eventLocation}</b> </p>
   <p align="left"> &nbsp;&nbsp; From: <b>${eventList.eventFromDate}</b> &nbsp;To: <b>${eventList.eventToDate}</b></p>
  </div><hr></hr>

@@ -10,7 +10,7 @@
 .topSlide2 {
 	padding: 20px 60px 20px 20px;
 }
-.sidebarOuter{ z-index:0; left:0px; top:0px; bottom:0px; width:130px;  background: lightblue url(${pageContext.request.contextPath}/resources/images/left.jpeg) }
+.sidebarOuter{ z-index:0; left:0px; top:0px; bottom:0px; width:130px;  background: #aed8c6 url(${pageContext.request.contextPath}/resources/images/left1.jpe/home/ats-12/Documents/left1.jpeg) }
 
 </style>
 <div class="sidebarhome">
@@ -96,7 +96,7 @@
 								<i class="fa fa-file-o icon"></i>
 							</div>
 							<div class="title">
-								<span>Add SpinQuestion</span>
+								<span>Add Spin Question</span>
 							</div></a></li>
 
 					<li><a
@@ -167,7 +167,7 @@
 
 				<li><a href="#" onClick="openNav()"><div class="img">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								src="${pageContext.request.contextPath}/resources/images/form.png"
 								alt="img">
 						</div>
 						<div class="title">
@@ -179,24 +179,24 @@
 
 				<li><a href="#" onClick="openNav1()"><div class="img">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								src="${pageContext.request.contextPath}/resources/images/events.png"
 								alt="img">
 						</div>
 						<div class="title">
-							Event <span>Info</span>
+							 <span>Events</span>
 						</div></a></li>
 
 				<li><a href="#" onClick="openNav2()"><div class="img">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								src="${pageContext.request.contextPath}/resources/images/enquiry.png"
 								alt="img">
 						</div>
 						<div class="title">
-							Inquiry <span>Info</span>
+							Enquiry <span>Info</span>
 						</div></a></li>
 				<li><a href="#" onClick="openNav3()"><div class="img">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								src="${pageContext.request.contextPath}/resources/images/feedback.png"
 								alt="img">
 						</div>
 						<div class="title">
@@ -205,7 +205,7 @@
 
 				<li><a href="#" onClick="openNav4()"><div class="img">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								src="${pageContext.request.contextPath}/resources/images/emp.png"
 								alt="img">
 						</div>
 						<div class="title">
@@ -216,7 +216,7 @@
 					href="${pageContext.request.contextPath}/showEditProfile"><div
 							class="img">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/nav-goodsreturn.png"
+								src="${pageContext.request.contextPath}/resources/images/profile.png"
 								alt="img">
 						</div>
 						<div class="title">
