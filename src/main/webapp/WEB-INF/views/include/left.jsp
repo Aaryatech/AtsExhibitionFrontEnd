@@ -10,7 +10,7 @@
 .topSlide2 {
 	padding: 20px 60px 20px 20px;
 }
-.sidebarOuter{ z-index:0; left:0px; top:0px; bottom:0px; width:130px;  background: #aed8c6 url(${pageContext.request.contextPath}/resources/images/left1.jpe/home/ats-12/Documents/left1.jpeg) }
+.sidebarOuter{ z-index:0; left:0px; top:0px; bottom:0px; width:130px;  background: #41879e  url(${pageContext.request.contextPath}/resources/images/left1.jpeg) }
 
 </style>
 <div class="sidebarhome">
@@ -205,7 +205,7 @@
 
 				<li><a href="#" onClick="openNav4()"><div class="img">
 							<img
-								src="${pageContext.request.contextPath}/resources/images/emp.png"
+								src="${pageContext.request.contextPath}/resources/images/user.png"
 								alt="img">
 						</div>
 						<div class="title">

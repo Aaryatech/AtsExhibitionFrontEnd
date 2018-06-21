@@ -118,7 +118,7 @@ border-radius:50%;}
 .sidebarhome li{ margin:0px; padding:0px; list-style-type:none; width:100%; float:left; position:relative; display:table;}
 
 .sidebarhome li a{ display:table-cell;vertical-align:middle;width:130px; float:left;color:#fff; text-decoration:none; padding:30px 10px; text-align:center;-webkit-transition: all ease 0.5s;-moz-transition: all ease 0.5s;-o-transition: all ease 0.5s;-ms-transition: all ease 0.5s;transition: all ease 0.5s;}
-.sidebarhome li a:hover{ background:#41879e;-webkit-transition: all ease 0.5s;-moz-transition: all ease 0.5s;-o-transition: all ease 0.5s;-ms-transition: all ease 0.5s;transition: all ease 0.5s;}
+.sidebarhome li a:hover{ background:#8c9b9d;-webkit-transition: all ease 0.5s;-moz-transition: all ease 0.5s;-o-transition: all ease 0.5s;-ms-transition: all ease 0.5s;transition: all ease 0.5s;}
 .sidebarhome li a.active{ background:#343690;}
 .sidebarhome .img{ width:100%; float:left; padding-bottom:12px; text-align:center;}
 .sidebarhome .img img{ max-width:100%;}
