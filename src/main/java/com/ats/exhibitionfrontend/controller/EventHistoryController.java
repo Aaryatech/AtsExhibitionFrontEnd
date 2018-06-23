@@ -157,6 +157,7 @@ public class EventHistoryController {
 
 			List<GetEventVisitorName> visNameList = new ArrayList<GetEventVisitorName>(Arrays.asList(visNames));
 
+			System.err.println("Visitor name list evn his contrller/getEventVisitorName"  +visNameList.toString());
 			model.addObject("visitorList", visNameList);
 
 			model.addObject("eventName", eventName);
@@ -194,6 +195,8 @@ public class EventHistoryController {
 			exEvnSub.setOrgId(orgId);
 			exEvnSub.setExhEsubId(0);
 			exEvnSub.setStallNo("0");
+			exEvnSub.setIsUsed(1);
+
 			
 			ExhEventSubscription eveResp = rest.postForObject(Constants.url + "/saveExhEventSubscription", exEvnSub,
 					ExhEventSubscription.class);

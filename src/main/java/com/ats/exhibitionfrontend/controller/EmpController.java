@@ -35,21 +35,20 @@ public class EmpController {
 
 	RestTemplate rest = new RestTemplate();
 
-	
 	@RequestMapping(value = "/isMobileNoExist", method = RequestMethod.GET)
 	public @ResponseBody Integer isMobileNoExist(HttpServletRequest request, HttpServletResponse response) {
 		Integer res = null;
 		// ModelAndView model = new ModelAndView("masters/empDetail");
 		try {
 
-			String mobileNo=request.getParameter("mobileNo");
-			String callService=request.getParameter("callService");
-			
+			String mobileNo = request.getParameter("mobileNo");
+			String callService = request.getParameter("callService");
+
 			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
-			
+
 			map.add("mobileNo", mobileNo);
 			map.add("callService", callService);
-			
+
 			res = rest.postForObject(Constants.url + "isMobileNoExist", map, Integer.class);
 			System.out.println(res);
 
@@ -59,12 +58,7 @@ public class EmpController {
 
 		return res;
 	}
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
 	public ModelAndView addEmployee(HttpServletRequest request, HttpServletResponse response) {
 
@@ -80,6 +74,11 @@ public class EmpController {
 			ExhEmpWithExhName[] res = rest.postForObject(Constants.url + "/getAllEmployeeIsUsed", map,
 					ExhEmpWithExhName[].class);
 			List<ExhEmpWithExhName> empList = new ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
+
+			int empCount = empList.size();
+
+			model.addObject("empCount", empCount);
+
 			model.addObject("empList", empList);
 			model.addObject("empImgUrl", Constants.EMP_IMAGE);
 
@@ -179,6 +178,20 @@ public class EmpController {
 			model.addObject("empDetail", res);
 			model.addObject("empImgUrl", Constants.EMP_IMAGE);
 
+			map = new LinkedMultiValueMap<String, Object>();
+
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+			map.add("exhId", login.getExhibitor().getExhId());
+
+			ExhEmpWithExhName[] empRes = rest.postForObject(Constants.url + "/getAllEmployeeIsUsed", map,
+					ExhEmpWithExhName[].class);
+			List<ExhEmpWithExhName> empList = new ArrayList<ExhEmpWithExhName>(Arrays.asList(empRes));
+
+			int empCount = empList.size();
+
+			model.addObject("empCount", empCount);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -204,8 +217,7 @@ public class EmpController {
 
 		return "redirect:/addEmployee";
 	}
-	
-	
+
 	@RequestMapping(value = "/editEmployee", method = RequestMethod.POST)
 	public String editEmployee(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam("image") List<MultipartFile> image) {
@@ -222,7 +234,8 @@ public class EmpController {
 			String img1 = null;
 			img1 = image.get(0).getOriginalFilename();
 
-			//upload.saveUploadedFiles(image, Constants.EMP_IMAGE_TYPE, image.get(0).getOriginalFilename());
+			// upload.saveUploadedFiles(image, Constants.EMP_IMAGE_TYPE,
+			// image.get(0).getOriginalFilename());
 
 			System.out.println("upload method called for image Upload " + image.toString());
 
@@ -274,6 +287,5 @@ public class EmpController {
 
 		return "redirect:/addEmployee";
 	}
-
 
 }

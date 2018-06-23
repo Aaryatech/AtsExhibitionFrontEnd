@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	
+
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="isMobileNoExist" value="/isMobileNoExist"></c:url>
@@ -74,36 +74,55 @@
 
 						<div class="col-md -3">
 
+
 							<div class="col1title" align="left">
-								<h3>Add Employee</h3>
+								<h3>
+									Add Employee &nbsp; &nbsp;
+									
+									<c:choose>
+										<c:when
+											test="${empCount < sessionScope.UserDetail.noOfEmpCanAdd}">
+											
+											<i style="color: green; font-size: 17px;">	[ You can Add  MAX ${sessionScope.UserDetail.noOfEmpCanAdd} : Current Count  ${empCount} ]</i>
+										</c:when>
+										<c:otherwise>
+
+										<i style="color: red; font-size: 17px;">[ You can not  Add : Limit Reached : ${sessionScope.UserDetail.noOfEmpCanAdd} ]</i> 
+
+										</c:otherwise>
+									</c:choose>
+								</h3>
 							</div>
 
 						</div>
 						<div class="colOuter">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Name<b style="color: red">*:</b></div>
+								<div class="col1title" align="left">
+									Employee Name<b style="color: red">*:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="custName" class="form-control"
 									placeholder="Employee Name" value="${customer.custName}"
 									style="text-align: left;" name="empName" type="text" required
-									 oninvalid="this.setCustomValidity('Enter Employee Name Here')"
-    oninput="this.setCustomValidity('')"  >
-								<input id="empId" class="form-control" name="empId" value=""
-									type="hidden">
+									oninvalid="this.setCustomValidity('Enter Employee Name Here')"
+									oninput="this.setCustomValidity('')"> <input id="empId"
+									class="form-control" name="empId" value="" type="hidden">
 
 							</div>
 							<div class="col-md-1"></div>
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Designation<b style="color: red">*:</b>
+								<div class="col1title" align="left">
+									Employee Designation<b style="color: red">*:</b>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="empDesg" class="form-control"
 									style="text-align: left;" placeholder="Employee Designation"
-									value="" name="empDesg" type="text" required  oninvalid="this.setCustomValidity('Enter Employee Designation Here')"
-    oninput="this.setCustomValidity('')" >
+									value="" name="empDesg" type="text" required
+									oninvalid="this.setCustomValidity('Enter Employee Designation Here')"
+									oninput="this.setCustomValidity('')">
 
 							</div>
 
@@ -113,24 +132,32 @@
 
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Mobile No<b style="color: red">*:</b></div>
+								<div class="col1title" align="left">
+									Employee Mobile No<b style="color: red">*:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="mob" class="form-control"
-									placeholder="Employee Mobile No" name="mob" min="10" maxlength="10"
-									style="text-align: left;" value="${customer.custMobNo}" onchange="checkMobNo(this)"
-									pattern="^\d{10}$" type="text" required oninvalid="this.setCustomValidity('Enter Employee Mobile No. Here')"
-    oninput="this.setCustomValidity('')" >
+									placeholder="Employee Mobile No" name="mob" min="10"
+									maxlength="10" style="text-align: left;"
+									value="${customer.custMobNo}" onchange="checkMobNo(this)"
+									pattern="^\d{10}$" type="text" required
+									oninvalid="this.setCustomValidity('Enter Employee Mobile No. Here')"
+									oninput="this.setCustomValidity('')">
 
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee E-Mail<b style="color: red">*:</b></div>
+								<div class="col1title" align="left">
+									Employee E-Mail<b style="color: red">*:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
-								<input id="email" class="form-control" placeholder="Employee Email"
-									name="email" type="email" style="text-align: left;" oninvalid="this.setCustomValidity('Enter Employee Email Id Here')"
-    oninput="this.setCustomValidity('')" required>
+								<input id="email" class="form-control"
+									placeholder="Employee Email" name="email" type="email"
+									style="text-align: left;"
+									oninvalid="this.setCustomValidity('Enter Employee Email Id Here')"
+									oninput="this.setCustomValidity('')" required>
 
 							</div>
 
@@ -140,24 +167,30 @@
 
 
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Password<b style="color: red">*:</b></div>
+								<div class="col1title" align="left">
+									Employee Password<b style="color: red">*:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="empPwd" class="form-control"
 									placeholder="Employee Password" name="empPwd"
-									style="text-align: left;" type="password"  required oninvalid="this.setCustomValidity('Enter Employee Password Here')"
-    oninput="this.setCustomValidity('')">
+									style="text-align: left;" type="password" required
+									oninvalid="this.setCustomValidity('Enter Employee Password Here')"
+									oninput="this.setCustomValidity('')">
 
 							</div>
 							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Education <b style="color: red">*:</b></div>
+								<div class="col1title" align="left">
+									Employee Education <b style="color: red">*:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
 								<input id="root" class="form-control"
 									placeholder="Employee Education" name="education"
-									style="text-align: left;" value="" type="text" oninvalid="this.setCustomValidity('Enter Employee Education Here')"
-    oninput="this.setCustomValidity('')" required>
+									style="text-align: left;" value="" type="text"
+									oninvalid="this.setCustomValidity('Enter Employee Education Here')"
+									oninput="this.setCustomValidity('')" required>
 
 							</div>
 
@@ -184,29 +217,43 @@
 
 						<div class="profile">
 							<div class="col-md-2">
-								<div class="col1title" align="left">Employee Pic<b style="color: red">*:</b></div>
+								<div class="col1title" align="left">
+									Employee Pic<b style="color: red">*:</b>
+								</div>
 							</div>
 							<div class="col-md-3">
-								<input type="file" name="image" value="image" id="image"  onchange="readURL3(this);"
-									required oninvalid="this.setCustomValidity('Attach Employee Photo Here')"
-    oninput="this.setCustomValidity('')">
+								<input type="file" name="image" value="image" id="image"
+									onchange="readURL3(this);" required
+									oninvalid="this.setCustomValidity('Attach Employee Photo Here')"
+									oninput="this.setCustomValidity('')">
 							</div>
-							
-								<div class="col-md-4"> Emp Photo
-							
-							    <img  id="blah3" src="#" alt="No Image Availbable" width="100" height="100" />
-							
+
+							<div class="col-md-4">
+								Emp Photo <img id="blah3" src="#" alt="No Image Availbable"
+									width="100" height="100" />
+
 							</div>
-							
+
 						</div>
 
 						<div class="colOuter">
 							<div align="center">
+							<c:choose>
+
+										<c:when
+											test="${sessionScope.UserDetail.noOfEmpCanAdd >= empCount}">
 								<input name="submit" class="buttonsaveorder" value="Submit"
-									type="submit" align="center" id="submitButton">
-									<input name="submit"
-								class="buttonsaveorder" value="Cancel" type="button" onclick="clearText()">
-								
+									type="submit" align="center" id="submitButton" disabled> 
+									</c:when>
+									<c:otherwise>
+										<input name="submit" class="buttonsaveorder" value="Submit"
+									type="submit" align="center" id="submitButton"> 
+									</c:otherwise>
+									</c:choose>
+									<input
+									name="submit" class="buttonsaveorder" value="Cancel"
+									type="button" onclick="clearText()">
+
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
@@ -235,8 +282,8 @@
 											<tr>
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-1"><img
-													src="${empImgUrl}${empList.empPhoto}" width="100" height="50"
-													alt="No Image Available" /></td>
+													src="${empImgUrl}${empList.empPhoto}" width="100"
+													height="50" alt="No Image Available" /></td>
 												<td class="col-md-1"><c:out value="${empList.empName}" /></td>
 												<td class="col-md-1"><c:out
 														value="${empList.empMobile}" /></td>
@@ -245,12 +292,13 @@
 														value="${empList.empEducation}" /></td>
 												<td class="col-md-1"><div>
 														<a
-															href="${pageContext.request.contextPath}/empDetail/${empList.empId}" title="Edit Employee"
-															class="btn btn-primary"><i
-																class="fa fa-edit"></i></a>
+															href="${pageContext.request.contextPath}/empDetail/${empList.empId}"
+															title="Edit Employee" class="btn btn-primary"><i
+															class="fa fa-edit"></i></a>
 														<%-- <a href="${pageContext.request.contextPath}/editEmp/${empList.empId}"><abbr title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%>
 														<a
-															href="${pageContext.request.contextPath}/deleteEmp/${empList.empId}" title="Delete Employee" class="btn btn-danger"
+															href="${pageContext.request.contextPath}/deleteEmp/${empList.empId}"
+															title="Delete Employee" class="btn btn-danger"
 															onClick="return confirm('Are you sure want to delete this record');">
 															<i class='fa fa-trash'></i>
 														</a>
@@ -355,68 +403,67 @@
 			fauxTable.appendChild(clonedElement2);
 		})();
 	</script>
-	<script >
+	<script>
 		function readURL3(input) {
-	        if (input.files && input.files[0]) {
-	            var reader = new FileReader();
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
 
-	            reader.onload = function (e) {
-	                $('#blah3')
-	                    .attr('src', e.target.result)
-	                    .width(100)
-	                    .height(100);
-	            };
+				reader.onload = function(e) {
+					$('#blah3').attr('src', e.target.result).width(100).height(
+							100);
+				};
 
-	            reader.readAsDataURL(input.files[0]);
-	        }
-	    }
-	    </script>
-	    
-	    <script >
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+	</script>
+
+	<script>
 		function checkMobNo(input) {
-			document.getElementById("mob").style="color:black"
+			document.getElementById("mob").style = "color:black"
 
 			//alert("in mob check");
-			
-			document.getElementById("submitButton").disabled=true;
-			var mobNo=document.getElementById("mob").value;
+
+			document.getElementById("submitButton").disabled = true;
+			var mobNo = document.getElementById("mob").value;
 			//alert(mobNo);
 			$
-			.getJSON(
-					'${isMobileNoExist}',
-					{
-						mobileNo : mobNo,
-						callService : 1,
-						ajax : 'true'
+					.getJSON(
+							'${isMobileNoExist}',
+							{
+								mobileNo : mobNo,
+								callService : 1,
+								ajax : 'true'
 
-					},
-					function(data) {
+							},
+							function(data) {
 
-						//alert("Data  " +data);
-						
-						if(data==0){
-							alert("Employee with this Mobile Number Already Registered. Please Enter Any Other Mobile No.");
-							
-							document.getElementById("mob").style="color:red"
-							document.getElementById("mob").focus();
-						}else{
-							document.getElementById("submitButton").disabled=false;
-							document.getElementById("mob").style="color:black"
+								//alert("Data  " +data);
 
-							//alert("In Else")
+								if (data == 0) {
+									alert("Employee with this Mobile Number Already Registered. Please Enter Any Other Mobile No.");
 
-						}
-					});
-			document.getElementById("mob").style="color:black"
+									document.getElementById("mob").style = "color:red"
+									document.getElementById("mob").focus();
+								} else {
+									document.getElementById("submitButton").disabled = false;
+									document.getElementById("mob").style = "color:black"
 
-	    }
-	    </script>
-	    
-	    <script>
-	function clearText() {
-		window.open('${pageContext.request.contextPath}/addEmployee','_self');
-		//window.close();
-	}
+									//alert("In Else")
+
+								}
+							});
+			document.getElementById("mob").style = "color:black"
+
+		}
+	</script>
+
+	<script>
+		function clearText() {
+			window.open('${pageContext.request.contextPath}/addEmployee',
+					'_self');
+			//window.close();
+		}
 	</script>
 
 </body>

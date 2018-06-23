@@ -177,7 +177,7 @@ div.desc {
 
 				<!--rightSidebar-->
 				<div class="sidebarright">
-							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${sessionScope.UserDetail.exhibitor.exhName}</span>, Welcome Back
+							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${sessionScope.UserDetail.exhibitor.exhName}</span>, Welcome Back <i> [ Your Subscription Period ${sessionScope.UserDetail.exhSubHeader.fromDate}-${sessionScope.UserDetail.exhSubHeader.toDate} ]</i>
 </h2></div> <div class="col-md-2">	<p style="text-align: right;" class="pageTitle"><b><a href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></b></p></div>
             
 					<!--slider-->
