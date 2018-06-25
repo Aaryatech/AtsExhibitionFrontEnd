@@ -54,7 +54,7 @@
 		});
 		</script>
 
-		<script>
+	<script>
 
 		$(function() {
 			
@@ -120,7 +120,7 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<h3>Enquiry And Task Between Date</h3>
+								<h3>Enquiry And Task Between Date To Edit Enquiry</h3>
 							</div>
 
 						</div>
@@ -184,18 +184,19 @@
 				<div class="wrap">
 
 
-					
-						<div>
-							<strong><p
-										style="text-align: center; color: red; font-size: 25px;"> Enquiry List</p></strong>
-						</div>
-						<div class="fleft">
+
+					<div>
+						<strong><p
+								style="text-align: center; color: red; font-size: 25px;">
+								Enquiry List</p></strong>
+					</div>
+					<div class="fleft">
 						<c:set var="status" value="null"></c:set>
-							<hr style="border: 1px ;" />
+						<hr style="border: 1px;" />
 						<c:forEach items="${enqList}" var="enquiry" varStatus="count">
-	<p style="text-align: left; background: #dbc5d1;">
-										<b>&nbsp;&nbsp;Date:</b> ${enquiry.nextMeetDate}&nbsp;&nbsp;
-									</p>
+							<p style="text-align: left; background: #dbc5d1;">
+								<b>&nbsp;&nbsp;Date:</b> ${enquiry.nextMeetDate}&nbsp;&nbsp;
+							</p>
 
 							<c:choose>
 								<c:when test="${enquiry.status==1}">
@@ -218,13 +219,13 @@
 								</c:otherwise>
 
 							</c:choose>
-						
+
 							<div class="row">
-							
+
 								<div class="col-md-4" align="right">
 									<p>
 										<b>Employee:</b> <select name="emp" id="empId${enquiry.enqId}"
-											class="form-control-choosen"  style="width: 120px;">
+											class="form-control-choosen" style="width: 120px;">
 											<c:forEach items="${empList}" var="emp">
 												<c:choose>
 													<c:when test="${enquiry.empId==emp.empId}">
@@ -239,8 +240,8 @@
 											</c:forEach>
 										</select>
 								</div>
-								<div class="col-md-3" ><b>Status:</b>
-										 <select name="enqStatus"
+								<div class="col-md-3">
+									<b>Status:</b> <select name="enqStatus"
 										id="enqStatus${enquiry.enqId}" class="form-control-choosen"
 										style="width: 120px;">
 										<c:choose>
@@ -294,27 +295,30 @@
 								<div class="col-md-2">
 
 									<b>Event:</b> ${enquiry.eventName}
-									
+
 								</div>
-								
+
 								<div class="col-md-3">
 									<b> Meeting Date:</b> <input class="datepicker"
 										placeholder="Meeting Date" id='meetDate${index}'
-										value="${enquiry.nextMeetDate}" style="width: 120px;" 
-										name="nextMeetDate" type="text" required /> 
-										</div>
+										value="${enquiry.nextMeetDate}" style="width: 120px;"
+										name="nextMeetDate" type="text" required />
+								</div>
 							</div>
 
-							<div class="row" >
+							<div class="row">
 								<div class="col-md-4" align="right">
-									
-										<b>Visitor:</b> ${enquiry.visitorName}
+
+									<b>Visitor:</b> ${enquiry.visitorName}
 								</div>
-								<div class="col-md-3"><b>Mob No:</b> ${enquiry.visitorMobile}</div>
-							
-							<div class="col-md-2">
-									<b>Email Id:</b> ${enquiry.visitorEmail}</div>
-									
+								<div class="col-md-3">
+									<b>Mob No:</b> ${enquiry.visitorMobile}
+								</div>
+
+								<div class="col-md-2">
+									<b>Email Id:</b> ${enquiry.visitorEmail}
+								</div>
+
 								<!-- </div>
 								<div class="row"> -->
 								<%-- <div class="col-md-6">
@@ -323,88 +327,91 @@
 										value="${enquiry.nextMeetDate}" style="width: 250px;"
 										name="nextMeetDate" type="text" required /> 
 										</div> --%>
-										
-								
-							<div class="col-md-3" align="right">
-							<input type="button" value="Edit" style="width: 70px; height:30px;" class="buttonsaveorder btn-xs"
-								onclick="editEnquiryAction(${enquiry.enqId},${index})">
+
+
+								<div class="col-md-3" align="right">
+									<input type="button" value="Edit"
+										style="width: 70px; height: 30px;"
+										class="buttonsaveorder btn-xs"
+										onclick="editEnquiryAction(${enquiry.enqId},${index})">
 								</div>
-								</div>
-							<hr style="border: 1px ;" />
+							</div>
+							<hr style="border: 1px;" />
 						</c:forEach>
-						</div>
 					</div>
+				</div>
 
 				<div>
-							<strong><p
-										style="text-align: center; color: red; font-size: 25px;"> Task List</p></strong>
-						</div>
-					<div class="fright">
-					
-								
-								<c:set var="status" value="null"></c:set>
-								<c:forEach items="${taskList}" var="tasks">
-									<!-- 								<hr style="border-color: #dbc5d1;"/>
+					<strong><p
+							style="text-align: center; color: red; font-size: 25px;">
+							Task List</p></strong>
+				</div>
+				<div class="fright">
+
+
+					<c:set var="status" value="null"></c:set>
+					<c:forEach items="${taskList}" var="tasks">
+						<!-- 								<hr style="border-color: #dbc5d1;"/>
  -->
-									<p style="text-align: left; background: #dbc5d1;">
-										<b>&nbsp;&nbsp;Date:</b> ${tasks.date}&nbsp;&nbsp;
-									</p>
+						<p style="text-align: left; background: #dbc5d1;">
+							<b>&nbsp;&nbsp;Date:</b> ${tasks.date}&nbsp;&nbsp;
+						</p>
 
-										<c:choose>
-											<c:when test="${tasks.status==1}">
-												<c:set var="status" value="Pending"></c:set>
-											</c:when>
+						<c:choose>
+							<c:when test="${tasks.status==1}">
+								<c:set var="status" value="Pending"></c:set>
+							</c:when>
 
-											<c:otherwise>
+							<c:otherwise>
 
-												<c:set var="status" value="Completed"></c:set>
-											</c:otherwise>
+								<c:set var="status" value="Completed"></c:set>
+							</c:otherwise>
 
-										</c:choose>
+						</c:choose>
 
-										<div class="row" align="right">
-											<div class="col-md-3">
+						<div class="row" align="right">
+							<div class="col-md-3">
 
-												<b>Employee:</b> ${tasks.empName}
-											</div>
+								<b>Employee:</b> ${tasks.empName}
+							</div>
 
-											<div class="col-md-3" >
-												<b>Task Desc:</b> ${tasks.taskDesc}
-											</div>
-.
+							<div class="col-md-3">
+								<b>Task Desc:</b> ${tasks.taskDesc}
+							</div>
+							.
 
 
-										<%-- 	<div class="col-md-3" >
+							<%-- 	<div class="col-md-3" >
 												<b>Date:</b> ${tasks.date}
 											</div> --%>
 
-											<div class="col-md-2"  style="color: red;">
-												<b>Status </b> ${status}
-											</div>
-
-										</div>
-										
-										<c:choose>
-											<c:when test="${! loop.last}">
-												<hr />
-											</c:when>
-											
-										</c:choose>
-
-									</c:forEach>
-
+							<div class="col-md-2" style="color: red;">
+								<b>Status </b> ${status}
 							</div>
+
+						</div>
+
+						<c:choose>
+							<c:when test="${! loop.last}">
+								<hr />
+							</c:when>
+
+						</c:choose>
+
+					</c:forEach>
+
 				</div>
-
-
-
 			</div>
-			<!--tabNavigation-->
 
 
 
 		</div>
-		<!--rightSidebar-->
+		<!--tabNavigation-->
+
+
+
+	</div>
+	<!--rightSidebar-->
 
 	</div>
 	<!--fullGrid-->

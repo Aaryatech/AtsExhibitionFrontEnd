@@ -101,6 +101,18 @@ public class ExhEmpController {
 			List<ExhEmpWithExhName> empList = new ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
 			model.addObject("empList", empList);
 
+			MultiValueMap<String, Object> map1 = new LinkedMultiValueMap<String, Object>();
+			map1.add("empId", empId);
+
+			ExhEmpWithExhName res1 = rest.postForObject(Constants.url + "/getAllEmployeeByEmpIdAndIsUsed", map1,
+					ExhEmpWithExhName.class);
+
+			/*
+			 * List<ExhEmpWithExhName> empList = new
+			 * ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
+			 */
+			model.addObject("editEmp", res1);
+
 			EnquiryHeaderWithName[] enquiryHeaderWithName = rest.postForObject(
 					Constants.url + "/getAllEnquiryBetDatesAndByEmpIdAndExhId", map, EnquiryHeaderWithName[].class);
 			enquiryList = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(enquiryHeaderWithName));
@@ -190,7 +202,7 @@ public class ExhEmpController {
 				}
 				pending.set(i, header);
 			}
-			//2
+			// 2
 			for (int i = 0; i < processing.size(); i++) {
 
 				EnquiryHeaderWithName header = processing.get(i);
@@ -222,8 +234,8 @@ public class ExhEmpController {
 				}
 				processing.set(i, header);
 			}
-			
-			//3
+
+			// 3
 			for (int i = 0; i < completed.size(); i++) {
 
 				EnquiryHeaderWithName header = completed.get(i);
@@ -255,8 +267,8 @@ public class ExhEmpController {
 				}
 				completed.set(i, header);
 			}
-			
-			//4
+
+			// 4
 			for (int i = 0; i < closed.size(); i++) {
 
 				EnquiryHeaderWithName header = closed.get(i);
@@ -288,7 +300,7 @@ public class ExhEmpController {
 				}
 				closed.set(i, header);
 			}
-			
+
 			if (status == 1)
 				model.addObject("list", pending);
 			else if (status == 2)

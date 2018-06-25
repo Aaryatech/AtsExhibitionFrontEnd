@@ -10,8 +10,16 @@
 .topSlide2 {
 	padding: 20px 60px 20px 20px;
 }
-.sidebarOuter{ z-index:0; left:0px; top:0px; bottom:0px; width:130px;  background: #41879e  url(${pageContext.request.contextPath}/resources/images/left1.jpeg) }
 
+.sidebarOuter {
+	z-index: 0;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 130px;
+	background: #41879e
+		url(${pageContext.request.contextPath}/resources/images/left1.jpeg)
+}
 </style>
 <div class="sidebarhome">
 	<div class="content mCustomScrollbar">
@@ -183,7 +191,7 @@
 								alt="img">
 						</div>
 						<div class="title">
-							 <span>Events</span>
+							<span>Events</span>
 						</div></a></li>
 
 				<li><a href="#" onClick="openNav2()"><div class="img">
@@ -366,13 +374,9 @@
 
 							<a
 								href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
-								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a>
-								
-								<a
+								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a> <a
 								href="${pageContext.request.contextPath}/addEnquiryByExhibitor"><i
-								class="fa fa-plus-circle icon"></i> Add Enquiry</a>
-								
-							<a
+								class="fa fa-plus-circle icon"></i> Add Enquiry</a> <a
 								href="${pageContext.request.contextPath}/addVisitorByExhibitor"><i
 								class="fa fa-plus-circle icon"></i> Add Visitor</a>
 							<%-- <div class="clearfix"></div>
@@ -458,23 +462,20 @@
 							</div>
 
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
-								class="fa fa-plus-circle icon"></i>Employee </a>
+								class="fa fa-plus-circle icon"></i>Add Employee </a>
 							<div class="clearfix"></div>
 
 
 							<a
 								href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
-								class="fa fa-search-plus icon"></i>Exhibitor Employee Dashboard
-							</a>
+								class="fa fa-search-plus icon"></i>Employee Wise Dashboard </a>
 							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
-								class="fa fa-search-plus icon"></i> Employee Exhibitor Graph</a> 
-								<a
-								href="${pageContext.request.contextPath}/assignTaskToEmp"><i
-								class="fa fa-plus-circle icon"></i>Assign Task </a>
-								
-								<a href="${pageContext.request.contextPath}/trackingHistory"><i
+								class="fa fa-search-plus icon"></i> Employee Comparision Report</a>
+							<a href="${pageContext.request.contextPath}/assignTaskToEmp"><i
+								class="fa fa-plus-circle icon"></i>Assign Task </a> <a
+								href="${pageContext.request.contextPath}/trackingHistory"><i
 								class="fa fa-search-plus icon"></i> Total KM By Employee</a>
 							<div class="clearfix"></div>
 						</div>
@@ -482,7 +483,7 @@
 
 
 
-				
+
 					<li class="small-box">
 
 						<div class="ibox">
@@ -494,16 +495,16 @@
 								class="fa fa-search-plus icon"></i>Pending Task List</a>
 							<div class="clearfix"></div>
 
-<a href="${pageContext.request.contextPath}/showEmpEnqTask"><i
+							<a href="${pageContext.request.contextPath}/showEmpEnqTask"><i
 								class="fa fa-search-plus icon"></i>Enquiry And Task</a>
-							
+
 							<div class="clearfix"></div>
-							
+
 							<a href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
 								class="fa fa-search-plus icon"></i>Edit Enquiry</a>
-							
+
 							<div class="clearfix"></div>
-							
+
 						</div>
 					</li>
 
