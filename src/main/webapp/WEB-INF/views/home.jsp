@@ -213,7 +213,12 @@ div.desc {
   </a>
   <br></br> <div style="padding-left: 5px;">
   <p align="left" class="overflow"> &nbsp;&nbsp; Event Name: <b ><abbr title="${eventList.eventName}" style="border: none;text-decoration: none;  cursor: inherit !important; ">${eventList.eventName}</abbr></b></p>
-  <p align="left"> &nbsp;&nbsp; Place: <b>${eventList.eventLocation}</b> </p>
+  <p align="left"> &nbsp;&nbsp; Place: <b>${eventList.eventLocation}  &nbsp;&nbsp;  </b> </p>
+  
+    <p align="left"> &nbsp;&nbsp; Stall Size: <b>${eventList.stallSize}</b>  &nbsp;&nbsp; Price:<b> ${eventList.priceForExh} </b> </p>
+  
+  
+  
   <p align="left"> &nbsp;&nbsp; From: <b>${eventList.eventFromDate}</b> &nbsp;To: <b>${eventList.eventToDate}</b></p>
  </div><hr></hr>
   <div class="desc">

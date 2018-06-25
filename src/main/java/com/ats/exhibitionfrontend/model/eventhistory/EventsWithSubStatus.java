@@ -48,7 +48,13 @@ public class EventsWithSubStatus {
 	int appliedStatus;
 	
 	
+	float stallSize;
 	
+	float priceForExh;
+	
+	float discPer;
+	
+	float discountedPrice;
 	
 	
 	public int getSubStatus() {
@@ -237,6 +243,38 @@ public class EventsWithSubStatus {
 		this.appliedStatus = appliedStatus;
 	}
 
+	public float getStallSize() {
+		return stallSize;
+	}
+
+	public float getPriceForExh() {
+		return priceForExh;
+	}
+
+	public float getDiscPer() {
+		return discPer;
+	}
+
+	public float getDiscountedPrice() {
+		return discountedPrice;
+	}
+
+	public void setStallSize(float stallSize) {
+		this.stallSize = stallSize;
+	}
+
+	public void setPriceForExh(float priceForExh) {
+		this.priceForExh = priceForExh;
+	}
+
+	public void setDiscPer(float discPer) {
+		this.discPer = discPer;
+	}
+
+	public void setDiscountedPrice(float discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
+
 	@Override
 	public String toString() {
 		return "EventsWithSubStatus [eventId=" + eventId + ", orgId=" + orgId + ", eventName=" + eventName
@@ -247,7 +285,9 @@ public class EventsWithSubStatus {
 				+ ", person1Mob=" + person1Mob + ", person2Mob=" + person2Mob + ", person1EmailId=" + person1EmailId
 				+ ", person2EmailId=" + person2EmailId + ", isUsed=" + isUsed + ", locationId=" + locationId
 				+ ", companyTypeId=" + companyTypeId + ", subStatus=" + subStatus + ", appliedStatus=" + appliedStatus
-				+ "]";
+				+ ", stallSize=" + stallSize + ", priceForExh=" + priceForExh + ", discPer=" + discPer
+				+ ", discountedPrice=" + discountedPrice + "]";
 	}
+
 	
 }
