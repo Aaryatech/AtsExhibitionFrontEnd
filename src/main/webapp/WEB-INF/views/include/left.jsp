@@ -341,6 +341,8 @@
 							<a
 								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
+								
+								
 
 						</div>
 					</li>
@@ -374,7 +376,14 @@
 
 							<a
 								href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
-								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a> <a
+								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a> 
+								
+								
+							<a
+								href="${pageContext.request.contextPath}/showEnquiryByEvent"><i
+								class="fa fa-plus-circle icon"></i>Enquiry By Event</a> 
+								
+								<a
 								href="${pageContext.request.contextPath}/addEnquiryByExhibitor"><i
 								class="fa fa-plus-circle icon"></i> Add Enquiry</a> <a
 								href="${pageContext.request.contextPath}/addVisitorByExhibitor"><i
