@@ -22,6 +22,7 @@ import com.ats.exhibitionfrontend.model.LoginResponseExh;
 import com.ats.exhibitionfrontend.model.eventhistory.GetAllEventForExhb;
 import com.ats.exhibitionfrontend.model.eventhistory.GetEventHistory;
 import com.ats.exhibitionfrontend.model.eventhistory.GetEventVisitorName;
+import com.ats.exhibitionfrontend.model.eventhistory.ProductLikeByEvent;
 import com.ats.exhibitionfrontend.model.feedback.EventExhMapping;
 
 @Controller
@@ -64,6 +65,7 @@ public class ReportControlller {
 
 	int globalEvId = 0;
 
+	
 	@RequestMapping(value = "/getVisNameByEveId", method = RequestMethod.POST)
 	public ModelAndView getVisNameByEveId(HttpServletRequest request, HttpServletResponse response) {
 
@@ -113,7 +115,82 @@ public class ReportControlller {
 		return model;
 	}
 	 
-	
+	//Eventwise Product Likes
+	@RequestMapping(value = "/showProdVisName", method = RequestMethod.GET)
+	public ModelAndView showProdVisName(HttpServletRequest request, HttpServletResponse response) {
+System.err.println("inside showProdVisName");
+		ModelAndView model = new ModelAndView("");
+		try {
+			model = new ModelAndView("report/eventWiseProdLike");
+
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			int exhbId = login.getExhibitor().getExhId();
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+
+			map.add("exhbId", exhbId);
+
+			GetAllEventForExhb[] eventListResp = rest.postForObject(Constants.url + "getEventsByExhbId", map,
+					GetAllEventForExhb[].class);
+
+			eventList = new ArrayList<GetAllEventForExhb>(Arrays.asList(eventListResp));
+
+			model.addObject("eventList", eventList);
+
+		} catch (Exception e) {
+
+			System.err.println("Exception in show /showProdVisName  @ ReportController" + e.getMessage());
+			e.printStackTrace();
+		}
+
+		return model;
+	}
+
+	@RequestMapping(value = "/getProdVisNameByEveId", method = RequestMethod.POST)
+	public ModelAndView getProdVisNameByEveId(HttpServletRequest request, HttpServletResponse response) {
+		System.err.println("inside getProdVisNameByEveId");
+
+		ModelAndView model = null;
+		try {
+			model = new  ModelAndView("report/eventWiseProdLike");
+
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			int exhbId = login.getExhibitor().getExhId();
+
+			int eventId = Integer.parseInt(request.getParameter("evn_name"));
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			
+			System.err.println("Event Id Found  " +eventId);
+			
+		
+				map.add("eventId", eventId);
+				map.add("exhbId", exhbId);
+		
+				ProductLikeByEvent[] visNames = rest.postForObject(Constants.url + "/getProdVisitorName", map,
+						ProductLikeByEvent[].class);
+
+			List<ProductLikeByEvent> visNameList = new ArrayList<ProductLikeByEvent>(Arrays.asList(visNames));
+
+			globalEvId = eventId;
+			model.addObject("visitorList", visNameList);
+
+			model.addObject("eventList", eventList);
+
+			model.addObject("evnId", globalEvId);
+
+		} catch (Exception e) {
+
+			System.err.println("Exception in show /getProdVisNameByEveId  @ RepportController" + e.getMessage());
+			e.printStackTrace();
+		}
+
+		return model;
+	}
 	
 	@RequestMapping(value = "/showgetEventLikeCounts", method = RequestMethod.GET)
 	public ModelAndView showgetEventLikeCounts(HttpServletRequest request, HttpServletResponse response) {

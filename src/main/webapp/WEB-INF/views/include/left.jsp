@@ -338,6 +338,9 @@
 								class="fa fa-search-plus icon"></i>Visitor List </a>
 							<div class="clearfix"></div>
 
+	<a href="${pageContext.request.contextPath}/showProdVisName"><i
+								class="fa fa-search-plus icon"></i>Procuct Visitor</a>
+							<div class="clearfix"></div>
 							<a
 								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
