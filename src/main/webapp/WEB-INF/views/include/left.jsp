@@ -138,7 +138,6 @@
 
 
 
-
 					<li><a
 						href="${pageContext.request.contextPath}/showgetEventLikeCounts"><div
 								class="img">
@@ -338,16 +337,10 @@
 							<a href="${pageContext.request.contextPath}/showEventVisName"><i
 								class="fa fa-search-plus icon"></i>Visitor List </a>
 							<div class="clearfix"></div>
-							
-							
 
 							<a
 								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
-									<div class="clearfix"></div>
-								<a href="${pageContext.request.contextPath}/showProdVisName"><i
-								class="fa fa-search-plus icon"></i>Product Visitor List </a>
-						
 								
 								
 

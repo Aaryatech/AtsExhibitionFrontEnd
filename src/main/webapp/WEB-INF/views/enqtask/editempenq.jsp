@@ -187,7 +187,7 @@
 
 					<div>
 						<strong><p
-								style="text-align: center; color: red; font-size: 25px;">
+								style="text-align: center; color: black; font-size: 25px;">
 								Enquiry List</p></strong>
 					</div>
 					<div class="fleft">
@@ -307,7 +307,7 @@
 							</div>
 
 							<div class="row">
-								<div class="col-md-4" align="right">
+								<div class="col-md-3" align="right" >
 
 									<b>Visitor:</b> ${enquiry.visitorName}
 								</div>
@@ -329,7 +329,7 @@
 										</div> --%>
 
 
-								<div class="col-md-3" align="right">
+								<div class="col-md-3" align="center">
 									<input type="button" value="Edit"
 										style="width: 70px; height: 30px;"
 										class="buttonsaveorder btn-xs"
@@ -343,7 +343,7 @@
 
 				<div>
 					<strong><p
-							style="text-align: center; color: red; font-size: 25px;">
+							style="text-align: center; color: black; font-size: 25px;">
 							Task List</p></strong>
 				</div>
 				<div class="fright">
@@ -444,7 +444,7 @@
 		// alert("Employee Id " +empId);
 		 
 		    //form.action ="/editEmpEnquiry";
-		    window.open('${pageContext.request.contextPath}/editEmpEnquiry/'+empId+'/'+enqId+'/'+meetDate+'/'+enqStatus);
+		    window.href('${pageContext.request.contextPath}/editEmpEnquiry/'+empId+'/'+enqId+'/'+meetDate+'/'+enqStatus);
 		    //form.submit();
 		
 	}
