@@ -95,7 +95,7 @@
 									</c:forEach>
 								</select> 
 							</div>
-                           <div class="col-md-3"><input type="submit" value="Submit11" class="btn btn-primary"></div>
+                           <div class="col-md-3"><input type="submit" value="Submit" class="btn btn-primary"></div>
 						</div>
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>

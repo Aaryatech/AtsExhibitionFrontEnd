@@ -119,7 +119,7 @@
 							</div>
 							<div class="col-md-3">
 								<input id="mob" class="form-control" placeholder="Mobile No"
-									name="mob" style="text-align: left;" onchange="checkMobNo();"
+									name="mob" style="text-align: left;" oninput="checkMobNo();"
 									value="${customer.custMobNo}" pattern="^\d{10}$" type="text"
 									required>
 

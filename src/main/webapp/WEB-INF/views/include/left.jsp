@@ -476,20 +476,17 @@
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
 								class="fa fa-plus-circle icon"></i>Add Employee </a>
 							<div class="clearfix"></div>
+<a href="${pageContext.request.contextPath}/assignTaskToEmp"><i
+								class="fa fa-plus-circle icon"></i>Assign Task </a>
+								
+								
+							<a href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
+								class="fa fa-search-plus icon"></i>Edit Enquiry</a>
 
+							
 
-							<a
-								href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
-								class="fa fa-search-plus icon"></i>Employee Wise Dashboard </a>
-							<div class="clearfix"></div>
-
-							<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
-								class="fa fa-search-plus icon"></i> Employee Comparision Report</a>
-							<a href="${pageContext.request.contextPath}/assignTaskToEmp"><i
-								class="fa fa-plus-circle icon"></i>Assign Task </a> <a
-								href="${pageContext.request.contextPath}/trackingHistory"><i
-								class="fa fa-search-plus icon"></i> Total KM By Employee</a>
-							<div class="clearfix"></div>
+						
+							
 						</div>
 					</li>
 
@@ -502,6 +499,17 @@
 							<div class="ibox-head">
 								<div class="ibox-title">Employee Info</div>
 							</div>
+							<a
+								href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
+								class="fa fa-search-plus icon"></i>Employee Wise Dashboard </a>
+							<div class="clearfix"></div>
+							
+								<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
+								class="fa fa-search-plus icon"></i> Employee Comparision Report</a>
+								 <a
+								href="${pageContext.request.contextPath}/trackingHistory"><i
+								class="fa fa-search-plus icon"></i> Total KM  By  Travelling  Employee</a>
+							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showTaskList"><i
 								class="fa fa-search-plus icon"></i>Pending Task List</a>
@@ -512,8 +520,24 @@
 
 							<div class="clearfix"></div>
 
-							<a href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
-								class="fa fa-search-plus icon"></i>Edit Enquiry</a>
+
+							<div class="clearfix"></div>
+
+						</div>
+					</li>
+					
+					
+					<li class="small-box">
+
+						<div class="ibox">
+							<div class="ibox-head">
+								<div class="ibox-title">Pending Enquiry</div>
+							</div>
+							
+							
+
+							<div class="clearfix"></div>
+
 
 							<div class="clearfix"></div>
 

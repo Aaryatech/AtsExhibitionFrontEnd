@@ -74,7 +74,7 @@
 
 						<div class="col-md-12">
 							<div class="col1title" align="left">
-								<h3>Event Visitor Names By Events</h3>
+								<h3>Event Visitor Names By Events</h3> 
 								</div>
 								</div>
 						<div class="colOuter">	
@@ -97,6 +97,9 @@
 								</select> 
 							</div>
                            <div class="col-md-3"><input type="submit" value="Submit" class="btn btn-primary"></div>
+                           
+                                                      <div class="col-md-3"><a href="${pageContext.request.contextPath}/showgetEventLikeCounts">Event Visitors Graph</a></div>
+                           
 						</div>
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>

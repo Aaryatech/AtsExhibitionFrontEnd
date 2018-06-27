@@ -140,7 +140,7 @@
 								<input id="mob" class="form-control"
 									placeholder="Employee Mobile No" name="mob" min="10"
 									maxlength="10" style="text-align: left;"
-									value="${customer.custMobNo}" onchange="checkMobNo(this)"
+									value="${customer.custMobNo}" oninput="checkMobNo(this)"
 									pattern="^\d{10}$" type="text" required
 									oninvalid="this.setCustomValidity('Enter Employee Mobile No. Here')"
 									oninput="this.setCustomValidity('')">

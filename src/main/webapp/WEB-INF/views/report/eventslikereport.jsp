@@ -73,16 +73,20 @@
 						enctype="multipart/form-data">
 						<input type="hidden" name="mod_ser" id="mod_ser"
 							value="search_result">
-							<div><b>Number of likes by Event</b></div>
+							
 <div id="chart">
+
 					<br>
 					<br> <br>
-					<hr>
+				
+					<div style="text-align: left; color: pal"><b>Number of likes by Event</b></div>
+					
 					<div id="PieChart_div" style="width: 100%; height: 100%;"></div>
 
 					<div id="chart_div" style="width: 100%; height: 100%;"></div>
 
 				</div>
+				
 						</form>
 						
 				</div>
@@ -178,7 +182,7 @@ var materialOptions = {
 			    	
 width: 500,
 chart: {
-title: 'Event Likes Report',
+title: '',
 subtitle: 'Like ',
 
 },
@@ -206,11 +210,11 @@ y: {
 			        var Piechart = new google.visualization.PieChart(
 			                document.getElementById('PieChart_div'));
 			       chart.draw(dataTable,
-			          {title: 'Event Likes Report'});
+			          {title: ''});
 			       
 			       
 			       Piechart.draw(piedataTable,
-					          {title: 'Event Likes Report',is3D:true	});
+					          {title: '',is3D:true	});
 			       
 			       
 					var subStatus= ${subStatus};
