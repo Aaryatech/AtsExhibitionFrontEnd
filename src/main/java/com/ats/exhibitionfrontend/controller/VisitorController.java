@@ -186,9 +186,10 @@ public class VisitorController {
 
 			String meetDate = request.getParameter("meetDate");
 			int eventId = Integer.parseInt(request.getParameter("eventId"));
-			int visitorId = Integer.parseInt(request.getParameter("visitorId"));
+			String visitorId = request.getParameter("visitorId");
 			int empId = Integer.parseInt(request.getParameter("empId"));
 
+			System.out.println("visitorId" + visitorId);
 			HttpSession session = request.getSession();
 			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
 
@@ -199,7 +200,7 @@ public class VisitorController {
 			Date date = new Date();
 
 			insert.setEventId(eventId);
-			insert.setVisitorId(visitorId);
+			insert.setVisitorId(Integer.parseInt(visitorId));
 			insert.setEmpId(empId);
 			insert.setDate(sf.format(date));
 			insert.setApproximate_time(time.format(date));
@@ -219,6 +220,27 @@ public class VisitorController {
 		}
 
 		return "redirect:/addEnquiryByExhibitor";
+	}
+
+	@RequestMapping(value = "/isVisitorExist", method = RequestMethod.GET)
+	public @ResponseBody Visitor isVisitorExist(HttpServletRequest request, HttpServletResponse response) {
+		Visitor visitor = null;
+		// ModelAndView model = new ModelAndView("masters/empDetail");
+		try {
+
+			String mobileNo = request.getParameter("visitorMobile");
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+
+			map.add("visitorMobile", mobileNo);
+
+			visitor = rest.postForObject(Constants.url + "isVisitorExist", map, Visitor.class);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return visitor;
 	}
 
 }

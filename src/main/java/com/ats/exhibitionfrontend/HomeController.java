@@ -325,7 +325,7 @@ public class HomeController {
 			e.printStackTrace();
 
 		}
-		return "login";
+		return "index";
 
 	}
 

@@ -12,14 +12,18 @@
 	--%>
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
-	<c:url var="getEmpByEventId" value="/getEmpByEventId"></c:url>
+	<c:url var="isVisitorExist" value="/isVisitorExist"></c:url>
 	<!-- 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
- 
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
+
 	<!--datepicker-->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
@@ -74,61 +78,58 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-							 <strong><a style="color: green;" href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong>
-							
-								<h4>Add Enquiry</h4>  
+								<strong><a style="color: green;"
+									href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong>
+
+								<h4>Add Enquiry</h4>
 							</div>
 
 						</div>
 
-	<div class="colOuter">
+						<div class="colOuter">
 
 							<div class="col-md-2">
 								<div class="col1title" align="left">Select Event*:</div>
-							</div>
-
-							<div class="col-md-2">
-								<select class="selectpicker" data-live-search="true" onchange="getEmpByEventId();"
-									title="Please Select" name="eventId" id="eventId" required>
-
-									<c:forEach items="${eventHistory}" var="eventHistory">
-										<option value="${eventHistory.eventId}">${eventHistory.eventName}</option>
-
-									</c:forEach>
-								</select>
-							</div>
-
-						<%-- <div class="colOuter">
-
-							<div class="col-md-2">
-								<div class="col1title" align="left">Select Event*:</div>
-							</div>
-
-							<div class="col-md-2">
-								<select class="selectpicker" onchange="getEmpByEventId();"
-									data-live-search="true" title="Please Select" name="eventId"
-									id="eventId" required>
-
-									<c:forEach items="${eventHistory}" var="eventHistory">
-										<option value="${eventHistory.eventId}">${eventHistory.eventName}</option>
-
-									</c:forEach>
-								</select>
-							</div> --%>
-							<div class="col-md-2"></div>
-
-							<div class="col-md-2">
-								<div class="col1title" align="left">Select Visitor*:</div>
 							</div>
 
 							<div class="col-md-2">
 								<select class="selectpicker" data-live-search="true"
-									title="Please Select" name="visitorId" id="visitorId" required>
+									onchange="getEmpByEventId();" title="Please Select"
+									name="eventId" id="eventId" required>
 
+									<c:forEach items="${eventHistory}" var="eventHistory">
+										<option value="${eventHistory.eventId}">${eventHistory.eventName}</option>
+
+									</c:forEach>
 								</select>
 							</div>
 
 
+							<div class="col-md-1"></div>
+
+							<div class="col-md-2">
+								<div class="col1title" align="left">Visitor Mobile No*:</div>
+							</div>
+							<div class="col-md-2">
+								<input id="visitorMobile" class="form-control"
+									placeholder="Mobile No" name="visitorMobile"
+									style="text-align: left;" pattern="^\d{10}$" type="text"
+									maxlength="10" required>
+
+							</div>
+							<div align="right" class="col-md-1">
+								<input name="button" class="buttonsaveorder" value="Search"
+									type="button" align="right" onclick="checkMobNo();"> <input
+									type="text" name="visitorId" id="visitorId">
+
+							</div>
+							<div align="right" id="addvis" class="col-md-1"
+								style="display: none;">
+								<a
+									href="${pageContext.request.contextPath}/addVisitorByExhibitor"><input
+									name="button" class="buttonsaveorder" value="Add Visitor"
+									type="button" align="right"></a>
+							</div>
 						</div>
 
 						<div class="colOuter">
@@ -136,7 +137,6 @@
 							<div class="col-md-2">
 								<div class="col1title" align="left">Select Employee*:</div>
 							</div>
-
 							<div class="col-md-2">
 								<select class="selectpicker" data-live-search="true"
 									title="Please Select" name="empId" id="empId" required>
@@ -147,10 +147,9 @@
 									</c:forEach>
 								</select>
 							</div>
-							<div class="col-md-2"></div>
+							<div class="col-md-1"></div>
 							<div class="col-md-2">
-								<div class="col1title" align="left">Select Next Meet
-									Date*:</div>
+								<div class="col1title" align="left">Next Meet Date*:</div>
 							</div>
 
 							<div class="col-md-2">
@@ -165,14 +164,10 @@
 						<div class="colOuter">
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value="Submit"
-									type="submit" align="center">
+									type="submit" align="center" id="submitButton">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
-
 						</div>
-
-
-
 					</form>
 
 
@@ -293,7 +288,38 @@
 			fauxTable.appendChild(clonedElement);
 			fauxTable.appendChild(clonedElement2);
 		})();
-	</script>
 
+		function checkMobNo() {
+			document.getElementById("visitorMobile").style = "color:black"
+
+			var visitorMobile = document.getElementById("visitorMobile").value;
+
+			$
+					.getJSON(
+							'${isVisitorExist}',
+							{
+								visitorMobile : visitorMobile,
+
+								ajax : 'true'
+
+							},
+							function(data) {
+
+								if (data.visitorId == 0) {
+									alert("Visitor with this Mobile Number Already Registered. Please Add Visitor First.");
+									$('#addvis').show();
+
+								} else {
+
+									document.getElementById("visitorMobile").style = "color:black"
+									document.getElementById("visitorId").value = data.visitorId;
+
+									alert("In Else")
+								}
+							});
+			document.getElementById("mob").style = "color:black"
+
+		}
+	</script>
 </body>
 </html>
