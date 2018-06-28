@@ -120,7 +120,7 @@
 							<div align="right" class="col-md-1">
 								<input name="button" class="buttonsaveorder" value="Search"
 									type="button" align="right" onclick="checkMobNo();"> <input
-									type="text" name="visitorId" id="visitorId">
+									type="hidden" name="visitorId" id="visitorId">
 
 							</div>
 							<div align="right" id="addvis" class="col-md-1"
@@ -167,8 +167,8 @@
 									type="submit" align="center" id="submitButton">
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
-						</div>
-					</form>
+
+</div>		</form>
 
 
 				</div>
