@@ -202,14 +202,14 @@
 						<div class="title">
 							Enquiry <span>Info</span>
 						</div></a></li>
-				<li><a href="#" onClick="openNav3()"><div class="img">
+				<%-- <li><a href="#" onClick="openNav3()"><div class="img">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/feedback.png"
 								alt="img">
 						</div>
 						<div class="title">
 							Feedback Question <span>Info</span>
-						</div></a></li>
+						</div></a></li> --%>
 
 				<li><a href="#" onClick="openNav4()"><div class="img">
 							<img
@@ -230,10 +230,6 @@
 						<div class="title">
 							Edit <span>Profile</span>
 						</div></a></li>
-
-
-
-
 
 			</c:otherwise>
 		</c:choose>
@@ -352,6 +348,29 @@
 
 
 
+				<!-- 	</ul>
+					<ul> -->
+					<li class="small-box">
+
+						<div class="ibox">
+							<div class="ibox-head">
+								<div class="ibox-title">Question</div>
+							</div>
+
+							<a href="${pageContext.request.contextPath}/showFbQueTxn"><i
+								class="fa fa-plus-circle icon"></i>Feedback Question Transaction</a>
+							<div class="clearfix"></div>
+							<a
+								href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><i
+								class="fa fa-search-plus icon"></i>Spin Question Analysis </a>
+							<div class="clearfix"></div>
+							
+
+						</div>
+					</li>
+
+
+
 				</ul>
 			</div>
 
@@ -413,7 +432,7 @@
 <!--3nav-->
 
 <!--4nav-->
-<div id="mySidenav3" class="sidenav">
+<%-- <div id="mySidenav3" class="sidenav">
 	<div class="topSlide">
 		<div class="topSlide2">
 			<a href="javascript:void(0)" class="closebtn" onClick="closeNav3()"><img
@@ -435,11 +454,11 @@
 							<a
 								href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><i
 								class="fa fa-search-plus icon"></i>Spin Question Analysis </a>
-							<%-- <div class="clearfix"></div>
+							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
- --%>
+
 
 
 						</div>
@@ -452,7 +471,7 @@
 
 		</div>
 	</div>
-</div>
+</div> --%>
 <!--4nav-->
 
 
@@ -511,8 +530,6 @@
 								class="fa fa-search-plus icon"></i> Total KM  By  Travelling  Employee</a>
 							<div class="clearfix"></div>
 
-							<a href="${pageContext.request.contextPath}/showTaskList"><i
-								class="fa fa-search-plus icon"></i>Pending Task List</a>
 							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showEmpEnqTask"><i
@@ -538,8 +555,13 @@
 
 							<div class="clearfix"></div>
 
+							<a href="${pageContext.request.contextPath}/showTaskList"><i
+								class="fa fa-search-plus icon"></i>Pending Task List</a>
 
 							<div class="clearfix"></div>
+								<a href="#"><i
+								class="fa fa-search-plus icon"></i>Pending Enquiry</a>
+							
 
 						</div>
 					</li>
