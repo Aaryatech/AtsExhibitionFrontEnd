@@ -13,7 +13,7 @@
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
-<!-- 
+	<!-- 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<link rel="stylesheet"
@@ -99,7 +99,7 @@
 
 
 
-							<div class="col-md-1"></div>
+							
 
 							<div class="col-md-2">
 								<div class="col1title" align="left">To Date*:</div>
@@ -108,23 +108,26 @@
 								<input id="todatepicker" class="form-control"
 									style="text-align: left;" placeholder="To Date"
 									value="${toDate}" name="toDate" type="text" required>
+								<c:set var="count" value="${fn:length(enquiryHeaderWithName) }"></c:set>
+								</div>
+							<div class="col-md-1" style="color:red; font-size: 32px;">${count}</div>
 
-							</div>
+							
 
 						</div>
+				
 
 
 
-
-
-						<div class="colOuter">
-							<div align="center">
-								<input name="submit" class="buttonsaveorder" value="Search"
-									type="submit" align="center">
-								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
-							</div>
+				<div class="colOuter">
+					<div align="center">
+						<input name="submit" class="buttonsaveorder" value="Search"
+							type="submit" align="center">
+						<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
+					</div>
+					</div>
 					</form>
-				</div>
+				
 
 				<div id="table-scroll" class="table-scroll">
 					<div id="faux-table" class="faux-table" aria="hidden"></div>
@@ -167,50 +170,48 @@
 												<c:set var="modType" value="Closed"></c:set>
 												<c:set var="color" value="Black"></c:set>
 											</c:when>
-										<c:when test="${enqList.status==5}">
+											<c:when test="${enqList.status==5}">
 												<c:set var="modType" value="Completed"></c:set>
 												<c:set var="color" value="Green"></c:set>
 											</c:when>
-										</c:choose>
-									<tr>
-										<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+										</c:choose> <tr>
+									<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 
-										<td class="col-md-1"><c:out
-												value="${enqList.visitorName}" /></td>
-										<td class="col-md-1"><c:out
+									<td class="col-md-1"><c:out value="${enqList.visitorName}" /></td>
+									<td class="col-md-1"><c:out
 												value="${enqList.visitorMobile}" /></td>
-										<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
+									<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
 
-										<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
-										<td class="col-md-1" style="text-align: right;"><c:out
+									<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
+									<td class="col-md-1" style="text-align: right;"><c:out
 												value="${enqList.noOfEnqDays}" /></td>
 
-										<td class="col-md-1" style="color:${color}"><c:out
+									<td class="col-md-1" style="color:${color}"><c:out
 												value="${modType}" /></td>
 
-										<td class="col-md-1"><c:out value="${enqList.remark}" /></td>
+									<td class="col-md-1"><c:out value="${enqList.remark}" /></td>
 
-										<td class="col-md-1"><div style="text-align: center;">
-												<a
+									<td class="col-md-1"><div style="text-align: center;">
+											<a
 													href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><i
-														class='fa fa-list'></i>
-												</a>
-											</div></td>
+													class='fa fa-list'></i> </a>
+										</div></td>
 
 
-									</tr>
-								</c:forEach>
+								</tr>
+							</c:forEach>
+					
 						</table>
 
-					</div>
 				</div>
-				</form>
-
-
 			</div>
-			<!--tabNavigation-->
-			<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
-			<%-- <div class="order-btn textcenter">
+			</form>
+
+
+		</div>
+		<!--tabNavigation-->
+		<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
+		<%-- <div class="order-btn textcenter">
 						<a
 							href="${pageContext.request.contextPath}/showBillDetailProcess/${billNo}"
 							class="buttonsaveorder">VIEW DETAILS</a>
@@ -218,8 +219,8 @@
 					</div> --%>
 
 
-		</div>
-		<!--rightSidebar-->
+	</div>
+	<!--rightSidebar-->
 
 	</div>
 	<!--fullGrid-->
@@ -294,7 +295,6 @@
 			fauxTable.appendChild(clonedElement);
 			fauxTable.appendChild(clonedElement2);
 		})();
-	</script>
-
-</body>
+	</script></bo
+									dy>
 </html>

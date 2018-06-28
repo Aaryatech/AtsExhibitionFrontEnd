@@ -6,13 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.web.servlet.ModelAndView; 
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.ats.exhibitionfrontend.model.LoginResponseExh;
- 
- 
- 
 
 public class CheckUserInterceptor extends HandlerInterceptorAdapter {
 
@@ -27,10 +24,10 @@ public class CheckUserInterceptor extends HandlerInterceptorAdapter {
 		String path = request.getRequestURI().substring(request.getContextPath().length());
 		System.out.println("path is: " + path);
 
-		if (path.startsWith("/pdf") ) {
+		if (path.startsWith("/pdf")) {
 			return true;
 		}
-		
+
 		try {
 			String resourcesPath = path.substring(1, 4);
 			System.out.println("substring is: " + resourcesPath);
@@ -45,12 +42,12 @@ public class CheckUserInterceptor extends HandlerInterceptorAdapter {
 		}
 
 		if (path.equalsIgnoreCase("/sessionTimeOut") || path.equalsIgnoreCase("/")
-				|| path.equalsIgnoreCase("/loginProcess")) {
-			
-			
+				|| path.equalsIgnoreCase("/loginProcess") || path.equalsIgnoreCase("/createNewPassword")
+				|| path.equalsIgnoreCase("/generateOtp") || path.equalsIgnoreCase("/login")) {
+
 			System.out.println("#Login req : " + path);
 			return true;
-		}else {
+		} else {
 			System.out.println("#Other req : " + path);
 
 			LoginResponseExh userObj = null;
@@ -67,15 +64,15 @@ public class CheckUserInterceptor extends HandlerInterceptorAdapter {
 				return false;
 			}
 
-			if(userObj ==null) {
-				
+			if (userObj == null) {
+
 				response.sendRedirect(request.getContextPath() + "/sessionTimeOut");
 				return false;
-			}else {
-				
+			} else {
+
 				return true;
 			}
-			
+
 			/*
 			 * try { if(request.getServletPath().equals("/") ||
 			 * request.getServletPath().equals("/loginProcess")
