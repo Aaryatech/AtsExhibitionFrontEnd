@@ -78,8 +78,7 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<strong><a style="color: green;"
-									href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong>
+
 
 								<h4>Add Enquiry</h4>
 							</div>
@@ -110,7 +109,7 @@
 							<div class="col-md-2">
 								<div class="col1title" align="left">Visitor Mobile No*:</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<input id="visitorMobile" class="form-control"
 									placeholder="Mobile No" name="visitorMobile"
 									style="text-align: left;" pattern="^\d{10}$" type="text"
@@ -118,11 +117,11 @@
 									type="hidden" name="visitorId" id="visitorId">
 
 							</div>
-							<!-- <div align="right" class="col-md-1">
-								<input name="button" class="buttonsaveorder" value="Search"
-									type="button" align="right" onclick=""> 
-
-							</div> -->
+							<div align="right" id="tick" class="col-md-0.5"
+								style="display: none;">
+								<i class="fa fa-check-square"
+									style="font-size: 36px; color: green"></i>
+							</div>
 							<div align="right" id="addvis" class="col-md-1"
 								style="display: none;">
 								<a
@@ -152,7 +151,7 @@
 								<div class="col1title" align="left">Next Meet Date*:</div>
 							</div>
 
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<input id="fromdatepicker" class="texboxitemcode texboxcal"
 									name="meetDate" type="text" required>
 
@@ -308,14 +307,20 @@
 
 								if (data.visitorId == 0) {
 									alert("Visitor with this Mobile Number Not Registered. Please Add Visitor First.");
+									document.getElementById("visitorMobile").style.backgroundColor = "red";
+									document.getElementById("visitorMobile").style.color = "white";
+									$('#tick').hide();
 									$('#addvis').show();
 
 								} else {
 
-									document.getElementById("visitorMobile").style = "color:black"
+									document.getElementById("visitorMobile").style.bordercolor = "green";
+									document.getElementById("tick").style.color = "green";
 									document.getElementById("visitorId").value = data.visitorId;
 
-									alert("In Else")
+									$('#tick').show();
+
+									//alert("In")
 								}
 							});
 			document.getElementById("mob").style = "color:black"

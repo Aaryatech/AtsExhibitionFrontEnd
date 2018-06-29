@@ -154,8 +154,10 @@
 								<c:set var="count" value="${fn:length(enquiryHeaderWithName) }"></c:set>
 								</div>
 
-							<div class="popover-icon" style="padding-top:0px;"><button class="btn-circle btn1 btn-info" href="javascript:void(0)" data-toggle="tooltip" title="Count">${count}</button>
-                           </div>
+							<div class="popover-icon" style="padding-top: 0px;">
+								<button class="btn-circle btn1 btn-info"
+									href="javascript:void(0)" data-toggle="tooltip" title="Count">${count}</button>
+							</div>
 
 						</div>
 				

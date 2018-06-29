@@ -10,10 +10,56 @@
 </head>
 <body>
 
+	<style>
+.btn-circle {
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	padding: 11px;
+}
 
+.btn {
+	margin-right: 5px;
+}
+
+.btn-info {
+	color: #fff;
+	background-color: #2962ff;
+	border-color: #2962ff;
+}
+
+.btn1 {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	line-height: 1.5;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out,
+		border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: #2962ff;
+	font-size: 20px;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+
+* {
+	outline: 0;
+}
+
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+</style>
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
-<!-- 
+	<!-- 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<link rel="stylesheet"
@@ -90,7 +136,7 @@
 								<div class="col1title" align="left">Select Event :</div>
 							</div>
 							<div class="col-md-3">
-								<select name="evn_name"	 class="form-control">
+								<select name="evn_name" class="form-control">
 									<c:forEach items="${eventList}" var="events">
 
 										<c:choose>
@@ -102,7 +148,7 @@
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
-								</select> 
+								</select>
 							</div>
 
 
@@ -110,12 +156,24 @@
 							<!-- <div class="col-md-1"></div> -->
 
 							<div class="col-md-1">
-<!-- 								<div class="col1title" align="left">To Date*:</div>
- -->							</div>
-							<div class="col-md-1">
-								<input name="submit" class="buttonsaveorder btn btn-primary" value="Search"
-									type="submit" align="center">
+								<!-- 								<div class="col1title" align="left">To Date*:</div>
+ -->
 							</div>
+							<div class="col-md-1">
+								<input name="submit" class="buttonsaveorder btn btn-primary"
+									value="Search" type="submit" align="center"
+									onclick="takeCount();">
+
+								<c:set var="count" value="${fn:length(enquiryHeaderWithName) }"></c:set>
+							</div>
+							<div class="popover-icon"
+								style="padding-top: 0px;" align="right"
+								id="count1">
+								<button class="btn-circle btn1 btn-info"
+									href="javascript:void(0)" data-toggle="tooltip" title="Count"
+									disabled>${count}</button>
+							</div>
+
 
 						</div>
 
@@ -123,7 +181,7 @@
 
 
 
-					<!-- 	<div class="colOuter">
+						<!-- 	<div class="colOuter">
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value="Search"
 									type="submit" align="center">
@@ -131,93 +189,92 @@
 							</div>
 							</div> -->
 					</form>
-				
-
-				<div id="table-scroll" class="table-scroll">
-					<div id="faux-table" class="faux-table" aria="hidden"></div>
-					<div class="table-wrap">
-						<table id="table_grid" class="main-table" border="1px">
-
-							<thead>
-								<tr class="bgpink">
-
-									<th class="col-sm-1">Sr No</th>
-
-									<th class="col-md-1">Visitor Name</th>
-									<th class="col-md-1">Mobile No</th>
-									<th class="col-md-1">Employee Name</th>
-									<th class="col-md-1">Event Name</th>
-									<th class="col-md-1">No of Days</th>
-									<th class="col-md-1">Status</th>
-									<th class="col-md-1">Remark</th>
-									<th class="col-md-1">Action</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								<c:forEach items="${enquiryHeaderWithName}" var="enqList"
-									varStatus="count">
-									<li class="w3-bar"><c:choose>
-											<c:when test="${enqList.status==1}">
-												<c:set var="modType" value="Pending"></c:set>
-												<c:set var="color" value="Red"></c:set>
-											</c:when>
-											<c:when test="${enqList.status==2}">
-												<c:set var="modType" value="Processing"></c:set>
-												<c:set var="color" value="Yellow"></c:set>
-											</c:when>
-											<c:when test="${enqList.status==3}">
-												<c:set var="modType" value="Working On"></c:set>
-												<c:set var="color" value="Orange"></c:set>
-											</c:when>
-											<c:when test="${enqList.status==4}">
-												<c:set var="modType" value="Closed"></c:set>
-												<c:set var="color" value="Black"></c:set>
-											</c:when>
-										<c:when test="${enqList.status==5}">
-												<c:set var="modType" value="Completed"></c:set>
-												<c:set var="color" value="Green"></c:set>
-											</c:when>
-										</c:choose>
-									<tr>
-										<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
-
-										<td class="col-md-1"><c:out
-												value="${enqList.visitorName}" /></td>
-										<td class="col-md-1"><c:out
-												value="${enqList.visitorMobile}" /></td>
-										<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
-
-										<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
-										<td class="col-md-1" style="text-align: right;"><c:out
-												value="${enqList.noOfEnqDays}" /></td>
-
-										<td class="col-md-1" style="color:${color}"><c:out
-												value="${modType}" /></td>
-
-										<td class="col-md-1"><c:out value="${enqList.remark}" /></td>
-
-										<td class="col-md-1"><div style="text-align: center;">
-												<a
-													href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><i
-														class='fa fa-list'></i>
-												</a>
-											</div></td>
 
 
+					<div id="table-scroll" class="table-scroll">
+						<div id="faux-table" class="faux-table" aria="hidden"></div>
+						<div class="table-wrap">
+							<table id="table_grid" class="main-table" border="1px">
+
+								<thead>
+									<tr class="bgpink">
+
+										<th class="col-sm-1">Sr No</th>
+
+										<th class="col-md-1">Visitor Name</th>
+										<th class="col-md-1">Mobile No</th>
+										<th class="col-md-1">Employee Name</th>
+										<th class="col-md-1">Event Name</th>
+										<th class="col-md-1">No of Days</th>
+										<th class="col-md-1">Status</th>
+										<th class="col-md-1">Remark</th>
+										<th class="col-md-1">Action</th>
 									</tr>
-								</c:forEach>
-						</table>
+								</thead>
+								<tbody>
 
+									<c:forEach items="${enquiryHeaderWithName}" var="enqList"
+										varStatus="count">
+										<li class="w3-bar"><c:choose>
+												<c:when test="${enqList.status==1}">
+													<c:set var="modType" value="Pending"></c:set>
+													<c:set var="color" value="Red"></c:set>
+												</c:when>
+												<c:when test="${enqList.status==2}">
+													<c:set var="modType" value="Processing"></c:set>
+													<c:set var="color" value="Yellow"></c:set>
+												</c:when>
+												<c:when test="${enqList.status==3}">
+													<c:set var="modType" value="Working On"></c:set>
+													<c:set var="color" value="Orange"></c:set>
+												</c:when>
+												<c:when test="${enqList.status==4}">
+													<c:set var="modType" value="Closed"></c:set>
+													<c:set var="color" value="Black"></c:set>
+												</c:when>
+												<c:when test="${enqList.status==5}">
+													<c:set var="modType" value="Completed"></c:set>
+													<c:set var="color" value="Green"></c:set>
+												</c:when>
+											</c:choose>
+										<tr>
+											<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+
+											<td class="col-md-1"><c:out
+													value="${enqList.visitorName}" /></td>
+											<td class="col-md-1"><c:out
+													value="${enqList.visitorMobile}" /></td>
+											<td class="col-md-1"><c:out value="${enqList.empName}" /></td>
+
+											<td class="col-md-1"><c:out value="${enqList.eventName}" /></td>
+											<td class="col-md-1" style="text-align: right;"><c:out
+													value="${enqList.noOfEnqDays}" /></td>
+
+											<td class="col-md-1" style="color:${color}"><c:out
+													value="${modType}" /></td>
+
+											<td class="col-md-1"><c:out value="${enqList.remark}" /></td>
+
+											<td class="col-md-1"><div style="text-align: center;">
+													<a
+														href="${pageContext.request.contextPath}/enquiryDetail/${enqList.enqId}"><i
+														class='fa fa-list'></i> </a>
+												</div></td>
+
+
+										</tr>
+									</c:forEach>
+							</table>
+
+						</div>
 					</div>
+					</form>
+
+
 				</div>
-				</form>
-
-
-			</div>
-			<!--tabNavigation-->
-			<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
-			<%-- <div class="order-btn textcenter">
+				<!--tabNavigation-->
+				<!--<div class="order-btn"><a href="#" class="saveOrder">SAVE ORDER</a></div>-->
+				<%-- <div class="order-btn textcenter">
 						<a
 							href="${pageContext.request.contextPath}/showBillDetailProcess/${billNo}"
 							class="buttonsaveorder">VIEW DETAILS</a>
@@ -225,11 +282,11 @@
 					</div> --%>
 
 
-		</div>
-		<!--rightSidebar-->
+			</div>
+			<!--rightSidebar-->
 
-	</div>
-	<!--fullGrid-->
+		</div>
+		<!--fullGrid-->
 	</div>
 	<!--rightContainer-->
 
@@ -301,6 +358,10 @@
 			fauxTable.appendChild(clonedElement);
 			fauxTable.appendChild(clonedElement2);
 		})();
+
+		/* function takeCount() {
+			document.getElementById("count1").style.display = "block";
+		} */
 	</script>
 
 </body>

@@ -114,7 +114,7 @@
 							<div class="loginfildset">
 								<input class="texboxlogin" placeholder="User Mobile"
 									id="userMobile" name="userMobile" type="text"
-									data-rule-required="true">
+									data-rule-required="true" maxlength="10">
 							</div>
 							<input name="OTP" class="buttonlogin" value="Send OTP" id="OTP"
 								type="button" onclick="checkOTP();"> <input id="sotp"
@@ -130,11 +130,10 @@
 										id="otp" type="text" data-rule-required="true">
 
 								</div>
-
-
-
-								<input name="" class="buttonlogin" value="Verify OTP" id="votp"
-									type="button" onclick="verifyOTP();">
+								<input name="OTP" class="buttonlogin" value="Resend OTP"
+									id="resendOTP" type="button" onclick="checkOTP();"> <br>
+								<br> <input name="" class="buttonlogin" value="Verify OTP"
+									id="votp" type="button" onclick="verifyOTP();"><
 
 								<div id="hidden_div1" style="display: none;">
 
@@ -257,12 +256,14 @@
 			}, function(data) {
 
 				if (data.exhId == 0) {
+
 					alert("Mobile Number does not exist Please Configured .");
 					$('#OTP').show();
 					$('#hidden_div').hide();
 
 					return false;
 				} else {
+					/* document.getElementById("OTP").value=""; */
 					document.getElementById("sotp").value = data.otp;
 					document.getElementById("exhId").value = data.exhId;
 
@@ -281,14 +282,18 @@
 
 				$('#hidden_div1').show();
 				$('#votp').hide();
+				$('#resendOTP').hide();
 
-				document.getElementById("otp").style.borderColor = "green";
+				document.getElementById("otp").style.backgroundColor = "green";
+				document.getElementById("otp").style.color = "white";
 				document.getElementById("otp").disabled = true;
+				document.getElementById("userMobile").disabled = true;
 				$('#hidden_div3').show();
 
 			} else {
 				alert("Wrong OTP");
-				document.getElementById("otp").style.borderColor = "red";
+				document.getElementById("otp").style.backgroundColor = "red";
+				document.getElementById("otp").style.color = "white";
 			}
 
 		}

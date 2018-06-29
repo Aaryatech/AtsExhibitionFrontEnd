@@ -334,21 +334,21 @@
 								class="fa fa-search-plus icon"></i>Visitor List </a>
 							<div class="clearfix"></div>
 
-	<a href="${pageContext.request.contextPath}/showProdVisName"><i
+							<a href="${pageContext.request.contextPath}/showProdVisName"><i
 								class="fa fa-search-plus icon"></i>Procuct Visitor</a>
 							<div class="clearfix"></div>
 							<a
 								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="fa fa-search-plus icon"></i> Event Likes </a>
-								
-								
+
+
 
 						</div>
 					</li>
 
 
 
-				<!-- 	</ul>
+					<!-- 	</ul>
 					<ul> -->
 					<li class="small-box">
 
@@ -364,7 +364,7 @@
 								href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><i
 								class="fa fa-search-plus icon"></i>Spin Question Analysis </a>
 							<div class="clearfix"></div>
-							
+
 
 						</div>
 					</li>
@@ -398,18 +398,15 @@
 
 							<a
 								href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
-								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a> 
-								
-								
-							<a
+								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a> <a
 								href="${pageContext.request.contextPath}/showEnquiryByEvent"><i
-								class="fa fa-plus-circle icon"></i>Enquiry By Event</a> 
-								
-								<a
+								class="fa fa-plus-circle icon"></i>Enquiry By Event</a> <a
 								href="${pageContext.request.contextPath}/addEnquiryByExhibitor"><i
 								class="fa fa-plus-circle icon"></i> Add Enquiry</a> <a
 								href="${pageContext.request.contextPath}/addVisitorByExhibitor"><i
-								class="fa fa-plus-circle icon"></i> Add Visitor</a>
+								class="fa fa-plus-circle icon"></i> Add Visitor</a> <a
+								href="${pageContext.request.contextPath}/exhibitorDashboard"><i
+								class="fa fa-plus-circle icon"></i> Dashboard</a>
 							<%-- <div class="clearfix"></div>
 							<a href="${pageContext.request.contextPath}/showEventVisName"><i
 								class="fa fa-search-plus icon"></i>Visitor List </a>
@@ -495,17 +492,15 @@
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
 								class="fa fa-plus-circle icon"></i>Add Employee </a>
 							<div class="clearfix"></div>
-<a href="${pageContext.request.contextPath}/assignTaskToEmp"><i
-								class="fa fa-plus-circle icon"></i>Assign Task </a>
-								
-								
-							<a href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
+							<a href="${pageContext.request.contextPath}/assignTaskToEmp"><i
+								class="fa fa-plus-circle icon"></i>Assign Task </a> <a
+								href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
 								class="fa fa-search-plus icon"></i>Edit Enquiry</a>
 
-							
 
-						
-							
+
+
+
 						</div>
 					</li>
 
@@ -522,12 +517,12 @@
 								href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
 								class="fa fa-search-plus icon"></i>Employee Wise Dashboard </a>
 							<div class="clearfix"></div>
-							
-								<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
+
+							<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
 								class="fa fa-search-plus icon"></i> Employee Comparision Report</a>
-								 <a
-								href="${pageContext.request.contextPath}/trackingHistory"><i
-								class="fa fa-search-plus icon"></i> Total KM  By  Travelling  Employee</a>
+							<a href="${pageContext.request.contextPath}/trackingHistory"><i
+								class="fa fa-search-plus icon"></i> Total KM By Travelling
+								Employee</a>
 							<div class="clearfix"></div>
 
 							<div class="clearfix"></div>
@@ -542,16 +537,16 @@
 
 						</div>
 					</li>
-					
-					
+
+
 					<li class="small-box">
 
 						<div class="ibox">
 							<div class="ibox-head">
 								<div class="ibox-title">Pending Enquiry</div>
 							</div>
-							
-							
+
+
 
 							<div class="clearfix"></div>
 
@@ -559,9 +554,10 @@
 								class="fa fa-search-plus icon"></i>Pending Task List</a>
 
 							<div class="clearfix"></div>
-								<a href="${pageContext.request.contextPath}/showExhEmplPendingEnqList"><i
+							<a
+								href="${pageContext.request.contextPath}/showExhEmplPendingEnqList"><i
 								class="fa fa-search-plus icon"></i>Pending Enquiry</a>
-							
+
 
 						</div>
 					</li>

@@ -10,6 +10,55 @@
 </head>
 <body>
 
+	<style>
+.btn-circle {
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	padding: 11px;
+}
+
+.btn {
+	margin-right: 5px;
+}
+
+.btn-info {
+	color: #fff;
+	background-color: #2962ff;
+	border-color: #2962ff;
+}
+
+.btn1 {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	line-height: 1.5;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out,
+		border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: #2962ff;
+	font-size: 20px;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+
+* {
+	outline: 0;
+}
+
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+</style>
+
+
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
@@ -84,6 +133,13 @@
 							<div class="col1title" align="left">
 								<h3>Event History</h3>
 							</div>
+							<c:set var="count" value="${fn:length(eventHistory) }"></c:set>
+
+							<div class="popover-icon" style="padding-top: 0px;" align="right">
+								<button class="btn-circle btn1 btn-info"
+									href="javascript:void(0)" data-toggle="tooltip" title="Count">${count}</button>
+							</div>
+							<br>
 
 						</div>
 						<div id="table-scroll" class="table-scroll">
@@ -98,9 +154,9 @@
 											<th class="col-md-1">From Date</th>
 											<th class="col-md-1">To Date</th>
 											<th class="col-md-1">Likes</th>
-											<th class="col-md-1" >Action</th>
+											<th class="col-md-1">Action</th>
 										</tr>
-										
+
 									</thead>
 									<tbody>
 
@@ -116,9 +172,15 @@
 												<td class="col-md-1"><c:out
 														value="${evHist.eventToDate}" /></td>
 												<td class="col-md-1"><c:out value="${evHist.likeCount}" /></td>
-												<td class="col-md-1" align="right"><div><!-abtEvent/evendId first then gED/1/0-  -->
-														<a href="${pageContext.request.contextPath}/getEventDetail/${evHist.eventId}/0"><abbr title="About Event"><i class="fa fa-info"></i></abbr></a> &nbsp;&nbsp; 
-														<a href="${pageContext.request.contextPath}/getVisitorNames/${evHist.eventId}/${evHist.eventName}"><abbr title="Liked Visitors"><i class="fa fa-thumbs-o-up"></i></abbr> </a>
+												<td class="col-md-1" align="right"><div>
+														<!-abtEvent/evendId first then gED/1/0-  -->
+														<a
+															href="${pageContext.request.contextPath}/getEventDetail/${evHist.eventId}/0"><abbr
+															title="About Event"><i class="fa fa-info"></i></abbr></a>
+														&nbsp;&nbsp; <a
+															href="${pageContext.request.contextPath}/getVisitorNames/${evHist.eventId}/${evHist.eventName}"><abbr
+															title="Liked Visitors"><i
+																class="fa fa-thumbs-o-up"></i></abbr> </a>
 													</div></td>
 											</tr>
 										</c:forEach>
@@ -150,7 +212,7 @@
 	<!--easyTabs-->
 
 
-	
+
 
 </body>
 </html>
