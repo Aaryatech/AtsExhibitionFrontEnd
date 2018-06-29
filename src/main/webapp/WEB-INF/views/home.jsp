@@ -177,7 +177,7 @@ div.desc {
 
 				<!--rightSidebar-->
 				<div class="sidebarright">
-							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${sessionScope.UserDetail.exhibitor.exhName}</span>, Welcome Back <i> [  ${sessionScope.UserDetail.exhSubHeader.fromDate}-${sessionScope.UserDetail.exhSubHeader.toDate} ]</i>
+							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${sessionScope.UserDetail.exhibitor.exhName}</span>, Welcome Back <i> [  ${sessionScope.UserDetail.exhSubHeader.fromDate}&nbsp;&nbsp; To &nbsp;&nbsp;-${sessionScope.UserDetail.exhSubHeader.toDate} ]</i>
 </h2></div> <div class="col-md-2">	<p style="text-align: right;" class="pageTitle"><b><a href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></b></p></div>
             
 					<!--slider-->
@@ -212,19 +212,29 @@ div.desc {
     <img src="${eventImgUrl}${eventList.eventLogo}" width="250" height="170" alt="No Image Available" >
   </a>
   <br></br> <div style="padding-left: 5px;">
-  <p align="left" class="overflow"> &nbsp;&nbsp; Event Name: <b ><abbr title="${eventList.eventName}" style="border: none;text-decoration: none;  cursor: inherit !important; ">${eventList.eventName}</abbr></b></p>
-  <p align="left"> &nbsp;&nbsp; Place: <b>${eventList.eventLocation}  &nbsp;&nbsp;  </b> </p>
+  <p align="left" class="overflow"> &nbsp;&nbsp; <b > Event Name</b>:<abbr title="${eventList.eventName}" style="border: none;text-decoration: none;  cursor: inherit !important; ">${eventList.eventName}</abbr></p>
+  <p align="left"> &nbsp;&nbsp; <b > Place: </b>${eventList.eventLocation}  &nbsp;&nbsp;<b>Stall Size: </b>${eventList.stallSize} </p>
+  <c:choose>
   
-    <p align="left"> &nbsp;&nbsp; Stall Size: <b>${eventList.stallSize}</b>  &nbsp;&nbsp; Price:<b> ${eventList.priceForExh} </b> </p>
+  <c:when test="${eventList.priceForExh==eventList.discountedPrice}">
+     <p align="left"> &nbsp;&nbsp; <b > Price:${eventList.priceForExh} </b> Discount Price:<b> ${eventList.discountedPrice} </b></p>
+  </c:when>
   
+  <c:otherwise>
+      <p  align="left"> &nbsp;&nbsp;<b> Price:</b><strike>${eventList.priceForExh}</strike><mark>  <b style="background-color: orange;"> Discount Price:</b></mark> ${eventList.discountedPrice} </p>
+  </c:otherwise>
   
-  
-  <p align="left"> &nbsp;&nbsp; From: <b>${eventList.eventFromDate}</b> &nbsp;To: <b>${eventList.eventToDate}</b></p>
+  </c:choose>
+<%--     <p align="left"> &nbsp;&nbsp;   &nbsp;&nbsp; Price:<b> ${eventList.priceForExh} </b> Discount Price:<b> ${eventList.discountedPrice} </b></p>
+ --%>  
+     
+     
+  <p align="left" > &nbsp;&nbsp; <b>From: </b>${eventList.eventFromDate}<b> &nbsp;To: </b>${eventList.eventToDate}</p>
  </div><hr></hr>
   <div class="desc">
   <c:choose>
     <c:when test="${eventList.appliedStatus==1}">
-    <button class="btn1 info2"   style="padding:6px 34px; background-color:lightblue; color:white;  border:1px solid #28adb7;" disabled>Applied</button>
+    <button class="btn1 info2"   style="padding:6px 34px; background-color:lightblue; color:white;  border:1px solid #28adb7;" disabled>Pending</button>
     </c:when>
    
     <c:when test="${eventList.subStatus==0}">
@@ -233,7 +243,7 @@ div.desc {
     
     
   <c:otherwise>
-    <button class="btn1 info2"   style="padding:6px 34px; background-color:lightblue; color:white;  border:1px solid #28adb7;" disabled>SUBSCRIBED</button>
+    <button class="btn1 info2"   style="padding:6px 34px; background-color:lightblue; color:white;  border:1px solid #28adb7;" disabled>SUBSCRIBED <i class="fa fa-thumbs-o-up"	></i> </button>
   </c:otherwise>
   
   </c:choose>

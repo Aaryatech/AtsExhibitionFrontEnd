@@ -89,13 +89,15 @@ public class HomeController {
 				map.add("password", password);
 				LoginResponseExh loginResponse = rest.postForObject(Constants.url + "/loginExhibitor", map,
 						LoginResponseExh.class);
-
+try {
 				loginResponse.getExhSubHeader()
 						.setFromDate(DateConvertor.convertToDMY(loginResponse.getExhSubHeader().getFromDate()));
 
 				loginResponse.getExhSubHeader()
 						.setToDate(DateConvertor.convertToDMY(loginResponse.getExhSubHeader().getToDate()));
-
+}catch (Exception e) {
+	// TODO: handle exception
+}
 				System.out.println("loginResponse" + loginResponse);
 
 				if (loginResponse.isError() == false) {

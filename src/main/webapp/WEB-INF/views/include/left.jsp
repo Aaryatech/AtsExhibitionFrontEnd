@@ -559,7 +559,7 @@
 								class="fa fa-search-plus icon"></i>Pending Task List</a>
 
 							<div class="clearfix"></div>
-								<a href="#"><i
+								<a href="${pageContext.request.contextPath}/showExhEmplPendingEnqList"><i
 								class="fa fa-search-plus icon"></i>Pending Enquiry</a>
 							
 

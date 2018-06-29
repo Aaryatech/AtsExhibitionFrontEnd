@@ -151,7 +151,7 @@
 												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
 												<td class="col-md-2"><c:out value="${list.visitorName}" /></td>
 												<td class="col-md-1"><c:out value="${list.eventName}" /></td>
-												<td class="col-md-1"><c:out value="${list.noOfEnqDays}" /></td>
+												<td class="col-md-1" style="text-align: center;"><c:out value="${list.noOfEnqDays}" /></td>
 
 												<c:forEach items="${visNameList}" var="visNameList">
 

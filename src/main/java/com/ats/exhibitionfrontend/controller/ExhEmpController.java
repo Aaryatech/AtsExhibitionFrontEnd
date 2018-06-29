@@ -75,6 +75,33 @@ public class ExhEmpController {
 
 		return model;
 	}
+	
+	//Sachin
+	@RequestMapping(value = "/showExhEmplPendingEnqList", method = RequestMethod.GET)
+	public ModelAndView showExhEmplPendingEnqList(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView("enquiry/enqListPending");
+
+		try {
+
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
+
+			ExhEmpWithExhName[] res = rest.postForObject(Constants.url + "/getAllEmployeeIsUsed", map,
+					ExhEmpWithExhName[].class);
+
+			List<ExhEmpWithExhName> empList = new ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
+			model.addObject("empList", empList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return model;
+	}
 
 	@RequestMapping(value = "/getExhEmpTotalList", method = RequestMethod.POST)
 	public ModelAndView getTotalList(HttpServletRequest request, HttpServletResponse response) {
@@ -85,7 +112,17 @@ public class ExhEmpController {
 			fromDate = request.getParameter("fromDate");
 			toDate = request.getParameter("toDate");
 			empId = request.getParameter("empId");
-
+			String showPage=request.getParameter("showPage");
+			try {
+			if(showPage.equalsIgnoreCase("1")) {
+				System.err.println("model set to enqiryEmpExhList.jsp");
+				 model = new ModelAndView("enquiry/enqListPending");
+			}}
+			catch (Exception e) {
+				
+				System.err.println("show Page String not found " +e.getMessage());
+				e.printStackTrace();
+			}
 			HttpSession session = request.getSession();
 			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
 
@@ -146,16 +183,111 @@ public class ExhEmpController {
 			model.addObject("enquiryList", enquiryList);
 
 		} catch (Exception e) {
+			
+			System.err.println("/enq list web service call / "+e.getMessage());
+
 			e.printStackTrace();
 		}
 
 		return model;
 	}
 
+	
+	@RequestMapping(value = "/getExhEmpTotalListNew", method = RequestMethod.POST)
+	public String getTotalList2(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView model = new ModelAndView("exhEmpDashboard");
+
+		try {
+			fromDate = request.getParameter("fromDate");
+			toDate = request.getParameter("toDate");
+			empId = request.getParameter("empId");
+			String showPage=request.getParameter("showPage");
+			try {
+			if(showPage.equalsIgnoreCase("1")) {
+				System.err.println("model set to enqiryEmpExhList.jsp");
+				 model = new ModelAndView("enquiry/enqListPending");
+			}}
+			catch (Exception e) {
+				
+				System.err.println("show Page String not found " +e.getMessage());
+				e.printStackTrace();
+				
+			}
+			HttpSession session = request.getSession();
+			LoginResponseExh login = (LoginResponseExh) session.getAttribute("UserDetail");
+
+			MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+			map.add("exhId", login.getExhibitor().getExhId());
+			map.add("fromDate", DateConvertor.convertToYMD(fromDate));
+			map.add("toDate", DateConvertor.convertToYMD(toDate));
+			map.add("empId", empId);
+
+			ExhEmpWithExhName[] res = rest.postForObject(Constants.url + "/getAllEmployeeIsUsed", map,
+					ExhEmpWithExhName[].class);
+
+			List<ExhEmpWithExhName> empList = new ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
+			model.addObject("empList", empList);
+
+			MultiValueMap<String, Object> map1 = new LinkedMultiValueMap<String, Object>();
+			map1.add("empId", empId);
+
+			ExhEmpWithExhName res1 = rest.postForObject(Constants.url + "/getAllEmployeeByEmpIdAndIsUsed", map1,
+					ExhEmpWithExhName.class);
+
+			/*
+			 * List<ExhEmpWithExhName> empList = new
+			 * ArrayList<ExhEmpWithExhName>(Arrays.asList(res));
+			 */
+			model.addObject("editEmp", res1);
+
+			EnquiryHeaderWithName[] enquiryHeaderWithName = rest.postForObject(
+					Constants.url + "/getAllEnquiryBetDatesAndByEmpIdAndExhId", map, EnquiryHeaderWithName[].class);
+			enquiryList = new ArrayList<EnquiryHeaderWithName>(Arrays.asList(enquiryHeaderWithName));
+
+			map = new LinkedMultiValueMap<String, Object>();
+
+			pending = new ArrayList<EnquiryHeaderWithName>();
+			processing = new ArrayList<EnquiryHeaderWithName>();
+			completed = new ArrayList<EnquiryHeaderWithName>();
+			closed = new ArrayList<EnquiryHeaderWithName>();
+
+			for (int i = 0; i < enquiryList.size(); i++) {
+				if (enquiryList.get(i).getStatus() == 1) {
+					pending.add(enquiryList.get(i));
+				} else if (enquiryList.get(i).getStatus() == 2) {
+					processing.add(enquiryList.get(i));
+				} else if (enquiryList.get(i).getStatus() == 5) {
+					completed.add(enquiryList.get(i));
+				} else if (enquiryList.get(i).getStatus() == 4) {
+					closed.add(enquiryList.get(i));
+				}
+			}
+
+			model.addObject("fromDate", fromDate);
+			model.addObject("toDate", toDate);
+
+			model.addObject("pending", pending);
+			model.addObject("processing", processing);
+			model.addObject("completed", completed);
+			model.addObject("closed", closed);
+			model.addObject("enquiryList", enquiryList);
+
+		} catch (Exception e) {
+			
+			System.err.println("/enq list web service call / "+e.getMessage());
+
+			e.printStackTrace();
+		}
+
+		return "redirect:/enquiryExhList/"+1;
+	}
+
+	
 	@RequestMapping(value = "/enquiryExhList/{status}", method = RequestMethod.GET)
 	public ModelAndView enquiryList(@PathVariable int status, HttpServletRequest request,
 			HttpServletResponse response) {
-
+System.err.println("Inside status");
 		ModelAndView model = new ModelAndView("enqiryEmpExhList");
 		try {
 			HttpSession session = request.getSession();
@@ -322,6 +454,8 @@ public class ExhEmpController {
 			model.addObject("empId", empId);
 
 		} catch (Exception e) {
+			
+			System.err.println("/status/ "+e.getMessage());
 			e.printStackTrace();
 		}
 
