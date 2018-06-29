@@ -114,15 +114,15 @@
 								<input id="visitorMobile" class="form-control"
 									placeholder="Mobile No" name="visitorMobile"
 									style="text-align: left;" pattern="^\d{10}$" type="text"
-									maxlength="10" required>
-
-							</div>
-							<div align="right" class="col-md-1">
-								<input name="button" class="buttonsaveorder" value="Search"
-									type="button" align="right" onclick="checkMobNo();"> <input
+									maxlength="10" onchange="checkMobNo();" required> <input
 									type="hidden" name="visitorId" id="visitorId">
 
 							</div>
+							<!-- <div align="right" class="col-md-1">
+								<input name="button" class="buttonsaveorder" value="Search"
+									type="button" align="right" onclick=""> 
+
+							</div> -->
 							<div align="right" id="addvis" class="col-md-1"
 								style="display: none;">
 								<a
@@ -168,7 +168,8 @@
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
 							</div>
 
-</div>		</form>
+						</div>
+					</form>
 
 
 				</div>
@@ -306,7 +307,7 @@
 							function(data) {
 
 								if (data.visitorId == 0) {
-									alert("Visitor with this Mobile Number Already Registered. Please Add Visitor First.");
+									alert("Visitor with this Mobile Number Not Registered. Please Add Visitor First.");
 									$('#addvis').show();
 
 								} else {
