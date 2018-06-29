@@ -155,7 +155,7 @@
 
 												<td class="col-md-1"> <a
 													href="${fileUrl}${matList.matLink}" target="_blank"
-													style="align-content: center; color: fuchsia;">View
+													style="align-content: center; color: #3b92ec;">View
 														File</a>
 												<td class="col-md-1"><div>
 														<%-- <a
@@ -163,7 +163,7 @@
 															title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%> <a
 															href="${pageContext.request.contextPath}/deleteMaterial/${matList.trId}" title="Delete Material" class="btn btn-primary"
 															onClick="return confirm('Are you sure want to delete this record');">
-															<i class='fa fa-trash' style="color: red"></i>
+															<i class='fa fa-trash' style="color: white"></i>
 														</a>
 
 													</div></td>

@@ -122,14 +122,14 @@
 
 							</div>
 
+	<div class="col-md-1"></div>
+						<!-- </div>
 
-						</div>
 
 
-
-						<div class="colOuter">
+						<div class="colOuter"> -->
 							<div class="col-md-2">
-								<div class="col1title" align="left">Select Employee*</div>
+								<div class="col1title" align="left">Employee*:</div>
 							</div>
 							<div class="col-md-3">
 								<select name="empId"  class="form-control">
@@ -158,7 +158,7 @@
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">
-								<table id="table_grid" class="main-table">
+								<table id="table_grid" class="main-table" border="1px">
 
 									<thead>
 										<tr class="bgpink">

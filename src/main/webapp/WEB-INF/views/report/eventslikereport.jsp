@@ -79,7 +79,7 @@
 					<br>
 					<br> <br>
 				
-					<div style="text-align: left; color: pal"><b>Number of likes by Event</b></div>
+					<div style="text-align: left; color: pal" class="form-control"><b>Number of likes by Event</b></div>
 					
 					<div id="PieChart_div" style="width: 100%; height: 100%;"></div>
 

@@ -107,11 +107,23 @@
 									style="text-align: left;" value="${exhib.aboutCompany} "
 									type="text" required>
 									 --%>
-								<textarea style="text-align: left; width: 785px;"
+								<textarea style="text-align: left; width: 241px; height:75px"
 									id="abt_company" name="abt_company" placeholder="About Company">${exhib.aboutCompany}</textarea>
 
 							</div>
-							
+							<div class="col-md-1"></div>
+							<div class="col-md-2">
+								<div class="col1title" align="left">Address:</div>
+							</div>
+							<div class="col-md-3">
+								<%-- <input id="address" class="form-control" placeholder="Address"
+									name="address" type="text" style="text-align: left;"
+									value="${exhib.address}" required> --%>
+
+								<textarea style="text-align: left; width: 241px; height:75px"
+									id="address" name="address" placeholder="Address">${exhib.address}</textarea>
+
+							</div>
 						</div>
 
 						<div class="colOuter">
@@ -219,26 +231,26 @@
 							</div>
 						</div>
 
-						<div class="colOuter">
+						<%-- <div class="colOuter">
 							<div class="col-md-2">
 								<div class="col1title" align="left">Address:</div>
 							</div>
 							<div class="col-md-3">
-								<%-- <input id="address" class="form-control" placeholder="Address"
+								<input id="address" class="form-control" placeholder="Address"
 									name="address" type="text" style="text-align: left;"
-									value="${exhib.address}" required> --%>
+									value="${exhib.address}" required>
 
 								<textarea style="text-align: left; width: 785px;"
 									id="address" name="address" placeholder="Address">${exhib.address}</textarea>
 
 							</div>
-							</div>
+							</div> --%>
 							<div class="colOuter">
 							<div class="col-md-2">
 								<div class="col1title" align="left">Company Type Name</div>
 							</div>
 							<div class="col-md-3">
-								<select name="company_type_id" style="width: 255px;" class="form-control">
+								<select name="company_type_id"  class="form-control">
 									<c:forEach items="${companyList}" var="company">
 										<c:choose>
 											<c:when
@@ -270,9 +282,9 @@
 							<div class="col-md-2">
 								<div class="col1title" align="left">Location</div>
 							</div>
-							<div class="col-md-1">
+							<div class="col-md-3">
 
-								<select name="loc_id" style="width: 275px;" class="form-control">
+								<select name="loc_id"  class="form-control">
 									<c:forEach items="${locationList}" var="loc">
 										<c:choose>
 											<c:when test="${exhib.locationName eq loc.locationName}">
@@ -285,8 +297,8 @@
 									</c:forEach>
 								</select>
 							</div>
-					<!-- 	</div>
-						<div class="colOuter"> -->
+						</div>
+						<div class="colOuter"> 
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value="Submit"
 									type="submit" align="center">

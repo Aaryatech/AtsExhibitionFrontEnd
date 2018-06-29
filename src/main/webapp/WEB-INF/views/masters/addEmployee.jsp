@@ -221,19 +221,21 @@
 									Employee Pic<b style="color: red">*:</b>
 								</div>
 							</div>
-							<div class="col-md-3">
-								<input type="file" name="image" value="image" id="image"
+							<div class="col-md-7">
+							<div class="col-md-2">	<input type="file" name="image" value="image" id="image"
 									onchange="readURL3(this);" required
 									oninvalid="this.setCustomValidity('Attach Employee Photo Here')"
 									oninput="this.setCustomValidity('')">
+									</div>
+							
+<div class="col-md-2"></div>
+							<div class="col-md-2"> 
+								 <img id="blah3" src="#" alt="No Image Availbable"
+									width="100" height="60" />
+
 							</div>
 
-							<div class="col-md-4">
-								Emp Photo <img id="blah3" src="#" alt="No Image Availbable"
-									width="100" height="100" />
-
-							</div>
-
+						</div>
 						</div>
 
 						<div class="colOuter">
@@ -296,12 +298,12 @@
 															title="Edit Employee" class="btn btn-primary"><i
 															class="fa fa-edit"></i></a>
 														<%-- <a href="${pageContext.request.contextPath}/editEmp/${empList.empId}"><abbr title='Edit'><i class='fa fa-edit'></i> </abbr></a> --%>
-														<a
+													<%-- 	<a
 															href="${pageContext.request.contextPath}/deleteEmp/${empList.empId}"
 															title="Delete Employee" class="btn btn-danger"
 															onClick="return confirm('Are you sure want to delete this record');">
 															<i class='fa fa-trash'></i>
-														</a>
+														</a> --%>
 
 													</div></td>
 											</tr>

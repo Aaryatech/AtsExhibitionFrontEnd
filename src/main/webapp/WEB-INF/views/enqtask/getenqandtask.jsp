@@ -27,8 +27,8 @@
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
 
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 	<script
@@ -125,7 +125,7 @@
 								<div class="col1title" align="left">Employee</div>
 							</div>
 							<div class="col-md-1">
-								<select name="emp" class="form-control-choosen"
+								<select name="emp" class="form-control choosen"
 									style="width: 250px;">
 									<option value="-1">ALL</option>
 									<c:forEach items="${empList}" var="emp">

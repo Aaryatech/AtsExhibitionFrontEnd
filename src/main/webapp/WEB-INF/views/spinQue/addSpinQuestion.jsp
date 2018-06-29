@@ -83,7 +83,7 @@
 								</div>
 							</div>
 							<div class="col-md-3">
-								<textarea cols="40" rows="5" name="question" maxlength="100"
+								<textarea cols="40" rows="3" name="question" maxlength="100"
 									placeholder="Question" required oninvalid="this.setCustomValidity('Enter Spin Question Here')"
     oninput="this.setCustomValidity('')">${spinQueHeaderList.question}</textarea>
 							</div>
@@ -96,7 +96,7 @@
 								</div>
 							</div>
 							<div class="col-md-1">
-								<textarea cols="40" rows="5" name="queDesc" maxlength="100"
+								<textarea cols="40" rows="3" name="queDesc" maxlength="100"
 									style="width: 520px;" placeholder="Description"
 									required oninvalid="this.setCustomValidity('Enter Spin Question Description Here')"
     oninput="this.setCustomValidity('')">${spinQueHeaderList.queDesc}</textarea>
@@ -122,10 +122,10 @@
 <div class="col-md-2"></div>
 							<input type="hidden" name="queId"
 								value="${spinQueHeaderList.queId}" /> 
-								<div class="col-md-4">
+								<div class="colOuter">
 								
 								<input name="submit"
-								class="buttonsaveorder btn btn-success" value="Submit" type="submit">
+								class="buttonsaveorder btn btn-md" value="Submit" type="submit">
 								
 								<input name="submit"
 								class="buttonsaveorder btn btn-primary" value="Cancel" type="button" onclick="clearText()">
@@ -165,12 +165,12 @@
 												<td class="col-md-1" align="right"><c:out
 														value="${queList.date}" /></td>
 												<td class="col-md-0.5"><div>
-														<a
-															href="${pageContext.request.contextPath}/editSpinQue/${queList.queId}" title="Edit Spin Question" class="btn btn-light">
-															<i class='fa fa-edit' style="color:maroon"></i> </a> <a
-															href="${pageContext.request.contextPath}/deleteSpinQue/${queList.queId}" title="Delete Spin Question" class="btn btn-dark"
+													&nbsp;&nbsp;	<a
+															href="${pageContext.request.contextPath}/editSpinQue/${queList.queId}" title="Edit Spin Question" class="btn btn-primary">
+															<i class='fa fa-edit' style="color:white"></i> </a> <a
+															href="${pageContext.request.contextPath}/deleteSpinQue/${queList.queId}" title="Delete Spin Question" class="btn btn-primary"
 															onClick="return confirm('Are you sure want to delete this record');">
-															<i class='fa fa-trash' style=" color: red; "></i>
+															<i class='fa fa-trash' style=" color: white; "></i>
 														</a>
 													</div></td>
 											</tr>

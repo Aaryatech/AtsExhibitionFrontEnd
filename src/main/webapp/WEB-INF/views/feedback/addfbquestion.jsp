@@ -14,10 +14,10 @@
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
-
+<!-- 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet"
+ -->	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -85,7 +85,7 @@
 								<div class="col1title" align="left">Question:<b style="color: red">*</b></div>
 							</div>
 							<div class="col-md-3">
-								<textarea rows="5" cols="40" name="question" maxlength="200" id="question"
+								<textarea rows="3" cols="40" name="question" maxlength="200" id="question"
 									placeholder="Question" required oninvalid="this.setCustomValidity('Enter Feedback Question Here')"
     oninput="this.setCustomValidity('')">${fbQue.question}</textarea>
 							</div>
@@ -98,7 +98,7 @@
 								</div>
 							</div>
 							<div class="col-md-1">
-								<textarea style="width: 520px;" cols="40" rows="5" name="que_desc" maxlength="500" id="que_desc"
+								<textarea style="width: 520px;" cols="40" rows="3" name="que_desc" maxlength="500" id="que_desc"
 									placeholder=" Question Description" required oninvalid="this.setCustomValidity('Enter Feedback Question Description Here')"
     oninput="this.setCustomValidity('')">${fbQue.queDesc}</textarea>
 
@@ -210,11 +210,11 @@
 													<td class="col-md-2" align="center"><c:out
 															value="${fbQueList.outOfRating}" /></td>
 													<td class="col-md-1"><div>
-															<a
-																href="${pageContext.request.contextPath}/editFbQue/${fbQueList.fbId}" title="Edit Question" class="btn btn-primary"><i style="color: green;" class='fa fa-edit'></i></a> <a
+															&nbsp;&nbsp;<a
+																href="${pageContext.request.contextPath}/editFbQue/${fbQueList.fbId}" title="Edit Question" class="btn btn-primary"><i style="color: white;" class='fa fa-edit'></i></a> <a
 																href="${pageContext.request.contextPath}/deleteFbQue/${fbQueList.fbId}" title="Delete Question" class="btn btn-primary"
 																onClick="return confirm('Are you sure want to delete this record');">
-																<i class='fa fa-trash' style="color: red; "></i>
+																<i class='fa fa-trash' style="color: white; "></i>
 															</a>
 														</div></td>
 												</tr>

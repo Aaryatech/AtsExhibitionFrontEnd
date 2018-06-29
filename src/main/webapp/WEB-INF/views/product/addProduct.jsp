@@ -158,7 +158,7 @@
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 1<b style="color: red">*:</b></div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<input type="file" name="img1" id="img1" onchange="readURL(this);"
 									value="${url}${product.prodImage1}"  required oninvalid="this.setCustomValidity('Attach Product Image 1 Here')"
     oninput="this.setCustomValidity('')"  />
@@ -166,19 +166,16 @@
 									<a href="${url}${product.prodImage1}" data-lightbox="image-1"
 										tabindex="-1"><c:out value='View Image1' /></a>
 								</c:if>
-							</div>
-							<div class="col-md-4"> Image 1
+						 </div>
+							<div class="col-md-2">
 							
 							    <img  id="blah" src="${url}${product.prodImage1}" alt="Image 1" width="100" height="100" />
 							
 							</div>
-							</div>
-							<div class="col-md-1"></div>
-							<div class="colOuter">
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 2:</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 
 								<input type="file" name="img2" id="img2" onchange="readURL2(this);"
 									value="${url}${product.prodImage2}" />
@@ -186,21 +183,25 @@
 									<a href="${url}${product.prodImage2}" data-lightbox="image-1"
 										tabindex="-1"><c:out value='View Image2' /></a>
 								</c:if>
-							</div>
-							<div class="col-md-4"> Image 2
+							 </div>
+							<div class="col-md-2">
 							
 							    <img  id="blah2" src="${url}${product.prodImage2}" alt="Image 2"  width="100" height="100"/>
 							
 							</div>
 							
+							</div>
+							<div class="col-md-1"></div>
+						<!-- 	<div class="colOuter">
 							
-						</div>
+							
+						</div> -->
 
 						<div class="colOuter">
 							<div class="col-md-2">
 								<div class="col1title" align="left">Product Image 3:</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 								<input type="file" name="image3" id="image3" onchange="readURL3(this);"
 									value="${url}${product.prodImage3}" />
 								<c:if test="${isEdit==1}">
@@ -208,9 +209,8 @@
 										tabindex="-1"><c:out value='View Image3' /></a>
 								</c:if>
 
-							</div>
-							
-							<div class="col-md-4"> Image 3
+								 </div>
+							<div class="col-md-2">
 							
 							    <img  id="blah3" src="${url}${product.prodImage3}" alt="Image 3" width="100" height="100" />
 							
@@ -224,14 +224,14 @@
 
 						<div class="colOuter"> -->
 							<div class="colOuter">
-							<div>
+							
 								<input name="submit" class="buttonsaveorder btn btn-sm"
 									value="Submit" type="submit" align="center">
 									<input name="submit"
 								class="buttonsaveorder btn btn-sm" value="Cancel" type="button" onclick="clearText()">
 								
 								<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
-							</div>
+							
 
 						</div>
 
@@ -273,7 +273,7 @@
 												<td class="col-md-1"><div>
 														<a
 															href="${pageContext.request.contextPath}/editProduct/${productList.prodId}"  title="Edit Product" class="btn btn-primary"><i class='fa fa-edit'></i> </a> <a
-															href="${pageContext.request.contextPath}/deleteProduct/${productList.prodId}" title="Delete Product"  class="btn btn-danger"
+															href="${pageContext.request.contextPath}/deleteProduct/${productList.prodId}" title="Delete Product"  class="btn btn-primary"
 															onClick="return confirm('Are you sure want to delete this record');">
 															<i class='fa fa-trash'></i>
 														</a>
