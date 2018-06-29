@@ -38,12 +38,10 @@
     border: 1px solid transparent;
     line-height: 1.5;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-a {
+
     color: #2962ff;
     font-size:20px;
-}
-a {
+
     text-decoration: none;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
@@ -156,7 +154,7 @@ a {
 								<c:set var="count" value="${fn:length(enquiryHeaderWithName) }"></c:set>
 								</div>
 
-							<div class="popover-icon" style="padding-top:0px;"><a class="btn-circle btn1 btn-info" href="javascript:void(0)" data-toggle="tooltip" title="Count">${count}</a>
+							<div class="popover-icon" style="padding-top:0px;"><button class="btn-circle btn1 btn-info" href="javascript:void(0)" data-toggle="tooltip" title="Count">${count}</button>
                            </div>
 
 						</div>
