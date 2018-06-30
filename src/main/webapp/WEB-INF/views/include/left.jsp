@@ -265,14 +265,14 @@
 							</div>
 
 							<a href="${pageContext.request.contextPath}/addProduct"><i
-								class="fa fa-plus-circle icon"></i> Add Product </a>
+								class="fa fa-product-hunt" style="color:#4aaae6;"></i> Add Product </a>
 							<div class="clearfix"></div>
 							<a href="${pageContext.request.contextPath}/addMaterial"><i
-								class="fa fa-search-plus icon"></i> Add Material </a>
+								class="fa fa-slack"  style="color:#4aaae6;"></i> Add Material </a>
 							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
-								class="fa fa-search-plus icon"></i> Add Employee </a>
+								class="fa fa-user" style="color:#4aaae6;"></i> Add Employee </a>
 
 						</div>
 					</li>
@@ -286,9 +286,9 @@
 
 
 							<a href="${pageContext.request.contextPath}/showAddFbQuestion"><i
-								class="fa fa-plus-circle icon"></i>Feedback Question </a> <a
+								class="fa fa-mail-reply" style="color:#4aaae6;" ></i> Feedback Question </a> <a
 								href="${pageContext.request.contextPath}/addSpinQuestion"><i
-								class="fa fa-search-plus icon"></i>Spin Question </a>
+								class="fa fa-question-circle" style="color:#4aaae6;"></i> Spin Question </a>
 
 						</div>
 
@@ -328,27 +328,27 @@
 							</div>
 
 							<a href="${pageContext.request.contextPath}/showEventHistory"><i
-								class="fa fa-plus-circle icon"></i> Event History </a>
+								class="fa fa-history" style="color:#4aaae6;"></i>&nbsp;&nbsp; Event History </a>
 							<div class="clearfix"></div>
 							<a href="${pageContext.request.contextPath}/showEventVisName"><i
-								class="fa fa-search-plus icon"></i>Visitor List </a>
+								class="	fa fa-users"  style="color:#4aaae6;"></i>&nbsp;&nbsp; Visitor List </a>
 							<div class="clearfix"></div>
 
-							<a href="${pageContext.request.contextPath}/showProdVisName"><i
-								class="fa fa-search-plus icon"></i>Procuct Visitor</a>
+	<a href="${pageContext.request.contextPath}/showProdVisName"><i
+								class="	fa fa-users"  style="color:#4aaae6;"></i>&nbsp;&nbsp; Product Visitor</a>
 							<div class="clearfix"></div>
 							<a
 								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
-								class="fa fa-search-plus icon"></i> Event Likes </a>
-
-
+								class="	fa fa-thumbs-up" style="color:#4aaae6;"></i>&nbsp;&nbsp; Event Likes </a>
+								
+								
 
 						</div>
 					</li>
 
 
 
-					<!-- 	</ul>
+				<!-- 	</ul>
 					<ul> -->
 					<li class="small-box">
 
@@ -358,13 +358,13 @@
 							</div>
 
 							<a href="${pageContext.request.contextPath}/showFbQueTxn"><i
-								class="fa fa-plus-circle icon"></i>Feedback Question Transaction</a>
+								class="fa fa-comments"style="color:#4aaae6;"></i>&nbsp;&nbsp; Feedback Question Transaction</a>
 							<div class="clearfix"></div>
 							<a
 								href="${pageContext.request.contextPath}/showQuestionsBetweenDates"><i
-								class="fa fa-search-plus icon"></i>Spin Question Analysis </a>
+								class="fa fa-question-circle" style="color:#4aaae6;"></i>&nbsp;&nbsp; Spin Question Analysis </a>
 							<div class="clearfix"></div>
-
+							
 
 						</div>
 					</li>
@@ -398,15 +398,21 @@
 
 							<a
 								href="${pageContext.request.contextPath}/showEnquiryBetweenDates"><i
-								class="fa fa-plus-circle icon"></i>Enquiry Between Date</a> <a
+								class="fa fa-question"style="color:#4aaae6;font-weight: bold;"></i>&nbsp;&nbsp; Enquiry Between Date</a> 
+								
+								
+							<a
 								href="${pageContext.request.contextPath}/showEnquiryByEvent"><i
-								class="fa fa-plus-circle icon"></i>Enquiry By Event</a> <a
+								class="fa fa-question-circle"style="color:#4aaae6;"></i>&nbsp;&nbsp; Enquiry By Event</a> 
+								
+								<a
 								href="${pageContext.request.contextPath}/addEnquiryByExhibitor"><i
-								class="fa fa-plus-circle icon"></i> Add Enquiry</a> <a
+								class="fa fa-question-circle-o" style="color:#4aaae6;font-weight: bold;"></i>&nbsp;&nbsp; Add Enquiry</a> <a
 								href="${pageContext.request.contextPath}/addVisitorByExhibitor"><i
-								class="fa fa-plus-circle icon"></i> Add Visitor</a> <a
+								class="fa fa-user-circle-o"style="color:#4aaae6;"></i>&nbsp;&nbsp; Add Visitor</a>
+								 <a
 								href="${pageContext.request.contextPath}/exhibitorDashboard"><i
-								class="fa fa-plus-circle icon"></i> Dashboard</a>
+								class="fa fa-dashcube"style="color:#4aaae6;"></i>&nbsp;&nbsp; Dashboard</a>
 							<%-- <div class="clearfix"></div>
 							<a href="${pageContext.request.contextPath}/showEventVisName"><i
 								class="fa fa-search-plus icon"></i>Visitor List </a>
@@ -490,17 +496,19 @@
 							</div>
 
 							<a href="${pageContext.request.contextPath}/addEmployee"><i
-								class="fa fa-plus-circle icon"></i>Add Employee </a>
+								class="fa fa-user-circle"style="color:#4aaae6;"></i>&nbsp;&nbsp; Add Employee </a>
 							<div class="clearfix"></div>
-							<a href="${pageContext.request.contextPath}/assignTaskToEmp"><i
-								class="fa fa-plus-circle icon"></i>Assign Task </a> <a
-								href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
-								class="fa fa-search-plus icon"></i>Edit Enquiry</a>
+<a href="${pageContext.request.contextPath}/assignTaskToEmp"><i
+								class="fa fa-tasks"style="color:#4aaae6;"></i>&nbsp;&nbsp; Assign Task </a>
+								
+								
+							<a href="${pageContext.request.contextPath}/showEmpEnqEdit"><i
+								class="fa fa-pencil-square"style="color:#4aaae6;"></i>&nbsp;&nbsp; Edit Enquiry</a>
 
+							
 
-
-
-
+						
+							
 						</div>
 					</li>
 
@@ -515,20 +523,20 @@
 							</div>
 							<a
 								href="${pageContext.request.contextPath}/exhibitorEmplolyeeDashboard"><i
-								class="fa fa-search-plus icon"></i>Employee Wise Dashboard </a>
+								class="fa fa-dashcube"style="color:#4aaae6;"></i>&nbsp;&nbsp; Employee Wise Dashboard </a>
 							<div class="clearfix"></div>
-
-							<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
-								class="fa fa-search-plus icon"></i> Employee Comparision Report</a>
-							<a href="${pageContext.request.contextPath}/trackingHistory"><i
-								class="fa fa-search-plus icon"></i> Total KM By Travelling
-								Employee</a>
+							
+								<a href="${pageContext.request.contextPath}/showEmployeeExhGraph"><i
+								class="fa fa-file"style="color:#4aaae6;"></i> &nbsp;&nbsp; Employee Comparision Report</a>
+								 <a
+								href="${pageContext.request.contextPath}/trackingHistory"><i
+								class="fa fa-list"style="color:#4aaae6;"></i>&nbsp;&nbsp; Total KM  By  Travelling  Employee</a>
 							<div class="clearfix"></div>
 
 							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showEmpEnqTask"><i
-								class="fa fa-search-plus icon"></i>Enquiry And Task</a>
+								class="fa fa-search-plus icon"style="color:#4aaae6;"></i>&nbsp;&nbsp; Enquiry And Task</a>
 
 							<div class="clearfix"></div>
 
@@ -537,27 +545,26 @@
 
 						</div>
 					</li>
-
-
+					
+					
 					<li class="small-box">
 
 						<div class="ibox">
 							<div class="ibox-head">
 								<div class="ibox-title">Pending Enquiry</div>
 							</div>
-
-
+							
+							
 
 							<div class="clearfix"></div>
 
 							<a href="${pageContext.request.contextPath}/showTaskList"><i
-								class="fa fa-search-plus icon"></i>Pending Task List</a>
+								class="fa fa-list-alt"style="color:#4aaae6;"></i>&nbsp;&nbsp; Pending Task List</a>
 
 							<div class="clearfix"></div>
-							<a
-								href="${pageContext.request.contextPath}/showExhEmplPendingEnqList"><i
-								class="fa fa-search-plus icon"></i>Pending Enquiry</a>
-
+								<a href="${pageContext.request.contextPath}/showExhEmplPendingEnqList"><i
+								class="fa fa-question-circle"style="color:#4aaae6;"></i>&nbsp;&nbsp; Pending Enquiry</a>
+							
 
 						</div>
 					</li>
