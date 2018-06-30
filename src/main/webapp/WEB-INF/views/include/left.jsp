@@ -251,7 +251,7 @@
 	<div class="topSlide">
 		<div class="topSlide2">
 			<a href="javascript:void(0)" class="closebtn" onClick="closeNav()"><img
-				src="${pageContext.request.contextPath}/resources//images/closebtn.png"
+				src="${pageContext.request.contextPath}/resources/images/closebtn.png"
 				alt="ATS"></a>
 			<div class="listarea">
 
