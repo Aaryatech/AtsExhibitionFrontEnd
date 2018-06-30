@@ -91,7 +91,7 @@
 								<div class="col1title" align="left">Select Event*:</div>
 							</div>
 
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<select class="selectpicker" data-live-search="true"
 									onchange="getEmpByEventId();" title="Please Select"
 									name="eventId" id="eventId" required>
@@ -129,14 +129,67 @@
 									name="button" class="buttonsaveorder" value="Add Visitor"
 									type="button" align="right"></a>
 							</div>
+
+
 						</div>
+						<div id="hidden_div" style="display: none;">
+							<div class="colOuter">
+								<div class="col-md-2">
+									<div class="col1title" align="left">Visitor Name*:</div>
+								</div>
+								<div class="col-md-3">
+									<input id="visName" class="form-control"
+										placeholder="Visitor Name" style="text-align: left;"
+										name="visName" type="text" readonly />
+
+								</div>
+								<div class="col-md-1"></div>
+
+								<div class="col-md-2">
+									<div class="col1title" align="left">E-Mail*:</div>
+								</div>
+								<div class="col-md-3">
+									<input id="visEmail" class="form-control" placeholder="Email"
+										name="visEmail" type="email" style="text-align: left;"
+										readonly />
+
+								</div>
+
+							</div>
+						</div>
+
+						<%-- <div class="colOuter">
+
+
+							<div class="col-md-2">
+								<div class="col1title" align="left">Mobile No*:</div>
+							</div>
+							<div class="col-md-3">
+								<input id="mob" class="form-control" placeholder="Mobile No"
+									name="mob" style="text-align: left;" oninput="checkMobNo();"
+									pattern="^\d{10}$" type="text" readonly />
+
+							</div>
+							<div class="col-md-1"></div>
+							<div class="col-md-2">
+								<div class="col1title" align="left">Company Name*:</div>
+							</div>
+							<div class="col-md-3">
+								<input id="root" class="form-control" placeholder="Company Name"
+									name="compName" style="text-align: left;"
+									value="${customer.custRoot}" type="text" readonly />
+
+							</div>
+
+
+						</div> --%>
 
 						<div class="colOuter">
 
 							<div class="col-md-2">
 								<div class="col1title" align="left">Select Employee*:</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 								<select class="selectpicker" data-live-search="true"
 									title="Please Select" name="empId" id="empId" required>
 
@@ -309,14 +362,18 @@
 									alert("Visitor with this Mobile Number Not Registered. Please Add Visitor First.");
 									document.getElementById("visitorMobile").style.backgroundColor = "red";
 									document.getElementById("visitorMobile").style.color = "white";
+									$('#hidden_div').hide();
 									$('#tick').hide();
 									$('#addvis').show();
 
 								} else {
+									$('#hidden_div').show();
 
 									document.getElementById("visitorMobile").style.bordercolor = "green";
 									document.getElementById("tick").style.color = "green";
 									document.getElementById("visitorId").value = data.visitorId;
+									document.getElementById("visName").value = data.visitorName;
+									document.getElementById("visEmail").value = data.visitorEmail;
 
 									$('#tick').show();
 

@@ -128,20 +128,18 @@
 							value="search_result">
 
 
-						<div class="col-md -3">
-
-							<div class="col1title" align="left">
+						<div class="row" align="left">
+							<div class="col-md-10">
 								<h3>Event History</h3>
 							</div>
 							<c:set var="count" value="${fn:length(eventHistory) }"></c:set>
+							<div class="col-md-2" style="padding-top: 0px;" align="right">
+								<button class="btn-circle btn1 btn-info" data-toggle="tooltip"
+									title="Count" disabled>${count}</button>
 
-							<div class="popover-icon" style="padding-top: 0px;" align="right">
-								<button class="btn-circle btn1 btn-info"
-									href="javascript:void(0)" data-toggle="tooltip" title="Count">${count}</button>
 							</div>
-							<br>
-
 						</div>
+						<br> <br>
 						<div id="table-scroll" class="table-scroll">
 							<div id="faux-table" class="faux-table" aria="hidden"></div>
 							<div class="table-wrap">

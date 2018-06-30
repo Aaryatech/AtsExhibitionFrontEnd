@@ -118,11 +118,18 @@
 						<input type="hidden" name="mod_ser" id="mod_ser"
 							value="search_result">
 
-						<div class="col-md-12">
-							<div class="col1title" align="left">
+						<div class="row" align="left">
+							<div class="col-md-11">
 								<h3>Event Visitor Names By Events</h3>
 							</div>
+							<c:set var="count" value="${fn:length(visitorList) }"></c:set>
+							<div class="col-md-1" style="padding-top: 0px;">
+								<button class="btn-circle btn1 btn-info"
+									href="javascript:void(0)" data-toggle="tooltip" title="Count"><b>${count}</b></button>
+							</div>
+
 						</div>
+						<br> <br>
 						<div class="colOuter">
 							<div class="col-md-2">
 								<div class="col1title" align="left">Select Event</div>
@@ -147,11 +154,7 @@
 							<div class="col-md-3">
 								<input type="submit" value="Submit" class="btn btn-primary">
 
-								<c:set var="count" value="${fn:length(visitorList) }"></c:set>
-							</div>
-							<div class="col-md-1" class="popover-icon" style="padding-top: 0px;">
-								<button class="btn-circle btn1 btn-info"
-									href="javascript:void(0)" data-toggle="tooltip" title="Count">${count}</button>
+
 							</div>
 
 

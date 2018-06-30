@@ -123,12 +123,18 @@
 						action="${pageContext.request.contextPath}/getEnqByEvent"
 						enctype="multipart/form-data">
 
-						<div class="col-md -3">
-
-							<div class="col1title" align="left">
+						<div class="row" align="left">
+							<div class="col-md-10">
 								<h3>Enquiry By Event</h3>
 							</div>
+							<c:set var="count" value="${fn:length(enquiryHeaderWithName) }"></c:set>
 
+							<div class="col-md-2" style="padding-top: 0px;" align="right"
+								id="count1">
+								<button class="btn-circle btn1 btn-info"
+									href="javascript:void(0)" data-toggle="tooltip" title="Count"
+									disabled>${count}</button>
+							</div>
 						</div>
 
 						<div class="colOuter">
@@ -161,27 +167,18 @@
 							</div>
 							<div class="col-md-1">
 								<input name="submit" class="buttonsaveorder btn btn-primary"
-									value="Search" type="submit" align="center"
-									onclick="takeCount();">
+									value="Search" type="submit" align="center">
 
-								<c:set var="count" value="${fn:length(enquiryHeaderWithName) }"></c:set>
-							</div>
-							<div class="popover-icon"
-								style="padding-top: 0px;" align="right"
-								id="count1">
-								<button class="btn-circle btn1 btn-info"
-									href="javascript:void(0)" data-toggle="tooltip" title="Count"
-									disabled>${count}</button>
+
+
+
 							</div>
 
 
-						</div>
 
 
 
-
-
-						<!-- 	<div class="colOuter">
+							<!-- 	<div class="colOuter">
 							<div align="center">
 								<input name="submit" class="buttonsaveorder" value="Search"
 									type="submit" align="center">
