@@ -340,8 +340,11 @@
 							<a
 								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="	fa fa-thumbs-up" style="color:#4aaae6;"></i>&nbsp;&nbsp; Event Likes </a>
-								
-								
+								<div class="clearfix"></div>
+								<a
+								href="${pageContext.request.contextPath}/uploadVis"><i
+								class="	fa fa-thumbs-up" style="color:#4aaae6;"></i>&nbsp;&nbsp; Upload Data</a>
+								<div class="clearfix"></div>
 
 						</div>
 					</li>
@@ -598,7 +601,13 @@
 
 							<a href="${pageContext.request.contextPath}/showEditProfile"><i
 								class="fa fa-plus-circle icon"></i>Profile </a>
+								
+								
 							<div class="clearfix"></div>
+							
+							
+								
+								
 							<%-- 	<a href="${pageContext.request.contextPath}/addSpinQuestion"><i
 								class="fa fa-search-plus icon"></i>Spin Question </a> --%>
 							<%-- <div class="clearfix"></div>
