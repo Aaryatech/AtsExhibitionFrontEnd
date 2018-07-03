@@ -1,5 +1,10 @@
 package com.ats.exhibitionfrontend.controller;
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,10 +13,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.ErrorManager;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -445,6 +453,78 @@ global=0;
 		global = 1;
 		return "redirect:/uploadVis";
 	}
+	
+	@RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
+	public void download(
+			HttpServletRequest request, HttpServletResponse response) {
+		System.err.println("inside Download File " );
+		String filePath="http://exhibition.aaryatechindia.in:12756/uploads/visitor.xlsx";
+		 File file = new File(filePath);
+		    int length   = 0;
+		    ServletOutputStream outStream = null;
+			try {
+				outStream = response.getOutputStream();
+			} catch (IOException e3) {
+				// TODO Auto-generated catch block
+				e3.printStackTrace();
+			}
+		   // ServletContext context  = getServletConfig().getServletContext();
+		    
+		    ServletContext context=null;
+		    String mimetype = null;
+
+		    // sets response content type
+		    if (mimetype == null) {
+		        mimetype = "application/octet-stream";
+		    }
+		    response.setContentType(mimetype);
+		    response.setContentLength((int)file.length());
+		    String fileName = (new File(filePath)).getName();
+
+		    // sets HTTP header
+		    response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+
+		    byte[] byteBuffer = new byte[4096];
+		    DataInputStream in = null;
+			try {
+				in = new DataInputStream(new FileInputStream(file));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		    // reads the file's bytes and writes them to the response stream
+		    try {
+				while ((in != null) && ((length = in.read(byteBuffer)) != -1))
+				{
+				    try {
+						outStream.write(byteBuffer,0,length);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (IOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+
+		    try {
+				in.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		    try {
+				outStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+}
+
+	
+	
 
 	public static String getCellValueAsString(Cell cell) {
 		String strCellValue = null;

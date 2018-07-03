@@ -78,12 +78,10 @@
 									href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong>
 
 								<h4>Add Visitor File</h4>
-								<a
-									href=“/home/aaryate1/exhibition.aaryatechindia.in/tomcat-8.0.18/webapps/uploads/visitor.xlsx”
-									download> Download File Format </a> <a
-									href=“home/ats-11/Downloads/speaker.png” download>
-									Download Local File Format </a>
+								<a style="color: green;"
+									href="${pageContext.request.contextPath}/downloadFile">Download Excel File Format</a>
 
+									
 							</div>
 
 						</div>
