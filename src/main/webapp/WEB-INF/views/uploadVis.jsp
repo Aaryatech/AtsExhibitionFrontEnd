@@ -1,5 +1,4 @@
 
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -7,7 +6,6 @@
 
 </head>
 <body>
-	
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="isVisitorExist" value="/isVisitorExist"></c:url>
@@ -80,6 +78,12 @@
 									href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong>
 
 								<h4>Add Visitor File</h4>
+								<a
+									href=“/home/aaryate1/exhibition.aaryatechindia.in/tomcat-8.0.18/webapps/uploads/visitor.xlsx”
+									download> Download File Format </a> <a
+									href=“home/ats-11/Downloads/speaker.png” download>
+									Download Local File Format </a>
+
 							</div>
 
 						</div>
@@ -92,8 +96,7 @@
 
 							<div class="col-md-2">
 								<select class="selectpicker" data-live-search="true"
-									 title="Please Select"
-									name="eventId" id="eventId" required>
+									title="Please Select" name="eventId" id="eventId" required>
 
 									<c:forEach items="${eventHistory}" var="eventHistory">
 										<option value="${eventHistory.eventId}">${eventHistory.eventName}</option>
@@ -105,7 +108,7 @@
 
 							<div class="col-md-1"></div>
 
-								<div class="col-md-2">
+							<div class="col-md-2">
 								<div class="col1title" align="left">Select Location*:</div>
 							</div>
 							<div class="col-md-2">
@@ -118,8 +121,8 @@
 									</c:forEach>
 								</select>
 							</div>
-						
-						<%-- 	<div align="right" id="addvis" class="col-md-1"
+
+							<%-- 	<div align="right" id="addvis" class="col-md-1"
 								style="display: none;">
 								<a
 									href="${pageContext.request.contextPath}/addVisitorByExhibitor"><input
@@ -146,13 +149,13 @@
 								</select>
 							</div>
 							<div class="col-md-1"></div>
-							
+
 							<div class="col-md-2">
 								<div class="col1title" align="left">Select Excel File</div>
 							</div>
 
 							<div class="col-md-2">
-								<input type="file" name="file" id="file"/>
+								<input type="file" name="file" id="file" />
 							</div>
 						</div>
 
@@ -164,6 +167,80 @@
 							</div>
 
 						</div>
+
+						<c:set var="adCount" value="${fn:length(addedVis) }"></c:set>
+						<c:set var="dupMobCount" value="${fn:length(dupMobNoVisList) }"></c:set>
+						<c:if test="${adCount!=0 or dupMobCount!=0}">
+							<div class="colOuter">
+								<div align="center">
+									<p> ${adCount} Visitors Added Successfully. Total ${dupMobCount}
+										Existing Mobile No Found Not Added</p>
+									<!-- <input type="button" class="buttonsaveorder" value="Cancel" id="cancel" onclick="cancel1()" disabled> -->
+								</div>
+
+							</div>
+						</c:if>
+
+
+						<div id="table-scroll" class="table-scroll">
+							<div id="faux-table" class="faux-table" aria="hidden"></div>
+							<div class="table-wrap">
+								<table id="table_grid" class="main-table">
+									<thead>
+										<tr class="bgpink">
+											<th class="col-sm-1">Sr No</th>
+											<th class="col-md-1">Name</th>
+											<th class="col-md-1">Mobile No</th>
+											<th class="col-md-1">Email</th>
+											<th class="col-md-1">Represent</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<c:forEach items="${addedVis}" var="list" varStatus="count">
+											<tr>
+												<td class="col-sm-1"><c:out value="${count.index+1}" /></td>
+												<td class="col-md-2"><c:out value="${list.visitorName}" /></td>
+												<td class="col-md-1"><c:out
+														value="${list.visitorMobile}" /></td>
+
+												<td class="col-md-1"><c:out
+														value="${list.visitorEmail}" /></td>
+												<td class="col-md-2"><c:out
+														value="${list.visitorRepresent}" /></td>
+
+											</tr>
+											<c:if test="${count.last}">
+												<c:set var="sr" value="${count}">
+
+												</c:set>
+											</c:if>
+										</c:forEach>
+
+										<c:forEach items="${dupMobNoVisList}" var="dupVis"
+											varStatus="loop">
+											<tr>
+												<td class="col-sm-1"><c:out value="${loop.index+1}" /></td>
+
+												<td class="col-md-2" style="color: red;"><c:out
+														value="${dupVis.visitorName}" /></td>
+												<td class="col-md-1" style="color: red;"><c:out
+														value="${dupVis.visitorMobile}" /></td>
+												<td class="col-md-1"><c:out
+														value="${dupVis.visitorEmail}" /></td>
+												<td class="col-md-2"><c:out
+														value="${dupVis.visitorRepresent}" /></td>
+
+											</tr>
+										</c:forEach>
+								</table>
+
+
+							</div>
+						</div>
+
+
+
 					</form>
 
 				</div>
