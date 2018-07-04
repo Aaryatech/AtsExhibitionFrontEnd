@@ -13,7 +13,7 @@
 
 	<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 	<c:url var="editFrSupplier" value="/editFrSupplier"></c:url>
-<!-- 
+	<!-- 
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<link rel="stylesheet"
@@ -122,8 +122,8 @@ hr {
 
 							<div class="col-md-1" align="left"></div>
 
-							<input type="submit" class="btn  buttonsaveorder" value="Search"/> <input
-								type="button" class="btn  buttonsaveorder" value="Graph"
+							<input type="submit" class="btn  buttonsaveorder" value="Search" />
+							<input type="button" class="btn  buttonsaveorder" value="Graph"
 								onclick="showChart()" />
 						</div>
 
@@ -390,7 +390,7 @@ hr {
 	</script>
 	<script type="text/javascript">
 		function showChart() {
-			
+
 			$("#chart_div").empty();
 
 			document.getElementById('chart').style.display = "block";
@@ -411,7 +411,7 @@ hr {
 
 							},
 							function(data) {
-								
+
 								if (data == "") {
 									alert("No records found !!");
 
