@@ -177,7 +177,7 @@ div.desc {
 
 				<!--rightSidebar-->
 				<div class="sidebarright">
-							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${sessionScope.UserDetail.exhibitor.exhName}</span>, Welcome Back <i> [  ${sessionScope.UserDetail.exhSubHeader.fromDate}&nbsp;&nbsp; To &nbsp;&nbsp;-${sessionScope.UserDetail.exhSubHeader.toDate} ]</i>
+							<div class="col-md-10">			<h2 class="pageTitle">Hi <span>${sessionScope.UserDetail.exhibitor.exhName}</span>, Welcome Back <i><c:if test="${sessionScope.UserDetail.exhSubHeader not empty"> [  ${sessionScope.UserDetail.exhSubHeader.fromDate}&nbsp;&nbsp; To &nbsp;&nbsp;-${sessionScope.UserDetail.exhSubHeader.toDate} ]</c:if></i>
 </h2></div> <div class="col-md-2">	<p style="text-align: right;" class="pageTitle"><b><a href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></b></p></div>
             
 					<!--slider-->
@@ -209,19 +209,20 @@ div.desc {
 
 <div class="gallery">
   <a target="_blank" href="${pageContext.request.contextPath}/getEventDetail/${eventList.eventId}/${eventList.orgId}">
-    <img src="${eventImgUrl}${eventList.eventLogo}" width="250" height="170" alt="No Image Available" >
+    <img src="${eventImgUrl}${eventList.eventLogo}" width="250" height="170"onerror="this.src='resources/images/No_Image_Available.jpg';" >
   </a>
   <br></br> <div style="padding-left: 5px;">
-  <p align="left" class="overflow"> &nbsp;&nbsp; <b > Event Name</b>:<abbr title="${eventList.eventName}" style="border: none;text-decoration: none;  cursor: inherit !important; ">${eventList.eventName}</abbr></p>
-  <p align="left"> &nbsp;&nbsp; <b > Place: </b>${eventList.eventLocation}  &nbsp;&nbsp;<b>Stall Size: </b>${eventList.stallSize} </p>
+  <p align="left" class="overflow"> &nbsp;&nbsp; <b > Event Name: </b><abbr title="${eventList.eventName}" style="border: none;text-decoration: none;  cursor: inherit !important; ">${eventList.eventName}</abbr></p>
+  <p align="left"> &nbsp;&nbsp; <b > Place: </b>${eventList.eventLocation}</p>
+    <p align="left"> &nbsp;&nbsp; <b>Stall Size: </b>${eventList.stallSize} </p> 
   <c:choose>
   
   <c:when test="${eventList.priceForExh==eventList.discountedPrice}">
-     <p align="left"> &nbsp;&nbsp; <b > Price:${eventList.priceForExh} </b> Discount Price:<b> ${eventList.discountedPrice} </b></p>
+     <p align="left"> &nbsp;&nbsp; <b > Price: ${eventList.priceForExh} </b> Discount Price: <b> ${eventList.discountedPrice} </b></p>
   </c:when>
   
   <c:otherwise>
-      <p  align="left"> &nbsp;&nbsp;<b> Price:</b><strike>${eventList.priceForExh}</strike><mark>  <b style="background-color: orange;"> Discount Price:</b></mark> ${eventList.discountedPrice} </p>
+      <p  align="left"> &nbsp;&nbsp;<b> Price: </b><strike>${eventList.priceForExh}</strike><mark>  <b style="background-color: orange;"> Discount Price: </b></mark> ${eventList.discountedPrice} </p>
   </c:otherwise>
   
   </c:choose>

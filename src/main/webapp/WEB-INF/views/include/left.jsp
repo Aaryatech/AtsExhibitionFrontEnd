@@ -341,9 +341,7 @@
 								href="${pageContext.request.contextPath}/showgetEventLikeCounts"><i
 								class="	fa fa-thumbs-up" style="color:#4aaae6;"></i>&nbsp;&nbsp; Event Likes </a>
 								<div class="clearfix"></div>
-								<a
-								href="${pageContext.request.contextPath}/uploadVis"><i
-								class="	fa fa-thumbs-up" style="color:#4aaae6;"></i>&nbsp;&nbsp; Upload Data</a>
+							
 								<div class="clearfix"></div>
 
 						</div>

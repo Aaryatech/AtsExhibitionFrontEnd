@@ -384,6 +384,14 @@ global=0;
 
 				// visitor.setEveId(eveId);
 
+				
+				String visName=getCellValueAsString(row.getCell(1));
+				System.err.println("Vis Name " +visName);
+				
+				int value = Integer.parseInt(visName.replaceAll("[^0-9]", ""));
+				System.err.println("value  " +value);
+
+				
 				visitor.setVisitorName((row.getCell(1).getStringCellValue()));
 				visitor.setVisitorEmail(row.getCell(2).getStringCellValue());
 

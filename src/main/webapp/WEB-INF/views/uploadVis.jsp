@@ -74,14 +74,13 @@
 						<div class="col-md -3">
 
 							<div class="col1title" align="left">
-								<strong><a style="color: green;"
-									href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong>
+								<%-- <strong><a style="color: green;"
+									href="${pageContext.request.contextPath}/exhibitorDashboard">Dashboard</a></strong> --%>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="color: maroon;"
+									href="http://exhibition.aaryatechindia.in:12756/uploads/visitor.xlsx">Download Excel File Format</a>
 
-								<h4>Add Visitor File</h4>
-								<a style="color: green;"
-									href="${pageContext.request.contextPath}/downloadFile">Download Excel File Format</a>
-
-									
+									<h4>Add Visitor File</h4>
 							</div>
 
 						</div>

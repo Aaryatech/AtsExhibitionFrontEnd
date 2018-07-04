@@ -120,7 +120,11 @@
 
 						<div class="row" align="left">
 							<div class="col-md-11">
-								<h3>Event Visitor Names By Events</h3>
+								<a
+								href="${pageContext.request.contextPath}/uploadVis" ><i
+								class="fa fa-upload" style="color:green; height: 40; width: 10;"></i>&nbsp;&nbsp;<b style="size: 20px;">Upload Visitor By Excel File -&nbsp;  <i class="fa fa-file-excel-o	Try it
+								"></i></b></a>
+								<h3>Event Visitor Name By Events</h3>
 							</div>
 							<c:set var="count" value="${fn:length(visitorList) }"></c:set>
 							<div class="col-md-1" style="padding-top: 0px;">
